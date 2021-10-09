@@ -8919,13 +8919,6 @@ vue-cli-plugin-vuetify@~2.4.2:
     semver "^7.1.2"
     shelljs "^0.8.3"
 
-vue-drag-resize@^1.5.0-rc3, vue-drag-resize@^1.5.4:
-  version "1.5.4"
-  resolved "https://registry.nlark.com/vue-drag-resize/download/vue-drag-resize-1.5.4.tgz#f583f40f356e5792aa89109b3d13ba4407c25198"
-  integrity sha1-9YP0DzVuV5KqiRCbPRO6RAfCUZg=
-  dependencies:
-    vue-drag-resize "^1.5.0-rc3"
-
 vue-eslint-parser@^7.0.0:
   version "7.11.0"
   resolved "https://registry.nlark.com/vue-eslint-parser/download/vue-eslint-parser-7.11.0.tgz#214b5dea961007fcffb2ee65b8912307628d0daf"

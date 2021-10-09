@@ -30,10 +30,9 @@
 </template>
 
 <script>
-import VueDragResize from 'vue-drag-resize'
 export default {
   name: 'PreviewScale',
-  components: { VueDragResize },
+  components: {},
   props: {
     iconUrl: String,
     srcUrl: String,
