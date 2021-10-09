@@ -1,6 +1,6 @@
 module.exports = {
+  publicPath: './',
   lintOnSave: false,
-
   pluginOptions: {
     prerenderSpa: {
       registry: undefined,
