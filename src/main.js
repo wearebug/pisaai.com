@@ -7,6 +7,7 @@ import vuetify from './plugins/vuetify'
 import FileUpload from 'vue-upload-component'
 import VueToast from 'vue-toast-notification'
 import VueSlider from 'vue-slider-component'
+
 import 'vue-toast-notification/dist/theme-sugar.css'
 import 'vue-slider-component/theme/default.css'
 

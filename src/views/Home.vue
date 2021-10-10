@@ -1,17 +1,9 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app color="black" dark>
       <v-container class="d-flex justify-space-between pa-0">
         <div class="d-flex align-center pa-0">
-          <v-img
-            alt="高光照片优化"
-            class="shrink"
-            contain
-            src="http://new.hiliphoto.com/logo.ee557abfcfb6967a2fc020b032fad178.png"
-            transition="scale-transition"
-            width="40"
-            eager
-          />
+          <v-img alt="高光照片优化" class="shrink" contain src="../assets/logo.png" transition="scale-transition" width="40" eager />
         </div>
         <v-spacer></v-spacer>
         <div class="hidden-sm-and-down">
@@ -106,7 +98,7 @@
             @input-file="inputFile"
             @input-filter="inputFilter"
           >
-            <v-btn class="mt-5 mb-5" color="success" dark large>
+            <v-btn class="mt-5 mb-5" color="primary" dark large>
               {{ $vuetify.lang.t('$vuetify.btnTxt') }}
               <v-icon right dark>mdi-cloud-upload</v-icon>
             </v-btn>
@@ -152,14 +144,18 @@
         <v-row class="mt-4">
           <v-col v-for="(card, i) in cards" :key="i" cols="12" md="6">
             <v-card elevation="4">
+              <v-sheet class="d-flex align-center justify-center" color="primary lighten-2" height="48">
+                <v-icon color="white">{{ card.icon }}</v-icon>
+                <span class="ml-2 text-button white--text">{{ card.tag }}</span>
+              </v-sheet>
               <v-sheet class="d-rela">
                 <div class="before-img">
                   <img ref="staticImg" :src="card.after" alt="before" />
-                  <v-chip class="tag-after" color="rgba(0,0,0,.3)" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[0]') }}</v-chip>
+                  <v-chip label class="tag-after" color="black" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[0]') }}</v-chip>
                 </div>
                 <div class="after-img" :style="{ width: cardPercents[i] + '%' }">
                   <img :src="card.before" alt="after" :style="{ width: staticImgWidth + 'px', height: staticImgHeight + 'px' }" />
-                  <v-chip class="tag-before" color="rgba(0,0,0,.3)" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[1]') }}</v-chip>
+                  <v-chip label class="tag-before" color="black" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[1]') }}</v-chip>
                 </div>
                 <div class="card-slider">
                   <vue-slider
@@ -178,10 +174,6 @@
                   </vue-slider>
                 </div>
               </v-sheet>
-
-              <v-card-text>
-                <v-chip v-for="(tag, j) in card.tags" :key="j" class="mr-2">{{ tag }}</v-chip>
-              </v-card-text>
             </v-card>
           </v-col>
         </v-row>
@@ -207,17 +199,17 @@
           <h1 class="my-8 text-h5 text-md-h4">FAQ</h1>
           <v-expansion-panels v-model="panel" multiple>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-1">
+              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
                 {{ $vuetify.lang.t('$vuetify.problem[0].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <p class="text-justify text-body-2">{{ $vuetify.lang.t('$vuetify.problem[0].info1') }}</p>
-                <v-img src="http://new.hiliphoto.com/faq.7713d11dd17df54ae15dee326ab14d17.jpg" eager></v-img>
+                <v-img src="../assets/faq1.jpg" eager></v-img>
                 <p class="mt-4 text-justify text-body-2" v-html="$vuetify.lang.t('$vuetify.problem[0].info2')"></p>
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-1">
+              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
                 {{ $vuetify.lang.t('$vuetify.problem[1].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
@@ -225,7 +217,7 @@
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-1">
+              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
                 {{ $vuetify.lang.t('$vuetify.problem[2].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
@@ -233,7 +225,7 @@
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-1">
+              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
                 {{ $vuetify.lang.t('$vuetify.problem[3].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
@@ -241,7 +233,7 @@
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-1">
+              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
                 {{ $vuetify.lang.t('$vuetify.problem[4].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
@@ -249,7 +241,7 @@
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-1">
+              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
                 {{ $vuetify.lang.t('$vuetify.problem[5].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
@@ -274,7 +266,7 @@
         </v-sheet>
       </v-container>
     </v-main>
-    <v-footer color="primary" padless>
+    <v-footer color="black" padless>
       <v-row justify="center" no-gutters>
         <v-btn v-for="(link, i) in links" :key="link" color="white" text rounded class="my-2" @click="onShowFullscreen(i)">
           {{ link }}
@@ -286,7 +278,7 @@
     </v-footer>
     <v-dialog v-model="showDialog" max-width="960">
       <v-card elevation="2">
-        <v-tabs color="primary accent-4" align-with-title>
+        <v-tabs active-class="primary" background-color="black" align-with-title dark hide-slider>
           <v-tab>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</v-tab>
           <v-tab>{{ $vuetify.lang.t('$vuetify.functionTxt[1]') }}</v-tab>
           <v-tab-item>
@@ -294,14 +286,14 @@
               <v-row>
                 <v-col v-for="(item, i) in prices" :key="i" cols="12" md="3">
                   <v-card elevation="2" class="pb-3">
-                    <v-card-title class="primary text-subtitle-1 white--text" dark>{{ item.title }}</v-card-title>
+                    <v-card-title class="black text-subtitle-1 white--text" dark>{{ item.title }}</v-card-title>
                     <v-card-text class="py-3">{{ item.list[0] }}</v-card-text>
                     <v-card-text class="py-3">{{ item.list[1] }}</v-card-text>
                     <v-card-text class="py-3">{{ item.list[2] }}</v-card-text>
                     <v-card-text class="py-3">{{ item.list[3] }}</v-card-text>
                     <v-card-text class="py-3">{{ item.list[4] }}</v-card-text>
                     <v-card-actions>
-                      <v-btn color="success" rounded block>
+                      <v-btn color="success" rounded block @click="onWechatPayPackage(item.id)">
                         <v-icon left dark>mdi-wechat</v-icon>
                         {{ $vuetify.lang.t('$vuetify.priceType[0]') }}
                       </v-btn>
@@ -362,7 +354,7 @@
     </v-dialog>
     <v-dialog v-model="showOption" max-width="720" persistent>
       <v-card>
-        <v-tabs v-model="optionsTab" color="primary accent-4" center-active align-with-title>
+        <v-tabs v-model="optionsTab" active-class="primary" background-color="black" align-with-title dark hide-slider>
           <v-tab v-for="tab in optionTabs" :key="tab.id">{{ tab.name }}</v-tab>
         </v-tabs>
         <v-tabs-items v-model="optionsTab">
@@ -421,37 +413,26 @@
       </v-card>
     </v-dialog>
     <v-dialog v-model="showPreview" :max-width="initWidth">
-      <v-card :max-width="initWidth" :height="initHeight">
-        <preview-scale :initWidth="initWidth" :initHeight="initHeight" :iconUrl="previewFile.icon_url" :srcUrl="previewFile.src_url" />
+      <v-card class="p-rela" :max-width="initWidth" :height="initHeight">
+        <v-row class="toolbar" :style="{ top: toolbarTop + 'px' }">
+          <v-btn class="mx-4" icon color="white" @click="onPlus">
+            <v-icon>mdi-magnify-close</v-icon>
+          </v-btn>
+          <v-btn class="mx-4" icon color="white" @click="onMinus">
+            <v-icon>mdi-magnify-minus</v-icon>
+          </v-btn>
+          <v-btn class="mx-4" icon color="white" @click="onFileDownload(previewFile)">
+            <v-icon>mdi-file-download</v-icon>
+          </v-btn>
+        </v-row>
+        <preview-scale
+          :initWidth="initWidth"
+          :initHeight="initHeight"
+          :iconUrl="previewFile.icon_url"
+          :srcUrl="previewFile.src_url"
+          :scaleRatio="scaleRatio"
+        />
       </v-card>
-      <!-- <v-card>
-        <v-sheet class="d-rela">
-          <div class="before-img">
-            <img ref="staticImg1" :src="previewFile.icon_url" alt="before" />
-            <v-chip class="tag-after" color="rgba(0,0,0,.3)" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[0]') }}</v-chip>
-          </div>
-          <div class="after-img" :style="{ width: previewFile.percent + '%' }">
-            <img :src="previewFile.src_url" alt="after" :style="{ width: staticImg1Width + 'px', height: staticImg1Height + 'px' }" />
-            <v-chip class="tag-before" color="rgba(0,0,0,.3)" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[1]') }}</v-chip>
-          </div>
-          <div class="card-slider">
-            <vue-slider
-              v-model="previewFile.percent"
-              :railStyle="{ backgroundColor: 'transparent' }"
-              :process="false"
-              :tooltip="'none'"
-              :clickable="false"
-              :dotSize="40"
-            >
-              <template v-slot:dot>
-                <v-btn fab small color="rgba(255,255,255,.5)">
-                  <v-icon color="#666">mdi-arrow-left-right</v-icon>
-                </v-btn>
-              </template>
-            </vue-slider>
-          </div>
-        </v-sheet>
-      </v-card> -->
     </v-dialog>
     <v-dialog v-model="showQrcode" max-width="320">
       <v-card>
@@ -461,7 +442,7 @@
     </v-dialog>
     <v-dialog v-model="showFullScreen" fullscreen hide-overlay transition="dialog-bottom-transition">
       <v-card>
-        <v-toolbar dark color="primary">
+        <v-toolbar dark color="black">
           <v-btn icon dark @click="showFullScreen = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
@@ -474,6 +455,18 @@
 </template>
 
 <script>
+const CARD_BEFORE1 = require('../assets/card_before1.jpg')
+const CARD_BEFORE2 = require('../assets/card_before2.jpg')
+const CARD_BEFORE3 = require('../assets/card_before3.jpg')
+const CARD_BEFORE4 = require('../assets/card_before4.jpg')
+const CARD_AFTER1 = require('../assets/card_after1.jpg')
+const CARD_AFTER2 = require('../assets/card_after2.jpg')
+const CARD_AFTER3 = require('../assets/card_after3.jpg')
+const CARD_AFTER4 = require('../assets/card_after4.jpg')
+const PRODUCT1 = require('../assets/product1.jpg')
+const PRODUCT2 = require('../assets/product2.jpg')
+const PRODUCT3 = require('../assets/product3.jpg')
+const PRODUCT4 = require('../assets/product4.jpg')
 import { mapState, mapMutations } from 'vuex'
 import VueQr from 'vue-qr'
 import ApiDocs from '@/components/ApiDocs'
@@ -509,6 +502,7 @@ export default {
   },
   data() {
     return {
+      channel: 'HILI',
       timer: null,
       timer1: null,
       timer1Count: 0,
@@ -625,6 +619,7 @@ export default {
       winHeight: 0,
       initWidth: 0,
       initHeight: 0,
+      scaleRatio: 1,
     }
   },
   watch: {
@@ -644,29 +639,37 @@ export default {
   computed: {
     ...mapState(['userInfo']),
     prices() {
-      return this.$vuetify.lang.locales[this.curLang.id].functionPrice
+      const functionPrice = this.$vuetify.lang.locales[this.curLang.id].functionPrice
+      const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcToBNums200']
+      return functionPrice.map((v, i) => {
+        return { ...v, id: priceIds[i] }
+      })
     },
     cards() {
       return [
         {
-          before: 'http://new.hiliphoto.com/contrast1-1.dfdf5513ef7d0461777e835debe27531.jpg',
-          after: 'http://new.hiliphoto.com/contrast1-2.870908c3291f48bb80ba9d9d4dc58d77.jpg',
-          tags: [this.$vuetify.lang.t('$vuetify.contrastType[0]')],
+          before: CARD_BEFORE1,
+          after: CARD_AFTER1,
+          icon: 'mdi-image-area',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
         },
         {
-          before: 'http://new.hiliphoto.com/contrast2-1.a49e903c0c462f5fe3b4420e7aea4875.jpg',
-          after: 'http://new.hiliphoto.com/contrast2-2.22220caffd0c1a8678217cd21f4483ef.jpg',
-          tags: [this.$vuetify.lang.t('$vuetify.contrastType[1]'), this.$vuetify.lang.t('$vuetify.contrastType[4]')],
+          before: CARD_BEFORE2,
+          after: CARD_AFTER2,
+          icon: 'mdi-palette',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
         },
         {
-          before: 'http://new.hiliphoto.com/contrast3-1.2b61873dfc704afb076459384e452bd2.jpg',
-          after: 'http://new.hiliphoto.com/contrast3-2.6bc9395b5696789298bb3ac748ec524c.jpg',
-          tags: [this.$vuetify.lang.t('$vuetify.contrastType[2]'), this.$vuetify.lang.t('$vuetify.contrastType[5]')],
+          before: CARD_BEFORE3,
+          after: CARD_AFTER3,
+          icon: 'mdi-account-box',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
         },
         {
-          before: 'http://new.hiliphoto.com/contrast4-1.a8ff8a58fedd43c3204c179ff99b42e6.jpg',
-          after: 'http://new.hiliphoto.com/contrast4-2.649632ce9e5b833c6c3f312f01643929.jpg',
-          tags: [this.$vuetify.lang.t('$vuetify.contrastType[3]')],
+          before: CARD_BEFORE4,
+          after: CARD_AFTER4,
+          icon: 'mdi-fullscreen-exit',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
         },
       ]
     },
@@ -674,19 +677,19 @@ export default {
       return [
         {
           tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
-          src: 'http://new.hiliphoto.com/roll2.3e47eeb951c135be1ecc670b377ba706.jpg',
+          src: PRODUCT1,
         },
         {
           tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
-          src: 'http://new.hiliphoto.com/roll3.d21c5f0709e28f4ed22564924d4dc34a.jpg',
+          src: PRODUCT2,
         },
         {
           tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
-          src: 'http://new.hiliphoto.com/roll4.1308fd0682989e613ea55520f58cc2a0.jpg',
+          src: PRODUCT3,
         },
         {
           tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
-          src: 'http://new.hiliphoto.com/roll1.ed3dfd75a81af454bb9f5a6fb831e209.jpg',
+          src: PRODUCT4,
         },
       ]
     },
@@ -696,6 +699,10 @@ export default {
         this.$vuetify.lang.t('$vuetify.privacyTxt'),
         this.$vuetify.lang.t('$vuetify.agreementTxt'),
       ]
+    },
+    toolbarTop() {
+      let top = (this.winHeight - this.initHeight) / 2
+      return top <= 22 ? 22 : top
     },
   },
   created() {
@@ -713,10 +720,12 @@ export default {
   methods: {
     ...mapMutations(['setUserInfo', 'removeUserInfo']),
     onResize() {
-      this.winHeight = window.innerHeight - window.innerHeight / 10 // 屏幕高度
-      this.winWidth = window.innerWidth - 30 // 屏幕宽度
-      this.staticImgWidth = this.$refs.staticImg[0].offsetWidth
-      this.staticImgHeight = this.$refs.staticImg[0].offsetHeight
+      setTimeout(() => {
+        this.staticImgWidth = this.$refs.staticImg[0].offsetWidth
+        this.staticImgHeight = this.$refs.staticImg[0].offsetHeight
+      }, 0)
+      this.winHeight = window.innerHeight - window.innerHeight / 10 - 44 // 屏幕高度
+      this.winWidth = window.innerWidth - 48 // 屏幕宽度
     },
     inputFilter(newFile, oldFile, prevent) {
       if (newFile && !oldFile) {
@@ -889,10 +898,10 @@ export default {
      * 下载上传文件
      */
     async onFileDownload(response) {
-      const { mdfs } = response
+      const mdf = response.mdf || response.mdfs[0]
       try {
-        await fileDownload(mdfs[0])
-        const url = `https://sdkphoto.fangtangtv.com/api/toc/download/${mdfs[0]}`
+        await fileDownload(mdf)
+        const url = `https://sdkphoto.fangtangtv.com/api/toc/download/${mdf}`
         if (isWechat) {
           this.saveImg(url)
         } else {
@@ -935,8 +944,8 @@ export default {
     onWechatPay(response) {
       const data = {
         goodsid: 'BV11r4y1T7aX',
-        channel: 'hili',
-        mdf: response.mdfs[0],
+        channel: this.channel,
+        mdf: response.mdf || response.mdfs[0],
       }
       wechatPay(data)
         .then((res) => {
@@ -945,6 +954,21 @@ export default {
           this.showQrcode = true
           this.getOrderStataus(orderid, response)
           // this.makeQrcode()
+        })
+        .catch((e) => {
+          this.$toast.error(e.msg)
+        })
+    },
+    onWechatPayPackage(id) {
+      const data = {
+        goodsid: id,
+        channel: this.channel,
+      }
+      wechatPay(data)
+        .then((res) => {
+          const { url } = res.data
+          this.qrcodeUrl = url
+          this.showQrcode = true
         })
         .catch((e) => {
           this.$toast.error(e.msg)
@@ -990,7 +1014,8 @@ export default {
      * 预览上传文件
      */
     onFilePreview(fileObj) {
-      this.previewFile = { ...fileObj, percent: 50 }
+      console.log(fileObj)
+      this.previewFile = fileObj
       let img = new Image()
       img.src = this.previewFile.icon_url
       img.onload = () => {
@@ -1075,6 +1100,14 @@ export default {
       }
       this.showFullScreen = true
     },
+    onPlus() {
+      if (this.scaleRatio.toFixed() > 4) return
+      this.scaleRatio += 0.1
+    },
+    onMinus() {
+      if (this.scaleRatio.toFixed(1) < 0.1) return
+      this.scaleRatio -= 0.1
+    },
   },
 }
 </script>
@@ -1092,14 +1125,18 @@ export default {
 }
 .tag-after {
   position: absolute;
-  right: 16px;
-  bottom: 16px;
+  right: 0;
+  bottom: 24px;
+  height: 30px;
+  padding: 0 20px !important;
+  border-radius: 0 !important;
 }
 .before-img {
   position: relative;
   /* z-index: 1; */
   img {
     width: 100%;
+    display: block;
   }
 }
 
@@ -1107,14 +1144,18 @@ export default {
   position: absolute;
   left: 0;
   top: 0;
+  height: 100%;
   /* z-index: 0; */
   overflow: hidden;
 }
 .tag-before {
   position: absolute;
-  left: 16px;
-  bottom: 16px;
+  left: 0;
+  bottom: 24px;
   z-index: 0;
+  height: 30px;
+  padding: 0 20px !important;
+  border-radius: 0 !important;
 }
 .card-slider {
   position: absolute;
@@ -1154,5 +1195,16 @@ export default {
   font-size: 13px;
   color: #333;
   text-align: center;
+}
+.p-rela {
+  position: relative;
+}
+.toolbar {
+  position: fixed;
+  left: 50%;
+  /* top: 22px; */
+  height: 44px;
+  line-height: 44px;
+  transform: translateX(-50%);
 }
 </style>

@@ -28,4 +28,12 @@ export default new Vuetify({
     current: 'zhHans',
     locales: locales,
   },
+  theme: {
+    themes: {
+      light: {
+        primary: '#DB8819',
+        black: '#333333',
+      },
+    },
+  },
 })
