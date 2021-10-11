@@ -3,6 +3,7 @@
 # 确保脚本抛出遇到的错误
 set -e
 
+git remote set-url origin https://github.com/wearebug/pisaai.com.git
 # 生成静态文件
 yarn build
 

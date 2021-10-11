@@ -9086,6 +9086,13 @@ vue-upload-component@^2.8.22:
   resolved "https://registry.nlark.com/vue-upload-component/download/vue-upload-component-2.8.22.tgz#7a1573149a4afa5ca6e8c7e0bc70533925fe26b7"
   integrity sha1-ehVzFJpK+lym6MfgvHBTOSX+Jrc=
 
+vue-wxlogin@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.nlark.com/vue-wxlogin/download/vue-wxlogin-1.0.4.tgz#ba26698df9fa4562246fdb200e2a99540c8d0e55"
+  integrity sha1-uiZpjfn6RWIkb9sgDiqZVAyNDlU=
+  dependencies:
+    vue "^2.4.2"
+
 vue@^2.4.2, vue@^2.6.10, vue@^2.6.11:
   version "2.6.14"
   resolved "https://registry.npmmirror.com/vue/download/vue-2.6.14.tgz?cache=0&sync_timestamp=1632596410846&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fvue%2Fdownload%2Fvue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"

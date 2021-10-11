@@ -39,3 +39,27 @@ export function getOrderStataus(params) {
     params,
   })
 }
+
+export function wechatLogin(data) {
+  return request({
+    url: 'https://payapi.fangtangtv.com/photo/login/wechat',
+    method: 'post',
+    data: qs.stringify(data),
+  })
+}
+
+export function packagePay(data) {
+  return request({
+    url: 'https://payapi.fangtangtv.com/photo/order/pay2',
+    method: 'post',
+    data: qs.stringify(data),
+  })
+}
+
+export function packageStatus(data) {
+  return request({
+    url: 'https://payapi.fangtangtv.com/photo/order/info',
+    method: 'post',
+    data: qs.stringify(data),
+  })
+}

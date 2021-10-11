@@ -3,15 +3,13 @@
     <v-app-bar app color="black" dark>
       <v-container class="d-flex justify-space-between pa-0">
         <div class="d-flex align-center pa-0">
-          <v-img alt="高光照片优化" class="shrink" contain src="../assets/logo.png" transition="scale-transition" width="40" eager />
+          <v-img alt="高光照片优化" class="shrink" contain src="../assets/logo.png" transition="scale-transition" width="120" eager />
+          <h1 class="ml-4 text-h6">{{ $vuetify.lang.t('$vuetify.name') }}</h1>
         </div>
         <v-spacer></v-spacer>
         <div class="hidden-sm-and-down">
           <v-btn text large @click="onPriceClick">
             <span>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</span>
-          </v-btn>
-          <v-btn text large @click="onApiClick">
-            <span>{{ $vuetify.lang.t('$vuetify.functionTxt[1]') }}</span>
           </v-btn>
           <v-menu offset-y nudge-top="-10">
             <template v-slot:activator="{ on, attrs }">
@@ -55,9 +53,6 @@
         <v-list-item ripple @click="onPriceClick">
           <v-list-item-title>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</v-list-item-title>
         </v-list-item>
-        <v-list-item ripple @click="onApiClick">
-          <v-list-item-title>{{ $vuetify.lang.t('$vuetify.functionTxt[1]') }}</v-list-item-title>
-        </v-list-item>
         <v-list-group>
           <template v-slot:activator>
             <v-list-item-title>{{ curLang.name }}</v-list-item-title>
@@ -82,7 +77,7 @@
     <v-main>
       <v-container>
         <v-sheet color="white" tag="section">
-          <h1 class="my-4 text-h4">{{ $vuetify.lang.t('$vuetify.name') }}</h1>
+          <!-- <h1 class="my-4 text-h4">{{ $vuetify.lang.t('$vuetify.name') }}</h1> -->
           <p class="text--secondary text-justify">{{ $vuetify.lang.t('$vuetify.synopsis') }}</p>
         </v-sheet>
         <v-sheet tag="section" class="d-flex align-center justify-center pt-7 pb-7 pt-md-12 pb-md-12 border-dash">
@@ -104,7 +99,7 @@
             </v-btn>
           </file-upload>
         </v-sheet>
-        <v-list three-line>
+        <v-list three-line v-if="files.length">
           <v-list-item v-for="item in files" :key="item.id">
             <v-list-item-avatar size="80" rounded>
               <v-img :src="item.blob"></v-img>
@@ -124,10 +119,11 @@
                 <template v-if="item.response.code === 200">
                   <template v-if="item.status && item.status.src_url">
                     <v-chip class="mr-2" color="success" small>{{ $vuetify.lang.t('$vuetify.upload.status[6]') }}</v-chip>
-                    <v-btn class="mr-2" small color="primary" @click="onFileDownload(item.response)">
+                    <v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response)">
                       {{ $vuetify.lang.t('$vuetify.upload.btn[1]') }}
                     </v-btn>
-                    <v-btn class="mr-2" small color="success" @click="onFilePreview(item.status)">
+                    <v-btn class="mr-2 mb-1" small color="primary" @click="onContinue(item)">再次处理</v-btn>
+                    <v-btn class="mr-2 mb-1" small color="success" @click="onFilePreview(item.status)">
                       {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
                     </v-btn>
                   </template>
@@ -136,7 +132,7 @@
                   </template>
                 </template>
                 <span v-else class="text-caption">{{ item.response.msg }}</span>
-                <v-btn small color="error" @click="onFileRemove(item)">{{ $vuetify.lang.t('$vuetify.upload.btn[3]') }}</v-btn>
+                <v-btn class="mb-1" small color="error" @click="onFileRemove(item)">{{ $vuetify.lang.t('$vuetify.upload.btn[3]') }}</v-btn>
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
@@ -177,26 +173,8 @@
             </v-card>
           </v-col>
         </v-row>
-        <v-sheet tag="section">
-          <h1 class="my-8 text-h5 text-md-h4">{{ $vuetify.lang.t('$vuetify.caseTxt') }}</h1>
-          <v-slide-group :show-arrows="!$vuetify.breakpoint.mobile" next-icon="mdi-arrow-right-box" prev-icon="mdi-arrow-left-box">
-            <v-slide-item v-for="(item, i) in products" :key="i">
-              <v-card class="mx-2" width="344" height="238">
-                <v-img
-                  :src="item.src"
-                  width="100%"
-                  height="100%"
-                  class="white--text align-end"
-                  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                >
-                  <v-chip class="product-tag" color="rgba(0,0,0,.3)" dark>{{ item.tag }}</v-chip>
-                </v-img>
-              </v-card>
-            </v-slide-item>
-          </v-slide-group>
-        </v-sheet>
         <v-sheet tag="section" class="mb-8">
-          <h1 class="my-8 text-h5 text-md-h4">FAQ</h1>
+          <h1 class="my-8 text-h5 text-md-h4 text-center">FAQ</h1>
           <v-expansion-panels v-model="panel" multiple>
             <v-expansion-panel>
               <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
@@ -280,7 +258,6 @@
       <v-card elevation="2">
         <v-tabs active-class="primary" background-color="black" align-with-title dark hide-slider>
           <v-tab>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</v-tab>
-          <v-tab>{{ $vuetify.lang.t('$vuetify.functionTxt[1]') }}</v-tab>
           <v-tab-item>
             <v-container fluid>
               <v-row>
@@ -306,13 +283,10 @@
               {{ $vuetify.lang.t('$vuetify.priceTips') }}
             </div>
           </v-tab-item>
-          <v-tab-item>
-            <api-docs :lang="curLang" />
-          </v-tab-item>
         </v-tabs>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="showLogin" transition="dialog-bottom-transition" max-width="720" @click:outside="onLoginClose">
+    <v-dialog v-model="showLogin" transition="dialog-bottom-transition" max-width="720">
       <v-card>
         <v-toolbar color="primary" dark class="text-h6">{{ $vuetify.lang.t('$vuetify.loginTxt') }}</v-toolbar>
         <v-container>
@@ -326,27 +300,13 @@
                 <li>{{ $vuetify.lang.t('$vuetify.loginList[3]') }}</li>
               </ul>
             </v-col>
-            <v-col cols="12" md="6">
-              <v-form ref="form" v-model="valid" lazy-validation>
-                <v-text-field v-model="email" :rules="emailRules" :label="$vuetify.lang.t('$vuetify.loginTip[0]')" required></v-text-field>
-                <v-text-field
-                  type="password"
-                  v-model="pwd"
-                  :rules="pwdRules"
-                  :label="$vuetify.lang.t('$vuetify.loginTip[1]')"
-                  required
-                ></v-text-field>
-                <v-checkbox v-model="isRegister" :label="$vuetify.lang.t('$vuetify.loginTip[2]')"></v-checkbox>
-                <v-btn :disabled="!valid" :color="isRegister ? 'success' : 'primary'" class="mb-4" @click="onSubmit" block>
-                  {{ isRegister ? $vuetify.lang.t('$vuetify.registerBtnTxt') : $vuetify.lang.t('$vuetify.loginBtnTxt') }}
-                </v-btn>
-                <!-- <div class="login-spacer"><span class="login-spacer-text">第三方登录</span></div>
-                <v-sheet class="d-flex justify-center mt-5 pb-2">
-                  <v-btn fab dark small color="success" @click="showQrcode = true">
-                    <v-icon dark>mdi-wechat</v-icon>
-                  </v-btn>
-                </v-sheet> -->
-              </v-form>
+            <v-col class="d-flex justify-center" cols="12" md="6">
+              <wxlogin
+                appid="wxf13f66d3946928cf"
+                scope="snsapi_login"
+                theme="'black'"
+                :redirect_uri="encodeURIComponent('https://new.hiliphoto.com')"
+              ></wxlogin>
             </v-col>
           </v-row>
         </v-container>
@@ -455,24 +415,20 @@
 </template>
 
 <script>
-const CARD_BEFORE1 = require('../assets/card_before1.jpg')
-const CARD_BEFORE2 = require('../assets/card_before2.jpg')
-const CARD_BEFORE3 = require('../assets/card_before3.jpg')
-const CARD_BEFORE4 = require('../assets/card_before4.jpg')
-const CARD_AFTER1 = require('../assets/card_after1.jpg')
-const CARD_AFTER2 = require('../assets/card_after2.jpg')
-const CARD_AFTER3 = require('../assets/card_after3.jpg')
-const CARD_AFTER4 = require('../assets/card_after4.jpg')
-const PRODUCT1 = require('../assets/product1.jpg')
-const PRODUCT2 = require('../assets/product2.jpg')
-const PRODUCT3 = require('../assets/product3.jpg')
-const PRODUCT4 = require('../assets/product4.jpg')
+const CARD_BEFORE1 = require('../assets/card_before1.png')
+const CARD_BEFORE2 = require('../assets/card_before2.png')
+const CARD_BEFORE3 = require('../assets/card_before3.png')
+const CARD_BEFORE4 = require('../assets/card_before4.png')
+const CARD_AFTER1 = require('../assets/card_after1.png')
+const CARD_AFTER2 = require('../assets/card_after2.png')
+const CARD_AFTER3 = require('../assets/card_after3.png')
+const CARD_AFTER4 = require('../assets/card_after4.png')
 import { mapState, mapMutations } from 'vuex'
 import VueQr from 'vue-qr'
-import ApiDocs from '@/components/ApiDocs'
+import wxlogin from 'vue-wxlogin'
 import PreviewScale from '@/components/PreviewScale'
 import { getfilesize, isMobile, isWechat } from '@/utils'
-import { login, fileDownload, getFileStatus, wechatPay, getOrderStataus } from '@/api/home'
+import { fileDownload, getFileStatus, wechatPay, getOrderStataus, wechatLogin, packagePay, packageStatus } from '@/api/home'
 export default {
   metaInfo() {
     return {
@@ -489,10 +445,10 @@ export default {
       ],
     }
   },
-  name: 'App',
+  name: 'Home',
   components: {
     VueQr,
-    ApiDocs,
+    wxlogin,
     PreviewScale,
   },
   filters: {
@@ -506,6 +462,8 @@ export default {
       timer: null,
       timer1: null,
       timer1Count: 0,
+      timer2: null,
+      timer2Count: 0,
       postAction: 'https://sdkphoto.fangtangtv.com/api/toc/uploads',
       postData: {},
       file: null,
@@ -525,9 +483,9 @@ export default {
         {
           id: 'colour',
           name: '彩照优化',
-          typeValue: '',
+          typeValue: 'people',
           optionValue: [],
-          outputValue: [],
+          outputValue: ['dpi'],
           types: [
             { label: '人物', value: 'people' },
             { label: '漫画插图', value: 'cortoon' },
@@ -542,9 +500,9 @@ export default {
         {
           id: 'b&w',
           name: '黑白优化',
-          typeValue: '',
+          typeValue: 'people',
           optionValue: [],
-          outputValue: [],
+          outputValue: ['dpi'],
           types: [
             { label: '人物', value: 'people' },
             { label: '漫画插图', value: 'cortoon' },
@@ -560,9 +518,9 @@ export default {
         {
           id: 'changeBg）',
           name: '证件换背景',
-          bgValue: '',
+          bgValue: 'blue',
           optionValue: [],
-          outputValue: [],
+          outputValue: ['dpi'],
           bgs: [
             { label: '蓝色', value: 'blue' },
             { label: '白色', value: 'white' },
@@ -575,9 +533,9 @@ export default {
         {
           id: 'deadee',
           name: '遗像照',
-          bgValue: '',
+          bgValue: 'white',
           optionValue: [],
-          outputValue: [],
+          outputValue: ['dpi'],
           bgs: [
             { label: '白色', value: 'white' },
             { label: '渐变灰', value: 'grey' },
@@ -605,12 +563,6 @@ export default {
       showLogin: false,
       showQrcode: false,
       qrcodeUrl: '',
-      isRegister: false,
-      valid: true,
-      email: '',
-      emailRules: [(v) => !!v || '请输入邮箱', (v) => /.+@.+\..+/.test(v) || '邮箱格式有误'],
-      pwd: '',
-      pwdRules: [(v) => !!v || '请输入密码'],
       cardPercents: [50, 50, 50, 50],
       showFullScreen: false,
       fullscreenTitle: '',
@@ -673,26 +625,6 @@ export default {
         },
       ]
     },
-    products() {
-      return [
-        {
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
-          src: PRODUCT1,
-        },
-        {
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
-          src: PRODUCT2,
-        },
-        {
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
-          src: PRODUCT3,
-        },
-        {
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
-          src: PRODUCT4,
-        },
-      ]
-    },
     links() {
       return [
         this.$vuetify.lang.t('$vuetify.menu[3]'),
@@ -708,6 +640,7 @@ export default {
   created() {
     let langIndex = this.langs.findIndex((v) => v.id === this.$vuetify.lang.current)
     this.langIndex = langIndex
+    this.getWechatLoginCode()
   },
   mounted() {
     this.onResize()
@@ -719,6 +652,19 @@ export default {
   },
   methods: {
     ...mapMutations(['setUserInfo', 'removeUserInfo']),
+    getWechatLoginCode() {
+      const code = this.getUrlParam()
+      if (code) {
+        this.wechatLogin(code)
+      }
+    },
+    getUrlParam(name = 'code') {
+      let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+      let rrr = decodeURIComponent(window.location.search)
+      let r = rrr.substr(1).match(reg)
+      if (r != null) return unescape(r[2])
+      return null
+    },
     onResize() {
       setTimeout(() => {
         this.staticImgWidth = this.$refs.staticImg[0].offsetWidth
@@ -822,7 +768,7 @@ export default {
         red: '235,51,35',
       }
       let data = {}
-      if (this.optionsTab === 0 || this.optionTabs === 1) {
+      if (this.optionsTab === 0 || this.optionsTab === 1) {
         let seq = []
         switch (opt.typeValue) {
           case 'people':
@@ -871,6 +817,7 @@ export default {
           rgb: rgb,
         }
       }
+      console.log(data)
       this.postData = { ...data, platform: isMobile ? 'h5' : 'pc', token: this.userInfo?.token }
       // let oldFile = this.files[0]
       this.files.forEach((v) => {
@@ -959,20 +906,38 @@ export default {
           this.$toast.error(e.msg)
         })
     },
-    onWechatPayPackage(id) {
-      const data = {
-        goodsid: id,
-        channel: this.channel,
+    async onWechatPayPackage(id) {
+      try {
+        const data = {
+          fd: isMobile ? 'h5' : 'pc',
+          token:
+            this.userInfo?.token ||
+            'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJmZCI6InBjIiwic3ViIjoiNDU4NDA0MTk3QHFxLmNvbSIsInVpZCI6ODUyMH0.utfh-gpwheIAl5oH6HYOW2mWAFWy8Xv7-QLbFkp-OcF8Q0C-u5pjlHRACwoG67vEqTEC5Qus1vA0LVYPICmSMg',
+          goodsid: id,
+        }
+        const res = await packagePay(data)
+        const { order_id, url } = res.data
+        this.qrcodeUrl = url
+        this.showQrcode = true
+        if (order_id) {
+          this.getPackageOrderStataus(order_id)
+        }
+      } catch (e) {
+        this.$toast.error(e.msg)
       }
-      wechatPay(data)
-        .then((res) => {
-          const { url } = res.data
-          this.qrcodeUrl = url
-          this.showQrcode = true
-        })
-        .catch((e) => {
-          this.$toast.error(e.msg)
-        })
+      // const data = {
+      //   goodsid: id,
+      //   channel: this.channel,
+      // }
+      // wechatPay(data)
+      //   .then((res) => {
+      //     const { url } = res.data
+      //     this.qrcodeUrl = url
+      //     this.showQrcode = true
+      //   })
+      //   .catch((e) => {
+      //     this.$toast.error(e.msg)
+      //   })
     },
     getOrderStataus(orderid, response) {
       getOrderStataus({ orderid })
@@ -1007,6 +972,39 @@ export default {
               this.timer1Count = 0
               clearInterval(this.timer1)
             }
+          })
+      }, 2000)
+    },
+    getPackageOrderStataus(order_id) {
+      packageStatus({ order_id })
+        .then((res) => {
+          if (res.data.is_pay === 2) {
+            this.getPackageOrderResult(order_id)
+          }
+        })
+        .catch((e) => {
+          this.$toast.error(e.msg)
+        })
+    },
+    getPackageOrderResult(order_id) {
+      this.timer2 = setInterval(() => {
+        this.timer2Count += 1
+        if (this.timer2Count >= 30) {
+          clearInterval(this.timer2)
+          this.timer2Count = 0
+        }
+        packageStatus({ order_id })
+          .then((res) => {
+            if (res.data.is_pay !== 2) {
+              this.timer2Count = 0
+              clearInterval(this.timer2)
+              this.$toast.success(res.msg)
+              this.showQrcode = false
+            }
+          })
+          .catch((e) => {
+            this.timer2Count = 0
+            clearInterval(this.timer)
           })
       }, 2000)
     },
@@ -1048,36 +1046,18 @@ export default {
       this.showDialog = true
     },
     /**
-     * 点击API TAB
-     */
-    onApiClick() {
-      this.showDialog = true
-    },
-    /**
      * 点击登录/用户中心 TAB
      */
     onLogin() {
       this.showLogin = true
     },
-    onLoginClose() {
-      this.$refs.form.reset()
-    },
-    onSubmit() {
-      const valid = this.$refs.form.validate()
-      if (valid) {
-        const params = {
-          email: this.email,
-          pws: this.pwd,
-          ty: this.isRegister ? 2 : 1,
-        }
-        login(params)
-          .then((res) => {
-            this.setUserInfo(res.data)
-            this.showLogin = false
-          })
-          .catch((e) => {
-            this.$toast.error(e.message)
-          })
+    async wechatLogin(code) {
+      try {
+        const res = await wechatLogin({ code })
+        this.setUserInfo(res.data)
+        this.$toast.success('登录成功')
+      } catch (e) {
+        this.$toast.error(e.message)
       }
     },
     onLogout() {
@@ -1107,6 +1087,15 @@ export default {
     onMinus() {
       if (this.scaleRatio.toFixed(1) < 0.1) return
       this.scaleRatio -= 0.1
+    },
+    onContinue(item) {
+      this.$refs.upload.update(item, {
+        active: true,
+        success: false,
+        response: {},
+        status: {},
+        data: { ...item.data, mdf: item.response.mdfs[0] },
+      })
     },
   },
 }

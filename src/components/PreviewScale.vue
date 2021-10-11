@@ -2,11 +2,11 @@
   <div class="z-rela" :style="{ width: initWidth + 'px', height: initHeight + 'px', transform: `scale(${scaleRatio.toFixed(1)})` }">
     <div class="before-img">
       <img :src="iconUrl" alt="before" />
-      <v-chip class="tag-after" color="rgba(0,0,0,.3)" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[0]') }}</v-chip>
+      <v-chip class="tag-after" color="black" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[0]') }}</v-chip>
     </div>
     <div class="after-img" :style="{ width: percent + '%' }">
       <img :src="srcUrl" alt="after" :style="{ width: initWidth + 'px', height: initHeight + 'px' }" />
-      <v-chip class="tag-before" color="rgba(0,0,0,.3)" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[1]') }}</v-chip>
+      <v-chip class="tag-before" color="black" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[1]') }}</v-chip>
     </div>
     <div class="card-slider">
       <vue-slider
@@ -61,8 +61,11 @@ export default {
 }
 .tag-after {
   position: absolute;
-  right: 16px;
+  right: 0px;
   bottom: 16px;
+  height: 30px;
+  padding: 0 20px !important;
+  border-radius: 0 !important;
 }
 .after-img {
   position: absolute;
@@ -73,8 +76,11 @@ export default {
 }
 .tag-before {
   position: absolute;
-  left: 16px;
+  left: 0;
   bottom: 16px;
+  height: 30px;
+  padding: 0 20px !important;
+  border-radius: 0 !important;
 }
 .card-slider {
   position: absolute;
