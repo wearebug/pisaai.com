@@ -459,14 +459,14 @@
 </template>
 
 <script>
-const CARD_BEFORE1 = require('../assets/card_before1.png')
-const CARD_BEFORE2 = require('../assets/card_before2.png')
-const CARD_BEFORE3 = require('../assets/card_before3.png')
-const CARD_BEFORE4 = require('../assets/card_before4.png')
-const CARD_AFTER1 = require('../assets/card_after1.png')
-const CARD_AFTER2 = require('../assets/card_after2.png')
-const CARD_AFTER3 = require('../assets/card_after3.png')
-const CARD_AFTER4 = require('../assets/card_after4.png')
+const CARD_BEFORE1 = require('../assets/contrast1-1.jpg')
+const CARD_BEFORE2 = require('../assets/contrast2-1.jpg')
+const CARD_BEFORE3 = require('../assets/contrast3-1.jpg')
+const CARD_BEFORE4 = require('../assets/contrast4-1.jpg')
+const CARD_AFTER1 = require('../assets/contrast1-2.jpg')
+const CARD_AFTER2 = require('../assets/contrast2-2.jpg')
+const CARD_AFTER3 = require('../assets/contrast3-2.jpg')
+const CARD_AFTER4 = require('../assets/contrast4-2.jpg')
 import { mapState, mapMutations } from 'vuex'
 import VueQr from 'vue-qr'
 import wxlogin from 'vue-wxlogin'
