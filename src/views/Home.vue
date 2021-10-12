@@ -4,7 +4,7 @@
       <v-container class="d-flex justify-space-between pa-0">
         <div class="d-flex align-center pa-0">
           <v-img alt="高光照片优化" class="shrink" contain src="../assets/logo.png" transition="scale-transition" width="120" eager />
-          <h1 class="ml-4 text-h6">{{ $vuetify.lang.t('$vuetify.name') }}</h1>
+          <!-- <h1 class="ml-4 text-h6">{{ $vuetify.lang.t('$vuetify.name') }}</h1> -->
         </div>
         <v-spacer></v-spacer>
         <div class="hidden-sm-and-down">
@@ -288,28 +288,72 @@
     </v-dialog>
     <v-dialog v-model="showLogin" transition="dialog-bottom-transition" max-width="720">
       <v-card>
-        <v-toolbar color="primary" dark class="text-h6">{{ $vuetify.lang.t('$vuetify.loginTxt') }}</v-toolbar>
-        <v-container>
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-subheader class="text-subtitle-1 font-weight-bold">{{ $vuetify.lang.t('$vuetify.loginTitle') }}</v-subheader>
-              <ul class="text-button font-weight-light">
-                <li>{{ $vuetify.lang.t('$vuetify.loginList[0]') }}</li>
-                <li>{{ $vuetify.lang.t('$vuetify.loginList[1]') }}</li>
-                <li>{{ $vuetify.lang.t('$vuetify.loginList[2]') }}</li>
-                <li>{{ $vuetify.lang.t('$vuetify.loginList[3]') }}</li>
-              </ul>
-            </v-col>
-            <v-col class="d-flex justify-center" cols="12" md="6">
-              <wxlogin
-                appid="wxf13f66d3946928cf"
-                scope="snsapi_login"
-                theme="'black'"
-                :redirect_uri="encodeURIComponent('https://new.hiliphoto.com')"
-              ></wxlogin>
-            </v-col>
-          </v-row>
-        </v-container>
+        <v-tabs active-class="primary" background-color="black" align-with-title dark hide-slider>
+          <v-tab>微信扫码登录</v-tab>
+          <v-tab>邮箱密码登录</v-tab>
+          <v-tab-item>
+            <v-container>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-subheader class="text-subtitle-1 font-weight-bold">{{ $vuetify.lang.t('$vuetify.loginTitle') }}</v-subheader>
+                  <ul class="text-button font-weight-light">
+                    <li>{{ $vuetify.lang.t('$vuetify.loginList[0]') }}</li>
+                    <li>{{ $vuetify.lang.t('$vuetify.loginList[1]') }}</li>
+                    <li>{{ $vuetify.lang.t('$vuetify.loginList[2]') }}</li>
+                    <li>{{ $vuetify.lang.t('$vuetify.loginList[3]') }}</li>
+                  </ul>
+                </v-col>
+                <v-col class="d-flex justify-center" cols="12" md="6">
+                  <wxlogin
+                    appid="wxf13f66d3946928cf"
+                    scope="snsapi_login"
+                    theme="'black'"
+                    :redirect_uri="encodeURIComponent('https://pisaai.com')"
+                  ></wxlogin>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-tab-item>
+          <v-tab-item>
+            <v-container>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-subheader class="text-subtitle-1 font-weight-bold">{{ $vuetify.lang.t('$vuetify.loginTitle') }}</v-subheader>
+                  <ul class="text-button font-weight-light">
+                    <li>{{ $vuetify.lang.t('$vuetify.loginList[0]') }}</li>
+                    <li>{{ $vuetify.lang.t('$vuetify.loginList[1]') }}</li>
+                    <li>{{ $vuetify.lang.t('$vuetify.loginList[2]') }}</li>
+                    <li>{{ $vuetify.lang.t('$vuetify.loginList[3]') }}</li>
+                  </ul>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <form>
+                    <v-text-field
+                      v-model="email"
+                      :error-messages="emailErrors"
+                      label="邮箱"
+                      required
+                      @input="$v.email.$touch()"
+                      @blur="$v.email.$touch()"
+                    ></v-text-field>
+                    <v-text-field
+                      v-model="pwd"
+                      type="password"
+                      :error-messages="pwdErrors"
+                      label="密码"
+                      required
+                      @input="$v.pwd.$touch()"
+                      @blur="$v.pwd.$touch()"
+                    ></v-text-field>
+                    <v-checkbox v-model="isRegister" label="创建新的账户"></v-checkbox>
+
+                    <v-btn class="my-4" block color="primary" @click="onSubmit">登录</v-btn>
+                  </form>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-tab-item>
+        </v-tabs>
       </v-card>
     </v-dialog>
     <v-dialog v-model="showOption" max-width="720" persistent>
@@ -426,10 +470,17 @@ const CARD_AFTER4 = require('../assets/card_after4.png')
 import { mapState, mapMutations } from 'vuex'
 import VueQr from 'vue-qr'
 import wxlogin from 'vue-wxlogin'
+import { validationMixin } from 'vuelidate'
+import { required, minLength, email } from 'vuelidate/lib/validators'
 import PreviewScale from '@/components/PreviewScale'
 import { getfilesize, isMobile, isWechat } from '@/utils'
-import { fileDownload, getFileStatus, wechatPay, getOrderStataus, wechatLogin, packagePay, packageStatus } from '@/api/home'
+import { fileDownload, getFileStatus, wechatPay, getOrderStataus, login, wechatLogin, packagePay, packageStatus } from '@/api/home'
 export default {
+  mixins: [validationMixin],
+  validations: {
+    email: { required, email },
+    pwd: { required, minLength: minLength(6) },
+  },
   metaInfo() {
     return {
       title: this.$vuetify.lang.t('$vuetify.name'),
@@ -572,6 +623,9 @@ export default {
       initWidth: 0,
       initHeight: 0,
       scaleRatio: 1,
+      email: '',
+      pwd: '',
+      isRegister: false,
     }
   },
   watch: {
@@ -635,6 +689,20 @@ export default {
     toolbarTop() {
       let top = (this.winHeight - this.initHeight) / 2
       return top <= 22 ? 22 : top
+    },
+    pwdErrors() {
+      const errors = []
+      if (!this.$v.pwd.$dirty) return errors
+      !this.$v.pwd.required && errors.push('请输入密码')
+      !this.$v.pwd.minLength && errors.push('请输入至少6位数密码')
+      return errors
+    },
+    emailErrors() {
+      const errors = []
+      if (!this.$v.email.$dirty) return errors
+      !this.$v.email.email && errors.push('邮箱格式有误')
+      !this.$v.email.required && errors.push('请输入邮箱')
+      return errors
     },
   },
   created() {
@@ -1058,6 +1126,25 @@ export default {
         this.$toast.success('登录成功')
       } catch (e) {
         this.$toast.error(e.message)
+      }
+    },
+    onSubmit() {
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        const data = {
+          email: this.email,
+          pws: this.pwd,
+          ty: this.isRegister ? 2 : 1,
+        }
+        login(data)
+          .then((res) => {
+            this.setUserInfo(res.data)
+            this.$toast.success('登录成功')
+            this.showLogin = false
+          })
+          .catch((e) => {
+            this.$toast.error(e.message)
+          })
       }
     },
     onLogout() {

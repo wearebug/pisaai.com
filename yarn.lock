@@ -9098,6 +9098,11 @@ vue@^2.4.2, vue@^2.6.10, vue@^2.6.11:
   resolved "https://registry.npmmirror.com/vue/download/vue-2.6.14.tgz?cache=0&sync_timestamp=1632596410846&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fvue%2Fdownload%2Fvue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
   integrity sha1-5RqlJQJQ1Wmj+606ilpofWA24jU=
 
+vuelidate@^0.7.6:
+  version "0.7.6"
+  resolved "https://registry.nlark.com/vuelidate/download/vuelidate-0.7.6.tgz#84100c13b943470660d0416642845cd2a1edf4b2"
+  integrity sha1-hBAME7lDRwZg0EFmQoRc0qHt9LI=
+
 vuetify-loader@^1.7.0:
   version "1.7.3"
   resolved "https://registry.nlark.com/vuetify-loader/download/vuetify-loader-1.7.3.tgz#404657f4925c828f400fe3269003421d586835c6"
