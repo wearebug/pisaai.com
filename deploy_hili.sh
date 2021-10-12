@@ -9,6 +9,9 @@ yarn build
 # 进入生成的文件夹
 cd dist
 
+# 生成域名验证文件
+echo pisaai.com > CNAME
+
 # git init
 git init
 git add -A
