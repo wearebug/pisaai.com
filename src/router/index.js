@@ -9,6 +9,26 @@ const routes = [
     name: 'Home',
     component: () => import('../views/Home.vue'),
   },
+	{
+	  path: '/enhance',
+	  name: 'enhance',
+	  component: () => import('../views/Home.vue'),
+	},
+	{
+	  path: '/color',
+	  name: 'color',
+	  component: () => import('../views/Home.vue'),
+	},
+	{
+	  path: '/changeBG',
+	  name: 'changeBG',
+	  component: () => import('../views/Home.vue'),
+	},
+	{
+	  path: '/deadee',
+	  name: 'deadee',
+	  component: () => import('../views/Home.vue'),
+	},
   {
     path: '/about',
     name: 'About',
