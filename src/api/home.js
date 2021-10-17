@@ -9,6 +9,15 @@ export function login(data) {
   })
 }
 
+// 获取上传记录
+export function getTaskList(data) {
+  return request({
+    url: 'https://sdkphoto.fangtangtv.com/api/getTaskList',
+    method: 'post',
+    data: qs.stringify(data),
+  })
+}
+
 export function fileDownload(mdf) {
   return request({
     url: `https://sdkphoto.fangtangtv.com/api/toc/download/${mdf}`,

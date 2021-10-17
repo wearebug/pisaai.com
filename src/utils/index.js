@@ -58,3 +58,8 @@ export function isWechat() {
     return false
   }
 }
+
+export function checkSeoTab() {
+  let seo = location.toString().split('/')[3]
+	return seo
+}
