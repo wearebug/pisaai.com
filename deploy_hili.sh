@@ -18,6 +18,6 @@ git add -A
 git commit -m 'deploy'
 
 
-git push -f https://github.com/wearebug/wearebug.github.io.git master
+git push -f git@github.com:wearebug/wearebug.github.io.git master
 
 cd -
