@@ -8945,8 +8945,8 @@ vue-class-component@^7.1.0:
 
 "vue-cli-plugin-prerender-spa@ ^3.4.0":
   version "1.1.6"
-  resolved "https://registry.yarnpkg.com/vue-cli-plugin-prerender-spa/-/vue-cli-plugin-prerender-spa-1.1.6.tgz#fd3ed890c949c29c1e0c74ee81c7e044539242e3"
-  integrity sha512-SzWUSqQrcsVpdbzGqmBrAgJqQQleDxR7XzmTnp/POn50QX5gxWMlJd6a/WahdhKFJv+qSuLrunC8oAoCb4y5Zg==
+  resolved "https://registry.npmmirror.com/vue-cli-plugin-prerender-spa/download/vue-cli-plugin-prerender-spa-1.1.6.tgz#fd3ed890c949c29c1e0c74ee81c7e044539242e3"
+  integrity sha1-/T7YkMlJwpweDHTugcfgRFOSQuM=
   dependencies:
     prerender-spa-plugin "^3.2.1"
 
