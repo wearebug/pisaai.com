@@ -156,15 +156,15 @@
                 <v-progress-linear :value="item.response.code === 200 ? item.progress : 0" height="6"></v-progress-linear>
               </v-list-item-title>
               <v-list-item-subtitle class="text-caption font-weight-light d-flex align-center justify-between">
-								<div style="font-family: Work Sans;font-style: normal;font-weight: 600;font-size: 14px;color: #999;">
+								<div style="font-family: Work Sans;font-style: normal;font-size: 14px;color: #999;">
 									<span>{{ `${item.width}x${item.height}px` }}</span>
 									<v-divider class="mx-2" vertical style="height: 16px"></v-divider>
 									<span>{{ item.size | getFileSize }}</span>
 									<v-divider class="mx-2" vertical style="height: 16px"></v-divider>
 									<span>{{ item.name }}</span>
 								</div>
-								<div style="font-family: Work Sans;font-style: normal;font-weight: 600;color: #DB8819;font-size: 14px;">
-									{{ uploadResData.res_size }}
+								<div v-if="item.response.code === 200 && item.status" style="font-family: Work Sans;font-style: normal;color: #DB8819;font-size: 14px;">
+									{{ item.status.res_size }}
 								</div>
               </v-list-item-subtitle>
               <v-list-item-subtitle>
@@ -596,7 +596,7 @@ export default {
           name: '彩照优化',
           typeValue: 'people',
           optionValue: [],
-          outputValue: ['dpi'],
+          outputValue: [],
           types: [
             { label: '人物', value: 'people' },
             { label: '漫画插图', value: 'cortoon' },
@@ -613,7 +613,7 @@ export default {
           name: '黑白优化',
           typeValue: 'people',
           optionValue: [],
-          outputValue: ['dpi'],
+          outputValue: [],
           types: [
             { label: '人物', value: 'people' },
             { label: '漫画插图', value: 'cortoon' },
@@ -631,7 +631,7 @@ export default {
           name: '证件换背景',
           bgValue: 'blue',
           optionValue: [],
-          outputValue: ['dpi'],
+          outputValue: [],
           bgs: [
             { label: '蓝色', value: 'blue' },
             { label: '白色', value: 'white' },
@@ -646,7 +646,7 @@ export default {
           name: '遗像照',
           bgValue: 'white',
           optionValue: [],
-          outputValue: ['dpi'],
+          outputValue: [],
           bgs: [
             { label: '白色', value: 'white' },
             { label: '渐变灰', value: 'grey' },
@@ -691,7 +691,33 @@ export default {
 			wechatHead: '',
 			isUploadAgain: false, // 是否再次处理上传
 			uploadAgainItem: '',
-			uploadResData: {},
+			uploadAgainItemMdf: '',
+			cards: [
+				{
+					before: CARD_BEFORE1,
+					after: CARD_AFTER1,
+					icon: 'mdi-image-area',
+					tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
+				},
+				{
+					before: CARD_BEFORE2,
+					after: CARD_AFTER2,
+					icon: 'mdi-palette',
+					tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
+				},
+				{
+					before: CARD_BEFORE3,
+					after: CARD_AFTER3,
+					icon: 'mdi-account-box',
+					tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
+				},
+				{
+					before: CARD_BEFORE4,
+					after: CARD_AFTER4,
+					icon: 'mdi-fullscreen-exit',
+					tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
+				},
+			],
     }
   },
   watch: {
@@ -707,17 +733,6 @@ export default {
       },
       deep: true,
     },
-		// checkedAllItem(newVal, oldVal){
-		// 	// alert(newVal)
-		// 	if (newVal.indexOf('all') > -1) {
-		// 		this.checkedItem = []
-		// 		this.files.forEach(ele => {
-		// 			this.checkedItem.push(ele.id)
-		// 		})
-		// 	} else {
-		// 		this.checkedItem = []
-		// 	}
-		// },
 		checkedItem(newVal, oldVal){
 			// alert(JSON.stringify(newVal))
 			if (newVal.length == this.files.length) {
@@ -735,34 +750,6 @@ export default {
       return functionPrice.map((v, i) => {
         return { ...v, id: priceIds[i] }
       })
-    },
-    cards() {
-      return [
-        {
-          before: CARD_BEFORE1,
-          after: CARD_AFTER1,
-          icon: 'mdi-image-area',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
-        },
-        {
-          before: CARD_BEFORE2,
-          after: CARD_AFTER2,
-          icon: 'mdi-palette',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
-        },
-        {
-          before: CARD_BEFORE3,
-          after: CARD_AFTER3,
-          icon: 'mdi-account-box',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
-        },
-        {
-          before: CARD_BEFORE4,
-          after: CARD_AFTER4,
-          icon: 'mdi-fullscreen-exit',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
-        },
-      ]
     },
     links() {
       return [
@@ -798,12 +785,36 @@ export default {
 		
 		if(seoTab == 'enhance'){ // 彩色照片优化
 			this.optionsTab = 0
+			this.cards = [{
+          before: CARD_BEFORE1,
+          after: CARD_AFTER1,
+          icon: 'mdi-image-area',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
+        },]
 		} else if(seoTab == 'color'){ // 黑白照片上色
 			this.optionsTab = 1
+			this.cards = [{
+          before: CARD_BEFORE2,
+          after: CARD_AFTER2,
+          icon: 'mdi-palette',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
+        },]
 		} else if(seoTab == 'changeBG'){ // 证件照换背景
 			this.optionsTab = 2
+			this.cards = [{
+          before: CARD_BEFORE3,
+          after: CARD_AFTER3,
+          icon: 'mdi-account-box',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
+        },]
 		} else if(seoTab == 'deadee'){ // 遗像照
 			this.optionsTab = 3
+			this.cards = [{
+          before: CARD_BEFORE4,
+          after: CARD_AFTER4,
+          icon: 'mdi-fullscreen-exit',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
+        },]
 		}
   },
   mounted() {
@@ -817,8 +828,7 @@ export default {
   methods: {
     ...mapMutations(['setUserInfo', 'removeUserInfo']),
     getWechatLoginCode() {
-      // const code = this.getUrlParam()
-      const code = '011GYTkl2LlAW74pR7ll27eA9q0GYTkc'
+      const code = this.getUrlParam()
       if (code) {
         this.wechatLogin(code)
       }
@@ -883,6 +893,7 @@ export default {
       }
     },
     inputFile(newFile, oldFile) {
+			console.log('newFile',newFile)
       if (newFile && !oldFile) {
         this.showOption = true
       }
@@ -900,6 +911,7 @@ export default {
      * 查询上传文件
      */
     getFileStatusProgress(file) {
+			console.log('file',file)
       if (file.response.mdfs) {
         const { mdfs } = file.response
         getFileStatus({ mdf: mdfs[0], platform: isMobile() ? 'h5' : 'pc' })
@@ -907,7 +919,6 @@ export default {
             if (res.mdfs[0].src_url) {
               file.status = res.mdfs[0]
               this.$refs.upload.update(file, { active: false })
-							this.uploadResData = res.mdfs[0]
               clearInterval(this.timer)
             } else {
               this.timer = setTimeout(() => {
@@ -924,7 +935,7 @@ export default {
     /**
      * 确认上传文件
      */
-    onUploadComfirm() {
+    async onUploadComfirm() {
 			const opt = this.optionTabs[this.optionsTab]
 			const bgMap = {
 				transparent: -1,
@@ -983,16 +994,18 @@ export default {
 					rgb: rgb,
 				}
 			}
-			console.log(data)
+			console.log('data',data)
 			this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token }
 			if (this.isUploadAgain) {
-				this.$refs.upload.update(this.uploadAgainItem, {
+				let aa = this.$refs.upload.update(this.$refs.upload.add(this.uploadAgainItem), {
 				  active: true,
 				  success: false,
 				  response: {},
 				  status: {},
-				  data: this.postData,
+				  data: { ...this.postData, mdf: this.uploadAgainItemMdf },
 				})
+				console.log('aa',aa)
+				this.getFileStatusProgress(aa)
 				this.isUploadAgain = false
 			} else{
 				// let oldFile = this.files[0]
@@ -1011,11 +1024,16 @@ export default {
      * 取消上传文件
      */
     onUploadCancel() {
-      this.files.forEach((v) => {
-        if (!v.success) {
-          this.$refs.upload.remove(v)
-        }
-      })
+			if (this.isUploadAgain) {
+				this.files.shift()
+			} else{
+				this.files.forEach((v) => {
+				  if (!v.success) {
+				    this.$refs.upload.remove(v)
+				  }
+				})
+			}
+			this.isUploadAgain = false
       this.showOption = false
     },
 		// 删除全部
@@ -1319,7 +1337,8 @@ export default {
       //   data: { ...item.data, mdf: item.response.mdfs[0] },
       // })
 			this.isUploadAgain = true
-			this.uploadAgainItem = item
+			this.uploadAgainItemMdf = item.response.mdfs[0]
+			this.uploadAgainItem = item.file
 			this.showOption = true
     },
   },
@@ -1496,7 +1515,6 @@ export default {
 			.v-btn{
 				font-family: Work Sans;
 				font-style: normal;
-				font-weight: 600;
 				font-size: 18px;
 				box-shadow: none;
 				padding: 0px 27px;
