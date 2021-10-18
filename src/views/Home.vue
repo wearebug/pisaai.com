@@ -168,25 +168,27 @@
               </v-list-item-subtitle>
               <v-list-item-subtitle>
                 <template v-if="item.response.code === 200">
-                  <template v-if="item.status && item.status.src_url">
-                    <!-- <v-chip class="mr-2" color="success" small>{{ $vuetify.lang.t('$vuetify.upload.status[6]') }}</v-chip> -->
-                    <div class="d-flex align-center justify-between btns-box">
-                      <v-btn class="mr-2 mb-1" small color="#FBB03B" style="color: #fff" @click="onContinue(item)">再次处理</v-btn>
-                      <div>
-                        <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status)">
-                          {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
-                        </v-btn>
-                        <v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response)">
-                          {{ $vuetify.lang.t('$vuetify.upload.btn[1]') }}
-                        </v-btn>
-                        <v-btn class="mb-1" small color="#333333" style="color: #fff" @click="onFileRemove(item)">
-                          {{ $vuetify.lang.t('$vuetify.upload.btn[3]') }}
-                        </v-btn>
+                  <template v-if="item.status">
+                    <template v-if="item.status.code == 1">
+                      <!-- <v-chip class="mr-2" color="success" small>{{ $vuetify.lang.t('$vuetify.upload.status[6]') }}</v-chip> -->
+                      <div class="d-flex align-center justify-between btns-box">
+                        <v-btn class="mr-2 mb-1" small color="#FBB03B" style="color: #fff" @click="onContinue(item)">再次处理</v-btn>
+                        <div>
+                          <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status)">
+                            {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
+                          </v-btn>
+                          <v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response)">
+                            {{ $vuetify.lang.t('$vuetify.upload.btn[1]') }}
+                          </v-btn>
+                          <v-btn class="mb-1" small color="#333333" style="color: #fff" @click="onFileRemove(item)">
+                            {{ $vuetify.lang.t('$vuetify.upload.btn[3]') }}
+                          </v-btn>
+                        </div>
                       </div>
-                    </div>
-                  </template>
-                  <template v-else>
-                    <v-chip class="mr-2" small>{{ $vuetify.lang.t('$vuetify.upload.status[3]') }}</v-chip>
+                    </template>
+                    <template v-else>
+                      <v-chip class="mr-2" small>{{ item.status.state }}</v-chip>
+                    </template>
                   </template>
                 </template>
                 <span v-else class="text-caption">{{ item.response.msg }}</span>
@@ -928,10 +930,12 @@ export default {
         getFileStatus({ mdf: mdfs[0], platform: isMobile() ? 'h5' : 'pc' })
           .then((res) => {
             if (res.mdfs[0].src_url) {
-              file.status = res.mdfs[0]
-              this.$refs.upload.update(file, { active: false })
+              // file.status = res.mdfs[0]
+              this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
               clearInterval(this.timer)
             } else {
+              // file.status = res.mdfs[0]
+              this.$refs.upload.update(file, { status: res.mdfs[0] })
               this.timer = setTimeout(() => {
                 this.getFileStatusProgress(file)
               }, 2000)
