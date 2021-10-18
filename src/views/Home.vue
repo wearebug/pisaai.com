@@ -151,7 +151,7 @@
 							></v-checkbox>
               <v-img :src="item.blob"></v-img>
             </v-list-item-avatar>
-            <v-list-item-content>
+            <v-list-item-content style='padding: 35px 0 0;'>
               <v-list-item-title>
                 <v-progress-linear :value="item.response.code === 200 ? item.progress : 0" height="6"></v-progress-linear>
               </v-list-item-title>
@@ -935,7 +935,7 @@ export default {
     /**
      * 确认上传文件
      */
-    async onUploadComfirm() {
+    onUploadComfirm() {
 			const opt = this.optionTabs[this.optionsTab]
 			const bgMap = {
 				transparent: -1,
@@ -1118,24 +1118,28 @@ export default {
         })
     },
     async onWechatPayPackage(id) {
-      try {
-        const data = {
-          fd: isMobile() ? 'h5' : 'pc',
-          token:
-            this.userInfo?.token ||
-            'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJmZCI6InBjIiwic3ViIjoiNDU4NDA0MTk3QHFxLmNvbSIsInVpZCI6ODUyMH0.utfh-gpwheIAl5oH6HYOW2mWAFWy8Xv7-QLbFkp-OcF8Q0C-u5pjlHRACwoG67vEqTEC5Qus1vA0LVYPICmSMg',
-          goodsid: id,
-        }
-        const res = await packagePay(data)
-        const { order_id, url } = res.data
-        this.qrcodeUrl = url
-        this.showQrcode = true
-        if (order_id) {
-          this.getPackageOrderStataus(order_id)
-        }
-      } catch (e) {
-        this.$toast.error(e.msg)
-      }
+			if(this.userInfo){
+				try {
+				  const data = {
+				    fd: isMobile() ? 'h5' : 'pc',
+				    token:
+				      this.userInfo?.token ||
+				      'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJmZCI6InBjIiwic3ViIjoiNDU4NDA0MTk3QHFxLmNvbSIsInVpZCI6ODUyMH0.utfh-gpwheIAl5oH6HYOW2mWAFWy8Xv7-QLbFkp-OcF8Q0C-u5pjlHRACwoG67vEqTEC5Qus1vA0LVYPICmSMg',
+				    goodsid: id,
+				  }
+				  const res = await packagePay(data)
+				  const { order_id, url } = res.data
+				  this.qrcodeUrl = url
+				  this.showQrcode = true
+				  if (order_id) {
+				    this.getPackageOrderStataus(order_id)
+				  }
+				} catch (e) {
+				  this.$toast.error(e.msg)
+				}
+			} else {
+				this.showLogin = true
+			}
       // const data = {
       //   goodsid: id,
       //   channel: this.channel,
@@ -1254,11 +1258,7 @@ export default {
      * 点击价格TAB
      */
     onPriceClick() {
-			if(this.userInfo){
-				this.showDialog = true
-			} else {
-				this.showLogin = true
-			}
+			this.showDialog = true
     },
     /**
      * 点击登录/用户中心 TAB
@@ -1492,7 +1492,8 @@ export default {
 	justify-content: space-between;
 }
 
-.pic_list{	
+.pic_list{
+	padding: 0;
 	.v-list-item{
 		height: 175px;
 		padding-left: 38px !important;
