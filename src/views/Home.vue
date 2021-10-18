@@ -26,22 +26,22 @@
               </v-list-item-group>
             </v-list>
           </v-menu>
-          <v-menu offset-y nudge-top="-10" nudge-right='20' v-if="userInfo">
+          <v-menu offset-y nudge-top="-10" nudge-right="20" v-if="userInfo">
             <template v-slot:activator="{ on, attrs }">
               <v-btn v-bind="attrs" v-on="on" fab class="head_img_btn">
                 <!-- <span>{{ $vuetify.lang.t('$vuetify.userTxt') }}</span> -->
                 <!-- <v-icon size="16">mdi-chevron-down</v-icon> -->
-								<v-img :src="isWechatLogin? wechatHead : require('../assets/head_img.jpg')" class="head_img"></v-img>
+                <v-img :src="isWechatLogin ? wechatHead : require('../assets/head_img.jpg')" class="head_img"></v-img>
               </v-btn>
             </template>
             <v-list flat>
               <v-list-item-group color="primary">
-								<v-list-item>
-								  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt')+0"></v-list-item-title>
-								</v-list-item>
-								<v-list-item @click="onGetTaskList">
-								  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.uploadListTxt')"></v-list-item-title>
-								</v-list-item>
+                <v-list-item>
+                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + 0"></v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="onGetTaskList">
+                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.uploadListTxt')"></v-list-item-title>
+                </v-list-item>
                 <v-list-item @click="onLogout">
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.loginOutBtnTxt')"></v-list-item-title>
                 </v-list-item>
@@ -87,7 +87,7 @@
           <!-- <h1 class="my-4 text-h4">{{ $vuetify.lang.t('$vuetify.name') }}</h1> -->
           <p class="text--secondary text-justify">{{ $vuetify.lang.t('$vuetify.synopsis') }}</p>
         </v-sheet>
-        <v-sheet tag="section" v-if='files.length == 0' class="d-flex align-center justify-center pt-7 pb-7 pt-md-12 pb-md-12 border-dash">
+        <v-sheet tag="section" v-if="files.length == 0" class="d-flex align-center justify-center pt-7 pb-7 pt-md-12 pb-md-12 border-dash">
           <file-upload
             ref="upload"
             v-model="files"
@@ -106,49 +106,45 @@
             </v-btn>
           </file-upload>
         </v-sheet>
-				<v-sheet tag="section" v-else class="continue-upload d-flex align-center justify-between">
-					<div class="check_all">
-						<v-checkbox
-							v-model="checkedAllItem"
-							:label="$vuetify.lang.t('$vuetify.pic.checkAll')"
-							value="all"
-							@click='checkedAll'
-							class="continue-upload-check"
-						></v-checkbox>
-						<!-- <p style="color: #db8819;">{{ $vuetify.lang.t('$vuetify.pic.checkAll') }}</p> -->
-					</div>
-				  <file-upload
-				    ref="upload"
-				    v-model="files"
-				    :thread="thread"
-				    :post-action="postAction"
-				    :data="postData"
-				    :multiple="multiple"
-				    :extensions="extensions"
-				    :accept="accept"
-				    @input-file="inputFile"
-				    @input-filter="inputFilter"
-				  >
-				    <v-btn class="mt-5 mb-5" color="primary" dark large>
-				      <!-- <v-icon left dark large style="margin-right: 14px;">mdi-cloud-upload</v-icon> -->
-							<v-img src="../assets/continue-upload.png" style="margin-right: 14px;width: 24px;height: 24px;"></v-img>
-				      {{ $vuetify.lang.t('$vuetify.pic.upload') }}
-				    </v-btn>
-				  </file-upload>
-					
-					<div class="delete_all d-flex align-center justify-center">
-						<v-img src="../assets/delete_all.png" style="margin-right: 14px;width: 24px;height: 27px;"></v-img>
-						<p style="margin-bottom: 0;" @click="deleteAllItem">{{ $vuetify.lang.t('$vuetify.pic.cancel') }}</p>
-					</div>
-				</v-sheet>
+        <v-sheet tag="section" v-else class="continue-upload d-flex align-center justify-between">
+          <div class="check_all">
+            <v-checkbox
+              v-model="checkedAllItem"
+              :label="$vuetify.lang.t('$vuetify.pic.checkAll')"
+              value="all"
+              @click="checkedAll"
+              class="continue-upload-check"
+            ></v-checkbox>
+            <!-- <p style="color: #db8819;">{{ $vuetify.lang.t('$vuetify.pic.checkAll') }}</p> -->
+          </div>
+          <file-upload
+            ref="upload"
+            v-model="files"
+            :thread="thread"
+            :post-action="postAction"
+            :data="postData"
+            :multiple="multiple"
+            :extensions="extensions"
+            :accept="accept"
+            @input-file="inputFile"
+            @input-filter="inputFilter"
+          >
+            <v-btn class="mt-5 mb-5" color="primary" dark large>
+              <!-- <v-icon left dark large style="margin-right: 14px;">mdi-cloud-upload</v-icon> -->
+              <v-img src="../assets/continue-upload.png" style="margin-right: 14px; width: 24px; height: 24px"></v-img>
+              {{ $vuetify.lang.t('$vuetify.pic.upload') }}
+            </v-btn>
+          </file-upload>
+
+          <div class="delete_all d-flex align-center justify-center">
+            <v-img src="../assets/delete_all.png" style="margin-right: 14px; width: 24px; height: 27px"></v-img>
+            <p style="margin-bottom: 0" @click="deleteAllItem">{{ $vuetify.lang.t('$vuetify.pic.cancel') }}</p>
+          </div>
+        </v-sheet>
         <v-list three-line v-if="files.length" class="pic_list">
-          <v-list-item v-for="item in files" :key="item.id" style="border-bottom: 1px solid #C9CBCE;">
-            <v-list-item-avatar class='list_item_head_box' rounded>
-							<v-checkbox
-								v-model="checkedItem"
-								label=""
-								:value="item.id"
-							></v-checkbox>
+          <v-list-item v-for="item in files" :key="item.id" style="border-bottom: 1px solid #c9cbce">
+            <v-list-item-avatar class="list_item_head_box" rounded>
+              <v-checkbox v-model="checkedItem" label="" :value="item.id"></v-checkbox>
               <v-img :src="item.blob"></v-img>
             </v-list-item-avatar>
             <v-list-item-content>
@@ -156,35 +152,38 @@
                 <v-progress-linear :value="item.response.code === 200 ? item.progress : 0" height="6"></v-progress-linear>
               </v-list-item-title>
               <v-list-item-subtitle class="text-caption font-weight-light d-flex align-center justify-between">
-								<div style="font-family: Work Sans;font-style: normal;font-size: 14px;color: #999;">
-									<span>{{ `${item.width}x${item.height}px` }}</span>
-									<v-divider class="mx-2" vertical style="height: 16px"></v-divider>
-									<span>{{ item.size | getFileSize }}</span>
-									<v-divider class="mx-2" vertical style="height: 16px"></v-divider>
-									<span>{{ item.name }}</span>
-								</div>
-								<div v-if="item.response.code === 200 && item.status" style="font-family: Work Sans;font-style: normal;color: #DB8819;font-size: 14px;">
-									{{ item.status.res_size }}
-								</div>
+                <div style="font-family: Work Sans; font-style: normal; font-size: 14px; color: #999">
+                  <span>{{ `${item.width}x${item.height}px` }}</span>
+                  <v-divider class="mx-2" vertical style="height: 16px"></v-divider>
+                  <span>{{ item.size | getFileSize }}</span>
+                  <v-divider class="mx-2" vertical style="height: 16px"></v-divider>
+                  <span>{{ item.name }}</span>
+                </div>
+                <div
+                  v-if="item.response.code === 200 && item.status"
+                  style="font-family: Work Sans; font-style: normal; color: #db8819; font-size: 14px"
+                >
+                  {{ item.status.res_size }}
+                </div>
               </v-list-item-subtitle>
               <v-list-item-subtitle>
                 <template v-if="item.response.code === 200">
                   <template v-if="item.status && item.status.src_url">
                     <!-- <v-chip class="mr-2" color="success" small>{{ $vuetify.lang.t('$vuetify.upload.status[6]') }}</v-chip> -->
-										<div class="d-flex align-center justify-between btns-box">
-											<v-btn class="mr-2 mb-1" small color="#FBB03B" style='color: #fff' @click="onContinue(item)">再次处理</v-btn>
-											<div>
-												<v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status)">
-													{{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
-												</v-btn>
-												<v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response)">
-													{{ $vuetify.lang.t('$vuetify.upload.btn[1]') }}
-												</v-btn>
-												<v-btn class="mb-1" small color="#333333" style='color: #fff' @click="onFileRemove(item)">
-													{{ $vuetify.lang.t('$vuetify.upload.btn[3]') }}
-												</v-btn>
-											</div>
-										</div>
+                    <div class="d-flex align-center justify-between btns-box">
+                      <v-btn class="mr-2 mb-1" small color="#FBB03B" style="color: #fff" @click="onContinue(item)">再次处理</v-btn>
+                      <div>
+                        <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status)">
+                          {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
+                        </v-btn>
+                        <v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response)">
+                          {{ $vuetify.lang.t('$vuetify.upload.btn[1]') }}
+                        </v-btn>
+                        <v-btn class="mb-1" small color="#333333" style="color: #fff" @click="onFileRemove(item)">
+                          {{ $vuetify.lang.t('$vuetify.upload.btn[3]') }}
+                        </v-btn>
+                      </div>
+                    </div>
                   </template>
                   <template v-else>
                     <v-chip class="mr-2" small>{{ $vuetify.lang.t('$vuetify.upload.status[3]') }}</v-chip>
@@ -490,7 +489,7 @@
         <preview-scale
           :initWidth="initWidth"
           :initHeight="initHeight"
-          :iconUrl="previewFile.icon_url"
+          :iconUrl="previewFile.wmk_url"
           :srcUrl="previewFile.src_url"
           :scaleRatio="scaleRatio"
         />
@@ -577,8 +576,8 @@ export default {
       postData: {},
       file: null,
       files: [],
-			checkedAllItem: [],
-			checkedItem: [],
+      checkedAllItem: [],
+      checkedItem: [],
       thread: 3,
       multiple: true,
       accept: 'image/png,image/gif,image/jpeg,image/webp',
@@ -586,7 +585,7 @@ export default {
       showOption: false,
       showPreview: false,
       previewFile: {
-        icon_url: '',
+        wmk_url: '',
         src_url: '',
       },
       optionsTab: 0,
@@ -686,38 +685,38 @@ export default {
       email: '',
       pwd: '',
       isRegister: false,
-			
-			isWechatLogin: false, // 是否微信扫码登录
-			wechatHead: '',
-			isUploadAgain: false, // 是否再次处理上传
-			uploadAgainItem: '',
-			uploadAgainItemMdf: '',
-			cards: [
-				{
-					before: CARD_BEFORE1,
-					after: CARD_AFTER1,
-					icon: 'mdi-image-area',
-					tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
-				},
-				{
-					before: CARD_BEFORE2,
-					after: CARD_AFTER2,
-					icon: 'mdi-palette',
-					tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
-				},
-				{
-					before: CARD_BEFORE3,
-					after: CARD_AFTER3,
-					icon: 'mdi-account-box',
-					tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
-				},
-				{
-					before: CARD_BEFORE4,
-					after: CARD_AFTER4,
-					icon: 'mdi-fullscreen-exit',
-					tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
-				},
-			],
+
+      isWechatLogin: false, // 是否微信扫码登录
+      wechatHead: '',
+      isUploadAgain: false, // 是否再次处理上传
+      uploadAgainItem: '',
+      uploadAgainItemMdf: '',
+      cards: [
+        {
+          before: CARD_BEFORE1,
+          after: CARD_AFTER1,
+          icon: 'mdi-image-area',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
+        },
+        {
+          before: CARD_BEFORE2,
+          after: CARD_AFTER2,
+          icon: 'mdi-palette',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
+        },
+        {
+          before: CARD_BEFORE3,
+          after: CARD_AFTER3,
+          icon: 'mdi-account-box',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
+        },
+        {
+          before: CARD_BEFORE4,
+          after: CARD_AFTER4,
+          icon: 'mdi-fullscreen-exit',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
+        },
+      ],
     }
   },
   watch: {
@@ -733,14 +732,14 @@ export default {
       },
       deep: true,
     },
-		checkedItem(newVal, oldVal){
-			// alert(JSON.stringify(newVal))
-			if (newVal.length == this.files.length) {
-				this.checkedAllItem = ['all']
-			} else {
-				this.checkedAllItem = []
-			}
-		},
+    checkedItem(newVal, oldVal) {
+      // alert(JSON.stringify(newVal))
+      if (newVal.length == this.files.length) {
+        this.checkedAllItem = ['all']
+      } else {
+        this.checkedAllItem = []
+      }
+    },
   },
   computed: {
     ...mapState(['userInfo']),
@@ -781,41 +780,53 @@ export default {
     let langIndex = this.langs.findIndex((v) => v.id === this.$vuetify.lang.current)
     this.langIndex = langIndex
     this.getWechatLoginCode()
-		let seoTab = checkSeoTab()
-		
-		if(seoTab == 'enhance'){ // 彩色照片优化
-			this.optionsTab = 0
-			this.cards = [{
+    let seoTab = checkSeoTab()
+
+    if (seoTab == 'enhance') {
+      // 彩色照片优化
+      this.optionsTab = 0
+      this.cards = [
+        {
           before: CARD_BEFORE1,
           after: CARD_AFTER1,
           icon: 'mdi-image-area',
           tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
-        },]
-		} else if(seoTab == 'color'){ // 黑白照片上色
-			this.optionsTab = 1
-			this.cards = [{
+        },
+      ]
+    } else if (seoTab == 'color') {
+      // 黑白照片上色
+      this.optionsTab = 1
+      this.cards = [
+        {
           before: CARD_BEFORE2,
           after: CARD_AFTER2,
           icon: 'mdi-palette',
           tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
-        },]
-		} else if(seoTab == 'changeBG'){ // 证件照换背景
-			this.optionsTab = 2
-			this.cards = [{
+        },
+      ]
+    } else if (seoTab == 'changeBG') {
+      // 证件照换背景
+      this.optionsTab = 2
+      this.cards = [
+        {
           before: CARD_BEFORE3,
           after: CARD_AFTER3,
           icon: 'mdi-account-box',
           tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
-        },]
-		} else if(seoTab == 'deadee'){ // 遗像照
-			this.optionsTab = 3
-			this.cards = [{
+        },
+      ]
+    } else if (seoTab == 'deadee') {
+      // 遗像照
+      this.optionsTab = 3
+      this.cards = [
+        {
           before: CARD_BEFORE4,
           after: CARD_AFTER4,
           icon: 'mdi-fullscreen-exit',
           tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
-        },]
-		}
+        },
+      ]
+    }
   },
   mounted() {
     this.onResize()
@@ -893,7 +904,7 @@ export default {
       }
     },
     inputFile(newFile, oldFile) {
-			console.log('newFile',newFile)
+      console.log('newFile', newFile)
       if (newFile && !oldFile) {
         this.showOption = true
       }
@@ -911,7 +922,7 @@ export default {
      * 查询上传文件
      */
     getFileStatusProgress(file) {
-			console.log('file',file)
+      console.log('file', file)
       if (file.response.mdfs) {
         const { mdfs } = file.response
         getFileStatus({ mdf: mdfs[0], platform: isMobile() ? 'h5' : 'pc' })
@@ -936,122 +947,122 @@ export default {
      * 确认上传文件
      */
     async onUploadComfirm() {
-			const opt = this.optionTabs[this.optionsTab]
-			const bgMap = {
-				transparent: -1,
-				grey: 1,
-				white: '255,255,255',
-				blue: '85,142,213',
-				red: '235,51,35',
-			}
-			let data = {}
-			if (this.optionsTab === 0 || this.optionsTab === 1) {
-				let seq = []
-				switch (opt.typeValue) {
-					case 'people':
-						seq = [...opt.optionValue, 'repair']
-						data = {
-							type: opt.typeValue,
-							seq: seq.join(),
-							dpi: opt.outputValue.length ? 300 : '',
-						}
-						break
-					case 'cortoon':
-						seq = [...opt.optionValue, 'sr']
-						data = {
-							type: opt.typeValue,
-							seq: seq.join(),
-							rate: 4,
-							dpi: opt.outputValue.length ? 300 : '',
-						}
-						break
-					case 'landscape':
-						seq = [...opt.optionValue, 'sr']
-						data = {
-							type: opt.typeValue,
-							seq: seq.join(),
-							rate: 2,
-							dpi: opt.outputValue.length ? 300 : '',
-						}
-						break
-				}
-			} else if (this.optionsTab === 2) {
-				let seq = [...opt.optionValue, 'bg']
-				let rgb = bgMap[opt.bgValue]
-				data = {
-					type: 'people',
-					seq: seq.join(),
-					dpi: opt.outputValue.length ? 300 : '',
-					rgb: rgb,
-				}
-			} else if (this.optionsTab === 3) {
-				let seq = [...opt.optionValue, 'bg']
-				let rgb = bgMap[opt.bgValue]
-				data = {
-					type: 'portrait',
-					seq: seq.join(),
-					dpi: opt.outputValue.length ? 300 : '',
-					rgb: rgb,
-				}
-			}
-			console.log('data',data)
-			this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token }
-			if (this.isUploadAgain) {
-				let aa = this.$refs.upload.update(this.$refs.upload.add(this.uploadAgainItem), {
-				  active: true,
-				  success: false,
-				  response: {},
-				  status: {},
-				  data: { ...this.postData, mdf: this.uploadAgainItemMdf },
-				})
-				console.log('aa',aa)
-				this.getFileStatusProgress(aa)
-				this.isUploadAgain = false
-			} else{
-				// let oldFile = this.files[0]
-				this.files.forEach((v) => {
-					if (!v.success) {
-						this.$refs.upload.update(v.id, {
-							active: true,
-							data: this.postData,
-						})
-					}
-				})
-			}
-			this.showOption = false
+      const opt = this.optionTabs[this.optionsTab]
+      const bgMap = {
+        transparent: -1,
+        grey: 1,
+        white: '255,255,255',
+        blue: '85,142,213',
+        red: '235,51,35',
+      }
+      let data = {}
+      if (this.optionsTab === 0 || this.optionsTab === 1) {
+        let seq = []
+        switch (opt.typeValue) {
+          case 'people':
+            seq = [...opt.optionValue, 'repair']
+            data = {
+              type: opt.typeValue,
+              seq: seq.join(),
+              dpi: opt.outputValue.length ? 300 : '',
+            }
+            break
+          case 'cortoon':
+            seq = [...opt.optionValue, 'sr']
+            data = {
+              type: opt.typeValue,
+              seq: seq.join(),
+              rate: 4,
+              dpi: opt.outputValue.length ? 300 : '',
+            }
+            break
+          case 'landscape':
+            seq = [...opt.optionValue, 'sr']
+            data = {
+              type: opt.typeValue,
+              seq: seq.join(),
+              rate: 2,
+              dpi: opt.outputValue.length ? 300 : '',
+            }
+            break
+        }
+      } else if (this.optionsTab === 2) {
+        let seq = [...opt.optionValue, 'bg']
+        let rgb = bgMap[opt.bgValue]
+        data = {
+          type: 'people',
+          seq: seq.join(),
+          dpi: opt.outputValue.length ? 300 : '',
+          rgb: rgb,
+        }
+      } else if (this.optionsTab === 3) {
+        let seq = [...opt.optionValue, 'bg']
+        let rgb = bgMap[opt.bgValue]
+        data = {
+          type: 'portrait',
+          seq: seq.join(),
+          dpi: opt.outputValue.length ? 300 : '',
+          rgb: rgb,
+        }
+      }
+      console.log('data', data)
+      this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token }
+      if (this.isUploadAgain) {
+        let aa = this.$refs.upload.update(this.$refs.upload.add(this.uploadAgainItem), {
+          active: true,
+          success: false,
+          response: {},
+          status: {},
+          data: { ...this.postData, mdf: this.uploadAgainItemMdf },
+        })
+        console.log('aa', aa)
+        this.getFileStatusProgress(aa)
+        this.isUploadAgain = false
+      } else {
+        // let oldFile = this.files[0]
+        this.files.forEach((v) => {
+          if (!v.success) {
+            this.$refs.upload.update(v.id, {
+              active: true,
+              data: this.postData,
+            })
+          }
+        })
+      }
+      this.showOption = false
     },
     /**
      * 取消上传文件
      */
     onUploadCancel() {
-			if (this.isUploadAgain) {
-				this.files.shift()
-			} else{
-				this.files.forEach((v) => {
-				  if (!v.success) {
-				    this.$refs.upload.remove(v)
-				  }
-				})
-			}
-			this.isUploadAgain = false
+      if (this.isUploadAgain) {
+        this.files.shift()
+      } else {
+        this.files.forEach((v) => {
+          if (!v.success) {
+            this.$refs.upload.remove(v)
+          }
+        })
+      }
+      this.isUploadAgain = false
       this.showOption = false
     },
-		// 删除全部
-		deleteAllItem(){
-			if(this.checkedAllItem.length == 1){
-				this.files = []
-			}
-		},
-		checkedAll(){
-			if (this.checkedAllItem.indexOf('all') > -1) {
-					this.checkedItem = []
-					this.files.forEach(ele => {
-						this.checkedItem.push(ele.id)
-					})
-				} else {
-					this.checkedItem = []
-				}
-		},
+    // 删除全部
+    deleteAllItem() {
+      if (this.checkedAllItem.length == 1) {
+        this.files = []
+      }
+    },
+    checkedAll() {
+      if (this.checkedAllItem.indexOf('all') > -1) {
+        this.checkedItem = []
+        this.files.forEach((ele) => {
+          this.checkedItem.push(ele.id)
+        })
+      } else {
+        this.checkedItem = []
+      }
+    },
     /**
      * 下载上传文件
      */
@@ -1226,7 +1237,7 @@ export default {
       console.log(fileObj)
       this.previewFile = fileObj
       let img = new Image()
-      img.src = this.previewFile.icon_url
+      img.src = this.previewFile.wmk_url
       img.onload = () => {
         let rate = Math.min(this.winWidth / img.width, this.winHeight / img.height)
         this.initWidth = img.width * rate
@@ -1254,11 +1265,11 @@ export default {
      * 点击价格TAB
      */
     onPriceClick() {
-			if(this.userInfo){
-				this.showDialog = true
-			} else {
-				this.showLogin = true
-			}
+      if (this.userInfo) {
+        this.showDialog = true
+      } else {
+        this.showLogin = true
+      }
     },
     /**
      * 点击登录/用户中心 TAB
@@ -1270,8 +1281,8 @@ export default {
       try {
         const res = await wechatLogin({ code })
         this.setUserInfo(res.data)
-				this.wechatHead = res.data.headimgurl
-				this.isWechatLogin = true
+        this.wechatHead = res.data.headimgurl
+        this.isWechatLogin = true
         this.$toast.success('登录成功')
       } catch (e) {
         this.$toast.error(e.message)
@@ -1288,7 +1299,7 @@ export default {
         login(data)
           .then((res) => {
             this.setUserInfo(res.data)
-						this.isWechatLogin = false
+            this.isWechatLogin = false
             this.$toast.success('登录成功')
             this.showLogin = false
           })
@@ -1300,9 +1311,7 @@ export default {
     onLogout() {
       this.removeUserInfo()
     },
-		onGetTaskList(){
-			
-		},
+    onGetTaskList() {},
     onShowFullscreen(i) {
       switch (i) {
         case 0:
@@ -1336,10 +1345,10 @@ export default {
       //   status: {},
       //   data: { ...item.data, mdf: item.response.mdfs[0] },
       // })
-			this.isUploadAgain = true
-			this.uploadAgainItemMdf = item.response.mdfs[0]
-			this.uploadAgainItem = item.file
-			this.showOption = true
+      this.isUploadAgain = true
+      this.uploadAgainItemMdf = item.response.mdfs[0]
+      this.uploadAgainItem = item.file
+      this.showOption = true
     },
   },
 }
@@ -1441,86 +1450,85 @@ export default {
   transform: translateX(-50%);
 }
 
-.head_img_btn{
-	width: 40px !important;
-	height: 40px !important;
-	border-radius: 40px;
-	
-	.head_img{
-		width: 40px;
-		height: 40px;
-		border-radius: 40px;
-	}
+.head_img_btn {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 40px;
+
+  .head_img {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+  }
 }
-.continue-upload{
-	height: 52px;
-	padding-left: 44px;
-	padding-right: 62px;
-	background-color: #db8819;
-	font-size: 18px;
-	color: #fff;
-	font-family: Work Sans;
-	font-style: normal;
-	font-weight: 600;
-	.continue-upload-check{
-		
-		::v-deep .v-icon{
-			color: #fff !important;
-		}
-		::v-deep .v-label{
-			font-size: 18px;
-			color: #fff;
-			font-family: Work Sans;
-			font-style: normal;
-			font-weight: 600;
-		}
-		.primary--text{
-			color: #fff !important;
-			caret-color: #fff !important;
-		}
-	}
-	.v-btn--is-elevated{
-		box-shadow: none;
-		font-size: 18px;
-		color: #fff;
-		font-family: Work Sans;
-		font-style: normal;
-		font-weight: 600;
-	}
+.continue-upload {
+  height: 52px;
+  padding-left: 44px;
+  padding-right: 62px;
+  background-color: #db8819;
+  font-size: 18px;
+  color: #fff;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: 600;
+  .continue-upload-check {
+    ::v-deep .v-icon {
+      color: #fff !important;
+    }
+    ::v-deep .v-label {
+      font-size: 18px;
+      color: #fff;
+      font-family: Work Sans;
+      font-style: normal;
+      font-weight: 600;
+    }
+    .primary--text {
+      color: #fff !important;
+      caret-color: #fff !important;
+    }
+  }
+  .v-btn--is-elevated {
+    box-shadow: none;
+    font-size: 18px;
+    color: #fff;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 600;
+  }
 }
-.justify-between{
-	justify-content: space-between;
+.justify-between {
+  justify-content: space-between;
 }
 
-.pic_list{	
-	.v-list-item{
-		height: 175px;
-		padding-left: 38px !important;
-		
-		.list_item_head_box{
-			min-width: 80px !important;
-			height: 100% !important;
-			width: 142px !important;
-			padding-left: 16px;
-			margin: 0px;
-			margin-right: 20px;
-			
-			.v-image{
-				width: 110px;
-				height: 110px;
-			}
-		}
-		
-		.btns-box{
-			.v-btn{
-				font-family: Work Sans;
-				font-style: normal;
-				font-size: 18px;
-				box-shadow: none;
-				padding: 0px 27px;
-				border-radius: 0px;
-			}
-		}
-	}
+.pic_list {
+  .v-list-item {
+    height: 175px;
+    padding-left: 38px !important;
+
+    .list_item_head_box {
+      min-width: 80px !important;
+      height: 100% !important;
+      width: 142px !important;
+      padding-left: 16px;
+      margin: 0px;
+      margin-right: 20px;
+
+      .v-image {
+        width: 110px;
+        height: 110px;
+      }
+    }
+
+    .btns-box {
+      .v-btn {
+        font-family: Work Sans;
+        font-style: normal;
+        font-size: 18px;
+        box-shadow: none;
+        padding: 0px 27px;
+        border-radius: 0px;
+      }
+    }
+  }
 }
 </style>
