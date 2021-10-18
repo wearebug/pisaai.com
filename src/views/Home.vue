@@ -489,7 +489,7 @@
         <preview-scale
           :initWidth="initWidth"
           :initHeight="initHeight"
-          :iconUrl="previewFile.icon_url"
+          :iconUrl="previewFile.wmk_url"
           :srcUrl="previewFile.src_url"
           :scaleRatio="scaleRatio"
         />
@@ -585,7 +585,7 @@ export default {
       showOption: false,
       showPreview: false,
       previewFile: {
-        icon_url: '',
+        wmk_url: '',
         src_url: '',
       },
       optionsTab: 0,
@@ -1241,7 +1241,7 @@ export default {
       console.log(fileObj)
       this.previewFile = fileObj
       let img = new Image()
-      img.src = this.previewFile.icon_url
+      img.src = this.previewFile.wmk_url
       img.onload = () => {
         let rate = Math.min(this.winWidth / img.width, this.winHeight / img.height)
         this.initWidth = img.width * rate
