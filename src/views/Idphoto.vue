@@ -552,9 +552,11 @@
     <v-dialog v-model="showQrcode" max-width="320">
       <v-card>
         <vue-qr :correctLevel="3" :text="qrcodeUrl" :size="320"></vue-qr>
+       
         <div class="qrcode-tip">微信扫码下载高清无水印图</div>
       </v-card>
     </v-dialog>
+
     <v-dialog v-model="showFullScreen" fullscreen hide-overlay transition="dialog-bottom-transition">
       <v-card>
         <v-toolbar dark color="black">
@@ -624,7 +626,7 @@ export default {
   data() {
     return {
       c_b: _,
-      channel: 'HILI',
+      channel: 'pisaAI',
       timer: null,
       timer1: null,
       timer1Count: 0,
@@ -1264,19 +1266,10 @@ export default {
     statusLxun(item, response) {
             // 状态轮训
             let mdf = response.mdf || response.mdfs[0]
-
            if(item){
-                let icon = item.status.icon_url
-                let timestamp = (new Date()).valueOf().toString();
-                let random = Math.ceil(Math.random()*100000).toString();
-                let payLink = 'http://api.es.hiliad.com/photo/redSku?mdt='+mdf+'&img_icon='+icon+'&pc_code='+timestamp + random;
-                chaundibs(payLink) // 传递标识
-
-                // 弹出二维码 这时候需要轮训查询支付状态 以及手机登陆情况 ，，。。。。。。 2秒一次 一分钟后 超时停止
                 window.bbq = 0 // 初始化0秒
                 window.dsqq = setInterval(()=>{
                   window.bbq = window.bbq + 2
-                  console.log(window.bbq)
                   // 调用下载接口判断支付状态
                   tocDownload(response.mdf || response.mdfs[0]).then(res=>{
                     if(res.code === 200){
@@ -1284,6 +1277,7 @@ export default {
                       this.fileDonwload(res.img_url)
                       // 关闭定时器
                       clearInterval(window.dsqq) 
+                      this.$toast.success(res.msg)
                       // 关闭弹框
                        this.showQrcode = false
                     }
@@ -1293,6 +1287,7 @@ export default {
                   if(this.userInfo){
                       loginGetStatus({
                         pc_code: timestamp + random,
+                        channel: this.channel
                       }).then(res=>{
                         if(res.data){
                           // 手机已经登陆 踢掉当前登录状态
@@ -1320,37 +1315,63 @@ export default {
           channel: this.channel,
           mdf: response.mdf || response.mdfs[0],
         }
+
+        let icon = item.status.icon_url
+        let timestamp = (new Date()).valueOf().toString();
+        let random = Math.ceil(Math.random()*100000).toString();
+        let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}&channel=${this.channel}`;
+        this.qrcodeUrl = payLink
+
+         this.showQrcode = true
+
+        chaundibs(payLink) // 传递标识
+        response.pc_code = `${timestamp}${random}`
+        this.statusLxun(item, response)
+
+
+        // this.getOrderStataus(orderid, response)
+        // var qrcode = new QRCode(this.$refs.qrCodeUrl, {
+        //     text: payLink, // 需要转换为二维码的内容
+        //     width: 100,
+        //     height: 100,
+        //     colorDark: '#000000',
+        //     colorLight: '#ffffff',
+        //     correctLevel: 3
+        // })
+        // console.log(qrcode)
+
+      
         // 下单接口 弹出二维码
-        wechatPay(data)
-          .then((res) => {
-            const { orderid, url } = res.data
-            this.qrcodeUrl = url
-            this.showQrcode = true
+        // wechatPay(data).then((res) => {
+        //     const { orderid, url } = res.data
+        //     this.qrcodeUrl = url
+        //     this.showQrcode = true
             
     
-            let icon = item.status.icon_url
-            let timestamp = (new Date()).valueOf().toString();
-            let random = Math.ceil(Math.random()*100000).toString();
+        //     let icon = item.status.icon_url
+        //     let timestamp = (new Date()).valueOf().toString();
+        //     let random = Math.ceil(Math.random()*100000).toString();
            
-            let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}`;
+        //     let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}`;
             
-            chaundibs(payLink) // 传递标识
+        //     chaundibs(payLink) // 传递标识
 
-            response.pc_code = `${timestamp}${random}`
-            this.getOrderStataus(orderid, response)
+        //     response.pc_code = `${timestamp}${random}`
+        //     this.getOrderStataus(orderid, response)
 
    
 
-            // this.makeQrcode()
-          })
-          .catch((e) => {
-            this.$toast.error(e.msg)
-          })
+        //     // this.makeQrcode()
+        //   })
+        //   .catch((e) => {
+        //     this.$toast.error(e.msg)
+        //   })
       }
       if(this.userInfo){
   
         photoUserfinace({
           token: this.userInfo.token,
+          channel:this.channel,
           ver:2
         }).then(res=>{
           if(res.code === 0){
@@ -1364,6 +1385,7 @@ export default {
                 fd: 'pc',
                 ver: 2,
                 ftype: 1,
+                channel:this.channel,
                 mobile: this.userInfo.token
               }).then(res=>{
                 if(res.code === 0){
@@ -1397,6 +1419,7 @@ export default {
         if(this.userInfo){
             loginGetStatus({
               pc_code: pc_code,
+              channel:this.channel,
             }).then(res=>{
               if(res.data){
                 // 手机已经登陆 踢掉当前登录状态
@@ -1442,49 +1465,49 @@ export default {
       //     this.$toast.error(e.msg)
       //   })
     },
-    getOrderStataus(orderid, response) {
-      getOrderStataus({ orderid })
-        .then((res) => {
-          this.$toast.success(res.msg)
-          this.onFileDownload(response)
-           this.showQrcode = false
-        })
-        .catch((e) => {
-          if (e.code === 9010) {
-            this.getOrderResult(orderid, response)
-          } else {
-            this.$toast.info(e.msg)
+    // getOrderStataus(orderid, response) {
+    //   getOrderStataus({ orderid })
+    //     .then((res) => {
+    //       this.$toast.success(res.msg)
+    //       this.onFileDownload(response)
+    //        this.showQrcode = false
+    //     })
+    //     .catch((e) => {
+    //       if (e.code === 9010) {
+    //         this.getOrderResult(orderid, response)
+    //       } else {
+    //         this.$toast.info(e.msg)
 
-          }
-        })
+    //       }
+    //     })
 
        
-    },
-    getOrderResult(orderid, response) {
-      this.timer1 = setInterval(() => {
-        this.timer1Count += 1
-        if (this.timer1Count >= 30) {
-          clearInterval(this.timer1)
-          this.timer1Count = 0
-        }
-        getOrderStataus({ orderid })
-          .then((res) => {
-            this.timer1Count = 0
-            clearInterval(this.timer1)
-            this.$toast.success(res.msg)
-            this.onFileDownload(response)
-             this.showQrcode = false
-          })
-          .catch((e) => {
-            if (e.code !== 9010) {
-              this.timer1Count = 0
-              clearInterval(this.timer1)
-            }
-          })
+    // },
+    // getOrderResult(orderid, response) {
+    //   this.timer1 = setInterval(() => {
+    //     this.timer1Count += 1
+    //     if (this.timer1Count >= 30) {
+    //       clearInterval(this.timer1)
+    //       this.timer1Count = 0
+    //     }
+    //     getOrderStataus({ orderid })
+    //       .then((res) => {
+    //         this.timer1Count = 0
+    //         clearInterval(this.timer1)
+    //         this.$toast.success(res.msg)
+    //         this.onFileDownload(response)
+    //          this.showQrcode = false
+    //       })
+    //       .catch((e) => {
+    //         if (e.code !== 9010) {
+    //           this.timer1Count = 0
+    //           clearInterval(this.timer1)
+    //         }
+    //       })
 
-           this.userLoginStatus(response.pc_code)
-      }, 2000)
-    },
+    //        this.userLoginStatus(response.pc_code)
+    //   }, 2000)
+    // },
     getPackageOrderStataus(order_id) {
       packageStatus({ order_id })
         .then((res) => {
