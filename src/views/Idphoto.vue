@@ -1291,7 +1291,10 @@ export default {
                       }).then(res=>{
                         if(res.data){
                           // 手机已经登陆 踢掉当前登录状态
-                          _this.onLogout() //退出登录
+                          // _this.onLogout() //退出登录
+                          this.setUserInfo(res.data)
+                          // this.$toast.success('登录成功')
+
                         }
                       })
                   }
@@ -1324,7 +1327,7 @@ export default {
 
          this.showQrcode = true
 
-        chaundibs(payLink) // 传递标识
+        // chaundibs(payLink) // 传递标识
         response.pc_code = `${timestamp}${random}`
         this.statusLxun(item, response)
 
