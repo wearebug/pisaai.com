@@ -261,7 +261,7 @@
                           {{ $vuetify.lang.t('$vuetify.upload.btn[4]') }}
                         </v-btn>
                         <div>
-                          <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status)">
+                          <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status, item)">
                             {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
                           </v-btn>
                           <v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response, item)">
@@ -536,7 +536,7 @@
           <v-btn class="mx-4" icon color="white" @click="onMinus">
             <v-icon>mdi-magnify-minus</v-icon>
           </v-btn>
-          <v-btn class="mx-4" icon color="white" @click="onFileDownload(previewFile)">
+          <v-btn class="mx-4" icon color="white" @click="onFileDownload(previewFile,findItem)">
             <v-icon>mdi-file-download</v-icon>
           </v-btn>
         </v-row>
@@ -625,6 +625,7 @@ export default {
   },
   data() {
     return {
+      findItem:{},
       c_b: _,
       channel: 'pisaAI',
       timer: null,
@@ -950,7 +951,6 @@ export default {
       return null
     },
     onResize() {
-      console.log(3232)
       setTimeout(() => {
         this.staticImgWidth = this.$refs.staticImg[0].offsetWidth
         this.staticImgHeight = this.$refs.staticImg[0].offsetHeight
@@ -958,6 +958,7 @@ export default {
       this.winHeight = window.innerHeight - window.innerHeight / 10 - 44 // 屏幕高度
       this.winWidth = window.innerWidth - 48 // 屏幕宽度
     },
+
     async inputFilter(newFile, oldFile, prevent) {
       if (newFile && !oldFile) {
         // 过滤系统文件 和隐藏文件
@@ -1015,14 +1016,25 @@ export default {
         }
         img.src = newFile.blob
       }
-      if (newFile) {
-        getImageSize(newFile.blob).then((res) => {
-          if (res[0] > 800 || res[1] > 800) {
-            this.$toast.error('图片的宽和高最大800px')
-            this.onUploadCancel()
-          }
-        })
+
+      // 添加或者更新的时候
+      if (oldFile || (oldFile && newFile )) {
+        try {
+            getImageSize(newFile.blob).then((res) => {
+              if (res[0] > 800 || res[1] > 800) {
+                this.$toast.error('图片的宽和高最大800px')
+                this.onUploadCancel()
+              }
+            })
+        } catch (error) {
+          console.log(error)
+          
+        }
+
+
       }
+
+
     },
     inputFile(newFile, oldFile) {
       // console.log('newFile', newFile)
@@ -1204,7 +1216,8 @@ export default {
     /**
      * 下载上传文件
      */
-    async onFileDownload(response, item = null) {
+    async onFileDownload(response, item = null){
+
       const mdf = response.mdf || response.mdfs[0]
       try {
         // this.onWechatPay(response)
@@ -1596,7 +1609,8 @@ export default {
     /**
      * 预览上传文件
      */
-    onFilePreview(fileObj) {
+    onFilePreview(fileObj,item = null) {
+      this.findItem = item
       console.log(fileObj)
       this.previewFile = fileObj
       let img = new Image()
