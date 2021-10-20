@@ -1284,7 +1284,7 @@ export default {
                   })
 
                   // 调用登陆状态接口判断手机是否登录
-                  if(this.userInfo){
+                  // if(this.userInfo){
                       loginGetStatus({
                         pc_code: timestamp + random,
                         channel: this.channel
@@ -1297,7 +1297,7 @@ export default {
 
                         }
                       })
-                  }
+                  // }
 
                 }, 2000)
 
