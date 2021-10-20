@@ -1298,6 +1298,39 @@ export default {
                         }
                       })
                   // }
+                    
+                    // 查询点数
+                    photoUserfinace({
+                      token: this.userInfo.token,
+                      channel:this.channel,
+                      ver:2
+                    }).then(res=>{
+                      if(res.code === 0 && res.data.nums > 0){
+                          // 调用扣除点数
+                          photoPhotopay({
+                            mdt: mdf,
+                            fd: 'pc',
+                            ver: 2,
+                            ftype: 1,
+                            channel:this.channel,
+                            mobile: this.userInfo.token
+                          }).then(res=>{
+                            if(res.code === 0){
+                              tocDownload(mdf).then(res=>{
+                                if(res.code === 200){
+                                  this.fileDonwload(res.img_url)
+                                  clearInterval(window.dsqq) 
+                                  this.$toast.success('成功')
+                                  // 关闭弹框
+                                  this.showQrcode = false
+                                }
+                              })
+                            }
+                          })
+
+                      }
+                    })
+
 
                 }, 2000)
 
