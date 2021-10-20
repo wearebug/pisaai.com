@@ -72,3 +72,53 @@ export function packageStatus(data) {
     data: qs.stringify(data),
   })
 }
+
+// 查询登陆用户的剩余点数
+export function photoUserfinace(data) {
+  return request({
+    url: 'https://payapi.fangtangtv.com/photo/userfinace',
+    method: 'post',
+    data: qs.stringify(data),
+  })
+}
+
+// 扣除点数
+export function photoPhotopay(data) {
+  return request({
+    url: 'https://payapi.fangtangtv.com/photo/photopay',
+    method: 'post',
+    data: qs.stringify(data),
+  })
+}
+
+// 图片下载
+export function tocDownload(data) {
+  return request({
+    url: 'https://sdkphoto.fangtangtv.com/api/toc/download/v2/'+data,
+    method: 'get'
+  })
+}
+
+// 登陆状态获取
+export function loginGetStatus(data) {
+  return request({
+    url: 'https://payapi.fangtangtv.com/photo/login/getStatus',
+    method: 'post',
+    data: qs.stringify(data),
+  })
+}
+
+// 传递标识
+export function chaundibs(data) {
+  return request({
+    url: data,
+    method: 'get'
+  })
+}
+
+
+
+
+
+
+
