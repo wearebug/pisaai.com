@@ -20,24 +20,24 @@ export default {
     functionTxt: ['价格', 'API'],
     functionPrice: [
       {
-        title: '1张 = ￥5',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 6000px', '老照片修复: 支持', '批量处理: 无'],
+        title: '3张 = ￥15',
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 无'],
       },
       {
         title: '10张 = ￥45',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 6000px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 支持'],
       },
       {
         title: '50张 = ￥200',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 6000px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 支持'],
       },
       {
         title: '200张 = ￥400',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 6000px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 支持'],
       },
     ],
     priceType: ['微信支付', '支付宝支付', 'Paypal支付'],
-    priceTips: '单张￥19.8，购买越多赠送越多，更低折扣请加QQ 12145508咨询。',
+    priceTips: '单张￥5，购买越多赠送越多，更低折扣请加QQ 12145508咨询。',
     weChatVip: ['微信扫码下载高清无水印图', '打包购买更划算', '下载无水印高清图'],
     upload: {
       status: {
@@ -206,20 +206,20 @@ export default {
     functionTxt: ['Price', 'API'],
     functionPrice: [
       {
-        title: '1 photo = ￥5',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:NO'],
+        title: '3 photo = ￥15',
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
       },
       {
         title: '10 photos = ￥45',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '50 photos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '200 photos = ￥400',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -398,20 +398,20 @@ export default {
     functionTxt: ['価格', 'API', 'value'],
     functionPrice: [
       {
-        title: '写真3枚 = ￥49.8',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:6000px', '古い写真の修理:YES', 'バッチ処理:NO'],
+        title: '写真3枚 = ￥15',
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:NO'],
       },
       {
-        title: '写真10枚 = ￥150',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:6000px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        title: '写真10枚 = ￥45',
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
       {
-        title: '写真50枚 = ￥400',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:6000px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        title: '写真50枚 = ￥200',
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
       {
-        title: '写真200枚 = ￥1000',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:6000px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        title: '写真200枚 = ￥400',
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -500,7 +500,7 @@ export default {
         },
       ],
     },
-    priceTips: '低価格については、QQグループ（623946846）に参加して相談してください',
+    priceTips: '低価格については、QQ（12145508）に参加して相談してください',
     functionFun: [],
     menu: ['Language', 'API', '価格', '我社'],
     language: ['简体中文', 'English', '日本语', 'Español', 'Francés'],
@@ -508,7 +508,7 @@ export default {
       'PisaAI PhotoEnhanceは、AIアルゴリズムを使用して白黒写真を自動的に色付けし、古い写真を修復し、ぼやけた焦点が合っていない写真を最適化する写真修復およびレタッチツールです。',
     phone: '010-5335 5193',
     mail: 'wearebug&gmail.com',
-    qq: 'QQ group：623946846',
+    qq: 'QQ12145508',
     aboutInfo:
       '2019年に設立されたBeijingDante Technology Co.、Ltd。は、OTTおよびIPTVビデオ業界の上級実務家で構成される新興企業です。 人工知能とコンピュータービジョン技術をビデオ/画像処理の分野に適用することに取り組んでいます。私たちは、カスタマイズ可能なさまざまな画像およびビデオ処理ソリューションをお客様に提供します。<br/>Dante」とは、汗と穀物という意味です<br/>連絡先番号：010-5335 5193<br/>QQグループ：623946846<br/>メール：wearebug＆gmail.com',
     agreementTxt: 'ユーザー規約',
@@ -584,20 +584,20 @@ export default {
     functionTxt: ['Precio', 'API'],
     functionPrice: [
       {
-        title: '1 foto = ￥5',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:NO'],
+        title: '3 foto = ￥15',
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
       },
       {
         title: '10 fotos = ￥45',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '50 fotos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '200 fotos = ￥400',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -686,7 +686,7 @@ export default {
         },
       ],
     },
-    priceTips: 'Para precios más bajos, únase al grupo QQ (623946846) para consultar.',
+    priceTips: 'Para precios más bajos, únase al QQ (12145508) para consultar.',
     functionFun: [],
     menu: ['Language', 'API', 'Precio', 'Sobre nosotros'],
     language: ['简体中文', 'English', '日本语', 'Español', 'Francés'],
@@ -694,7 +694,7 @@ export default {
       'PisaAI PhotoEnhance es una herramienta de retoque y reparación de fotografías que utiliza algoritmos de inteligencia artificial para colorear automáticamente fotografías en blanco y negro, reparar fotografías antiguas y optimizar fotografías borrosas desenfocadas.',
     phone: '010-5335 5193',
     mail: 'wearebug&gmail.com',
-    qq: 'QQ group：623946846',
+    qq: 'QQ12145508',
     aboutInfo:
       'Fundada en 2019, Beijing Dante Technology Co., Ltd. es una empresa de nueva creación compuesta por profesionales de alto nivel en las industrias de video OTT e IPTV. Se compromete a aplicar tecnologías de inteligencia artificial y visión por computadora al campo del procesamiento de video / imágenes.Brindamos a los clientes una variedad de soluciones de procesamiento de imágenes y video personalizables.<br/>"Han Liang" significa sudor y comida.<br/>Número de contacto: 010-5335 5193 <br/>Grupo QQ: 623946846 <br/>Email: wearebug & gmail.com',
     agreementTxt: 'Acuerdo del Usuario',
@@ -778,20 +778,20 @@ export default {
     functionTxt: ['Prix', 'API'],
     functionPrice: [
       {
-        title: '1 photo = ￥5',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:NO'],
+        title: '3 photo = ￥15',
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
       },
       {
         title: '10 photos = ￥45',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '50 photos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '200 photos = ￥400',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:6000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -880,7 +880,7 @@ export default {
         },
       ],
     },
-    priceTips: 'Pour des prix inférieurs, veuillez joindre le groupe QQ (623946846) pour consultation',
+    priceTips: 'Pour des prix inférieurs, veuillez joindre le QQ (12145508) pour consultation',
     functionFun: [],
     menu: ['Language', 'API', 'Prix', 'à propos de nous'],
     language: ['简体中文', 'English', '日本语', 'Español', 'Francés'],
@@ -888,7 +888,7 @@ export default {
       "PisaAI PhotoEnhance est un outil de réparation et de retouche photo qui utilise des algorithmes d'IA pour colorer automatiquement les photos en noir et blanc, réparer les anciennes photos et optimiser les photos floues et floues.",
     phone: '010-5335 5193',
     mail: 'wearebug&gmail.com',
-    qq: 'QQ group：623946846',
+    qq: 'QQ 12145508',
     aboutInfo:
       "Fondée en 2019, Beijing Dante Technology Co., Ltd. est une start-up composée de praticiens chevronnés des secteurs de la vidéo OTT et IPTV. Il s'engage à appliquer les technologies de l'intelligence artificielle et de la vision par ordinateur au domaine du traitement de la vidéo/de l'image.Nous fournissons à nos clients une variété de solutions de traitement d'images et de vidéos personnalisables.<br/>\"Han Liang\" signifie sueur et nourriture.<br/>Numéro de téléphone : 010-5335 5193<br/>Groupe QQ : 623946846<br/>Courriel : wearebug&gmail.com",
     agreementTxt: "Accord de l'utilisateur",
