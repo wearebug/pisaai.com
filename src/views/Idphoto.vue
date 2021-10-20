@@ -1268,6 +1268,7 @@ export default {
             let mdf = response.mdf || response.mdfs[0]
            if(item){
                 window.bbq = 0 // 初始化0秒
+                window.infoStatus = true
                 window.dsqq = setInterval(()=>{
                   window.bbq = window.bbq + 2
                   // 调用下载接口判断支付状态
@@ -1284,7 +1285,7 @@ export default {
                   })
 
                   // 调用登陆状态接口判断手机是否登录
-                  // if(this.userInfo){
+                  if(window.infoStatus){
                       loginGetStatus({
                         pc_code: response.pc_code,
                         channel: this.channel
@@ -1293,11 +1294,12 @@ export default {
                           // 手机已经登陆 踢掉当前登录状态
                           // _this.onLogout() //退出登录
                           this.setUserInfo(res.data)
+                          window.infoStatus = false
                           // this.$toast.success('登录成功')
 
                         }
                       })
-                  // }
+                  }
                     
                     // 查询点数
                     photoUserfinace({
@@ -1451,19 +1453,19 @@ export default {
 
     },
     // 手机登陆状态
-    userLoginStatus(pc_code){
-        if(this.userInfo){
-            loginGetStatus({
-              pc_code: pc_code,
-              channel:this.channel,
-            }).then(res=>{
-              if(res.data){
-                // 手机已经登陆 踢掉当前登录状态
-                _this.onLogout() //退出登录
-              }
-            })
-        }
-    },
+    // userLoginStatus(pc_code){
+    //     if(this.userInfo){
+    //         loginGetStatus({
+    //           pc_code: pc_code,
+    //           channel:this.channel,
+    //         }).then(res=>{
+    //           if(res.data){
+    //             // 手机已经登陆 踢掉当前登录状态
+    //             _this.onLogout() //退出登录
+    //           }
+    //         })
+    //     }
+    // },
     async onWechatPayPackage(id) {
       if (this.userInfo) {
         try {
