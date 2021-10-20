@@ -2,7 +2,7 @@ export default {
   chinese: {
     name: '照片优化',
     idphotoName: 'PisaAI-证件照',
-    idphotoSynopsis: 'PisaAI证件照是一个证件照自动处理的工具，可以清晰脸部、抠图和更换背景色', // idphoto子站独立描述
+    idphotoSynopsis: 'PisaAI证件照是一个证件照自动处理的工具，可以自动放大和清晰脸部，去除划痕。不懂PS也可以更换背景色，目前支持红底、白底、蓝底和透明底，并可以输出300dpi的打印级图片，一键完成。', // idphoto子站独立描述
     maxImgYh: '大图优化',
     keyword: '老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照',
     description: 'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景。',
