@@ -1269,11 +1269,12 @@ export default {
            if(item){
                 window.bbq = 0 // 初始化0秒
                 window.infoStatus = true
+                window.code111 = true
                 window.dsqq = setInterval(()=>{
                   window.bbq = window.bbq + 2
                   // 调用下载接口判断支付状态
                   tocDownload(response.mdf || response.mdfs[0]).then(res=>{
-                    if(res.code === 200){
+                    if(res.code === 200 && window.code111){
                       // 已经支付直接下载
                       this.fileDonwload(res.img_url)
                       // 关闭定时器
@@ -1281,6 +1282,7 @@ export default {
                       this.$toast.success(res.msg)
                       // 关闭弹框
                        this.showQrcode = false
+                       window.code111 = false
                     }
                   })
 
@@ -1294,6 +1296,7 @@ export default {
                           // 手机已经登陆 踢掉当前登录状态
                           // _this.onLogout() //退出登录
                           this.setUserInfo(res.data)
+                          this.isWechatLogin = true
                           window.infoStatus = false
                           // this.$toast.success('登录成功')
 
@@ -1320,12 +1323,14 @@ export default {
                             }).then(res=>{
                               if(res.code === 0){
                                 tocDownload(mdf).then(res=>{
-                                  if(res.code === 200){
+                                  if(res.code === 200  && window.code111){
                                     this.fileDonwload(res.img_url)
                                     clearInterval(window.dsqq) 
+                                    
                                     this.$toast.success('成功')
                                     // 关闭弹框
                                     this.showQrcode = false
+                                    window.code111 = false
                                   }
                                 })
                               }
@@ -1337,6 +1342,7 @@ export default {
                     
                     // 二维码关闭轮训关闭
                     if(!this.showQrcode){
+                      window.code111 = false
                       clearInterval(window.dsqq) 
                     }
 
