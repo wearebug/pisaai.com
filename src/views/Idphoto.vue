@@ -215,7 +215,7 @@
         <div style="text-align: center; position: relative" v-if="!files.length">
           <p>
             <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
-              处理大图片请访问高光照片优化
+             {{ $vuetify.lang.t('$vuetify.maxImgHint')}}
             </a>
           </p>
         </div>
@@ -1022,7 +1022,7 @@ export default {
         try {
             getImageSize(newFile.blob).then((res) => {
               if (res[0] > 800 || res[1] > 800) {
-                this.$toast.error('图片的宽和高最大800px')
+                this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
                 this.onUploadCancel()
               }
             })
@@ -1292,7 +1292,7 @@ export default {
                       this.fileDonwload(res.img_url)
                       // 关闭定时器
                       clearInterval(window.dsqq) 
-                      this.$toast.success(res.msg)
+                      this.$toast.success('支付完成')
                       // 关闭弹框
                        this.showQrcode = false
                        window.code111 = false

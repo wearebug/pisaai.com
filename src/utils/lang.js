@@ -1,6 +1,8 @@
 export default {
   chinese: {
     name: '照片优化',
+    error800:'图片的宽和高最大800px',
+    maxImgHint:' 处理大图片请访问高光照片优化 ',
     idphotoName: 'PisaAI-证件照',
     idphotoSynopsis: '大萨达撒多', // idphoto子站独立描述
     maxImgYh: '大图优化',
@@ -183,6 +185,8 @@ export default {
   },
   english: {
     name: 'PhotoEnhance',
+    error800:'The width and height of the picture are up to 800px',
+    maxImgHint:' To work with large images, visit highlight photo optimization ',
     idphotoName: 'Pisaai - ID photo',
     idphotoSynopsis: '2121', // idphoto子站独立描述
     maxImgYh: 'Large map optimization',
@@ -381,6 +385,8 @@ export default {
   },
   japanese: {
     name: '写真強化',
+    error800:'画像の幅と高さは最大800 pxです。',
+    maxImgHint:'大きな画像を処理するには、高光写真の最適化にアクセスしてください。',
     idphotoName: 'PisaAI-証明書の写真',
     idphotoSynopsis: '是地方不是的2121', // idphoto子站独立描述
     maxImgYh: '大いに最適化を図る',
@@ -561,6 +567,8 @@ export default {
   },
   spanish: {
     name: 'Retoque Fotográfico',
+    error800:'Anchura y altura máximas de la imagen 800px',
+    maxImgHint:'Para procesar imágenes grandes, visite la optimización de imágenes de alto brillo',
     idphotoName: 'Pisaai - foto de identificación',
     idphotoSynopsis: '飞电风扇等发是地方不是的2121', // idphoto子站独立描述
     maxImgYh: 'Optimización de gráficos grandes',
@@ -755,6 +763,8 @@ export default {
   },
   french: {
     name: 'Photo Améliorer',
+    error800:`Largeur et hauteur de l'image jusqu'à 800px`,
+    maxImgHint:`Pour travailler avec de grandes images, visitez l'optimisation des photos en surbrillance`,
     idphotoName: `Pisaai - carte d'identité`,
     idphotoSynopsis: '大萨达是地方不是的2121', // idphoto子站独立描述
     maxImgYh: 'Optimisation des grandes cartes',
