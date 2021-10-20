@@ -753,7 +753,7 @@ export default {
   french: {
     name: 'Photo Améliorer',
     idphotoName: `PisaAI - carte d'identité`,
-    idphotoSynopsis: 'PisaAI IDPhoto est un outil de traitement automatique des photos d'identité qui permet de clarifier les visages et de modifier les couleurs d'arrière-plan.', 
+    idphotoSynopsis: `PisaAI IDPhoto est un outil de traitement automatique des photos d'identité qui permet de clarifier les visages et de modifier les couleurs d'arrière-plan.`, 
     maxImgYh: 'Optimisation des grandes cartes',
     keyword:
       "Photos anciennes, réparation de photo, coloriage de photo, réparation de rayures, photos d'identité, photos d'identité pour le fond, photos de portrait",
