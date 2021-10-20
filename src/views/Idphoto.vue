@@ -1025,7 +1025,7 @@ export default {
       }
     },
     inputFile(newFile, oldFile) {
-      console.log('newFile', newFile)
+      // console.log('newFile', newFile)
       if (newFile && !oldFile) {
         this.showOption = true
       }
@@ -1142,7 +1142,7 @@ export default {
 
       // console.log('data', data)
 
-      this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token }
+      this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token,  channel : this.channel}
 
       // 再次处理上传
       if (this.isUploadAgain) {
@@ -1151,7 +1151,7 @@ export default {
           success: false,
           response: {},
           status: {},
-          data: { ...this.postData, mdf: this.uploadAgainItemMdf },
+          data: { ...this.postData, mdf: this.uploadAgainItemMdf ,  channel : this.channel},
         })
         console.log('aa', aa)
         this.getFileStatusProgress(aa)
@@ -1284,9 +1284,9 @@ export default {
                   })
 
                   // 调用登陆状态接口判断手机是否登录
-                  if(this.userInfo){
+                  // if(this.userInfo){
                       loginGetStatus({
-                        pc_code: timestamp + random,
+                        pc_code: response.pc_code,
                         channel: this.channel
                       }).then(res=>{
                         if(res.data){
@@ -1297,7 +1297,7 @@ export default {
 
                         }
                       })
-                  }
+                  // }
 
                 }, 2000)
 
