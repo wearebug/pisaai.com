@@ -1611,7 +1611,7 @@ export default {
           this.fullscreenHtml = this.$vuetify.lang.t('$vuetify.agreementInfo')
           break
         case 3:
-          window.location.href('http://hiliphoto.com')
+          window.location.href = 'http://hiliphoto.com'
           break
       }
       this.showFullScreen = true
