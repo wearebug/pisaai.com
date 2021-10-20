@@ -12,6 +12,8 @@
   "dependencies": {
     "axios": "^0.22.0",
     "core-js": "^3.6.5",
+    "lodash": "^4.17.21",
+    "prerender-spa-plugin": "^3.4.0",
     "qs": "^6.10.1",
     "vue": "^2.6.11",
     "vue-i18n": "^8.12.0",
@@ -34,6 +36,7 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
+    "deepmerge": "^4.2.2",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
@@ -41,10 +44,12 @@
     "puppeteer": "^10.4.0",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
-    "vue-cli-plugin-prerender-spa": " ^3.4.0",
+    "vue-cli-plugin-prerender-spa": "^1.1.6",
     "vue-cli-plugin-vuetify": "~2.4.2",
     "vue-meta-info": "^0.1.7",
     "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.7.0"
+    "vuetify-loader": "^1.7.0",
+    "webpack-chain": "^6.5.1",
+    "webpack-merge": "^5.8.0"
   }
 }

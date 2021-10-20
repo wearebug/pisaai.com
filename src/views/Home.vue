@@ -168,28 +168,30 @@
               </v-list-item-subtitle>
               <v-list-item-subtitle>
                 <template v-if="item.response.code === 200">
-									<template v-if="item.status">
-										<template v-if="item.status.code == 1">
-										  <!-- <v-chip class="mr-2" color="success" small>{{ $vuetify.lang.t('$vuetify.upload.status[6]') }}</v-chip> -->
-											<div class="d-flex align-center justify-between btns-box">
-												<v-btn class="mr-2 mb-1" small color="#FBB03B" style='color: #fff' @click="onContinue(item)">{{ $vuetify.lang.t('$vuetify.upload.btn[4]') }}</v-btn>
-												<div>
-													<v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status)">
-														{{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
-													</v-btn>
-													<v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response)">
-														{{ $vuetify.lang.t('$vuetify.upload.btn[1]') }}
-													</v-btn>
-													<v-btn class="mb-1" small color="#333333" style='color: #fff' @click="onFileRemove(item)">
-														{{ $vuetify.lang.t('$vuetify.upload.btn[3]') }}
-													</v-btn>
-												</div>
-											</div>
-										</template>
-										<template v-else>
-										  <v-chip class="mr-2" small>{{ $vuetify.lang.t('$vuetify.upload.status['+item.status.task+']') }}</v-chip>
-										</template>
-									</template>
+                  <template v-if="item.status">
+                    <template v-if="item.status.code == 1">
+                      <!-- <v-chip class="mr-2" color="success" small>{{ $vuetify.lang.t('$vuetify.upload.status[6]') }}</v-chip> -->
+                      <div class="d-flex align-center justify-between btns-box">
+                        <v-btn class="mr-2 mb-1" small color="#FBB03B" style="color: #fff" @click="onContinue(item)">
+                          {{ $vuetify.lang.t('$vuetify.upload.btn[4]') }}
+                        </v-btn>
+                        <div>
+                          <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status)">
+                            {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
+                          </v-btn>
+                          <v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response)">
+                            {{ $vuetify.lang.t('$vuetify.upload.btn[1]') }}
+                          </v-btn>
+                          <v-btn class="mb-1" small color="#333333" style="color: #fff" @click="onFileRemove(item)">
+                            {{ $vuetify.lang.t('$vuetify.upload.btn[3]') }}
+                          </v-btn>
+                        </div>
+                      </div>
+                    </template>
+                    <template v-else>
+                      <v-chip class="mr-2" small>{{ $vuetify.lang.t('$vuetify.upload.status[' + item.status.task + ']') }}</v-chip>
+                    </template>
+                  </template>
                 </template>
                 <span v-else class="text-caption">{{ item.response.msg }}</span>
               </v-list-item-subtitle>
@@ -726,32 +728,32 @@ export default {
       if (value >= 0) {
         this.curLang = this.langs[value]
         this.$vuetify.lang.current = this.curLang.id
-				this.cards = [
-					{
-						before: CARD_BEFORE1,
-						after: CARD_AFTER1,
-						icon: 'mdi-image-area',
-						tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
-					},
-					{
-						before: CARD_BEFORE2,
-						after: CARD_AFTER2,
-						icon: 'mdi-palette',
-						tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
-					},
-					{
-						before: CARD_BEFORE3,
-						after: CARD_AFTER3,
-						icon: 'mdi-account-box',
-						tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
-					},
-					{
-						before: CARD_BEFORE4,
-						after: CARD_AFTER4,
-						icon: 'mdi-fullscreen-exit',
-						tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
-					},
-				]
+        this.cards = [
+          {
+            before: CARD_BEFORE1,
+            after: CARD_AFTER1,
+            icon: 'mdi-image-area',
+            tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
+          },
+          {
+            before: CARD_BEFORE2,
+            after: CARD_AFTER2,
+            icon: 'mdi-palette',
+            tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
+          },
+          {
+            before: CARD_BEFORE3,
+            after: CARD_AFTER3,
+            icon: 'mdi-account-box',
+            tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
+          },
+          {
+            before: CARD_BEFORE4,
+            after: CARD_AFTER4,
+            icon: 'mdi-fullscreen-exit',
+            tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
+          },
+        ]
       }
     },
     files: {
@@ -809,7 +811,6 @@ export default {
     this.langIndex = langIndex
     this.getWechatLoginCode()
     let seoTab = checkSeoTab()
-
     if (seoTab == 'enhance') {
       // 彩色照片优化
       this.optionsTab = 0
@@ -960,8 +961,8 @@ export default {
               this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
               clearInterval(this.timer)
             } else {
-							// file.status = res.mdfs[0]
-							this.$refs.upload.update(file, { status: res.mdfs[0] })
+              // file.status = res.mdfs[0]
+              this.$refs.upload.update(file, { status: res.mdfs[0] })
               this.timer = setTimeout(() => {
                 this.getFileStatusProgress(file)
               }, 2000)
