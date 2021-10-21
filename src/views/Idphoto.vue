@@ -54,11 +54,11 @@
           </v-btn>
         </div>
 
-        <!-- <v-app-bar-nav-icon class="hidden-sm-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
+        <v-app-bar-nav-icon class="hidden-sm-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       </v-container>
     </v-app-bar>
 
-    <!-- <v-navigation-drawer v-model="drawer" fixed left temporary>
+    <v-navigation-drawer v-model="drawer" fixed left temporary>
       <v-list dense>
         <v-list-item ripple @click="onPriceClick">
           <v-list-item-title>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</v-list-item-title>
@@ -83,7 +83,7 @@
           <v-list-item-title>{{ $vuetify.lang.t('$vuetify.loginTxt') }}</v-list-item-title>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer> -->
+    </v-navigation-drawer>
 
     <!-- 主体区域 -->
     <v-main>
@@ -95,13 +95,13 @@
 
         <v-row class="mt-4">
           <v-col v-for="(card, i) in cards" :key="i" cols="12" md="6" style="margin: auto">
-            <v-card elevation="4">
-              <v-sheet class="d-flex align-center justify-center" color="primary lighten-2" height="48">
+            <v-card elevation="4"  :style="{ width: staticImgWidth?staticImgWidth + 'px':'auto', 'margin':'auto'}">
+              <v-sheet class="d-flex align-center justify-center" color="primary lighten-2" height="48"  :style="{ width: staticImgWidth?staticImgWidth + 'px':'auto'}">
                 <v-icon color="white">{{ card.icon }}</v-icon>
                 <span class="ml-2 text-button white--text">{{ card.tag }}</span>
               </v-sheet>
               <!--  :style="{ height: `${staticImgHeight}px` }" -->
-              <v-sheet class="d-rela">
+              <v-sheet class="d-rela" :style="{ width: staticImgWidth?staticImgWidth + 'px':'auto'}">
                 <!-- 之前的 -->
                 <div class="before-img">
                   <img v-if="!files.length" ref="staticImg" :src="card.after" alt="before" />
@@ -119,8 +119,8 @@
                   <v-chip label class="tag-after" color="black" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[0]') }}</v-chip>
                 </div>
                 <div class="after-img" :style="{ width: cardPercents[i] + '%' }">
-                  <img v-if="!files.length" :src="card.before" alt="after" :style="{ width: staticImgWidth + 'px', height: '100%' }" />
-                  <!-- staticImgHeight + 'px'  -->
+                  <img v-if="!files.length" :src="card.before" alt="after"/>
+                  <!-- staticImgHeight + 'px'    :style="{ width: staticImgWidth + 'px', height: staticImgHeight + 'px' }" -->
                   <img
                     v-if="
                       files.length &&
@@ -130,7 +130,7 @@
                     "
                     :src="files[files.length - 1].status.src_url"
                     alt="after"
-                    :style="{ width: staticImgWidth + 'px', height: '100%' }"
+                   
                   />
                   <v-chip label class="tag-before" color="black" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[1]') }}</v-chip>
                 </div>
@@ -215,7 +215,7 @@
         <div style="text-align: center; position: relative" v-if="!files.length">
           <p>
             <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
-              处理大图片请访问高光照片优化
+             {{ $vuetify.lang.t('$vuetify.maxImgHint')}}
             </a>
           </p>
         </div>
@@ -827,6 +827,8 @@ export default {
         // }
         // this.cards[0]['before'] = qian
         // this.cards[0]['before'] = duibih
+
+        this.onResize()
       },
       deep: true,
     },
@@ -952,9 +954,14 @@ export default {
     },
     onResize() {
       setTimeout(() => {
-        this.staticImgWidth = this.$refs.staticImg[0].offsetWidth
-        this.staticImgHeight = this.$refs.staticImg[0].offsetHeight
-      }, 0)
+        console.log(this.$refs.staticImg[0])
+        if(this.$refs.staticImg[0]){
+          this.staticImgWidth = this.$refs.staticImg[0].offsetWidth
+          console.log(this.staticImgWidth, 909090)
+          // this.staticImgHeight = 344 || this.$refs.staticImg[0].offsetHeight
+          // console.log(this.$refs.staticImg[0].offsetWidth, this.$refs.staticImg[0].offsetHeight)
+        }
+      }, 200)
       this.winHeight = window.innerHeight - window.innerHeight / 10 - 44 // 屏幕高度
       this.winWidth = window.innerWidth - 48 // 屏幕宽度
     },
@@ -1022,7 +1029,7 @@ export default {
         try {
             getImageSize(newFile.blob).then((res) => {
               if (res[0] > 800 || res[1] > 800) {
-                this.$toast.error('图片的宽和高最大800px')
+                this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
                 this.onUploadCancel()
               }
             })
@@ -1292,7 +1299,7 @@ export default {
                       this.fileDonwload(res.img_url)
                       // 关闭定时器
                       clearInterval(window.dsqq) 
-                      this.$toast.success(res.msg)
+                      this.$toast.success('支付完成')
                       // 关闭弹框
                        this.showQrcode = false
                        window.code111 = false
@@ -1752,8 +1759,10 @@ export default {
 .before-img {
   position: relative;
   /* z-index: 1; */
+  height: 344px;
   img {
-    width: 100%;
+    width: auto;
+    height: 100%;
     display: block;
   }
 }
@@ -1762,9 +1771,13 @@ export default {
   position: absolute;
   left: 0;
   top: 0;
-  height: 100%;
+  height: 344px;
   /* z-index: 0; */
   overflow: hidden;
+  img{
+    width: auto;
+    height: 100%;
+  }
 }
 .tag-before {
   position: absolute;

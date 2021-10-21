@@ -1,6 +1,8 @@
 export default {
   chinese: {
     name: '照片优化',
+    error800:'图片的宽和高最大800px',
+    maxImgHint:' 处理大图片请访问高光照片优化 ',
     idphotoName: 'PisaAI-证件照',
     idphotoSynopsis: 'PisaAI证件照是一个证件照自动处理的工具，可以自动放大和清晰脸部，去除划痕。不懂PS也可以更换背景色，目前支持红底、白底、蓝底和透明底，并可以输出300dpi的打印级图片，一键完成。', // idphoto子站独立描述
     maxImgYh: '大图优化',
@@ -181,7 +183,9 @@ export default {
     },
   },
   english: {
-    name: 'PhotoEnhance',
+    name: 'PisaAI PhotoEnhance',
+    error800:'The width and height of the picture are up to 800px',
+    maxImgHint:' To work with large images, visit highlight photo optimization ',
     idphotoName: 'PisaAI - IDPhoto',
     idphotoSynopsis: 'PisaAI IDPhoto is an auto ID photo processing tool that can clarify faces and change background colors', // idphoto子站独立描述
     maxImgYh: 'Large map optimization',
@@ -379,6 +383,8 @@ export default {
   },
   japanese: {
     name: '写真強化',
+    error800:'画像の幅と高さは最大800 pxです。',
+    maxImgHint:'大きな画像を処理するには、高光写真の最適化にアクセスしてください。',
     idphotoName: 'PisaAI-証明書の写真',
     idphotoSynopsis: 'PisaAI IDPhotoは、顔の鮮明化や背景色の変更が可能な自動証明写真加工ツールです。', // idphoto子站独立描述
     maxImgYh: '大いに最適化を図る',
@@ -558,6 +564,8 @@ export default {
   },
   spanish: {
     name: 'Retoque Fotográfico',
+    error800:'Anchura y altura máximas de la imagen 800px',
+    maxImgHint:'Para procesar imágenes grandes, visite la optimización de imágenes de alto brillo',
     idphotoName: 'PisaAI - foto de identificación',
     idphotoSynopsis: 'PisaAI IDPhoto es una herramienta de procesamiento de fotos de identificación automática que puede aclarar las caras y cambiar los colores del fondo', 
     maxImgYh: 'Optimización de gráficos grandes',
@@ -747,11 +755,13 @@ export default {
       checkAll: 'todos',
       start: 'Iniciar tarea',
       cancel: 'Eliminar todos',
-      upload: 'Continuar cargando imágenes（Máximo 800*800 píxeles）',
+      upload: 'Continuar cargando imágenes（Máximo 800*800 píx）',
     },
   },
   french: {
-    name: 'Photo Améliorer',
+    name: 'PisaAI Photo Améliorer',
+    error800:`Largeur et hauteur de l'image jusqu'à 800px`,
+    maxImgHint:`Pour travailler avec de grandes images, visitez l'optimisation des photos en surbrillance`,
     idphotoName: `PisaAI - carte d'identité`,
     idphotoSynopsis: `PisaAI IDPhoto est un outil de traitement automatique des photos d'identité qui permet de clarifier les visages et de modifier les couleurs d'arrière-plan.`, 
     maxImgYh: 'Optimisation des grandes cartes',
