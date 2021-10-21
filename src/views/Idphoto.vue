@@ -54,11 +54,11 @@
           </v-btn>
         </div>
 
-        <!-- <v-app-bar-nav-icon class="hidden-sm-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
+        <v-app-bar-nav-icon class="hidden-sm-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       </v-container>
     </v-app-bar>
 
-    <!-- <v-navigation-drawer v-model="drawer" fixed left temporary>
+    <v-navigation-drawer v-model="drawer" fixed left temporary>
       <v-list dense>
         <v-list-item ripple @click="onPriceClick">
           <v-list-item-title>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</v-list-item-title>
@@ -83,7 +83,7 @@
           <v-list-item-title>{{ $vuetify.lang.t('$vuetify.loginTxt') }}</v-list-item-title>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer> -->
+    </v-navigation-drawer>
 
     <!-- 主体区域 -->
     <v-main>
