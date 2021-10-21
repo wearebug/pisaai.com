@@ -39,9 +39,6 @@
                 <v-list-item>
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + 0"></v-list-item-title>
                 </v-list-item>
-                <v-list-item @click="onGetTaskList">
-                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.uploadListTxt')"></v-list-item-title>
-                </v-list-item>
                 <v-list-item @click="onLogout">
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.loginOutBtnTxt')"></v-list-item-title>
                 </v-list-item>
