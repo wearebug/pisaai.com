@@ -39,9 +39,6 @@
                 <v-list-item>
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + 0"></v-list-item-title>
                 </v-list-item>
-                <v-list-item @click="onGetTaskList">
-                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.uploadListTxt')"></v-list-item-title>
-                </v-list-item>
                 <v-list-item @click="onLogout">
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.loginOutBtnTxt')"></v-list-item-title>
                 </v-list-item>
@@ -366,10 +363,10 @@
                 </v-col>
                 <v-col class="d-flex justify-center" cols="12" md="6">
                   <wxlogin
-                    appid="wxf13f66d3946928cf"
+                    appid="wx4f357b743df13731"
                     scope="snsapi_login"
                     theme="'black'"
-                    :redirect_uri="encodeURIComponent('https://new.hiliphoto.com')"
+                    :redirect_uri="encodeURIComponent('http://pisaai.com')"
                   ></wxlogin>
                 </v-col>
               </v-row>

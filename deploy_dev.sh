@@ -10,7 +10,7 @@ yarn build
 cd dist
 
 # 生成域名验证文件
-echo pisaai.com > CNAME
+echo dev.pisaai.com > CNAME
 
 # 修复Github pages 部署时, history 模式路由访问子路由提示 404 的问题
 cat index.html > 404.html
