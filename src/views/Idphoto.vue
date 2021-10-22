@@ -222,11 +222,11 @@
 
         <v-list three-line v-if="files.length" class="pic_list">
           <v-list-item v-for="item in c_b.cloneDeep(files).reverse()  " :key="item.id" style="border-bottom: 1px solid #c9cbce">
-            <v-list-item-avatar class="list_item_head_box" rounded>
+            <v-list-item-avatar class="list_item_head_box" rounded style="padding-top: 15px;padding-bottom: 37px;">
               <v-checkbox v-model="checkedItem" label="" :value="item.id"></v-checkbox>
-              <v-img :src="item.blob"></v-img>
+              <v-img :src="item.blob" style="height:100%"></v-img>
             </v-list-item-avatar>
-            <v-list-item-content style="padding: 35px 0 0">
+            <v-list-item-content style="padding: 35px 0 0;margin-top:-20px">
               <v-list-item-title>
                 <v-progress-linear :value="item.response.code === 200 ? item.progress : 0" height="6"></v-progress-linear>
               </v-list-item-title>
