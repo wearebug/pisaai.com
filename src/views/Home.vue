@@ -31,13 +31,13 @@
               <v-btn v-bind="attrs" v-on="on" fab class="head_img_btn">
                 <!-- <span>{{ $vuetify.lang.t('$vuetify.userTxt') }}</span> -->
                 <!-- <v-icon size="16">mdi-chevron-down</v-icon> -->
-                <v-img :src="isWechatLogin ? wechatHead : require('../assets/head_img.jpg')" class="head_img"></v-img>
+                <v-img :src="userInfo.headimgurl || require('../assets/head_img.jpg')" class="head_img"></v-img>
               </v-btn>
             </template>
             <v-list flat>
               <v-list-item-group color="primary">
                 <v-list-item>
-                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + 0"></v-list-item-title>
+                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + (userNumews || 0)"></v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="onLogout">
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.loginOutBtnTxt')"></v-list-item-title>
@@ -769,7 +769,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(['userInfo']),
+    ...mapState(['userInfo','userNumews']),
     prices() {
       const functionPrice = this.$vuetify.lang.locales[this.curLang.id].functionPrice
       const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcToBNums200']

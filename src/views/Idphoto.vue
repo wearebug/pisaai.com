@@ -32,13 +32,13 @@
           <v-menu offset-y nudge-top="-10" nudge-right="20" v-if="userInfo">
             <template v-slot:activator="{ on, attrs }">
               <v-btn v-bind="attrs" v-on="on" fab class="head_img_btn">
-                <v-img :src="isWechatLogin ? wechatHead : require('../assets/head_img.jpg')" class="head_img"></v-img>
+                <v-img :src="userInfo.headimgurl || require('../assets/head_img.jpg')" class="head_img"></v-img>
               </v-btn>
             </template>
             <v-list flat>
               <v-list-item-group color="primary">
                 <v-list-item>
-                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + 0"></v-list-item-title>
+                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + (userNumews || 0)"></v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="onGetTaskList">
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.uploadListTxt')"></v-list-item-title>
@@ -625,6 +625,10 @@ export default {
   },
   data() {
     return {
+      mobelLoginInfo: {
+        headimgurl:'',
+        nickname:''
+      },
       findItem:{},
       c_b: _,
       channel: 'pisaAI',
@@ -840,9 +844,16 @@ export default {
         this.checkedAllItem = []
       }
     },
+    // 路由监听
+    $route( to , from ){   
+      //  console.log( to , from )
+      // to , from 分别表示从哪跳转到哪，都是一个对象
+      // to.path  ( 表示的是要跳转到的路由的地址 eg: /home );
+     }
+
   },
   computed: {
-    ...mapState(['userInfo']),
+    ...mapState(['userInfo','userNumews']),
     prices() {
       const functionPrice = this.$vuetify.lang.locales[this.curLang.id].functionPrice
       console.log(functionPrice, 6789)
@@ -938,7 +949,7 @@ export default {
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
   methods: {
-    ...mapMutations(['setUserInfo', 'removeUserInfo']),
+    ...mapMutations(['setUserInfo', 'removeUserInfo','removeSetNumew', 'setNumew']),
     getWechatLoginCode() {
       const code = this.getUrlParam()
       if (code) {
@@ -1318,19 +1329,36 @@ export default {
                           this.setUserInfo(res.data)
                           this.isWechatLogin = true
                           window.infoStatus = false
+
+                          this.wechatHead = res.data.headimgurl
+                          // localStorage.setItem('headimgurl', res.data.headimgurl)
+                          this.mobelLoginInfo.headimgurl = res.data.headimgurl
+                          this.mobelLoginInfo.nickname = res.data.nickname
+
+                          // headimgurl: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIvLxDbOtzvSr7bNu18ZWvNaibqF0egMOHo7qJyFSn03KAzumGoaE2ODJQiaCzhH33zaibF7YuvrJgsA/132"
+                          // nickname: "光"
+                          // openid: "oDRwY1rnT0RebzjsXw-WPRj4Xbxw"
+                          // token: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJmZCI6InBjIiwic3ViIjoib0RSd1kxcm5UMFJlYnpqc1h3LVdQUmo0WGJ4dyIsInVpZCI6MTMzODl9.sAhbyv44RB4yOIXiefDI_h9hXQ6fWWw5cYi5ZeJlsjiCbIoHWaemOHE4aMftiXQYlnKBfG1URW1D7FPzdiwjFw"
+                          // unionid: "o8iwLwfLbDfq08bNEv9mrvWcae4s"
+
+
                           // this.$toast.success('登录成功')
 
                         }
                       })
                   }
                     
-                    // 查询点数
+                    //  如果登陆就 查询点数
                     if(this.userInfo){
                       photoUserfinace({
                         token: this.userInfo.token,
                         channel:this.channel,
                         ver:2
                       }).then(res=>{
+                        console.log(res, 9090)
+
+                        this.setNumew(res.data.nums)
+
                         if(res.code === 0 && res.data.nums > 0){
                             // 调用扣除点数
                             photoPhotopay({
@@ -1346,7 +1374,6 @@ export default {
                                   if(res.code === 200  && window.code111){
                                     this.fileDonwload(res.img_url)
                                     clearInterval(window.dsqq) 
-                                    
                                     this.$toast.success('成功')
                                     // 关闭弹框
                                     this.showQrcode = false
@@ -1446,6 +1473,7 @@ export default {
           channel:this.channel,
           ver:2
         }).then(res=>{
+          this.setNumew(res.data.nums)
           if(res.code === 0){
             if(res.data.nums <= 0){
               // 没有点数了
@@ -1690,6 +1718,7 @@ export default {
     },
     onLogout() {
       this.removeUserInfo()
+      this.removeSetNumew()
     },
     onGetTaskList() {},
     onShowFullscreen(i) {
