@@ -419,7 +419,7 @@
                     appid="wx4f357b743df13731"
                     scope="snsapi_login"
                     theme="'black'"
-                    :redirect_uri="encodeURIComponent('http://pisaai.com')"
+                    :redirect_uri="encodeURIComponent('http://pisaai.com/idphoto')"
                   ></wxlogin>
                 </v-col>
               </v-row>
@@ -1687,7 +1687,7 @@ export default {
     },
     async wechatLogin(code) {
       try {
-        const res = await wechatLogin({ code })
+        const res = await wechatLogin({ code,channel:'pisaAI' })
         this.setUserInfo(res.data)
         this.wechatHead = res.data.headimgurl
         this.isWechatLogin = true

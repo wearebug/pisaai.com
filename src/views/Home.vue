@@ -1307,7 +1307,7 @@ export default {
     },
     async wechatLogin(code) {
       try {
-        const res = await wechatLogin({ code })
+        const res = await wechatLogin({ code, channel:'pisaAI' })
         this.setUserInfo(res.data)
         this.wechatHead = res.data.headimgurl
         this.isWechatLogin = true
