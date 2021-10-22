@@ -366,7 +366,7 @@
                     appid="wx4f357b743df13731"
                     scope="snsapi_login"
                     theme="'black'"
-                    :redirect_uri="encodeURIComponent('http://pisaai.com/idphoto')"
+                    :redirect_uri="encodeURIComponent('http://pisaai.com')"
                   ></wxlogin>
                 </v-col>
               </v-row>
