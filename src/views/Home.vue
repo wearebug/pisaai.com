@@ -1314,7 +1314,7 @@ export default {
               channel: 'pisaAI',
               ver:2
             }).then(res=>{
-              this.setNumew(res.data.nums ? res.data.nums -1 : 0)
+              this.setNumew(res.data.nums ? res.data.nums : 0)
             })
         }
       }
