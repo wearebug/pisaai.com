@@ -1357,7 +1357,7 @@ export default {
                       }).then(res=>{
                         console.log(res, 9090)
 
-                        this.setNumew(res.data.nums)
+                        this.setNumew(res.data.nums ? res.data.nums -1 : 0)
 
                         if(res.code === 0 && res.data.nums > 0){
                             // 调用扣除点数
@@ -1473,7 +1473,7 @@ export default {
           channel:this.channel,
           ver:2
         }).then(res=>{
-          this.setNumew(res.data.nums)
+           this.setNumew(res.data.nums ? res.data.nums -1 : 0)
           if(res.code === 0){
             if(res.data.nums <= 0){
               // 没有点数了
@@ -1687,7 +1687,7 @@ export default {
     },
     async wechatLogin(code) {
       try {
-        const res = await wechatLogin({ code })
+        const res = await wechatLogin({ code,channel:'pisaAI' })
         this.setUserInfo(res.data)
         this.wechatHead = res.data.headimgurl
         this.isWechatLogin = true
