@@ -1076,7 +1076,7 @@ export default {
       console.log('file', file)
       if (file.response.mdfs) {
         const { mdfs } = file.response
-        getFileStatus({ mdf: mdfs[0], platform: isMobile() ? 'h5' : 'pc' })
+        getFileStatus({ mdf: mdfs[0], platform: isMobile() ? 'h5' : 'pc', channel:this.channel })
           .then((res) => {
             if (res.mdfs[0].src_url) {
               // file.status = res.mdfs[0]
@@ -1532,6 +1532,7 @@ export default {
       if (this.userInfo) {
         try {
           const data = {
+            channel: this.channel,
             fd: isMobile() ? 'h5' : 'pc',
             token:
               this.userInfo?.token ||
@@ -1609,7 +1610,7 @@ export default {
     //   }, 2000)
     // },
     getPackageOrderStataus(order_id) {
-      packageStatus({ order_id })
+      packageStatus({ order_id,channel: this.channel })
         .then((res) => {
           if (res.data.is_pay === 2) {
             this.getPackageOrderResult(order_id)
@@ -1626,7 +1627,7 @@ export default {
           clearInterval(this.timer2)
           this.timer2Count = 0
         }
-        packageStatus({ order_id })
+        packageStatus({ order_id,channel: this.channel, })
           .then((res) => {
             if (res.data.is_pay !== 2) {
               this.timer2Count = 0
@@ -1710,6 +1711,7 @@ export default {
       this.$v.$touch()
       if (!this.$v.$invalid) {
         const data = {
+          channel: this.channel,
           email: this.email,
           pws: this.pwd,
           ty: this.isRegister ? 2 : 1,
