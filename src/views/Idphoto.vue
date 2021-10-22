@@ -1352,9 +1352,9 @@ export default {
                         channel:this.channel,
                         ver:2
                       }).then(res=>{
-                        console.log(res, 9090)
+                  
 
-                        this.setNumew(res.data.nums ? res.data.nums -1 : 0)
+                        this.setNumew(res.data.nums ? res.data.nums : 0)
 
                         if(res.code === 0 && res.data.nums > 0){
                             // 调用扣除点数
@@ -1367,6 +1367,7 @@ export default {
                               mobile: this.userInfo.token
                             }).then(res=>{
                               if(res.code === 0){
+                                this.tongbudian() // 再次同步点数
                                 tocDownload(mdf).then(res=>{
                                   if(res.code === 200  && window.code111){
                                     this.fileDonwload(res.img_url)
@@ -1470,7 +1471,7 @@ export default {
           channel: this.channel,
           ver:2
         }).then(res=>{
-           this.setNumew(res.data.nums ? res.data.nums -1 : 0)
+           this.setNumew(res.data.nums ? res.data.nums : 0)
           if(res.code === 0){
             if(res.data.nums <= 0){
               // 没有点数了
@@ -1491,6 +1492,7 @@ export default {
                       this.fileDonwload(res.img_url)
                     }
                   })
+                  this.tongbudian() // 再次同步点数
                 }
               })
             }
@@ -1677,6 +1679,18 @@ export default {
     onPriceClick() {
       this.showDialog = true
     },
+    // 同步点数
+    tongbudian(){
+        if (this.userInfo) {
+            photoUserfinace({
+              token: this.userInfo.token,
+              channel: 'pisaAI',
+              ver:2
+            }).then(res=>{
+              this.setNumew(res.data.nums ? res.data.nums : 0)
+            })
+        }
+    },
     /**
      * 点击登录/用户中心 TAB
      */
@@ -1686,15 +1700,7 @@ export default {
     async wechatLogin(code) {
 
       let gdsa = () => {
-        if (this.userInfo) {
-            photoUserfinace({
-              token: this.userInfo.token,
-              channel: 'pisaAI',
-              ver:2
-            }).then(res=>{
-              this.setNumew(res.data.nums ? res.data.nums -1 : 0)
-            })
-        }
+        this.tongbudian()
       }
 
 
