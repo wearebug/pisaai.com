@@ -1470,7 +1470,7 @@ export default {
   
         photoUserfinace({
           token: this.userInfo.token,
-          channel:this.channel,
+          channel: this.channel,
           ver:2
         }).then(res=>{
            this.setNumew(res.data.nums ? res.data.nums -1 : 0)
@@ -1692,6 +1692,16 @@ export default {
         this.wechatHead = res.data.headimgurl
         this.isWechatLogin = true
         this.$toast.success('登录成功')
+
+
+        photoUserfinace({
+          token: this.userInfo.token,
+          channel: 'pisaAI',
+          ver:2
+        }).then(res=>{
+           this.setNumew(res.data.nums ? res.data.nums -1 : 0)
+        })
+
       } catch (e) {
         this.$toast.error(e.message)
       }

@@ -532,7 +532,7 @@ import { validationMixin } from 'vuelidate'
 import { required, minLength, email } from 'vuelidate/lib/validators'
 import PreviewScale from '@/components/PreviewScale'
 import { getfilesize, isMobile, isWechat, checkSeoTab } from '@/utils'
-import { fileDownload, getFileStatus, wechatPay, getOrderStataus, login, wechatLogin, packagePay, packageStatus } from '@/api/home'
+import { fileDownload, getFileStatus, wechatPay, getOrderStataus, login, wechatLogin, packagePay, packageStatus,photoUserfinace } from '@/api/home'
 export default {
   mixins: [validationMixin],
   validations: {
@@ -863,7 +863,7 @@ export default {
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
   methods: {
-    ...mapMutations(['setUserInfo', 'removeUserInfo']),
+    ...mapMutations(['setUserInfo', 'removeUserInfo', 'setNumew']),
     getWechatLoginCode() {
       const code = this.getUrlParam()
       if (code) {
@@ -1312,6 +1312,17 @@ export default {
         this.wechatHead = res.data.headimgurl
         this.isWechatLogin = true
         this.$toast.success('登录成功')
+
+
+        photoUserfinace({
+          token: this.userInfo.token,
+          channel: 'pisaAI',
+          ver:2
+        }).then(res=>{
+           this.setNumew(res.data.nums ? res.data.nums -1 : 0)
+        })
+
+
       } catch (e) {
         this.$toast.error(e.message)
       }
