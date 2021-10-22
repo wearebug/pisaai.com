@@ -1306,26 +1306,32 @@ export default {
       this.showLogin = true
     },
     async wechatLogin(code) {
+
+      let gdsa = () => {
+        if (this.userInfo) {
+            photoUserfinace({
+              token: this.userInfo.token,
+              channel: 'pisaAI',
+              ver:2
+            }).then(res=>{
+              this.setNumew(res.data.nums ? res.data.nums -1 : 0)
+            })
+        }
+      }
+
       try {
         const res = await wechatLogin({ code, channel:'pisaAI' })
         this.setUserInfo(res.data)
         this.wechatHead = res.data.headimgurl
         this.isWechatLogin = true
         this.$toast.success('登录成功')
-
-
-        photoUserfinace({
-          token: this.userInfo.token,
-          channel: 'pisaAI',
-          ver:2
-        }).then(res=>{
-           this.setNumew(res.data.nums ? res.data.nums -1 : 0)
-        })
-
-
+        gdsa()
       } catch (e) {
-        this.$toast.error(e.message)
+        gdsa()
+        // this.$toast.error(e.message)
       }
+
+
     },
     onSubmit() {
       this.$v.$touch()
