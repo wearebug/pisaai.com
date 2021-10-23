@@ -952,6 +952,7 @@ export default {
       if (code) {
         this.wechatLogin(code)
       }
+       this.tongbudian() // 点数
     },
     getUrlParam(name = 'code') {
       let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')

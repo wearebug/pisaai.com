@@ -869,6 +869,10 @@ export default {
       if (code) {
         this.wechatLogin(code)
       }
+
+      this.getPhonrDs()
+
+
     },
     getUrlParam(name = 'code') {
       let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
@@ -1308,17 +1312,8 @@ export default {
     async wechatLogin(code) {
 
       let gdsa = () => {
-        if (this.userInfo) {
-            photoUserfinace({
-              token: this.userInfo.token,
-              channel: 'pisaAI',
-              ver:2
-            }).then(res=>{
-              this.setNumew(res.data.nums ? res.data.nums : 0)
-            })
-        }
+        this.getPhonrDs()
       }
-
       try {
         const res = await wechatLogin({ code, channel:'pisaAI' })
         this.setUserInfo(res.data)
@@ -1332,6 +1327,18 @@ export default {
       }
 
 
+    },
+    // 查看剩余点数
+    getPhonrDs() {
+        if (this.userInfo) {
+            photoUserfinace({
+              token: this.userInfo.token,
+              channel: 'pisaAI',
+              ver:2
+            }).then(res=>{
+              this.setNumew(res.data.nums ? res.data.nums : 0)
+            })
+        }
     },
     onSubmit() {
       this.$v.$touch()
