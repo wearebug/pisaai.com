@@ -31,7 +31,7 @@
               <v-btn v-bind="attrs" v-on="on" fab class="head_img_btn">
                 <!-- <span>{{ $vuetify.lang.t('$vuetify.userTxt') }}</span> -->
                 <!-- <v-icon size="16">mdi-chevron-down</v-icon> -->
-                <v-img :src="userInfo.headimgurl || require('../assets/head_img.jpg')" class="head_img"></v-img>
+                <v-img :src="userInfo.headimgurl || require('../assets/head_img.png')" class="head_img"></v-img>
               </v-btn>
             </template>
             <v-list flat>

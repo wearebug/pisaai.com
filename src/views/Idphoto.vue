@@ -32,7 +32,7 @@
           <v-menu offset-y nudge-top="-10" nudge-right="20" v-if="userInfo">
             <template v-slot:activator="{ on, attrs }">
               <v-btn v-bind="attrs" v-on="on" fab class="head_img_btn">
-                <v-img :src="userInfo.headimgurl || require('../assets/head_img.jpg')" class="head_img"></v-img>
+                <v-img :src="userInfo.headimgurl || require('../assets/head_img.png')" class="head_img"></v-img>
               </v-btn>
             </template>
             <v-list flat>
