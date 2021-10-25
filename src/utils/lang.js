@@ -39,7 +39,7 @@ export default {
       },
     ],
     priceType: ['微信支付', '支付宝支付', 'Paypal支付'],
-    priceTips: '单张￥5，购买越多赠送越多，更低折扣请加微信wearebug咨询。',
+    priceTips: '单张￥6，购买越多赠送越多，更低折扣请加微信wearebug咨询。',
     weChatVip: ['微信扫码下载高清无水印图', '打包购买更划算', '下载无水印高清图'],
     upload: {
       status: {
@@ -592,7 +592,7 @@ export default {
     functionTxt: ['Precio', 'API'],
     functionPrice: [
       {
-        title: '3 foto = ￥15',
+        title: '3 fotos = ￥15',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
       },
       {
@@ -788,7 +788,7 @@ export default {
     functionTxt: ['Prix', 'API'],
     functionPrice: [
       {
-        title: '3 photo = ￥15',
+        title: '3 photos = ￥15',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
       },
       {
