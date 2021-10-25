@@ -1,6 +1,6 @@
 export default {
   chinese: {
-    name: '照片优化',
+    name: 'PisaAI披萨智能',
     error800: '图片的宽和高最大800px',
     maxImgHint: ' 处理大图片请访问高光照片优化 ',
     idphotoName: 'PisaAI-证件照',
@@ -382,7 +382,7 @@ export default {
     },
   },
   japanese: {
-    name: '写真強化',
+    name: 'PisaAI写真強化',
     error800:'画像の幅と高さは最大800 pxです。',
     maxImgHint:'大きな画像の処理については、Hili 写真の最適化をご覧ください。',
     idphotoName: 'PisaAI-証明書の写真',
@@ -563,7 +563,7 @@ export default {
     },
   },
   spanish: {
-    name: 'Retoque Fotográfico',
+    name: 'PisaAI Retoque Fotográfico',
     error800:'Anchura y altura máximas de la imagen 800px',
     maxImgHint:'Para procesar imágenes grandes, visite la optimización de imágenes de alto brillo',
     idphotoName: 'PisaAI - foto de identificación',
