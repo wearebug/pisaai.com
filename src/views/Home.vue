@@ -1563,7 +1563,7 @@ export default {
       height: 100% !important;
       width: 142px !important;
       padding-left: 16px;
-      margin: 0px;
+      // margin: 0px;
       margin-right: 20px;
 
       .v-image {
