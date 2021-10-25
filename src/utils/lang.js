@@ -8,7 +8,7 @@ export default {
     maxImgYh: '大图优化',
     keyword: '老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照',
     description: 'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景。',
-    loginTxt: '登录/注册',
+    loginTxt: '登录',
     userTxt: '用户中心',
     loginTitle: '感谢支持PisaAI ！',
     loginList: ['登录用户可享折扣', '登录后浏览器关闭，任务不会丢失', '可随时查看处理记录', '使用最新高清AI模型'],
@@ -179,7 +179,7 @@ export default {
       checkAll: '全选',
       start: '开始任务',
       cancel: '删除全部',
-      upload: '继续上传（最大800*800像素）',
+      upload: '继续上传（最大800*800px）',
     },
   },
   english: {
@@ -191,7 +191,7 @@ export default {
     maxImgYh: 'Large map enhance',
     keyword: 'Old photo enhance, photo repair,  photo coloring, repair scratches, ID photo, ID photo background change, portrait photo',
     description: 'PisaAI PhotoEnhance is to colorize photos, repair scratches, face refinement, photo sharpening, etc. by AI algorithm. Fix old photos and ID photos before, ID photos for red, white, blue background.',
-    loginTxt: 'Sign in/Sign up',
+    loginTxt: 'Sign in',
     userTxt: 'User center',
     loginTitle: 'Thanks for choosing PisaAI',
     loginList: [
@@ -210,7 +210,7 @@ export default {
     functionTxt: ['Price', 'API'],
     functionPrice: [
       {
-        title: '3 photo = ￥15',
+        title: '3 photos = ￥15',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
       },
       {
@@ -390,7 +390,7 @@ export default {
     maxImgYh: '大いに最適化を図る',
     keyword: '古い写真、写真の修復、写真の着色、傷の修復、ID写真、ID写真の背景の変更、ポートレート',
     description: 'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景。',
-    loginTxt: 'ログイン/登録',
+    loginTxt: 'ログイン',
     userTxt: '使用者',
     loginTitle: 'PisaAI をご利用いただきありがとうございます',
     loginList: ['ログインユーザーの割引', 'ログイン後、タスクは失われません', '処理記録はいつでも閲覧できます', '最新のAIモデルを使用する'],
@@ -573,7 +573,7 @@ export default {
       'Fotos antiguas, reparación de fotos, coloración de fotos, reparación de arañazos, fotos de identificación, fotos de identificación para el fondo, fotos de retrato',
     description:
       'La optimización de PisaAI es un algoritmo de IA para colorear fotos, reparar arañazos, perfeccionar el rostro, afilar fotos y mucho más. Reparación de fotos antiguas y fotos de carné, fotos de carné con fondos rojos, blancos y azules.',
-    loginTxt: 'Iniciar sesión/Registrate',
+    loginTxt: 'Iniciar sesión',
     userTxt: 'User center',
     loginTitle: 'Gracias por apoyar a PisaAI',
     loginList: [
@@ -710,7 +710,7 @@ export default {
     privacyTxt: 'política de privacidad',
     privacyInfo: '<p class="Standard">Consulte la versión en inglés.</p>',
     copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
-    btnTxt: 'Cargar imagenes(Máximo 800*800 píxeles)',
+    btnTxt: 'Cargar imagenes(Máximo 800*800px)',
     contrastTips: ['posterior', 'antes'],
     contrastType: [
       'mejorar la foto en color',
@@ -755,7 +755,7 @@ export default {
       checkAll: 'todos',
       start: 'Iniciar tarea',
       cancel: 'Eliminar todos',
-      upload: 'Continuar cargando imágenes（Máximo 800*800 píx）',
+      upload: 'Seguir subiendo（Máximo 800*800px）',
     },
   },
   french: {
@@ -769,7 +769,7 @@ export default {
       "Photos anciennes, réparation de photo, coloriage de photo, réparation de rayures, photos d'identité, photos d'identité pour le fond, photos de portrait",
     description:
       "L'optimisation PisaAI est un algorithme d'IA qui permet de colorer les photos, de réparer les rayures, d'affiner le visage, de rendre les photos plus nettes, etc. Réparez les vieilles photos et les photos d'identité, les photos d'identité sur fond rouge, blanc et bleu.",
-    loginTxt: 'Connexion/Inscrivez-Vous',
+    loginTxt: 'Connexion',
     userTxt: 'User center',
     loginTitle: 'Merci de soutenir PisaAI',
     loginList: [
@@ -951,7 +951,7 @@ export default {
       checkAll: 'Tous',
       start: 'Démarrer la tâche',
       cancel: 'Tout supprimer',
-      upload: 'Continuer à télécharger des images(Maximum 800*800 pixels)',
+      upload: 'Continuer le chargement(Maximum 800*800px)',
     },
   },
 }
