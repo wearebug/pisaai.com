@@ -804,6 +804,7 @@ export default {
     },
   },
   created() {
+    _hmt.push(['_trackEvent', 'pisaai', 'www', 'index']) //百度埋点统计
     let langIndex = this.langs.findIndex((v) => v.id === this.$vuetify.lang.current)
     this.langIndex = langIndex
     this.getWechatLoginCode()
@@ -937,6 +938,7 @@ export default {
       console.log('newFile', newFile)
       if (newFile && !oldFile) {
         this.showOption = true
+        _hmt.push(['_trackEvent', 'pisaai', 'www', 'showTask']) //百度埋点统计
       }
       if (!newFile && oldFile) {
         this.showOption = false
@@ -960,6 +962,7 @@ export default {
             if (res.mdfs[0].src_url) {
               // file.status = res.mdfs[0]
               this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
+              _hmt.push(['_trackEvent', 'pisaai', 'www', 'repaired']) //百度埋点统计
               clearInterval(this.timer)
             } else {
               // file.status = res.mdfs[0]
@@ -1099,6 +1102,7 @@ export default {
      * 下载上传文件
      */
     async onFileDownload(response) {
+      _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'clickdownload']) //百度埋点统计
       const mdf = response.mdf || response.mdfs[0]
       try {
         await fileDownload(mdf)
@@ -1110,6 +1114,7 @@ export default {
         }
       } catch (e) {
         if (e.code === 2) {
+          _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
           this.onWechatPay(response)
         }
       }
@@ -1223,6 +1228,7 @@ export default {
             this.timer1Count = 0
             clearInterval(this.timer1)
             this.$toast.success(res.msg)
+            _hmt.push(['_trackEvent', 'pisaai', 'www', 'payok']) //百度埋点统计
             this.onFileDownload(response)
           })
           .catch((e) => {
@@ -1401,6 +1407,7 @@ export default {
       this.uploadAgainItemMdf = item.response.mdfs[0]
       this.uploadAgainItem = item.file
       this.showOption = true
+      _hmt.push(['_trackEvent', 'pisaai', 'www', 'fixAgain']) //百度埋点统计
     },
   },
 }
