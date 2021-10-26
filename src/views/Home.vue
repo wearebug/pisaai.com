@@ -779,7 +779,7 @@ export default {
     },
     links() {
       return [
-        this.$vuetify.lang.t('$vuetify.menu[3]'),
+        // this.$vuetify.lang.t('$vuetify.menu[3]'),
         this.$vuetify.lang.t('$vuetify.privacyTxt'),
         this.$vuetify.lang.t('$vuetify.agreementTxt'),
       ]
