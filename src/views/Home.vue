@@ -307,9 +307,9 @@
         <v-btn v-for="(link, i) in links" :key="link" color="white" text rounded class="my-2" @click="onShowFullscreen(i)">
           {{ link }}
         </v-btn>
-        <v-col class="py-4 text-center white--text text-body-2" cols="12">
+        <!--v-col class="py-4 text-center white--text text-body-2" cols="12">
           {{ $vuetify.lang.t('$vuetify.copyrightTxt') }}
-        </v-col>
+        </v-col-->
       </v-row>
     </v-footer>
     <v-dialog v-model="showDialog" max-width="960">
