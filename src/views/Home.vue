@@ -1071,7 +1071,7 @@ export default {
         }
       }
       console.log('data', data)
-      this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token }
+      this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token, channel: 'pisaAI' }
       if (this.isUploadAgain) {
         let aa = this.$refs.upload.update(this.$refs.upload.add(this.uploadAgainItem), {
           active: true,
