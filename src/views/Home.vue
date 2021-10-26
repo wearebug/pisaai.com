@@ -567,7 +567,7 @@ export default {
   },
   data() {
     return {
-      channel: 'HILI',
+      channel: 'pisaAI',
       timer: null,
       timer1: null,
       timer1Count: 0,
