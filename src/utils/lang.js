@@ -2,7 +2,7 @@ export default {
   chinese: {
     name: 'PisaAI披萨智能',
     error800: '图片的宽和高最大800px',
-    maxImgHint: ' 处理大图片请访问高光照片优化 ',
+    maxImgHint: ' 处理大图请访问高光照片优化 ',
     idphotoName: 'PisaAI-证件照',
     idphotoSynopsis: 'PisaAI证件照是一个证件照自动处理工具，可以自动放大和清晰脸部，降噪去划痕。还可以更换背景色，目前支持红底、白底、蓝底和透明底，并可以输出300dpi的打印级图片，一键完成。', // idphoto子站独立描述
     maxImgYh: '大图优化',

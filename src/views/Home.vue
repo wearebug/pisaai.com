@@ -138,6 +138,13 @@
             <p style="margin-bottom: 0" @click="deleteAllItem">{{ $vuetify.lang.t('$vuetify.pic.cancel') }}</p>
           </div>
         </v-sheet>
+		<div style="text-align: center; position: relative" v-if="!files.length">
+          <p>
+            <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
+             {{ $vuetify.lang.t('$vuetify.maxImgHint')}}
+            </a>
+          </p>
+        </div>
         <v-list three-line v-if="files.length" class="pic_list">
           <v-list-item v-for="item in files" :key="item.id" style="border-bottom: 1px solid #c9cbce">
             <v-list-item-avatar class="list_item_head_box" rounded  style="padding-top: 15px;padding-bottom: 37px;">
