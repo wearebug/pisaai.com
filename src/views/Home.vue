@@ -889,7 +889,7 @@ export default {
       this.winHeight = window.innerHeight - window.innerHeight / 10 - 44 // 屏幕高度
       this.winWidth = window.innerWidth - 48 // 屏幕宽度
     },
-    inputFilter(newFile, oldFile, prevent) {
+    async inputFilter(newFile, oldFile, prevent) {
       if (newFile && !oldFile) {
         // 过滤系统文件 和隐藏文件
         if (/(\/|^)(Thumbs\.db|desktop\.ini|\..+)$/.test(newFile.name)) {
@@ -914,6 +914,20 @@ export default {
           newFile.thumb = newFile.blob
         }
       }
+
+      function getImageSize(imgSrc) {
+        return new Promise((resolve, reject) => {
+          const newImg = new Image()
+          newImg.onload = () => {
+            resolve([newImg.width, newImg.height])
+          }
+          newImg.onerror = (err) => {
+            reject(err)
+          }
+          newImg.src = imgSrc
+        })
+      }
+
       // image 尺寸
       if (
         newFile &&
@@ -932,6 +946,25 @@ export default {
         }
         img.src = newFile.blob
       }
+
+      // 添加或者更新的时候
+      if (oldFile || (oldFile && newFile )) {
+        try {
+            getImageSize(newFile.blob).then((res) => {
+              if (res[0] > 800 || res[1] > 800) {
+                this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
+                this.onUploadCancel()
+              }
+            })
+        } catch (error) {
+          console.log(error)
+          
+        }
+
+
+      }
+
+
     },
     inputFile(newFile, oldFile) {
       console.log('newFile', newFile)
