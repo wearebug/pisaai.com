@@ -1400,6 +1400,7 @@ export default {
         try {
           const data = {
 			channel: this.channel,
+            channel: this.channel,
             fd: isMobile() ? 'h5' : 'pc',
             token:
               this.userInfo?.token ||
