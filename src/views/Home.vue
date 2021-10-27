@@ -987,6 +987,7 @@ export default {
         try {
             getImageSize(newFile.blob).then((res) => {
               if (res[0] > 800 || res[1] > 800) {
+                _hmt.push(['_trackEvent', 'pisaai', 'www', 'error800']) //百度埋点统计
                 this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
                 this.onUploadCancel()
               }
@@ -1506,6 +1507,7 @@ export default {
      * 点击价格TAB
      */
     onPriceClick() {
+      _hmt.push(['_trackEvent', 'pisaai', 'www-nav', '点击价格TAB']) //百度埋点统计
       this.showDialog = true
     },
 	// 同步点数
@@ -1524,6 +1526,8 @@ export default {
      * 点击登录/用户中心 TAB
      */
     onLogin() {
+      _hmt.push(['_trackEvent', 'pisaai', 'www-nav', '点击登录/用户中心']) //百度埋点统计
+
       this.showLogin = true
     },
     async wechatLogin(code) {
