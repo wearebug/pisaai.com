@@ -496,7 +496,7 @@
       <v-card class="p-rela" :max-width="initWidth" :height="initHeight">
         <v-row class="toolbar" :style="{ top: toolbarTop + 'px' }">
           <v-btn class="mx-4" icon color="white" @click="onPlus">
-            <v-icon>mdi-magnify-close</v-icon>
+            <v-icon>mdi-magnify-plus</v-icon>
           </v-btn>
           <v-btn class="mx-4" icon color="white" @click="onMinus">
             <v-icon>mdi-magnify-minus</v-icon>
