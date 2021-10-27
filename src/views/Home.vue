@@ -140,6 +140,13 @@
             <p style="margin-bottom: 0" @click="deleteAllItem">{{ $vuetify.lang.t('$vuetify.pic.cancel') }}</p>
           </div>
         </v-sheet>
+		<div style="text-align: center; position: relative" v-if="!files.length">
+          <p>
+            <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
+             {{ $vuetify.lang.t('$vuetify.maxImgHint')}}
+            </a>
+          </p>
+        </div>
 		<!--任务列表-->
         <v-list three-line v-if="files.length" class="pic_list">
           <v-list-item v-for="item in files" :key="item.id" style="border-bottom: 1px solid #c9cbce">
@@ -804,10 +811,10 @@ export default {
     },
     links() {
       return [
-        this.$vuetify.lang.t('$vuetify.menu[3]'),
+        //this.$vuetify.lang.t('$vuetify.menu[3]'),
         this.$vuetify.lang.t('$vuetify.privacyTxt'),
         this.$vuetify.lang.t('$vuetify.agreementTxt'),
-		this.$vuetify.lang.t('$vuetify.maxImgYh'),
+		//this.$vuetify.lang.t('$vuetify.maxImgYh'),
       ]
     },
     toolbarTop() {

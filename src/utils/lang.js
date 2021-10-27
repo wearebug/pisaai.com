@@ -22,11 +22,11 @@ export default {
     functionTxt: ['价格', 'API'],
     functionPrice: [
       {
-        title: '3张 = ￥15',
+        title: '3张 = ￥25',
         list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 无'],
       },
       {
-        title: '10张 = ￥45',
+        title: '10张 = ￥75',
         list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 支持'],
       },
       {
@@ -34,12 +34,12 @@ export default {
         list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 支持'],
       },
       {
-        title: '200张 = ￥400',
+        title: '200张 = ￥600',
         list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 支持'],
       },
     ],
     priceType: ['微信支付', '支付宝支付', 'Paypal支付'],
-    priceTips: '单张￥6，购买越多赠送越多，更低折扣请加微信wearebug咨询。',
+    priceTips: '单张￥9.8，购买越多赠送越多，更低折扣请加微信wearebug咨询。',
     weChatVip: ['微信扫码下载高清无水印图', '打包购买更划算', '下载无水印高清图'],
     upload: {
       status: {
@@ -210,11 +210,11 @@ export default {
     functionTxt: ['Price', 'API'],
     functionPrice: [
       {
-        title: '3 photo = ￥15',
+        title: '3 photo = ￥25',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
       },
       {
-        title: '10 photos = ￥45',
+        title: '10 photos = ￥75',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
@@ -222,7 +222,7 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: '200 photos = ￥400',
+        title: '200 photos = ￥600',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
@@ -404,11 +404,11 @@ export default {
     functionTxt: ['価格', 'API', 'value'],
     functionPrice: [
       {
-        title: '写真3枚 = ￥15',
+        title: '写真3枚 = ￥25',
         list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:NO'],
       },
       {
-        title: '写真10枚 = ￥45',
+        title: '写真10枚 = ￥75',
         list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
       {
@@ -416,7 +416,7 @@ export default {
         list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
       {
-        title: '写真200枚 = ￥400',
+        title: '写真200枚 = ￥600',
         list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
     ],
@@ -592,11 +592,11 @@ export default {
     functionTxt: ['Precio', 'API'],
     functionPrice: [
       {
-        title: '3 fotos = ￥15',
+        title: '3 fotos = ￥25',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
       },
       {
-        title: '10 fotos = ￥45',
+        title: '10 fotos = ￥75',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
@@ -604,7 +604,7 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: '200 fotos = ￥400',
+        title: '200 fotos = ￥600',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
@@ -788,11 +788,11 @@ export default {
     functionTxt: ['Prix', 'API'],
     functionPrice: [
       {
-        title: '3 photos = ￥15',
+        title: '3 photos = ￥25',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
       },
       {
-        title: '10 photos = ￥45',
+        title: '10 photos = ￥75',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
@@ -800,7 +800,7 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: '200 photos = ￥400',
+        title: '200 photos = ￥600',
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
