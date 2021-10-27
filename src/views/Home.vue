@@ -150,7 +150,7 @@
 
 		<!--任务列表-->
         <v-list three-line v-if="files.length" class="pic_list">
-          <v-list-item v-for="item in files" :key="item.id" style="border-bottom: 1px solid #c9cbce">
+          <v-list-item v-for="item in c_b.cloneDeep(files).reverse()" :key="item.id" style="border-bottom: 1px solid #c9cbce">
             <v-list-item-avatar class="list_item_head_box" rounded  style="padding-top: 15px;padding-bottom: 37px;">
               <v-checkbox v-model="checkedItem" label="" :value="item.id"></v-checkbox>
               <v-img :src="item.blob" style="height:100%"></v-img>
@@ -486,8 +486,12 @@
         </v-tabs-items>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click="onUploadCancel">取消</v-btn>
-          <v-btn color="primary darken-1" @click="onUploadComfirm">确定</v-btn>
+          <v-btn @click="onUploadCancel">
+			{{ $vuetify.lang.t('$vuetify.choiceType.cancel') }}
+		  </v-btn>
+          <v-btn color="primary darken-1" @click="onUploadComfirm">
+			{{ $vuetify.lang.t('$vuetify.choiceType.btn') }}
+		  </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

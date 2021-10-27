@@ -73,6 +73,7 @@ export default {
     choiceType: {
       title: '任务配置',
       btn: '立即开始任务',
+	  cancel: '取消',
       tips: '请输入RGB色值',
       list: [
         {
@@ -264,6 +265,7 @@ export default {
     choiceType: {
       title: 'Task configuration',
       btn: 'Start task now',
+	  cancel: 'cancel',
       tips: 'Please enter RGB color value',
       list: [
         {
@@ -454,6 +456,7 @@ export default {
     choiceType: {
       title: 'タスクの設定',
       btn: '直ちに任務を開始する',
+	  cancel: '中止',
       tips: 'RGBの色の値を入力',
       list: [
         {
@@ -642,6 +645,7 @@ export default {
     choiceType: {
       title: 'Configuración de la tarea',
       btn: 'Iniciar la tarea inmediatamente',
+	  cancel: 'cancelar',
       tips: 'Introduzca un valor de color RGB',
       list: [
         {
@@ -838,6 +842,7 @@ export default {
     choiceType: {
       title: 'Configuration des tâches',
       btn: 'Démarrer la tâche maintenant',
+	  cancel: 'annuler',
       tips: 'Veuillez saisir une valeur de couleur RGB',
       list: [
         {
