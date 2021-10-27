@@ -6,7 +6,6 @@
           <v-img class="shrink" contain src="../assets/logo.png" transition="scale-transition" width="120" eager />
         </div>
         <v-spacer></v-spacer>
-
         <!-- 导航菜单 -->
         <div class="hidden-sm-and-down">
           <v-btn text large @click="onPriceClick">
@@ -28,7 +27,7 @@
               </v-list-item-group>
             </v-list>
           </v-menu>
-
+		  <!-- 登录 -->
           <v-menu offset-y nudge-top="-10" nudge-right="20" v-if="userInfo">
             <template v-slot:activator="{ on, attrs }">
               <v-btn v-bind="attrs" v-on="on" fab class="head_img_btn">
@@ -357,9 +356,11 @@
         <v-btn v-for="(link, i) in links" :key="link" color="white" text rounded class="my-2" @click="onShowFullscreen(i)">
           {{ link }}
         </v-btn>
+        <!--
         <v-col class="py-4 text-center white--text text-body-2" cols="12">
           {{ $vuetify.lang.t('$vuetify.copyrightTxt') }}
         </v-col>
+        -->
       </v-row>
     </v-footer>
     <v-dialog v-model="showDialog" max-width="960">
@@ -622,13 +623,13 @@ export default {
   },
   data() {
     return {
+	  channel: 'pisaAI',
       mobelLoginInfo: {
         headimgurl:'',
         nickname:''
       },
       findItem:{},
-      c_b: _,
-      channel: 'pisaAI',
+      c_b: _,      
       timer: null,
       timer1: null,
       timer1Count: 0,
@@ -846,7 +847,7 @@ export default {
       //  console.log( to , from )
       // to , from 分别表示从哪跳转到哪，都是一个对象
       // to.path  ( 表示的是要跳转到的路由的地址 eg: /home );
-     }
+    }
 
   },
   computed: {
@@ -861,10 +862,10 @@ export default {
     },
     links() {
       return [
-        this.$vuetify.lang.t('$vuetify.menu[3]'),
+        // this.$vuetify.lang.t('$vuetify.menu[3]'),
         this.$vuetify.lang.t('$vuetify.privacyTxt'),
         this.$vuetify.lang.t('$vuetify.agreementTxt'),
-        this.$vuetify.lang.t('$vuetify.maxImgYh'),
+        // this.$vuetify.lang.t('$vuetify.maxImgYh'),
       ]
     },
     toolbarTop() {
@@ -888,7 +889,6 @@ export default {
   },
   created() {
     _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'index']) //百度埋点统计
-
     let langIndex = this.langs.findIndex((v) => v.id === this.$vuetify.lang.current)
     this.langIndex = langIndex
     this.getWechatLoginCode()
@@ -965,10 +965,10 @@ export default {
     },
     onResize() {
       setTimeout(() => {
-        console.log(this.$refs.staticImg[0])
+        //console.log(this.$refs.staticImg[0])
         if(this.$refs.staticImg[0]){
           this.staticImgWidth = this.$refs.staticImg[0].offsetWidth
-          console.log(this.staticImgWidth, 909090)
+          //console.log(this.staticImgWidth, 909090)
           // this.staticImgHeight = 344 || this.$refs.staticImg[0].offsetHeight
           // console.log(this.$refs.staticImg[0].offsetWidth, this.$refs.staticImg[0].offsetHeight)
         }
@@ -1246,7 +1246,7 @@ export default {
         let res = await tocDownload(mdf)
         if(res.code === 200){
           _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'downloaded']) //百度埋点统计
-         this.fileDonwload(res.img_url)
+          this.fileDonwload(res.img_url)
         } else {
           _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'pay']) //百度埋点统计
           this.onWechatPay(response, item)
@@ -1314,7 +1314,7 @@ export default {
                       // 已经支付直接下载
                       this.fileDonwload(res.img_url)
                       // 关闭定时器
-                      clearInterval(window.dsqq)
+                      clearInterval(window.dsqq) 
                       _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'payok']) //百度埋点统计
                       this.$toast.success('支付完成')
                       // 关闭弹框
@@ -1340,16 +1340,7 @@ export default {
                           // localStorage.setItem('headimgurl', res.data.headimgurl)
                           this.mobelLoginInfo.headimgurl = res.data.headimgurl
                           this.mobelLoginInfo.nickname = res.data.nickname
-
-                          // headimgurl: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIvLxDbOtzvSr7bNu18ZWvNaibqF0egMOHo7qJyFSn03KAzumGoaE2ODJQiaCzhH33zaibF7YuvrJgsA/132"
-                          // nickname: "光"
-                          // openid: "oDRwY1rnT0RebzjsXw-WPRj4Xbxw"
-                          // token: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJmZCI6InBjIiwic3ViIjoib0RSd1kxcm5UMFJlYnpqc1h3LVdQUmo0WGJ4dyIsInVpZCI6MTMzODl9.sAhbyv44RB4yOIXiefDI_h9hXQ6fWWw5cYi5ZeJlsjiCbIoHWaemOHE4aMftiXQYlnKBfG1URW1D7FPzdiwjFw"
-                          // unionid: "o8iwLwfLbDfq08bNEv9mrvWcae4s"
-
-
-                          // this.$toast.success('登录成功')
-
+                          
                         }
                       })
                   }
@@ -1412,8 +1403,7 @@ export default {
            }
 
     },
-    onWechatPay(response, item = null) {
-      
+    onWechatPay(response, item = null) {      
       // 如果用户没有登陆 或者 用户登录了没有点数
        let ffun = () => {
         const data = {
@@ -1433,45 +1423,6 @@ export default {
         // chaundibs(payLink) // 传递标识
         response.pc_code = `${timestamp}${random}`
         this.statusLxun(item, response)
-
-
-        // this.getOrderStataus(orderid, response)
-        // var qrcode = new QRCode(this.$refs.qrCodeUrl, {
-        //     text: payLink, // 需要转换为二维码的内容
-        //     width: 100,
-        //     height: 100,
-        //     colorDark: '#000000',
-        //     colorLight: '#ffffff',
-        //     correctLevel: 3
-        // })
-        // console.log(qrcode)
-
-      
-        // 下单接口 弹出二维码
-        // wechatPay(data).then((res) => {
-        //     const { orderid, url } = res.data
-        //     this.qrcodeUrl = url
-        //     this.showQrcode = true
-            
-    
-        //     let icon = item.status.icon_url
-        //     let timestamp = (new Date()).valueOf().toString();
-        //     let random = Math.ceil(Math.random()*100000).toString();
-           
-        //     let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}`;
-            
-        //     chaundibs(payLink) // 传递标识
-
-        //     response.pc_code = `${timestamp}${random}`
-        //     this.getOrderStataus(orderid, response)
-
-   
-
-        //     // this.makeQrcode()
-        //   })
-        //   .catch((e) => {
-        //     this.$toast.error(e.msg)
-        //   })
       }
       if(this.userInfo){
   
@@ -1711,8 +1662,6 @@ export default {
       let gdsa = () => {
         this.tongbudian()
       }
-
-
 
       try {
         const res = await wechatLogin({ code,channel:'pisaAI' })
