@@ -343,7 +343,7 @@
                     <v-card-text class="py-3">{{ item.list[3] }}</v-card-text>
                     <v-card-text class="py-3">{{ item.list[4] }}</v-card-text>
                     <v-card-actions>
-                      <v-btn color="success" rounded block @click="onWechatPayPackage(item.id)">
+                      <v-btn color="success" rounded block @click="onWechatPayPackage(item.id,item.title)">
                         <v-icon left dark>mdi-wechat</v-icon>
                         {{ $vuetify.lang.t('$vuetify.priceType[0]') }}
                       </v-btn>
@@ -1194,7 +1194,6 @@ export default {
               _hmt.push(['_trackEvent', 'pisaai', 'www', 'downloaded']) //百度埋点统计
               this.fileDonwload(res.img_url,mdf)
             } else {
-              _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
               this.onWechatPay(response, item)
             }
             //await fileDownload(mdf)
@@ -1347,6 +1346,7 @@ export default {
 	
     onWechatPay(response, item = null) {      
       // 如果用户没有登陆 或者 用户登录了没有点数
+      _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
        let ffun = () => {
         const data = {
           goodsid: 'BV11r4y1T7aX',
@@ -1413,7 +1413,8 @@ export default {
 
 
     },
-    async onWechatPayPackage(id) {
+    async onWechatPayPackage(id,title) {
+      _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay:' + title]) //百度埋点统计
       if (this.userInfo) {
         try {
           const data = {
