@@ -838,6 +838,7 @@ export default {
     },
   },
   created() {
+    _hmt.push(['_trackEvent', 'pisaai', 'www', 'index']) //百度埋点统计
     let langIndex = this.langs.findIndex((v) => v.id === this.$vuetify.lang.current)
     this.langIndex = langIndex
     this.getWechatLoginCode()
@@ -1003,6 +1004,7 @@ export default {
       console.log('newFile', newFile)
       if (newFile && !oldFile) {
         this.showOption = true
+        _hmt.push(['_trackEvent', 'pisaai', 'www', 'showTask']) //百度埋点统计
       }
       if (!newFile && oldFile) {
         this.showOption = false
@@ -1026,6 +1028,7 @@ export default {
             if (res.mdfs[0].src_url) {
               // file.status = res.mdfs[0]
               this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
+              _hmt.push(['_trackEvent', 'pisaai', 'www', 'repaired']) //百度埋点统计
               clearInterval(this.timer)
             } else {
               // file.status = res.mdfs[0]
@@ -1168,13 +1171,15 @@ export default {
      */
     async onFileDownload(response, item = null) {
 	  console.log("fileDonwload",item);
-      
+      _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'clickdownload']) //百度埋点统计
       const mdf = response.mdf || response.mdfs[0]
       try {
 	    let res = await tocDownload(mdf)
         if(res.code === 200){
+          _hmt.push(['_trackEvent', 'pisaai', 'www', 'downloaded']) //百度埋点统计
           this.fileDonwload(res.img_url)
         } else {
+          _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
           this.onWechatPay(response, item)
         }
         //await fileDownload(mdf)
@@ -1232,6 +1237,7 @@ export default {
                   tocDownload(response.mdf || response.mdfs[0]).then(res=>{
                     if(res.code === 200 && window.code111){
                       // 已经支付直接下载
+                      _hmt.push(['_trackEvent', 'pisaai', 'www', 'payok']) //百度埋点统计
                       this.fileDonwload(res.img_url)
                       // 关闭定时器
                       clearInterval(window.dsqq) 
@@ -1591,6 +1597,7 @@ export default {
       this.uploadAgainItemMdf = item.response.mdfs[0]
       this.uploadAgainItem = item.file
       this.showOption = true
+      _hmt.push(['_trackEvent', 'pisaai', 'www', 'fixAgain']) //百度埋点统计
     },
   },
 }

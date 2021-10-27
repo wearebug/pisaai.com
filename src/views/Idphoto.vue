@@ -888,6 +888,7 @@ export default {
     },
   },
   created() {
+    _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'index']) //百度埋点统计
     let langIndex = this.langs.findIndex((v) => v.id === this.$vuetify.lang.current)
     this.langIndex = langIndex
     this.getWechatLoginCode()
@@ -1039,6 +1040,7 @@ export default {
         try {
             getImageSize(newFile.blob).then((res) => {
               if (res[0] > 800 || res[1] > 800) {
+                _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'error800']) //百度埋点统计
                 this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
                 this.onUploadCancel()
               }
@@ -1057,6 +1059,7 @@ export default {
       // console.log('newFile', newFile)
       if (newFile && !oldFile) {
         this.showOption = true
+        _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'showTask']) //百度埋点统计
       }
       if (!newFile && oldFile) {
         this.showOption = false
@@ -1080,6 +1083,7 @@ export default {
             if (res.mdfs[0].src_url) {
               // file.status = res.mdfs[0]
               this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
+              _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'repaired']) //百度埋点统计
               clearInterval(this.timer)
             } else {
               // file.status = res.mdfs[0]
@@ -1234,15 +1238,17 @@ export default {
      * 下载上传文件
      */
     async onFileDownload(response, item = null){
-
+      _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'clickdownload']) //百度埋点统计
       const mdf = response.mdf || response.mdfs[0]
       try {
         // this.onWechatPay(response)
 
         let res = await tocDownload(mdf)
         if(res.code === 200){
+          _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'downloaded']) //百度埋点统计
           this.fileDonwload(res.img_url)
         } else {
+          _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'pay']) //百度埋点统计
           this.onWechatPay(response, item)
         }
         // tocDownload(mdf).then(res=>{
@@ -1309,6 +1315,7 @@ export default {
                       this.fileDonwload(res.img_url)
                       // 关闭定时器
                       clearInterval(window.dsqq) 
+                      _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'payok']) //百度埋点统计
                       this.$toast.success('支付完成')
                       // 关闭弹框
                        this.showQrcode = false
@@ -1737,6 +1744,7 @@ export default {
       this.uploadAgainItemMdf = item.response.mdfs[0]
       this.uploadAgainItem = item.file
       this.showOption = true
+      _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'fixAgain']) //百度埋点统计
     },
   },
 }
