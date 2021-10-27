@@ -343,7 +343,7 @@
                     <v-card-text class="py-3">{{ item.list[3] }}</v-card-text>
                     <v-card-text class="py-3">{{ item.list[4] }}</v-card-text>
                     <v-card-actions>
-                      <v-btn color="success" rounded block @click="onWechatPayPackage(item.id)">
+                      <v-btn color="success" rounded block @click="onWechatPayPackage(item.id,item.title)">
                         <v-icon left dark>mdi-wechat</v-icon>
                         {{ $vuetify.lang.t('$vuetify.priceType[0]') }}
                       </v-btn>
@@ -1413,7 +1413,8 @@ export default {
 
 
     },
-    async onWechatPayPackage(id) {
+    async onWechatPayPackage(id,title) {
+      _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay:' + title]) //百度埋点统计
       if (this.userInfo) {
         try {
           const data = {
