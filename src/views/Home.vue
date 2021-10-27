@@ -1177,7 +1177,7 @@ export default {
      */
     async onFileDownload(response, item = null) {
 	  console.log("fileDonwload",item);
-      _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'download']) //百度埋点统计
+      _hmt.push(['_trackEvent', 'pisaai', 'www', 'clickdownload']) //百度埋点统计
       const mdf = response.mdf || response.mdfs[0]
        //解决部分浏览器拦截下载问题
       if(payok.hasOwnProperty(mdf) ){
@@ -1479,6 +1479,7 @@ export default {
      * 预览上传文件
      */
     onFilePreview(fileObj,item = null) {
+      _hmt.push(['_trackEvent', 'pisaai', 'www', '查看对比图']) //百度埋点统计
       this.findItem = item
       console.log(fileObj)
       this.previewFile = fileObj
