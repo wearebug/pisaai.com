@@ -1194,7 +1194,6 @@ export default {
               _hmt.push(['_trackEvent', 'pisaai', 'www', 'downloaded']) //百度埋点统计
               this.fileDonwload(res.img_url,mdf)
             } else {
-              _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
               this.onWechatPay(response, item)
             }
             //await fileDownload(mdf)
@@ -1347,6 +1346,7 @@ export default {
 	
     onWechatPay(response, item = null) {      
       // 如果用户没有登陆 或者 用户登录了没有点数
+      _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
        let ffun = () => {
         const data = {
           goodsid: 'BV11r4y1T7aX',
