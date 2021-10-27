@@ -147,6 +147,7 @@
             </a>
           </p>
         </div>
+
 		<!--任务列表-->
         <v-list three-line v-if="files.length" class="pic_list">
           <v-list-item v-for="item in files" :key="item.id" style="border-bottom: 1px solid #c9cbce">
@@ -588,11 +589,11 @@ export default {
   data() {
     return {
       channel: 'pisaAI',
-	  mobelLoginInfo: {
+ 	    mobelLoginInfo: {
         headimgurl:'',
         nickname:''
       },
-	  findItem:{},
+	    findItem:{},
       c_b: _,
       timer: null,
       timer1: null,
@@ -811,10 +812,10 @@ export default {
     },
     links() {
       return [
-        //this.$vuetify.lang.t('$vuetify.menu[3]'),
+        // this.$vuetify.lang.t('$vuetify.menu[3]'),
         this.$vuetify.lang.t('$vuetify.privacyTxt'),
         this.$vuetify.lang.t('$vuetify.agreementTxt'),
-		//this.$vuetify.lang.t('$vuetify.maxImgYh'),
+		    //this.$vuetify.lang.t('$vuetify.maxImgYh'),
       ]
     },
     toolbarTop() {
@@ -920,7 +921,7 @@ export default {
       this.winHeight = window.innerHeight - window.innerHeight / 10 - 44 // 屏幕高度
       this.winWidth = window.innerWidth - 48 // 屏幕宽度
     },
-	
+
 	async inputFilter(newFile, oldFile, prevent) {
       if (newFile && !oldFile) {
         // 过滤系统文件 和隐藏文件
@@ -1102,10 +1103,11 @@ export default {
           rgb: rgb,
         }
       }
+
       //console.log('data', data)
       this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token, channel : this.channel}
       // 再次处理上传
-	  if (this.isUploadAgain) {
+	    if (this.isUploadAgain) {      
         let aa = this.$refs.upload.update(this.$refs.upload.add(this.uploadAgainItem), {
           active: true,
           success: false,
