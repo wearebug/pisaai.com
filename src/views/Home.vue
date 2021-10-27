@@ -318,7 +318,7 @@
 	<!--页脚-->
     <v-footer color="black" padless>
       <v-row justify="center" no-gutters>
-        <v-btn v-for="(link, i) in links" :key="link" color="white" text rounded class="my-2" @click="onShowFullscreen(i)">
+        <v-btn v-for="(link, i) in links" :key="link" color="white" text rounded class="my-2" @click="onShowFullscreen(i+1)">
           {{ link }}
         </v-btn>
         <!--v-col class="py-4 text-center white--text text-body-2" cols="12">
