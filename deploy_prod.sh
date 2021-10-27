@@ -7,8 +7,9 @@ set -e
 yarn build
 
 # 项目发布
-cd ../pisaai && cp -r ../pisaai.com/dist .
+cd ../pisaai
 
+git pull && cp -r ../pisaai.com/dist .
 git add .
 git commit -m 'deploy'
 git push
