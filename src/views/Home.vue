@@ -545,6 +545,7 @@ const CARD_AFTER1 = require('../assets/contrast1-2.jpg')
 const CARD_AFTER2 = require('../assets/contrast2-2.jpg')
 const CARD_AFTER3 = require('../assets/contrast3-2.jpg')
 const CARD_AFTER4 = require('../assets/contrast4-2.jpg')
+const payok = new Array();
 import { mapState, mapMutations } from 'vuex'
 import VueQr from 'vue-qr'
 import wxlogin from 'vue-wxlogin'
@@ -1171,31 +1172,42 @@ export default {
      */
     async onFileDownload(response, item = null) {
 	  console.log("fileDonwload",item);
-      _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'clickdownload']) //百度埋点统计
+      _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'download']) //百度埋点统计
       const mdf = response.mdf || response.mdfs[0]
-      try {
-	    let res = await tocDownload(mdf)
-        if(res.code === 200){
-          _hmt.push(['_trackEvent', 'pisaai', 'www', 'downloaded']) //百度埋点统计
-          this.fileDonwload(res.img_url)
-        } else {
-          _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
-          this.onWechatPay(response, item)
-        }
-        //await fileDownload(mdf)
-        //const url = `https://sdkphoto.fangtangtv.com/api/toc/download/${mdf}`
-        //if (isWechat) {
-        //  this.saveImg(url)
-        //} else {
-        //  this.fileDonwload(url)
-        //}
-        } catch (e) {
-        if (e.code === 2) {
-          this.onWechatPay(response, item)
-        }
+       //解决部分浏览器拦截下载问题
+      if(payok.hasOwnProperty(mdf) ){
+          console.log('download_url:'+payok[mdf])
+          setTimeout(function (){
+              window.open(payok[mdf])
+              //me.downloadImage(payok[mdf], mdf)
+          },500);
+      }
+      else {
+        try {
+          let res = await tocDownload(mdf)
+            if(res.code === 200){
+              _hmt.push(['_trackEvent', 'pisaai', 'www', 'downloaded']) //百度埋点统计
+              this.fileDonwload(res.img_url,mdf)
+            } else {
+              _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
+              this.onWechatPay(response, item)
+            }
+            //await fileDownload(mdf)
+            //const url = `https://sdkphoto.fangtangtv.com/api/toc/download/${mdf}`
+            //if (isWechat) {
+            //  this.saveImg(url)
+            //} else {
+            //  this.fileDonwload(url)
+            //}
+          } catch (e) {
+            if (e.code === 2) {
+              this.onWechatPay(response, item)
+            }
+          }
       }
     },
-    fileDonwload(url) {
+    fileDonwload(url , mdf) {
+      payok[mdf] = url
       let image = new Image()
       image.setAttribute('crossOrigin', 'anonymous')
       image.src = url
@@ -1238,7 +1250,7 @@ export default {
                     if(res.code === 200 && window.code111){
                       // 已经支付直接下载
                       _hmt.push(['_trackEvent', 'pisaai', 'www', 'payok']) //百度埋点统计
-                      this.fileDonwload(res.img_url)
+                      this.fileDonwload(res.img_url,mdf)
                       // 关闭定时器
                       clearInterval(window.dsqq) 
                       this.$toast.success('支付完成')
@@ -1294,7 +1306,7 @@ export default {
                                 this.tongbudian() // 再次同步点数
                                 tocDownload(mdf).then(res=>{
                                   if(res.code === 200  && window.code111){
-                                    this.fileDonwload(res.img_url)
+                                    this.fileDonwload(res.img_url,mdf)
                                     clearInterval(window.dsqq) 
                                     this.$toast.success('成功')
                                     // 关闭弹框
@@ -1363,8 +1375,9 @@ export default {
               ffun()
             } else {
               // 调用扣除点数
+              let mdf = response.mdf || response.mdfs[0]
               photoPhotopay({
-                mdt: response.mdf || response.mdfs[0],
+                mdt: mdf,
                 fd: 'pc',
                 ver: 2,
                 ftype: 1,
@@ -1372,9 +1385,9 @@ export default {
                 mobile: this.userInfo.token
               }).then(res=>{
                 if(res.code === 0){
-                  tocDownload(response.mdf || response.mdfs[0]).then(res=>{
+                  tocDownload(mdf).then(res=>{
                     if(res.code === 200){
-                      this.fileDonwload(res.img_url)
+                      this.fileDonwload(res.img_url,mdf)
                     }
                   })
                   this.tongbudian() // 再次同步点数
