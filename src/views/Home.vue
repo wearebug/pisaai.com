@@ -518,7 +518,7 @@
     <v-dialog v-model="showQrcode" max-width="320">
       <v-card>
         <vue-qr :correctLevel="3" :text="qrcodeUrl" :size="320"></vue-qr>
-        <div class="qrcode-tip">微信扫码下载高清无水印图</div>
+        <div class="qrcode-tip">{{ $vuetify.lang.t('$vuetify.priceType[0]') }}</div>
       </v-card>
     </v-dialog>
     <v-dialog v-model="showFullScreen" fullscreen hide-overlay transition="dialog-bottom-transition">
@@ -1393,6 +1393,7 @@ export default {
       if (this.userInfo) {
         try {
           const data = {
+			channel: this.channel,
             fd: isMobile() ? 'h5' : 'pc',
             token:
               this.userInfo?.token ||
