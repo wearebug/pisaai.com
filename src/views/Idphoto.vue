@@ -260,7 +260,7 @@
                           <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status, item)">
                             {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
                           </v-btn>
-                          <v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response, item)">
+                          <v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response, item)"id="list-download">
                             {{ $vuetify.lang.t('$vuetify.upload.btn[1]') }}
                           </v-btn>
                           <v-btn class="mb-1" small color="#333333" style="color: #fff" @click="onFileRemove(item)">
@@ -529,12 +529,12 @@
       <v-card class="p-rela" :max-width="initWidth" :height="initHeight">
         <v-row class="toolbar" :style="{ top: toolbarTop + 'px' }">
           <v-btn class="mx-4" icon color="white" @click="onPlus">
-            <v-icon>mdi-magnify-close</v-icon>
+            <v-icon>mdi-magnify-plus</v-icon>
           </v-btn>
           <v-btn class="mx-4" icon color="white" @click="onMinus">
             <v-icon>mdi-magnify-minus</v-icon>
           </v-btn>
-          <v-btn class="mx-4" icon color="white" @click="onFileDownload(previewFile,findItem)">
+          <v-btn class="mx-4" icon color="white" @click="onFileDownload(previewFile,findItem)" id="preview-download">
             <v-icon>mdi-file-download</v-icon>
           </v-btn>
         </v-row>
