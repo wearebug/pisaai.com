@@ -3,7 +3,7 @@
     <v-app-bar app color="black" dark>
       <v-container class="d-flex justify-space-between pa-0">
         <div class="d-flex align-center pa-0">
-          <v-img alt="{{ $vuetify.lang.t('$vuetify.name') }}" class="shrink" contain src="../assets/logo.png" transition="scale-transition" width="120" eager />
+          <v-img alt="{{ $vuetify.lang.t('$vuetify.name') }}" class="shrink" contain src="http://pisaai.com/img/logo.cf60ae52.png" transition="scale-transition" width="120" eager />
           <!-- <h1 class="ml-4 text-h6">{{ $vuetify.lang.t('$vuetify.name') }}</h1> -->
         </div>
         <v-spacer></v-spacer>
