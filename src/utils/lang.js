@@ -1,7 +1,7 @@
 export default {
   chinese: {
     name: 'PisaAI披萨智能',
-    error800: '图片的宽和高最大800px',
+    error800: '图片的宽和高最大2000px',
     maxImgHint: ' 处理大图请访问高光照片优化 ',
     idphotoName: 'PisaAI-证件照',
     idphotoSynopsis: 'PisaAI证件照是一个证件照自动处理工具，可以自动放大和清晰脸部，降噪去划痕。还可以更换背景色，目前支持红底、白底、蓝底和透明底，并可以输出300dpi的打印级图片，一键完成。', // idphoto子站独立描述
@@ -23,19 +23,19 @@ export default {
     functionPrice: [
       {
         title: '3张 = ￥25',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 无'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 2000px', '老照片修复: 支持', '批量处理: 无'],
       },
       {
         title: '10张 = ￥75',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 2000px', '老照片修复: 支持', '批量处理: 支持'],
       },
       {
         title: '50张 = ￥200',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 2000px', '老照片修复: 支持', '批量处理: 支持'],
       },
       {
         title: '200张 = ￥600',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 800px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 2000px', '老照片修复: 支持', '批量处理: 支持'],
       },
     ],
     priceType: ['微信支付', '支付宝支付', 'Paypal支付'],
@@ -180,12 +180,12 @@ export default {
       checkAll: '全选',
       start: '开始任务',
       cancel: '删除全部',
-      upload: '继续上传（最大800*800px）',
+      upload: '继续上传（最大2000px）',
     },
   },
   english: {
     name: 'PisaAI PhotoEnhance',
-    error800:'The width and height of the picture are up to 800px',
+    error800:'The width and height of the picture are up to 2000px',
     maxImgHint:' To work with large images, visit HiliPhoto Enhance ',
     idphotoName: 'PisaAI - IDPhoto',
     idphotoSynopsis: 'PisaAI IDPhoto is an auto ID photo processing tool that can clarify faces and change background colors', // idphoto子站独立描述
@@ -212,19 +212,19 @@ export default {
     functionPrice: [
       {
         title: '3 photos = ￥25',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:NO'],
       },
       {
         title: '10 photos = ￥75',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '50 photos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '200 photos = ￥600',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -407,19 +407,19 @@ export default {
     functionPrice: [
       {
         title: '写真3枚 = ￥25',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:NO'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:2000px', '古い写真の修理:YES', 'バッチ処理:NO'],
       },
       {
         title: '写真10枚 = ￥75',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:2000px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
       {
         title: '写真50枚 = ￥200',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:2000px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
       {
         title: '写真200枚 = ￥600',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:800px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:2000px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -562,12 +562,12 @@ export default {
       checkAll: '全て',
       start: 'タスクを開始',
       cancel: 'すべて削除',
-      upload: '画像のアップロードを続ける（最大800*800）',
+      upload: '画像のアップロードを続ける（最大2000px）',
     },
   },
   spanish: {
     name: 'PisaAI Retoque Fotográfico',
-    error800:'Anchura y altura máximas de la imagen 800px',
+    error800:'Anchura y altura máximas de la imagen 2000px',
     maxImgHint:'Para procesar imágenes grandes, visite la optimización de imágenes de alto brillo',
     idphotoName: 'PisaAI - foto de identificación',
     idphotoSynopsis: 'PisaAI IDPhoto es una herramienta de procesamiento de fotos de identificación automática que puede aclarar las caras y cambiar los colores del fondo', 
@@ -596,19 +596,19 @@ export default {
     functionPrice: [
       {
         title: '3 fotos = ￥25',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:NO'],
       },
       {
         title: '10 fotos = ￥75',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '50 fotos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '200 fotos = ￥600',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -759,12 +759,12 @@ export default {
       checkAll: 'todos',
       start: 'Iniciar tarea',
       cancel: 'Eliminar todos',
-      upload: 'Seguir subiendo（Máximo 800*800px）',
+      upload: 'Seguir subiendo（Máximo 2000px）',
     },
   },
   french: {
     name: 'PisaAI Photo Améliorer',
-    error800:`Largeur et hauteur de l'image jusqu'à 800px`,
+    error800:`Largeur et hauteur de l'image jusqu'à 2000px`,
     maxImgHint:`Pour travailler avec de grandes images, visitez Hili PhotoEnhance`,
     idphotoName: `PisaAI - carte d'identité`,
     idphotoSynopsis: `PisaAI IDPhoto est un outil de traitement automatique des photos d'identité qui permet de clarifier les visages et de modifier les couleurs d'arrière-plan.`, 
@@ -793,19 +793,19 @@ export default {
     functionPrice: [
       {
         title: '3 photos = ￥25',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:NO'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:NO'],
       },
       {
         title: '10 photos = ￥75',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '50 photos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '200 photos = ￥600',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:800px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -956,7 +956,7 @@ export default {
       checkAll: 'Tous',
       start: 'Démarrer la tâche',
       cancel: 'Tout supprimer',
-      upload: 'Continuer le chargement(Maximum 800*800px)',
+      upload: 'Continuer le chargement(Maximum 2000px)',
     },
   },
 }

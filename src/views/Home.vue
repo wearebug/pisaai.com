@@ -140,13 +140,13 @@
             <p style="margin-bottom: 0" @click="deleteAllItem">{{ $vuetify.lang.t('$vuetify.pic.cancel') }}</p>
           </div>
         </v-sheet>
-		<div style="text-align: center; position: relative" v-if="!files.length">
+		<!--div style="text-align: center; position: relative" v-if="!files.length">
           <p>
             <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
              {{ $vuetify.lang.t('$vuetify.maxImgHint')}}
             </a>
           </p>
-        </div>
+        </div-->
 
 		<!--任务列表-->
         <v-list three-line v-if="files.length" class="pic_list">
@@ -990,7 +990,8 @@ export default {
       if (oldFile || (oldFile && newFile )) {
         try {
             getImageSize(newFile.blob).then((res) => {
-              if (res[0] > 800 || res[1] > 800) {
+              //if (res[0] > 800 || res[1] > 800) {
+			  if (res[0] > 2000 || res[1] > 2000) {
                 _hmt.push(['_trackEvent', 'pisaai', 'www', 'error800']) //百度埋点统计
                 this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
                 this.onUploadCancel()
