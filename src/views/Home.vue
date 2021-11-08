@@ -820,7 +820,7 @@ export default {
         this.$vuetify.lang.t('$vuetify.menu[3]'),
         this.$vuetify.lang.t('$vuetify.privacyTxt'),
         this.$vuetify.lang.t('$vuetify.agreementTxt'),
-		    //this.$vuetify.lang.t('$vuetify.maxImgYh'),
+		this.$vuetify.lang.t('$vuetify.contactTxt'),
       ]
     },
     toolbarTop() {
@@ -1598,7 +1598,8 @@ export default {
           this.fullscreenHtml = this.$vuetify.lang.t('$vuetify.agreementInfo')
           break
 		case 3:
-          window.location.href = 'http://hiliphoto.com'
+          this.fullscreenTitle = this.$vuetify.lang.t('$vuetify.contactTxt')
+          this.fullscreenHtml = this.$vuetify.lang.t('$vuetify.contactInfo')
           break
       }
       this.showFullScreen = true
