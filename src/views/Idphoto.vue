@@ -356,11 +356,9 @@
         <v-btn v-for="(link, i) in links" :key="link" color="white" text rounded class="my-2" @click="onShowFullscreen(i)">
           {{ link }}
         </v-btn>
-        <!--
         <v-col class="py-4 text-center white--text text-body-2" cols="12">
           {{ $vuetify.lang.t('$vuetify.copyrightTxt') }}
         </v-col>
-        -->
       </v-row>
     </v-footer>
     <v-dialog v-model="showDialog" max-width="960">
@@ -863,7 +861,7 @@ export default {
     },
     links() {
       return [
-        // this.$vuetify.lang.t('$vuetify.menu[3]'),
+        this.$vuetify.lang.t('$vuetify.menu[3]'),
         this.$vuetify.lang.t('$vuetify.privacyTxt'),
         this.$vuetify.lang.t('$vuetify.agreementTxt'),
         // this.$vuetify.lang.t('$vuetify.maxImgYh'),
