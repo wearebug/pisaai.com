@@ -2,7 +2,7 @@ export default {
   chinese: {
     name: 'PisaAI披萨智能',
     error800: '图片的宽和高最大2000px',
-    maxImgHint: ' 处理大图请访问高光照片优化 ',
+    maxImgHint: ' 处理更大图片请访问高光照片优化 ',
     idphotoName: 'PisaAI-证件照',
     idphotoSynopsis: 'PisaAI证件照是一个证件照自动处理工具，可以自动放大和清晰脸部，降噪去划痕。还可以更换背景色，目前支持红底、白底、蓝底和透明底，并可以输出300dpi的打印级图片，一键完成。', // idphoto子站独立描述
     maxImgYh: '大图优化',
@@ -147,7 +147,7 @@ export default {
     contactInfo:
       '北京但丁科技有限公司<br/>公司地址：北京市海淀区西二旗中关村软件园华夏科技大厦329<br/>电话：010-5335 5193<br/>用户QQ群：623946846 <br/>销售微信：12145508',
 	copyrightTxt: '北京但丁科技有限公司 版权所有 京ICP备2021032285号',
-    btnTxt: '上传图片',
+    btnTxt: '上传图片（最大2000px）',
     contrastTips: ['后', '前'],
     contrastType: ['彩色照片优化', '黑白照片上色', '证件照换底色', '图片无损放大', '划痕修复', '强化人像'],
     caseTxt: '案例展示',
@@ -344,7 +344,7 @@ export default {
     contactInfo:
       'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>Tel:010-5335 5193<br/>User QQ Group：623946846 <br/>wechat：12145508',
 	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
-    btnTxt: 'Upload Images',
+    btnTxt: 'Upload Images(Max 2000px)',
     contrastTips: ['after', 'befor'],
     contrastType: [
       'Enhance color photo',
@@ -388,7 +388,7 @@ export default {
       checkAll: 'All',
       start: 'Start task',
       cancel: 'Delete all',
-      upload: 'Continue to upload images（Max 800*800 px）',
+      upload: 'Continue to upload images(Max 2000px)',
     },
   },
   japanese: {
@@ -730,7 +730,7 @@ export default {
     contactInfo:
       'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
 	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
-    btnTxt: 'Cargar imagenes',
+    btnTxt: 'Cargar imagenes(Max 2000px)',
     contrastTips: ['posterior', 'antes'],
     contrastType: [
       'mejorar la foto en color',
@@ -931,7 +931,7 @@ export default {
     contactInfo:
       'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
 	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
-    btnTxt: 'Télécharger une images',
+    btnTxt: 'Télécharger une images(Maximum 2000px)',
     contrastTips: ['après', 'avant'],
     contrastType: [
       'améliorer la photo couleur',
