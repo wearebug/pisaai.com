@@ -1,7 +1,7 @@
 export default {
   chinese: {
     name: 'PisaAI披萨智能',
-    error800: '图片的宽和高最大2000px',
+    error800: '图片的宽和高最大3000px',
     maxImgHint: ' 处理更大图片请访问高光照片优化 ',
     idphotoName: 'PisaAI-证件照',
     idphotoSynopsis: 'PisaAI证件照是一个证件照自动处理工具，可以自动放大和清晰脸部，降噪去划痕。还可以更换背景色，目前支持红底、白底、蓝底和透明底，并可以输出300dpi的打印级图片，一键完成。', // idphoto子站独立描述
@@ -23,23 +23,23 @@ export default {
     functionPrice: [
       {
         title: '3张 = ￥25',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 2000px', '老照片修复: 支持', '批量处理: 无'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 无'],
       },
       {
         title: '10张 = ￥75',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 2000px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持'],
       },
       {
         title: '50张 = ￥200',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 2000px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持'],
       },
       {
         title: '200张 = ￥600',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 2000px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持'],
       },
     ],
     priceType: ['微信支付', '支付宝支付', 'Paypal支付'],
-    priceTips: '单张￥9.8，购买越多赠送越多，更低折扣请加微信wearebug咨询。',
+    priceTips: '单张￥16.8，购买越多赠送越多，更低折扣请加微信wearebug咨询。',
     weChatVip: ['微信扫码下载高清无水印图', '打包购买更划算', '下载无水印高清图'],
     upload: {
       status: {
@@ -147,7 +147,7 @@ export default {
     contactInfo:
       '北京但丁科技有限公司<br/>公司地址：北京市海淀区西二旗中关村软件园华夏科技大厦329<br/>电话：010-5335 5193<br/>用户QQ群：623946846 <br/>销售微信：12145508',
 	copyrightTxt: '北京但丁科技有限公司 版权所有 京ICP备2021032285号',
-    btnTxt: '上传图片（最大2000px）',
+    btnTxt: '上传图片（最大3000px）',
     contrastTips: ['后', '前'],
     contrastType: ['彩色照片优化', '黑白照片上色', '证件照换底色', '图片无损放大', '划痕修复', '强化人像'],
     caseTxt: '案例展示',
@@ -184,12 +184,12 @@ export default {
       checkAll: '全选',
       start: '开始任务',
       cancel: '删除全部',
-      upload: '继续上传（最大2000px）',
+      upload: '继续上传（最大3000px）',
     },
   },
   english: {
     name: 'PisaAI PhotoEnhance',
-    error800:'The width and height of the picture are up to 2000px',
+    error800:'The width and height of the picture are up to 3000px',
     maxImgHint:' To work with large images, visit HiliPhoto Enhance ',
     idphotoName: 'PisaAI - IDPhoto',
     idphotoSynopsis: 'PisaAI IDPhoto is an auto ID photo processing tool that can clarify faces and change background colors', // idphoto子站独立描述
@@ -216,19 +216,19 @@ export default {
     functionPrice: [
       {
         title: '3 photos = ￥25',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:NO'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:NO'],
       },
       {
         title: '10 photos = ￥75',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '50 photos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '200 photos = ￥600',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -344,7 +344,7 @@ export default {
     contactInfo:
       'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>Tel:010-5335 5193<br/>User QQ Group：623946846 <br/>wechat：12145508',
 	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
-    btnTxt: 'Upload Images(Max 2000px)',
+    btnTxt: 'Upload Images(Max 3000px)',
     contrastTips: ['after', 'befor'],
     contrastType: [
       'Enhance color photo',
@@ -388,7 +388,7 @@ export default {
       checkAll: 'All',
       start: 'Start task',
       cancel: 'Delete all',
-      upload: 'Continue to upload images(Max 2000px)',
+      upload: 'Continue to upload images(Max 3000px)',
     },
   },
   japanese: {
@@ -415,19 +415,19 @@ export default {
     functionPrice: [
       {
         title: '写真3枚 = ￥25',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:2000px', '古い写真の修理:YES', 'バッチ処理:NO'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:NO'],
       },
       {
         title: '写真10枚 = ￥75',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:2000px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
       {
         title: '写真50枚 = ￥200',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:2000px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
       {
         title: '写真200枚 = ￥600',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:2000px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -537,7 +537,7 @@ export default {
     contactInfo:
       'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
 	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
-    btnTxt: '画像のアップロード',
+    btnTxt: '画像のアップロード（最大3000px）',
     contrastTips: ['後', '前'],
     contrastType: ['カラー写真を強調', '黒と白の写真を色付', '身分証明書の背景色を変更', 'ロスレス増幅', '傷のある修理', '顔を強調する'],
     caseTxt: 'ケースショー',
@@ -574,12 +574,12 @@ export default {
       checkAll: '全て',
       start: 'タスクを開始',
       cancel: 'すべて削除',
-      upload: '画像のアップロードを続ける（最大2000px）',
+      upload: '画像のアップロードを続ける（最大3000px）',
     },
   },
   spanish: {
     name: 'PisaAI Retoque Fotográfico',
-    error800:'Anchura y altura máximas de la imagen 2000px',
+    error800:'Anchura y altura máximas de la imagen 3000px',
     maxImgHint:'Para procesar imágenes grandes, visite la optimización de imágenes de alto brillo',
     idphotoName: 'PisaAI - foto de identificación',
     idphotoSynopsis: 'PisaAI IDPhoto es una herramienta de procesamiento de fotos de identificación automática que puede aclarar las caras y cambiar los colores del fondo', 
@@ -608,19 +608,19 @@ export default {
     functionPrice: [
       {
         title: '3 fotos = ￥25',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:NO'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:NO'],
       },
       {
         title: '10 fotos = ￥75',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '50 fotos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '200 fotos = ￥600',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -730,7 +730,7 @@ export default {
     contactInfo:
       'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
 	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
-    btnTxt: 'Cargar imagenes(Max 2000px)',
+    btnTxt: 'Cargar imagenes(Max 3000px)',
     contrastTips: ['posterior', 'antes'],
     contrastType: [
       'mejorar la foto en color',
@@ -775,12 +775,12 @@ export default {
       checkAll: 'todos',
       start: 'Iniciar tarea',
       cancel: 'Eliminar todos',
-      upload: 'Seguir subiendo（Máximo 2000px）',
+      upload: 'Seguir subiendo（Máximo 3000px）',
     },
   },
   french: {
     name: 'PisaAI Photo Améliorer',
-    error800:`Largeur et hauteur de l'image jusqu'à 2000px`,
+    error800:`Largeur et hauteur de l'image jusqu'à 3000px`,
     maxImgHint:`Pour travailler avec de grandes images, visitez Hili PhotoEnhance`,
     idphotoName: `PisaAI - carte d'identité`,
     idphotoSynopsis: `PisaAI IDPhoto est un outil de traitement automatique des photos d'identité qui permet de clarifier les visages et de modifier les couleurs d'arrière-plan.`, 
@@ -809,19 +809,19 @@ export default {
     functionPrice: [
       {
         title: '3 photos = ￥25',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:NO'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:NO'],
       },
       {
         title: '10 photos = ￥75',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '50 photos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
         title: '200 photos = ￥600',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:2000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -931,7 +931,7 @@ export default {
     contactInfo:
       'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
 	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
-    btnTxt: 'Télécharger une images(Maximum 2000px)',
+    btnTxt: 'Télécharger une images(Maximum 3000px)',
     contrastTips: ['après', 'avant'],
     contrastType: [
       'améliorer la photo couleur',
@@ -976,7 +976,7 @@ export default {
       checkAll: 'Tous',
       start: 'Démarrer la tâche',
       cancel: 'Tout supprimer',
-      upload: 'Continuer le chargement(Maximum 2000px)',
+      upload: 'Continuer le chargement(Maximum 3000px)',
     },
   },
 }

@@ -1039,7 +1039,7 @@ export default {
         try {
             getImageSize(newFile.blob).then((res) => {
               //if (res[0] > 800 || res[1] > 800) {
-			  if (res[0] > 2000 || res[1] > 2000) {
+			  if (res[0] > 3000 || res[1] > 3000) {
                 _hmt.push(['_trackEvent', 'pisaai', 'idphoto', 'error800']) //百度埋点统计
                 this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
                 this.onUploadCancel()
