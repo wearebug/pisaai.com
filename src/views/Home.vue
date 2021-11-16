@@ -636,7 +636,7 @@ export default {
           ],
           options: [
             { label: '去雾', value: 'defogging' },
-            { label: '去划痕', value: 'scratch' },
+            //{ label: '去划痕', value: 'scratch' },
           ],
           output: [{ label: '300dpi（印刷级）', value: 'dpi' }],
         },
@@ -653,7 +653,7 @@ export default {
           ],
           options: [
             { label: '去雾', value: 'defogging' },
-            { label: '去划痕', value: 'scratch' },
+            //{ label: '去划痕', value: 'scratch' },
             { label: '上色', value: 'colour' },
           ],
           output: [{ label: '300dpi（印刷级）', value: 'dpi' }],
