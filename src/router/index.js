@@ -32,7 +32,7 @@ const routes = [
   {
     path: '/idphoto',
     name: 'idphoto',
-    component: () => import('../views/Idphoto.vue'),
+    component: () => import('../views/Home.vue'),
   },
   {
     path: '/about',

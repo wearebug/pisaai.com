@@ -129,7 +129,6 @@
             @input-filter="inputFilter"
           >
             <v-btn class="mt-5 mb-5" color="primary" dark large>
-              <!-- <v-icon left dark large style="margin-right: 14px;">mdi-cloud-upload</v-icon> -->
               <v-img src="../assets/continue-upload.png" style="margin-right: 14px; width: 24px; height: 24px"></v-img>
               {{ $vuetify.lang.t('$vuetify.pic.upload') }}
             </v-btn>
@@ -557,8 +556,8 @@ import { validationMixin } from 'vuelidate'
 import { required, minLength, email } from 'vuelidate/lib/validators'
 import PreviewScale from '@/components/PreviewScale'
 import { getfilesize, isMobile, isWechat, checkSeoTab } from '@/utils'
-//import { fileDownload, getFileStatus, wechatPay, getOrderStataus, login, wechatLogin, packagePay, packageStatus,photoUserfinace } from '@/api/home'
 import { fileDownload, loginGetStatus, getFileStatus, wechatPay,chaundibs, getOrderStataus, login, wechatLogin, packagePay, packageStatus,photoUserfinace,photoPhotopay, tocDownload } from '@/api/home'
+
 export default {
   mixins: [validationMixin],
   validations: {
@@ -1125,7 +1124,7 @@ export default {
           status: {},
           data: { ...this.postData, mdf: this.uploadAgainItemMdf,  channel : this.channel },
         })
-        console.log('aa', aa)
+        //console.log('aa', aa)
         this.getFileStatusProgress(aa)
         this.isUploadAgain = false
       } else {
@@ -1481,7 +1480,7 @@ export default {
      * 预览上传文件
      */
     onFilePreview(fileObj,item = null) {
-      _hmt.push(['_trackEvent', 'pisaai', 'www', '查看对比图']) //百度埋点统计
+      _hmt.push(['_trackEvent', 'pisaai', 'www', 'ViewContrast']) //百度埋点统计
       this.findItem = item
       console.log(fileObj)
       this.previewFile = fileObj
@@ -1514,7 +1513,7 @@ export default {
      * 点击价格TAB
      */
     onPriceClick() {
-      _hmt.push(['_trackEvent', 'pisaai', 'www-nav', '点击价格TAB']) //百度埋点统计
+      _hmt.push(['_trackEvent', 'pisaai', 'www-nav', 'ClickPriceTAB']) //百度埋点统计
       this.showDialog = true
     },
 	// 同步点数
@@ -1533,7 +1532,7 @@ export default {
      * 点击登录/用户中心 TAB
      */
     onLogin() {
-      _hmt.push(['_trackEvent', 'pisaai', 'www-nav', '点击登录/用户中心']) //百度埋点统计
+      _hmt.push(['_trackEvent', 'pisaai', 'www-nav', 'ClickUserCenter']) //百度埋点统计
 
       this.showLogin = true
     },
@@ -1613,13 +1612,7 @@ export default {
       this.scaleRatio -= 0.1
     },
     onContinue(item) {
-      // this.$refs.upload.update(item, {
-      //   active: true,
-      //   success: false,
-      //   response: {},
-      //   status: {},
-      //   data: { ...item.data, mdf: item.response.mdfs[0] },
-      // })
+      
       this.isUploadAgain = true
       this.uploadAgainItemMdf = item.response.mdfs[0]
       this.uploadAgainItem = item.file
