@@ -7,7 +7,7 @@
           <!-- <h1 class="ml-4 text-h6">{{ $vuetify.lang.t('$vuetify.name') }}</h1> -->
         </div>
         <v-spacer></v-spacer>
-		<!-- 导航菜单 -->
+        <!-- 导航菜单 -->
         <div class="hidden-sm-and-down">
           <v-btn text large @click="onPriceClick">
             <span>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</span>
@@ -27,7 +27,7 @@
               </v-list-item-group>
             </v-list>
           </v-menu>
-		  <!-- 登录 -->
+          <!-- 登录 -->
           <v-menu offset-y nudge-top="-10" nudge-right="20" v-if="userInfo">
             <template v-slot:activator="{ on, attrs }">
               <v-btn v-bind="attrs" v-on="on" fab class="head_img_btn">
@@ -84,7 +84,7 @@
           <!-- <h1 class="my-4 text-h4">{{ $vuetify.lang.t('$vuetify.name') }}</h1> -->
           <p class="text--secondary text-justify">{{ $vuetify.lang.t('$vuetify.synopsis') }}</p>
         </v-sheet>
-		<!--上传按钮-->
+        <!--上传按钮-->
         <v-sheet tag="section" v-if="files.length == 0" class="d-flex align-center justify-center pt-7 pb-7 pt-md-12 pb-md-12 border-dash">
           <file-upload
             ref="upload"
@@ -102,9 +102,9 @@
               {{ $vuetify.lang.t('$vuetify.btnTxt') }}
               <v-icon right dark>mdi-cloud-upload</v-icon>
             </v-btn>
-          </file-upload>		  
+          </file-upload>
         </v-sheet>
-		<!--继续上传-->
+        <!--继续上传-->
         <v-sheet tag="section" v-else class="continue-upload d-flex align-center justify-between">
           <div class="check_all">
             <v-checkbox
@@ -133,28 +133,28 @@
               {{ $vuetify.lang.t('$vuetify.pic.upload') }}
             </v-btn>
           </file-upload>
-		  <!--删除按钮-->	
+          <!--删除按钮-->
           <div class="delete_all d-flex align-center justify-center">
             <v-img src="../assets/delete_all.png" style="margin-right: 14px; width: 24px; height: 27px"></v-img>
             <p style="margin-bottom: 0" @click="deleteAllItem">{{ $vuetify.lang.t('$vuetify.pic.cancel') }}</p>
           </div>
         </v-sheet>
-		<div style="text-align: center; position: relative" v-if="!files.length">
+        <div style="text-align: center; position: relative" v-if="!files.length">
           <p>
             <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
-             {{ $vuetify.lang.t('$vuetify.maxImgHint')}}
+              {{ $vuetify.lang.t('$vuetify.maxImgHint') }}
             </a>
           </p>
         </div>
 
-		<!--任务列表-->
+        <!--任务列表-->
         <v-list three-line v-if="files.length" class="pic_list">
           <v-list-item v-for="item in c_b.cloneDeep(files).reverse()" :key="item.id" style="border-bottom: 1px solid #c9cbce">
-            <v-list-item-avatar class="list_item_head_box" rounded  style="padding-top: 15px;padding-bottom: 37px;">
+            <v-list-item-avatar class="list_item_head_box" rounded style="padding-top: 15px; padding-bottom: 37px">
               <v-checkbox v-model="checkedItem" label="" :value="item.id"></v-checkbox>
-              <v-img :src="item.thumb" style="height:100%" @click="onFilePreview(item.status, item)"></v-img>
+              <v-img :src="item.thumb" style="height: 100%" @click="onFilePreview(item.status, item)"></v-img>
             </v-list-item-avatar>
-            <v-list-item-content style="padding: 35px 0 0;padding-top: 15px;">
+            <v-list-item-content style="padding: 35px 0 0; padding-top: 15px">
               <v-list-item-title>
                 <v-progress-linear :value="item.response.code === 200 ? item.progress : 0" height="6"></v-progress-linear>
               </v-list-item-title>
@@ -179,11 +179,11 @@
                     <template v-if="item.status.code == 1">
                       <!-- <v-chip class="mr-2" color="success" small>{{ $vuetify.lang.t('$vuetify.upload.status[6]') }}</v-chip> -->
                       <div class="d-flex align-center justify-between btns-box">
-						<template v-if="item.blob.substring(0,4) != 'http' ">
-							<v-btn class="mr-2 mb-1" small color="#FBB03B" style="color: #fff" @click="onContinue(item)">
-							{{ $vuetify.lang.t('$vuetify.upload.btn[4]') }}
-							</v-btn>
-						</template>
+                        <template v-if="item.blob.substring(0, 4) != 'http'">
+                          <v-btn class="mr-2 mb-1" small color="#FBB03B" style="color: #fff" @click="onContinue(item)">
+                            {{ $vuetify.lang.t('$vuetify.upload.btn[4]') }}
+                          </v-btn>
+                        </template>
                         <div>
                           <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status, item)">
                             {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
@@ -207,7 +207,7 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
-		<!--示例图-->
+        <!--示例图-->
         <v-row class="mt-4">
           <v-col v-for="(card, i) in cards" :key="i" cols="12" md="6">
             <v-card elevation="4">
@@ -244,7 +244,7 @@
             </v-card>
           </v-col>
         </v-row>
-		<!--FAQ-->
+        <!--FAQ-->
         <v-sheet tag="section" class="mb-8">
           <h1 class="my-8 text-h5 text-md-h4 text-center">FAQ</h1>
           <v-expansion-panels v-model="panel" multiple>
@@ -316,21 +316,21 @@
         </v-sheet>
       </v-container>
     </v-main>
-	<!--页脚-->
+    <!--页脚-->
     <v-footer color="black" padless>
       <v-row justify="center" no-gutters>
         <v-btn v-for="(link, i) in links" :key="link" color="white" text rounded class="my-2" @click="onShowFullscreen(i)">
           {{ link }}
         </v-btn>
-		<!--SEO专用开始-->
-		<v-btn color="white" text rounded class="my-2" onClick="window.open('about.html')">网络营销</v-btn>
-		<!--SEO专用结束-->
+        <!--SEO专用开始-->
+        <v-btn color="white" text rounded class="my-2" onClick="window.open('about.html')">网络营销</v-btn>
+        <!--SEO专用结束-->
         <v-col class="py-4 text-center white--text text-body-2" cols="12">
           {{ $vuetify.lang.t('$vuetify.copyrightTxt') }}
         </v-col>
       </v-row>
     </v-footer>
-	<!--价格弹窗-->
+    <!--价格弹窗-->
     <v-dialog v-model="showDialog" max-width="960">
       <v-card elevation="2">
         <v-tabs active-class="primary" background-color="black" align-with-title dark hide-slider>
@@ -347,7 +347,7 @@
                     <v-card-text class="py-3">{{ item.list[3] }}</v-card-text>
                     <v-card-text class="py-3">{{ item.list[4] }}</v-card-text>
                     <v-card-actions>
-                      <v-btn color="success" rounded block @click="onWechatPayPackage(item.id,item.title)">
+                      <v-btn color="success" rounded block @click="onWechatPayPackage(item.id, item.title)">
                         <v-icon left dark>mdi-wechat</v-icon>
                         {{ $vuetify.lang.t('$vuetify.priceType[0]') }}
                       </v-btn>
@@ -363,7 +363,7 @@
         </v-tabs>
       </v-card>
     </v-dialog>
-	<!--登录弹窗-->
+    <!--登录弹窗-->
     <v-dialog v-model="showLogin" transition="dialog-bottom-transition" max-width="720">
       <v-card>
         <v-tabs active-class="primary" background-color="black" align-with-title dark hide-slider>
@@ -434,7 +434,7 @@
         </v-tabs>
       </v-card>
     </v-dialog>
-	<!--任务配置-->
+    <!--任务配置-->
     <v-dialog v-model="showOption" max-width="720" persistent>
       <v-card>
         <v-tabs v-model="optionsTab" active-class="primary" background-color="black" align-with-title dark hide-slider>
@@ -491,15 +491,15 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn @click="onUploadCancel">
-			{{ $vuetify.lang.t('$vuetify.choiceType.cancel') }}
-		  </v-btn>
+            {{ $vuetify.lang.t('$vuetify.choiceType.cancel') }}
+          </v-btn>
           <v-btn color="primary darken-1" @click="onUploadComfirm">
-			{{ $vuetify.lang.t('$vuetify.choiceType.btn') }}
-		  </v-btn>
+            {{ $vuetify.lang.t('$vuetify.choiceType.btn') }}
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
-	<!--查看结果-->
+    <!--查看结果-->
     <v-dialog v-model="showPreview" :max-width="initWidth">
       <v-card class="p-rela" :max-width="initWidth" :height="initHeight">
         <v-row class="toolbar" :style="{ top: toolbarTop + 'px' }">
@@ -509,7 +509,7 @@
           <v-btn class="mx-4" icon color="white" @click="onMinus">
             <v-icon>mdi-magnify-minus</v-icon>
           </v-btn>
-          <v-btn class="mx-4" icon color="white" @click="onFileDownload(previewFile,findItem)" id="preview-download">
+          <v-btn class="mx-4" icon color="white" @click="onFileDownload(previewFile, findItem)" id="preview-download">
             <v-icon>mdi-file-download</v-icon>
           </v-btn>
         </v-row>
@@ -522,7 +522,7 @@
         />
       </v-card>
     </v-dialog>
-	<!--付款二维码弹窗-->
+    <!--付款二维码弹窗-->
     <v-dialog v-model="showQrcode" max-width="320">
       <v-card>
         <vue-qr :correctLevel="3" :text="qrcodeUrl" :size="320"></vue-qr>
@@ -544,7 +544,7 @@
 </template>
 
 <script>
-import {cloneDeep} from 'lodash'
+import { cloneDeep } from 'lodash'
 const CARD_BEFORE1 = require('../assets/contrast1-1.jpg')
 const CARD_BEFORE2 = require('../assets/contrast2-1.jpg')
 const CARD_BEFORE3 = require('../assets/contrast3-1.jpg')
@@ -553,7 +553,7 @@ const CARD_AFTER1 = require('../assets/contrast1-2.jpg')
 const CARD_AFTER2 = require('../assets/contrast2-2.jpg')
 const CARD_AFTER3 = require('../assets/contrast3-2.jpg')
 const CARD_AFTER4 = require('../assets/contrast4-2.jpg')
-const payok = new Array();
+const payok = new Array()
 import { mapState, mapMutations } from 'vuex'
 import VueQr from 'vue-qr'
 import wxlogin from 'vue-wxlogin'
@@ -561,7 +561,21 @@ import { validationMixin } from 'vuelidate'
 import { required, minLength, email } from 'vuelidate/lib/validators'
 import PreviewScale from '@/components/PreviewScale'
 import { getfilesize, isMobile, isWechat, checkSeoTab } from '@/utils'
-import { fileDownload, loginGetStatus, getFileStatus, wechatPay,chaundibs, getOrderStataus, login, wechatLogin, packagePay, packageStatus,photoUserfinace,photoPhotopay, tocDownload } from '@/api/home'
+import {
+  fileDownload,
+  loginGetStatus,
+  getFileStatus,
+  wechatPay,
+  chaundibs,
+  getOrderStataus,
+  login,
+  wechatLogin,
+  packagePay,
+  packageStatus,
+  photoUserfinace,
+  photoPhotopay,
+  tocDownload,
+} from '@/api/home'
 
 export default {
   mixins: [validationMixin],
@@ -598,11 +612,11 @@ export default {
   data() {
     return {
       channel: 'pisaAI',
- 	    mobelLoginInfo: {
-        headimgurl:'',
-        nickname:''
+      mobelLoginInfo: {
+        headimgurl: '',
+        nickname: '',
       },
-	    findItem:{},
+      findItem: {},
       c_b: _,
       timer: null,
       timer1: null,
@@ -613,7 +627,7 @@ export default {
       postData: {},
       file: null,
       files: [],
-	  files1: [],
+      files1: [],
       checkedAllItem: [],
       checkedItem: [],
       thread: 3,
@@ -793,14 +807,13 @@ export default {
     files: {
       handler(value) {
         //console.log("value:",value)
-		//刷新本地保存的任务状态
-		if (value.length) {
-			//this.files1 = cloneDeep(value).reverse()
-			localStorage.setItem('FILE_RECORDS', JSON.stringify(value))
-		}else {
-			localStorage.removeItem('FILE_RECORDS')
-		}
-
+        //刷新本地保存的任务状态
+        if (value.length) {
+          //this.files1 = cloneDeep(value).reverse()
+          localStorage.setItem('FILE_RECORDS', JSON.stringify(value))
+        } else {
+          localStorage.removeItem('FILE_RECORDS')
+        }
       },
       deep: true,
     },
@@ -812,15 +825,15 @@ export default {
         this.checkedAllItem = []
       }
     },
-	// 路由监听
-    $route( to , from ){   
+    // 路由监听
+    $route(to, from) {
       //  console.log( to , from )
       // to , from 分别表示从哪跳转到哪，都是一个对象
       // to.path  ( 表示的是要跳转到的路由的地址 eg: /home );
-    }
+    },
   },
   computed: {
-    ...mapState(['userInfo','userNumews']),
+    ...mapState(['userInfo', 'userNumews']),
     prices() {
       const functionPrice = this.$vuetify.lang.locales[this.curLang.id].functionPrice
       const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcToBNums200']
@@ -833,7 +846,7 @@ export default {
         this.$vuetify.lang.t('$vuetify.menu[3]'),
         this.$vuetify.lang.t('$vuetify.privacyTxt'),
         this.$vuetify.lang.t('$vuetify.agreementTxt'),
-		this.$vuetify.lang.t('$vuetify.contactTxt'),
+        this.$vuetify.lang.t('$vuetify.contactTxt'),
       ]
     },
     toolbarTop() {
@@ -906,26 +919,23 @@ export default {
         },
       ]
     }
-	//读取本地存储的上传记录
-	const FILE_RECORDS = localStorage.getItem('FILE_RECORDS') && JSON.parse(localStorage.getItem('FILE_RECORDS'))
-	//console.log('file:', FILE_RECORDS)
+    //读取本地存储的上传记录
+    const FILE_RECORDS = localStorage.getItem('FILE_RECORDS') && JSON.parse(localStorage.getItem('FILE_RECORDS'))
+    //console.log('file:', FILE_RECORDS)
     if (FILE_RECORDS && FILE_RECORDS.length) {
-		this.files = FILE_RECORDS
-		let idx = 0
-		this.files.forEach(v=> {
-			this.getFileStatusProgress(v)
-			if (v.success) {
-				v.blob =  "https://sdkphoto.fangtangtv.com/api/toc/download/input/" + v.status.mdf + ".jpg"
-				v.thumb = "https://sdkphoto.fangtangtv.com/api/toc/download/input/icon_"+ v.status.mdf + ".jpg"
-				
-			}else{
-				//this.files.splice(idx,1)
-			}
-			//idx = idx + 1
-		})
-			
-	}
-	
+      this.files = FILE_RECORDS
+      let idx = 0
+      this.files.forEach((v) => {
+        this.getFileStatusProgress(v)
+        if (v.success) {
+          v.blob = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/' + v.status.mdf + '.jpg'
+          v.thumb = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/icon_' + v.status.mdf + '.jpg'
+        } else {
+          //this.files.splice(idx,1)
+        }
+        //idx = idx + 1
+      })
+    }
   },
   mounted() {
     this.onResize()
@@ -942,8 +952,8 @@ export default {
       if (code) {
         this.wechatLogin(code)
       }
-	  //this.getPhonrDs()
-	  this.tongbudian() // 点数
+      //this.getPhonrDs()
+      this.tongbudian() // 点数
     },
     getUrlParam(name = 'code') {
       let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
@@ -961,7 +971,7 @@ export default {
       this.winWidth = window.innerWidth - 48 // 屏幕宽度
     },
 
-	async inputFilter(newFile, oldFile, prevent) {
+    async inputFilter(newFile, oldFile, prevent) {
       if (newFile && !oldFile) {
         // 过滤系统文件 和隐藏文件
         if (/(\/|^)(Thumbs\.db|desktop\.ini|\..+)$/.test(newFile.name)) {
@@ -1020,25 +1030,20 @@ export default {
       }
 
       // 添加或者更新的时候
-      if (oldFile || (oldFile && newFile )) {
+      if (oldFile || (oldFile && newFile)) {
         try {
-            getImageSize(newFile.blob).then((res) => {
-              //if (res[0] > 800 || res[1] > 800) {
-			  if (res[0] > 3000 || res[1] > 3000) {
-                _hmt.push(['_trackEvent', 'pisaai', 'www', 'error800']) //百度埋点统计
-                this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
-                this.onUploadCancel()
-              }
-            })
+          getImageSize(newFile.blob).then((res) => {
+            //if (res[0] > 800 || res[1] > 800) {
+            if (res[0] > 3000 || res[1] > 3000) {
+              _hmt.push(['_trackEvent', 'pisaai', 'www', 'error800']) //百度埋点统计
+              this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
+              this.onUploadCancel()
+            }
+          })
         } catch (error) {
-			console.log(error)
-          
+          console.log(error)
         }
-
-
       }
-
-
     },
     inputFile(newFile, oldFile) {
       //console.log('newFile', newFile)
@@ -1061,31 +1066,31 @@ export default {
      */
     getFileStatusProgress(file) {
       //console.log('getfilestatusprogress:', file)
-      if ( file && file.response.mdfs ) {
+      if (file && file.response.mdfs) {
         const { mdfs } = file.response
         getFileStatus({ mdf: mdfs[0], platform: isMobile() ? 'h5' : 'pc' })
           .then((res) => {
-            if (res.mdfs[0].code == 1 ) { //任务完成
+            if (res.mdfs[0].code == 1) {
+              //任务完成
               // file.status = res.mdfs[0]
-				this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
+              this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
               //_hmt.push(['_trackEvent', 'pisaai', 'www', 'repaired']) //百度埋点统计
-				clearInterval(this.timer)
-            } else if (res.mdfs[0].code == 2) { 
-				//任务处理失败
-				this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
-				clearInterval(this.timer)				
-				
+              clearInterval(this.timer)
+            } else if (res.mdfs[0].code == 2) {
+              //任务处理失败
+              this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
+              clearInterval(this.timer)
             } else {
-				this.$refs.upload.update(file, { status: res.mdfs[0] })
-				this.timer = setTimeout(() => {
-				this.getFileStatusProgress(file)
-				}, 2000)
-			}
+              this.$refs.upload.update(file, { status: res.mdfs[0] })
+              this.timer = setTimeout(() => {
+                this.getFileStatusProgress(file)
+              }, 2000)
+            }
           })
           .catch((e) => {
-			this.$toast.error(e.msg)
+            this.$toast.error(e.msg)
             clearInterval(this.timer)
-			this.$refs.upload.remove(file)
+            this.$refs.upload.remove(file)
           })
       }
     },
@@ -1153,15 +1158,15 @@ export default {
       }
 
       //console.log('data', data)
-      this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token, channel : this.channel}
+      this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token, channel: this.channel }
       // 再次处理上传
-	  if (this.isUploadAgain) {      
+      if (this.isUploadAgain) {
         let aa = this.$refs.upload.update(this.$refs.upload.add(this.uploadAgainItem), {
           active: true,
           success: false,
           response: {},
           status: {},
-          data: { ...this.postData, mdf: this.uploadAgainItemMdf,  channel : this.channel },
+          data: { ...this.postData, mdf: this.uploadAgainItemMdf, channel: this.channel },
         })
         //console.log('aa', aa)
         this.getFileStatusProgress(aa)
@@ -1199,8 +1204,8 @@ export default {
     deleteAllItem() {
       if (this.checkedAllItem.length == 1) {
         this.files = []
-		this.files1 = []
-		localStorage.removeItem('FILE_RECORDS')
+        this.files1 = []
+        localStorage.removeItem('FILE_RECORDS')
       }
     },
     checkedAll() {
@@ -1217,41 +1222,40 @@ export default {
      * 下载上传文件
      */
     async onFileDownload(response, item = null) {
-	  //console.log("fileDonwload",item);
+      //console.log("fileDonwload",item);
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'clickdownload']) //百度埋点统计
       const mdf = response.mdf || response.mdfs[0]
-       //解决部分浏览器拦截下载问题
-      if(payok.hasOwnProperty(mdf) ){
-          //console.log('download_url:'+payok[mdf])
-          setTimeout(function (){
-              window.open(payok[mdf])
-              //me.downloadImage(payok[mdf], mdf)
-          },500);
-      }
-      else {
+      //解决部分浏览器拦截下载问题
+      if (payok.hasOwnProperty(mdf)) {
+        //console.log('download_url:'+payok[mdf])
+        setTimeout(function () {
+          window.open(payok[mdf])
+          //me.downloadImage(payok[mdf], mdf)
+        }, 500)
+      } else {
         try {
           let res = await tocDownload(mdf)
-            if(res.code === 200){
-              _hmt.push(['_trackEvent', 'pisaai', 'www', 'downloaded']) //百度埋点统计
-              this.fileDonwload(res.img_url,mdf)
-            } else {
-              this.onWechatPay(response, item)
-            }
-            //await fileDownload(mdf)
-            //const url = `https://sdkphoto.fangtangtv.com/api/toc/download/${mdf}`
-            //if (isWechat) {
-            //  this.saveImg(url)
-            //} else {
-            //  this.fileDonwload(url)
-            //}
-          } catch (e) {
-            if (e.code === 2) {
-              this.onWechatPay(response, item)
-            }
+          if (res.code === 200) {
+            _hmt.push(['_trackEvent', 'pisaai', 'www', 'downloaded']) //百度埋点统计
+            this.fileDonwload(res.img_url, mdf)
+          } else {
+            this.onWechatPay(response, item)
           }
+          //await fileDownload(mdf)
+          //const url = `https://sdkphoto.fangtangtv.com/api/toc/download/${mdf}`
+          //if (isWechat) {
+          //  this.saveImg(url)
+          //} else {
+          //  this.fileDonwload(url)
+          //}
+        } catch (e) {
+          if (e.code === 2) {
+            this.onWechatPay(response, item)
+          }
+        }
       }
     },
-    fileDonwload(url , mdf) {
+    fileDonwload(url, mdf) {
       payok[mdf] = url
       let image = new Image()
       image.setAttribute('crossOrigin', 'anonymous')
@@ -1280,115 +1284,107 @@ export default {
       a.dispatchEvent(e)
       URL.revokeObjectURL(url)
     },
-	// 状态轮询
+    // 状态轮询
     statusLxun(item, response) {
-        // 状态轮询
-        let mdf = response.mdf || response.mdfs[0]
-        if(item){
-            window.bbq = 0 // 初始化0秒
-            window.infoStatus = true
-            window.code111 = true
-            window.dsqq = setInterval(()=>{
-                window.bbq = window.bbq + 2
-                  // 调用下载接口判断支付状态
-                  tocDownload(response.mdf || response.mdfs[0]).then(res=>{
-                    if(res.code === 200 && window.code111){
-                      // 已经支付直接下载
-                      _hmt.push(['_trackEvent', 'pisaai', 'www', 'payok']) //百度埋点统计
-                      this.fileDonwload(res.img_url,mdf)
-                      // 关闭定时器
-                      clearInterval(window.dsqq) 
-                      this.$toast.success('支付完成')
-                      // 关闭弹框
-                       this.showQrcode = false
-                       window.code111 = false
-                    }
-                  })
+      // 状态轮询
+      let mdf = response.mdf || response.mdfs[0]
+      if (item) {
+        window.bbq = 0 // 初始化0秒
+        window.infoStatus = true
+        window.code111 = true
+        window.dsqq = setInterval(() => {
+          window.bbq = window.bbq + 2
+          // 调用下载接口判断支付状态
+          tocDownload(response.mdf || response.mdfs[0]).then((res) => {
+            if (res.code === 200 && window.code111) {
+              // 已经支付直接下载
+              _hmt.push(['_trackEvent', 'pisaai', 'www', 'payok']) //百度埋点统计
+              this.fileDonwload(res.img_url, mdf)
+              // 关闭定时器
+              clearInterval(window.dsqq)
+              this.$toast.success('支付完成')
+              // 关闭弹框
+              this.showQrcode = false
+              window.code111 = false
+            }
+          })
 
-                  // 调用登陆状态接口判断手机是否登录
-                  if(window.infoStatus){
-                      loginGetStatus({
-                        pc_code: response.pc_code,
-                        channel: this.channel
-                      }).then(res=>{
-                        if(res.data){
-                          // 手机已经登陆 踢掉当前登录状态
-                          // _this.onLogout() //退出登录
-                          this.setUserInfo(res.data)
-                          this.isWechatLogin = true
-                          window.infoStatus = false
+          // 调用登陆状态接口判断手机是否登录
+          if (window.infoStatus) {
+            loginGetStatus({
+              pc_code: response.pc_code,
+              channel: this.channel,
+            }).then((res) => {
+              if (res.data) {
+                // 手机已经登陆 踢掉当前登录状态
+                // _this.onLogout() //退出登录
+                this.setUserInfo(res.data)
+                this.isWechatLogin = true
+                window.infoStatus = false
 
-                          this.wechatHead = res.data.headimgurl
-                          // localStorage.setItem('headimgurl', res.data.headimgurl)
-                          this.mobelLoginInfo.headimgurl = res.data.headimgurl
-                          this.mobelLoginInfo.nickname = res.data.nickname
-
-                        }
-                      })
-                  }
-                    
-                    //  如果登陆就 查询点数
-                    if(this.userInfo){
-                      photoUserfinace({
-                        token: this.userInfo.token,
-                        channel:this.channel,
-                        ver:2
-                      }).then(res=>{                  
-
-                        this.setNumew(res.data.nums ? res.data.nums : 0)
-
-                        if(res.code === 0 && res.data.nums > 0){
-                            // 调用扣除点数
-                            photoPhotopay({
-                              mdt: mdf,
-                              fd: 'pc',
-                              ver: 2,
-                              ftype: 1,
-                              channel:this.channel,
-                              mobile: this.userInfo.token
-                            }).then(res=>{
-                              if(res.code === 0){
-                                this.tongbudian() // 再次同步点数
-                                tocDownload(mdf).then(res=>{
-                                  if(res.code === 200  && window.code111){
-                                    this.fileDonwload(res.img_url,mdf)
-                                    clearInterval(window.dsqq) 
-                                    this.$toast.success('成功')
-                                    // 关闭弹框
-                                    this.showQrcode = false
-                                    window.code111 = false
-                                  }
-                                })
-                              }
-                            })
-
-                        }
-                      })
-                    }
-                    
-                    // 二维码关闭轮训关闭
-                    if(!this.showQrcode){
-                      window.code111 = false
-                      clearInterval(window.dsqq) 
-                    }
-
-
-
-                }, 2000)
-
-              if(window.bbq >= 60){
-                // 停止轮询
-                clearInterval(window.bbq)
+                this.wechatHead = res.data.headimgurl
+                // localStorage.setItem('headimgurl', res.data.headimgurl)
+                this.mobelLoginInfo.headimgurl = res.data.headimgurl
+                this.mobelLoginInfo.nickname = res.data.nickname
               }
+            })
+          }
 
-           }
+          //  如果登陆就 查询点数
+          if (this.userInfo) {
+            photoUserfinace({
+              token: this.userInfo.token,
+              channel: this.channel,
+              ver: 2,
+            }).then((res) => {
+              this.setNumew(res.data.nums ? res.data.nums : 0)
 
+              if (res.code === 0 && res.data.nums > 0) {
+                // 调用扣除点数
+                photoPhotopay({
+                  mdt: mdf,
+                  fd: 'pc',
+                  ver: 2,
+                  ftype: 1,
+                  channel: this.channel,
+                  mobile: this.userInfo.token,
+                }).then((res) => {
+                  if (res.code === 0) {
+                    this.tongbudian() // 再次同步点数
+                    tocDownload(mdf).then((res) => {
+                      if (res.code === 200 && window.code111) {
+                        this.fileDonwload(res.img_url, mdf)
+                        clearInterval(window.dsqq)
+                        this.$toast.success('成功')
+                        // 关闭弹框
+                        this.showQrcode = false
+                        window.code111 = false
+                      }
+                    })
+                  }
+                })
+              }
+            })
+          }
+
+          // 二维码关闭轮训关闭
+          if (!this.showQrcode) {
+            window.code111 = false
+            clearInterval(window.dsqq)
+          }
+        }, 2000)
+
+        if (window.bbq >= 60) {
+          // 停止轮询
+          clearInterval(window.bbq)
+        }
+      }
     },
-	
-    onWechatPay(response, item = null) {      
+
+    onWechatPay(response, item = null) {
       // 如果用户没有登陆 或者 用户登录了没有点数
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
-       let ffun = () => {
+      let ffun = () => {
         const data = {
           goodsid: 'BV11r4y1T7aX',
           channel: this.channel,
@@ -1396,27 +1392,26 @@ export default {
         }
 
         let icon = item.status.icon_url
-        let timestamp = (new Date()).valueOf().toString();
-        let random = Math.ceil(Math.random()*100000).toString();
-        let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}&channel=${this.channel}`;
+        let timestamp = new Date().valueOf().toString()
+        let random = Math.ceil(Math.random() * 100000).toString()
+        let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}&channel=${this.channel}`
         this.qrcodeUrl = payLink
 
-         this.showQrcode = true
+        this.showQrcode = true
 
         // chaundibs(payLink) // 传递标识
         response.pc_code = `${timestamp}${random}`
         this.statusLxun(item, response)
       }
-      if(this.userInfo){
-  
+      if (this.userInfo) {
         photoUserfinace({
           token: this.userInfo.token,
           channel: this.channel,
-          ver:2
-        }).then(res=>{
-           this.setNumew(res.data.nums ? res.data.nums : 0)
-          if(res.code === 0){
-            if(res.data.nums <= 0){
+          ver: 2,
+        }).then((res) => {
+          this.setNumew(res.data.nums ? res.data.nums : 0)
+          if (res.code === 0) {
+            if (res.data.nums <= 0) {
               // 没有点数了
               ffun()
             } else {
@@ -1427,39 +1422,34 @@ export default {
                 fd: 'pc',
                 ver: 2,
                 ftype: 1,
-                channel:this.channel,
-                mobile: this.userInfo.token
-              }).then(res=>{
-                if(res.code === 0){
-                  tocDownload(mdf).then(res=>{
-                    if(res.code === 200){
-                      this.fileDonwload(res.img_url,mdf)
+                channel: this.channel,
+                mobile: this.userInfo.token,
+              }).then((res) => {
+                if (res.code === 0) {
+                  tocDownload(mdf).then((res) => {
+                    if (res.code === 200) {
+                      this.fileDonwload(res.img_url, mdf)
                     }
                   })
                   this.tongbudian() // 再次同步点数
                 }
               })
             }
-
           }
           console.log(res)
         })
-
-        
       } else {
         ffun()
       }
 
       return false
-
-
     },
-    async onWechatPayPackage(id,title) {
+    async onWechatPayPackage(id, title) {
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay:' + title]) //百度埋点统计
       if (this.userInfo) {
         try {
           const data = {
-			channel: this.channel,
+            channel: this.channel,
             channel: this.channel,
             fd: isMobile() ? 'h5' : 'pc',
             token:
@@ -1480,12 +1470,10 @@ export default {
       } else {
         this.showLogin = true
       }
-      
     },
-	
-    
+
     getPackageOrderStataus(order_id) {
-      packageStatus({ order_id,channel: this.channel })
+      packageStatus({ order_id, channel: this.channel })
         .then((res) => {
           if (res.data.is_pay === 2) {
             this.getPackageOrderResult(order_id)
@@ -1502,7 +1490,7 @@ export default {
           clearInterval(this.timer2)
           this.timer2Count = 0
         }
-        packageStatus({ order_id,channel: this.channel, })
+        packageStatus({ order_id, channel: this.channel })
           .then((res) => {
             if (res.data.is_pay !== 2) {
               this.timer2Count = 0
@@ -1520,7 +1508,7 @@ export default {
     /**
      * 预览上传文件
      */
-    onFilePreview(fileObj,item = null) {
+    onFilePreview(fileObj, item = null) {
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'ViewContrast']) //百度埋点统计
       this.findItem = item
       console.log(fileObj)
@@ -1539,13 +1527,12 @@ export default {
     /**
      * 删除上传文件
      */
-    onFileRemove(file) {		
-		
-		//删除供页面显示用的列表项
-		this.$refs.upload.remove(file)
-	    //刷新本地保存的任务状态
-		let mdf = file.status.mdf
-		this.files = this.files.filter( item => item.status.mdf !== mdf )	
+    onFileRemove(file) {
+      //删除供页面显示用的列表项
+      this.$refs.upload.remove(file)
+      //刷新本地保存的任务状态
+      let mdf = file.status.mdf
+      this.files = this.files.filter((item) => item.status.mdf !== mdf)
     },
     /**
      * 切换语言
@@ -1562,17 +1549,17 @@ export default {
       _hmt.push(['_trackEvent', 'pisaai', 'www-nav', 'ClickPriceTAB']) //百度埋点统计
       this.showDialog = true
     },
-	// 同步点数
-    tongbudian(){
-        if (this.userInfo) {
-            photoUserfinace({
-              token: this.userInfo.token,
-              channel: 'pisaAI',
-              ver:2
-            }).then(res=>{
-              this.setNumew(res.data.nums ? res.data.nums : 0)
-            })
-        }
+    // 同步点数
+    tongbudian() {
+      if (this.userInfo) {
+        photoUserfinace({
+          token: this.userInfo.token,
+          channel: 'pisaAI',
+          ver: 2,
+        }).then((res) => {
+          this.setNumew(res.data.nums ? res.data.nums : 0)
+        })
+      }
     },
     /**
      * 点击登录/用户中心 TAB
@@ -1583,12 +1570,11 @@ export default {
       this.showLogin = true
     },
     async wechatLogin(code) {
-
       let gdsa = () => {
         this.tongbudian()
       }
       try {
-        const res = await wechatLogin({ code, channel : this.channel })
+        const res = await wechatLogin({ code, channel: this.channel })
         this.setUserInfo(res.data)
         this.wechatHead = res.data.headimgurl
         this.isWechatLogin = true
@@ -1598,10 +1584,8 @@ export default {
         gdsa()
         // this.$toast.error(e.message)
       }
-
-
     },
-    
+
     onSubmit() {
       this.$v.$touch()
       if (!this.$v.$invalid) {
@@ -1625,7 +1609,7 @@ export default {
     },
     onLogout() {
       this.removeUserInfo()
-	  this.removeSetNumew()
+      this.removeSetNumew()
     },
     onGetTaskList() {},
     onShowFullscreen(i) {
@@ -1642,7 +1626,7 @@ export default {
           this.fullscreenTitle = this.$vuetify.lang.t('$vuetify.agreementTxt')
           this.fullscreenHtml = this.$vuetify.lang.t('$vuetify.agreementInfo')
           break
-		case 3:
+        case 3:
           this.fullscreenTitle = this.$vuetify.lang.t('$vuetify.contactTxt')
           this.fullscreenHtml = this.$vuetify.lang.t('$vuetify.contactInfo')
           break
@@ -1658,7 +1642,6 @@ export default {
       this.scaleRatio -= 0.1
     },
     onContinue(item) {
-      
       this.isUploadAgain = true
       this.uploadAgainItemMdf = item.response.mdfs[0]
       this.uploadAgainItem = item.file
@@ -1832,6 +1815,7 @@ export default {
       .v-image {
         width: 110px;
         height: 110px;
+        cursor: pointer;
       }
     }
 
