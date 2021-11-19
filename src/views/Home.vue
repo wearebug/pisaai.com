@@ -152,7 +152,7 @@
           <v-list-item v-for="item in c_b.cloneDeep(files).reverse()" :key="item.id" style="border-bottom: 1px solid #c9cbce">
             <v-list-item-avatar class="list_item_head_box" rounded  style="padding-top: 15px;padding-bottom: 37px;">
               <v-checkbox v-model="checkedItem" label="" :value="item.id"></v-checkbox>
-              <v-img :src="item.blob" style="height:100%"></v-img>
+              <v-img :src="item.thumb" style="height:100%"></v-img>
             </v-list-item-avatar>
             <v-list-item-content style="padding: 35px 0 0;padding-top: 15px;">
               <v-list-item-title>
@@ -320,6 +320,9 @@
         <v-btn v-for="(link, i) in links" :key="link" color="white" text rounded class="my-2" @click="onShowFullscreen(i)">
           {{ link }}
         </v-btn>
+		<!--SEO专用开始-->
+		<v-btn color="white" text rounded class="my-2" onClick="window.open('about.html')">网络营销</v-btn>
+		<!--SEO专用结束-->
         <v-col class="py-4 text-center white--text text-body-2" cols="12">
           {{ $vuetify.lang.t('$vuetify.copyrightTxt') }}
         </v-col>
@@ -539,7 +542,7 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import {cloneDeep} from 'lodash'
 const CARD_BEFORE1 = require('../assets/contrast1-1.jpg')
 const CARD_BEFORE2 = require('../assets/contrast2-1.jpg')
 const CARD_BEFORE3 = require('../assets/contrast3-1.jpg')
@@ -608,6 +611,7 @@ export default {
       postData: {},
       file: null,
       files: [],
+	  files1: [],
       checkedAllItem: [],
       checkedItem: [],
       thread: 3,
@@ -786,7 +790,15 @@ export default {
     },
     files: {
       handler(value) {
-        console.log(value)
+        //console.log(value)
+		//刷新本地保存的任务状态
+		if (value.length) {
+			//this.files1 = cloneDeep(value).reverse()
+			localStorage.setItem('FILE_RECORDS', JSON.stringify(value))
+		}else {
+			localStorage.removeItem('FILE_RECORDS')
+		}
+
       },
       deep: true,
     },
@@ -892,6 +904,24 @@ export default {
         },
       ]
     }
+	//读取本地存储的上传记录
+	const FILE_RECORDS = localStorage.getItem('FILE_RECORDS') && JSON.parse(localStorage.getItem('FILE_RECORDS'))
+	//console.log('file:', FILE_RECORDS)
+    if (FILE_RECORDS && FILE_RECORDS.length) {
+		this.files = FILE_RECORDS
+		this.files.forEach(v=> { 
+			this.getFileStatusProgress(v)
+			if (v.success) {
+				v.blob =  "https://sdkphoto.fangtangtv.com/api/toc/download/input/" + v.status.mdf + ".jpg"
+				v.thumb = "https://sdkphoto.fangtangtv.com/api/toc/download/input/icon_"+ v.status.mdf + ".jpg"
+			}else{
+				this.files.remove(v)
+			}
+			
+		})
+			
+	}
+	
   },
   mounted() {
     this.onResize()
@@ -1007,7 +1037,7 @@ export default {
 
     },
     inputFile(newFile, oldFile) {
-      console.log('newFile', newFile)
+      //console.log('newFile', newFile)
       if (newFile && !oldFile) {
         this.showOption = true
         _hmt.push(['_trackEvent', 'pisaai', 'www', 'showTask']) //百度埋点统计
@@ -1026,27 +1056,28 @@ export default {
      * 查询上传文件
      */
     getFileStatusProgress(file) {
-      console.log('file', file)
-      if (file.response.mdfs) {
+      //console.log('file', file)
+      if ( file.response.mdfs ) {
         const { mdfs } = file.response
         getFileStatus({ mdf: mdfs[0], platform: isMobile() ? 'h5' : 'pc' })
           .then((res) => {
             if (res.mdfs[0].src_url) {
               // file.status = res.mdfs[0]
               this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
-              _hmt.push(['_trackEvent', 'pisaai', 'www', 'repaired']) //百度埋点统计
+              //_hmt.push(['_trackEvent', 'pisaai', 'www', 'repaired']) //百度埋点统计
               clearInterval(this.timer)
             } else {
               // file.status = res.mdfs[0]
               this.$refs.upload.update(file, { status: res.mdfs[0] })
               this.timer = setTimeout(() => {
-                this.getFileStatusProgress(file)
+				this.getFileStatusProgress(file)
               }, 2000)
             }
           })
           .catch((e) => {
-            this.$toast.error(e.msg)
+			this.$toast.error(e.msg)
             clearInterval(this.timer)
+			this.$refs.upload.remove(file)
           })
       }
     },
@@ -1116,7 +1147,7 @@ export default {
       //console.log('data', data)
       this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token, channel : this.channel}
       // 再次处理上传
-	    if (this.isUploadAgain) {      
+	  if (this.isUploadAgain) {      
         let aa = this.$refs.upload.update(this.$refs.upload.add(this.uploadAgainItem), {
           active: true,
           success: false,
@@ -1160,6 +1191,8 @@ export default {
     deleteAllItem() {
       if (this.checkedAllItem.length == 1) {
         this.files = []
+		this.files1 = []
+		localStorage.removeItem('FILE_RECORDS')
       }
     },
     checkedAll() {
@@ -1176,12 +1209,12 @@ export default {
      * 下载上传文件
      */
     async onFileDownload(response, item = null) {
-	  console.log("fileDonwload",item);
+	  //console.log("fileDonwload",item);
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'clickdownload']) //百度埋点统计
       const mdf = response.mdf || response.mdfs[0]
        //解决部分浏览器拦截下载问题
       if(payok.hasOwnProperty(mdf) ){
-          console.log('download_url:'+payok[mdf])
+          //console.log('download_url:'+payok[mdf])
           setTimeout(function (){
               window.open(payok[mdf])
               //me.downloadImage(payok[mdf], mdf)
@@ -1498,8 +1531,13 @@ export default {
     /**
      * 删除上传文件
      */
-    onFileRemove(file) {
-      this.$refs.upload.remove(file)
+    onFileRemove(file) {		
+		
+		//删除供页面显示用的列表项
+		this.$refs.upload.remove(file)
+	    //刷新本地保存的任务状态
+		let mdf = file.status.mdf
+		this.files = this.files.filter( item => item.status.mdf !== mdf )	
     },
     /**
      * 切换语言
