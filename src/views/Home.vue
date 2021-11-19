@@ -152,7 +152,7 @@
           <v-list-item v-for="item in c_b.cloneDeep(files).reverse()" :key="item.id" style="border-bottom: 1px solid #c9cbce">
             <v-list-item-avatar class="list_item_head_box" rounded  style="padding-top: 15px;padding-bottom: 37px;">
               <v-checkbox v-model="checkedItem" label="" :value="item.id"></v-checkbox>
-              <v-img :src="item.thumb" style="height:100%"></v-img>
+              <v-img :src="item.thumb" style="height:100%" @click="onFilePreview(item.status, item)"></v-img>
             </v-list-item-avatar>
             <v-list-item-content style="padding: 35px 0 0;padding-top: 15px;">
               <v-list-item-title>
@@ -179,9 +179,11 @@
                     <template v-if="item.status.code == 1">
                       <!-- <v-chip class="mr-2" color="success" small>{{ $vuetify.lang.t('$vuetify.upload.status[6]') }}</v-chip> -->
                       <div class="d-flex align-center justify-between btns-box">
-                        <v-btn class="mr-2 mb-1" small color="#FBB03B" style="color: #fff" @click="onContinue(item)">
-                          {{ $vuetify.lang.t('$vuetify.upload.btn[4]') }}
-                        </v-btn>
+						<template v-if="item.blob.substring(0,4) != 'http' ">
+							<v-btn class="mr-2 mb-1" small color="#FBB03B" style="color: #fff" @click="onContinue(item)">
+							{{ $vuetify.lang.t('$vuetify.upload.btn[4]') }}
+							</v-btn>
+						</template>
                         <div>
                           <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status, item)">
                             {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
@@ -790,7 +792,7 @@ export default {
     },
     files: {
       handler(value) {
-        //console.log(value)
+        //console.log("value:",value)
 		//刷新本地保存的任务状态
 		if (value.length) {
 			//this.files1 = cloneDeep(value).reverse()
@@ -909,15 +911,17 @@ export default {
 	//console.log('file:', FILE_RECORDS)
     if (FILE_RECORDS && FILE_RECORDS.length) {
 		this.files = FILE_RECORDS
-		this.files.forEach(v=> { 
+		let idx = 0
+		this.files.forEach(v=> {
 			this.getFileStatusProgress(v)
 			if (v.success) {
 				v.blob =  "https://sdkphoto.fangtangtv.com/api/toc/download/input/" + v.status.mdf + ".jpg"
 				v.thumb = "https://sdkphoto.fangtangtv.com/api/toc/download/input/icon_"+ v.status.mdf + ".jpg"
+				
 			}else{
-				this.files.remove(v)
+				//this.files.splice(idx,1)
 			}
-			
+			//idx = idx + 1
 		})
 			
 	}
@@ -1027,7 +1031,7 @@ export default {
               }
             })
         } catch (error) {
-          console.log(error)
+			console.log(error)
           
         }
 
@@ -1056,23 +1060,27 @@ export default {
      * 查询上传文件
      */
     getFileStatusProgress(file) {
-      //console.log('file', file)
-      if ( file.response.mdfs ) {
+      //console.log('getfilestatusprogress:', file)
+      if ( file && file.response.mdfs ) {
         const { mdfs } = file.response
         getFileStatus({ mdf: mdfs[0], platform: isMobile() ? 'h5' : 'pc' })
           .then((res) => {
-            if (res.mdfs[0].src_url) {
+            if (res.mdfs[0].code == 1 ) { //任务完成
               // file.status = res.mdfs[0]
-              this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
+				this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
               //_hmt.push(['_trackEvent', 'pisaai', 'www', 'repaired']) //百度埋点统计
-              clearInterval(this.timer)
+				clearInterval(this.timer)
+            } else if (res.mdfs[0].code == 2) { 
+				//任务处理失败
+				this.$refs.upload.update(file, { active: false, status: res.mdfs[0] })
+				clearInterval(this.timer)				
+				
             } else {
-              // file.status = res.mdfs[0]
-              this.$refs.upload.update(file, { status: res.mdfs[0] })
-              this.timer = setTimeout(() => {
+				this.$refs.upload.update(file, { status: res.mdfs[0] })
+				this.timer = setTimeout(() => {
 				this.getFileStatusProgress(file)
-              }, 2000)
-            }
+				}, 2000)
+			}
           })
           .catch((e) => {
 			this.$toast.error(e.msg)
