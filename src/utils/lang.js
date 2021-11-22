@@ -1,13 +1,11 @@
 export default {
   chinese: {
-    name: 'PisaAI披萨智能',
+    name: 'PisaAI披萨智能-修复老照片_一键抠图_抠图软件',
     error800: '图片的宽和高最大3000px',
     maxImgHint: ' 处理更大图片请访问高光照片优化 ',
-    idphotoName: 'PisaAI-证件照',
-    idphotoSynopsis: 'PisaAI证件照是一个证件照自动处理工具，可以自动放大和清晰脸部，降噪去划痕。还可以更换背景色，目前支持红底、白底、蓝底和透明底，并可以输出300dpi的打印级图片，一键完成。', // idphoto子站独立描述
     maxImgYh: '大图优化',
-    keyword: '老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照',
-    description: 'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景。',
+    keyword: '老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照,修复旧照片,照片模糊怎么变清晰,模糊图片秒转高清图,ps怎么把图片变清晰,一键抠图,图片模糊怎么变清晰,免费把模糊照片修高清的软件,怎么把模糊的照片变清晰,模糊的图片怎么变清晰,抠图,证件照换底色,照片换背景底色,ps证件照换底色,照片换底色,证件照换底色app免费,ps抠图,ps怎么抠图,ps如何抠图,在线抠图,抠图软件',
+    description: 'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景,主要可以：老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照,修复旧照片,照片模糊怎么变清晰,模糊图片秒转高清图,ps怎么把图片变清晰,一键抠图,图片模糊怎么变清晰,免费把模糊照片修高清的软件,怎么把模糊的照片变清晰,模糊的图片怎么变清晰,抠图,证件照换底色,照片换背景底色,ps证件照换底色,照片换底色,证件照换底色app免费,ps抠图,ps怎么抠图,ps如何抠图,在线抠图,抠图软件。',
     loginTxt: '登录',
     userTxt: '用户中心',
     loginTitle: '感谢支持PisaAI ！',
@@ -189,11 +187,9 @@ export default {
     },
   },
   english: {
-    name: 'PisaAI PhotoEnhance',
+    name: 'PisaAI Enhance Photo-Repair Old Photos_matting photos_cutout photo Software',
     error800:'The width and height of the picture are up to 3000px',
     maxImgHint:' To work with large images, visit HiliPhoto Enhance ',
-    idphotoName: 'PisaAI - IDPhoto',
-    idphotoSynopsis: 'PisaAI IDPhoto is an auto ID photo processing tool that can clarify faces and change background colors', // idphoto子站独立描述
     maxImgYh: 'Large map enhance',
     keyword: 'Old photo enhance, photo repair,  photo coloring, repair scratches, ID photo, ID photo background change, portrait photo',
     description: 'PisaAI PhotoEnhance is to colorize photos, repair scratches, face refinement, photo sharpening, etc. by AI algorithm. Fix old photos and ID photos before, ID photos for red, white, blue background.',
@@ -393,11 +389,9 @@ export default {
     },
   },
   japanese: {
-    name: 'PisaAI写真強化',
+    name: 'PisaAI写真強化-古い写真を修復する_画像マット_切り抜き写真ソフト',
     error800:'画像の幅と高さは最大800 pxです。',
     maxImgHint:'大きな画像の処理については、Hili 写真の最適化をご覧ください。',
-    idphotoName: 'PisaAI-証明書の写真',
-    idphotoSynopsis: 'PisaAI IDPhotoは、顔の鮮明化や背景色の変更が可能な自動証明写真加工ツールです。', // idphoto子站独立描述
     maxImgYh: '大いに最適化を図る',
     keyword: '古い写真、写真の修復、写真の着色、傷の修復、ID写真、ID写真の背景の変更、ポートレート',
     description: 'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景。',
@@ -579,11 +573,9 @@ export default {
     },
   },
   spanish: {
-    name: 'PisaAI Retoque Fotográfico',
+    name: 'PisaAI Retoque Fotográfico-Repair Old Photos_image matting_cutout photo Software',
     error800:'Anchura y altura máximas de la imagen 3000px',
     maxImgHint:'Para procesar imágenes grandes, visite la optimización de imágenes de alto brillo',
-    idphotoName: 'PisaAI - foto de identificación',
-    idphotoSynopsis: 'PisaAI IDPhoto es una herramienta de procesamiento de fotos de identificación automática que puede aclarar las caras y cambiar los colores del fondo', 
     maxImgYh: 'Optimización de gráficos grandes',
     keyword:
       'Fotos antiguas, reparación de fotos, coloración de fotos, reparación de arañazos, fotos de identificación, fotos de identificación para el fondo, fotos de retrato',
@@ -780,11 +772,9 @@ export default {
     },
   },
   french: {
-    name: 'PisaAI Photo Améliorer',
+    name: 'PisaAI Photo Améliorer-Repair Old Photos_image matting_cutout photo Software',
     error800:`Largeur et hauteur de l'image jusqu'à 3000px`,
     maxImgHint:`Pour travailler avec de grandes images, visitez Hili PhotoEnhance`,
-    idphotoName: `PisaAI - carte d'identité`,
-    idphotoSynopsis: `PisaAI IDPhoto est un outil de traitement automatique des photos d'identité qui permet de clarifier les visages et de modifier les couleurs d'arrière-plan.`, 
     maxImgYh: 'Optimisation des grandes cartes',
     keyword:
       "Photos anciennes, réparation de photo, coloriage de photo, réparation de rayures, photos d'identité, photos d'identité pour le fond, photos de portrait",
