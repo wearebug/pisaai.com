@@ -1070,6 +1070,9 @@ export default {
         const { mdfs } = file.response
         getFileStatus({ mdf: mdfs[0], platform: isMobile() ? 'h5' : 'pc' })
           .then((res) => {
+            //设置进度条
+            //this.$refs.upload.progress = 0 
+            
             if (res.mdfs[0].code == 1) {
               //任务完成
               // file.status = res.mdfs[0]
