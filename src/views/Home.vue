@@ -928,8 +928,8 @@ export default {
       this.files.forEach((v) => {
         this.getFileStatusProgress(v)
         if (v.success) {
-          v.blob = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/' + v.status.mdf + '.jpg'
-          v.thumb = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/icon_' + v.status.mdf + '.jpg'
+          v.blob = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/' + v.status.mdf + '.png'
+          v.thumb = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/icon_' + v.status.mdf + '.png'
         } else {
           //this.files.splice(idx,1)
         }
