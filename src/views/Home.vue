@@ -92,7 +92,6 @@
             :thread="thread"
             :post-action="postAction"
             :data="postData"
-            :multiple="multiple"
             :extensions="extensions"
             :accept="accept"
             @input-file="inputFile"
@@ -122,7 +121,6 @@
             :thread="thread"
             :post-action="postAction"
             :data="postData"
-            :multiple="multiple"
             :extensions="extensions"
             :accept="accept"
             @input-file="inputFile"
@@ -540,6 +538,44 @@
         <div class="px-4 py-2 text-caption" v-html="fullscreenHtml"></div>
       </v-card>
     </v-dialog>
+
+    <!-- 裁剪、旋转图片  -->
+    <v-dialog v-model="edit" eager persistent max-width="600px" max-height="0.8vh">
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">编辑图片</v-card-title>
+        <v-card-text style="padding-top: 20px">
+          <vue-cropper
+            ref="cropper"
+            :view-mode="0"
+            drag-mode="move"
+            :auto-crop-area="0.5"
+            :min-container-width="250"
+            :min-container-height="180"
+            :background="true"
+            :rotatable="true"
+            :src="imgSrc"
+            alt="Source Image"
+            :modal="true"
+            :img-style="{ width: '400px', height: '400px' }"
+            :center="false"
+            :highlight="true"
+          />
+        </v-card-text>
+        <v-row class="py-2" justify="center">
+          <v-btn class="mx-2" fab dark x-small color="primary" @click="rotate('r')">
+            <v-icon dark>mdi-rotate-right</v-icon>
+          </v-btn>
+          <v-btn class="mx-2" fab dark x-small color="primary" @click="rotate('l')">
+            <v-icon dark>mdi-rotate-left</v-icon>
+          </v-btn>
+        </v-row>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn @click="cancelCropImage">取消</v-btn>
+          <v-btn color="primary" @click="cropImage">确定</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -576,7 +612,8 @@ import {
   photoPhotopay,
   tocDownload,
 } from '@/api/home'
-
+import VueCropper from 'vue-cropperjs'
+import 'cropperjs/dist/cropper.css'
 export default {
   mixins: [validationMixin],
   validations: {
@@ -603,6 +640,7 @@ export default {
     VueQr,
     wxlogin,
     PreviewScale,
+    VueCropper,
   },
   filters: {
     getFileSize(size) {
@@ -631,7 +669,6 @@ export default {
       checkedAllItem: [],
       checkedItem: [],
       thread: 3,
-      multiple: true,
       accept: 'image/png,image/gif,image/jpeg,image/webp',
       extensions: 'png,gif,jpg,jpeg,webp',
       showOption: false,
@@ -737,7 +774,6 @@ export default {
       email: '',
       pwd: '',
       isRegister: false,
-
       isWechatLogin: false, // 是否微信扫码登录
       wechatHead: '',
       isUploadAgain: false, // 是否再次处理上传
@@ -769,6 +805,8 @@ export default {
           tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
         },
       ],
+      edit: false,
+      imgSrc: '',
     }
   },
   watch: {
@@ -806,7 +844,7 @@ export default {
     },
     files: {
       handler(value) {
-        //console.log("value:",value)
+        console.log("value:",value)
         //刷新本地保存的任务状态
         if (value.length) {
           //this.files1 = cloneDeep(value).reverse()
@@ -1048,7 +1086,12 @@ export default {
     inputFile(newFile, oldFile) {
       //console.log('newFile', newFile)
       if (newFile && !oldFile) {
-        this.showOption = true
+        // this.showOption = true
+        this.$nextTick(() => {
+          this.imgSrc = newFile.blob
+          this.$refs.cropper.replace(newFile.blob)
+        })
+        this.edit = true
         _hmt.push(['_trackEvent', 'pisaai', 'www', 'showTask']) //百度埋点统计
       }
       if (!newFile && oldFile) {
@@ -1071,8 +1114,8 @@ export default {
         getFileStatus({ mdf: mdfs[0], platform: isMobile() ? 'h5' : 'pc' })
           .then((res) => {
             //设置进度条
-            //this.$refs.upload.progress = 0 
-            
+            //this.$refs.upload.progress = 0
+
             if (res.mdfs[0].code == 1) {
               //任务完成
               // file.status = res.mdfs[0]
@@ -1175,15 +1218,21 @@ export default {
         this.getFileStatusProgress(aa)
         this.isUploadAgain = false
       } else {
-        // let oldFile = this.files[0]
-        this.files.forEach((v) => {
-          if (!v.success) {
-            this.$refs.upload.update(v.id, {
-              active: true,
-              data: this.postData,
-            })
-          }
-        })
+        let oldFile = this.files[0]
+        if (!oldFile.success) {
+          this.$refs.upload.update(oldFile.id, {
+            active: true,
+            data: this.postData,
+          })
+        }
+        // this.files.forEach((v) => {
+        //   if (!v.success) {
+        //     this.$refs.upload.update(v.id, {
+        //       active: true,
+        //       data: this.postData,
+        //     })
+        //   }
+        // })
       }
       this.showOption = false
     },
@@ -1383,7 +1432,6 @@ export default {
         }
       }
     },
-
     onWechatPay(response, item = null) {
       // 如果用户没有登陆 或者 用户登录了没有点数
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
@@ -1474,7 +1522,6 @@ export default {
         this.showLogin = true
       }
     },
-
     getPackageOrderStataus(order_id) {
       packageStatus({ order_id, channel: this.channel })
         .then((res) => {
@@ -1588,7 +1635,6 @@ export default {
         // this.$toast.error(e.message)
       }
     },
-
     onSubmit() {
       this.$v.$touch()
       if (!this.$v.$invalid) {
@@ -1650,6 +1696,44 @@ export default {
       this.uploadAgainItem = item.file
       this.showOption = true
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'fixAgain']) //百度埋点统计
+    },
+    cropImage() {
+      let oldFile = this.files[0]
+      let binStr = window.atob(
+        this.$refs.cropper.getCroppedCanvas({ maxWidth: 1920, maxHeight: 1200 }).toDataURL(oldFile.type).split(',')[1]
+      )
+      let arr = new Uint8Array(binStr.length)
+      for (let i = 0; i < binStr.length; i++) {
+        arr[i] = binStr.charCodeAt(i)
+      }
+      let file = new File([arr], oldFile.name, { type: oldFile.type })
+      let thumb = URL.createObjectURL(file)
+      let cropFile = Object.assign(oldFile, { file, thumb })
+      this.files.splice(0, 1, cropFile)
+      this.edit = false
+      this.showOption = true
+    },
+    cancelCropImage() {
+      this.files.splice(0, 1)
+      this.edit = false
+    },
+    rotate(dir) {
+      if (dir === 'r') {
+        this.$refs.cropper.rotate(90)
+      } else {
+        this.$refs.cropper.rotate(-90)
+      }
+    },
+    flip(vert) {
+      let { scaleX, scaleY, rotate } = this.$refs.cropper.getData()
+      if (rotate === 90 || rotate === 270) {
+        vert = !vert
+      }
+      if (vert) {
+        this.$refs.cropper.scale(scaleX, -1 * scaleY)
+      } else {
+        this.$refs.cropper.scale(-1 * scaleX, scaleY)
+      }
     },
   },
 }
@@ -1833,5 +1917,13 @@ export default {
       }
     }
   }
+}
+.edit-img-wrap {
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+::v-deep .cropper-bg {
+  background-repeat: repeat;
 }
 </style>
