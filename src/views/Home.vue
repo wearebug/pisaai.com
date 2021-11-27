@@ -141,9 +141,10 @@
         </v-sheet>
         <div style="text-align: center; position: relative" v-if="!files.length">
           <p>
-            <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
+          <!--  <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
               {{ $vuetify.lang.t('$vuetify.maxImgHint') }}
             </a>
+          -->
           </p>
         </div>
 
