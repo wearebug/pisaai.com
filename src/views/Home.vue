@@ -85,10 +85,11 @@
           <p class="text--secondary text-justify">{{ $vuetify.lang.t('$vuetify.synopsis') }}</p>
         </v-sheet>
         <!--上传按钮-->
-        <v-sheet tag="section" v-if="files.length == 0" class="d-flex align-center justify-center pt-7 pb-7 pt-md-12 pb-md-12 border-dash">
+        <v-sheet v-if="!files.length" tag="section" class="d-flex align-center justify-center pt-7 pb-7 pt-md-12 pb-md-12 border-dash">
           <file-upload
             ref="upload"
             v-model="files"
+            :multiple="true"
             :thread="thread"
             :post-action="postAction"
             :data="postData"
@@ -119,6 +120,7 @@
             ref="upload"
             v-model="files"
             :thread="thread"
+            :multiple="true"
             :post-action="postAction"
             :data="postData"
             :extensions="extensions"
@@ -139,9 +141,10 @@
         </v-sheet>
         <div style="text-align: center; position: relative" v-if="!files.length">
           <p>
-            <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
+          <!--  <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
               {{ $vuetify.lang.t('$vuetify.maxImgHint') }}
             </a>
+          -->
           </p>
         </div>
 
@@ -491,7 +494,7 @@
           <v-btn @click="onUploadCancel">
             {{ $vuetify.lang.t('$vuetify.choiceType.cancel') }}
           </v-btn>
-          <v-btn color="primary darken-1" @click="onUploadComfirm">
+          <v-btn color="primary darken-1" @click="onUploadConfirm">
             {{ $vuetify.lang.t('$vuetify.choiceType.btn') }}
           </v-btn>
         </v-card-actions>
@@ -844,7 +847,6 @@ export default {
     },
     files: {
       handler(value) {
-        console.log("value:",value)
         //刷新本地保存的任务状态
         if (value.length) {
           //this.files1 = cloneDeep(value).reverse()
@@ -1004,11 +1006,10 @@ export default {
       setTimeout(() => {
         this.staticImgWidth = this.$refs.staticImg[0].offsetWidth
         this.staticImgHeight = this.$refs.staticImg[0].offsetHeight
-      }, 0)
+      }, 600)
       this.winHeight = window.innerHeight - window.innerHeight / 10 - 44 // 屏幕高度
       this.winWidth = window.innerWidth - 48 // 屏幕宽度
     },
-
     async inputFilter(newFile, oldFile, prevent) {
       if (newFile && !oldFile) {
         // 过滤系统文件 和隐藏文件
@@ -1066,7 +1067,6 @@ export default {
         }
         img.src = newFile.blob
       }
-
       // 添加或者更新的时候
       if (oldFile || (oldFile && newFile)) {
         try {
@@ -1084,7 +1084,6 @@ export default {
       }
     },
     inputFile(newFile, oldFile) {
-      //console.log('newFile', newFile)
       if (newFile && !oldFile) {
         // this.showOption = true
         this.$nextTick(() => {
@@ -1143,7 +1142,7 @@ export default {
     /**
      * 确认上传文件
      */
-    onUploadComfirm() {
+    onUploadConfirm() {
       const opt = this.optionTabs[this.optionsTab]
       const bgMap = {
         transparent: -1,
@@ -1218,21 +1217,21 @@ export default {
         this.getFileStatusProgress(aa)
         this.isUploadAgain = false
       } else {
-        let oldFile = this.files[0]
-        if (!oldFile.success) {
-          this.$refs.upload.update(oldFile.id, {
-            active: true,
-            data: this.postData,
-          })
-        }
-        // this.files.forEach((v) => {
-        //   if (!v.success) {
-        //     this.$refs.upload.update(v.id, {
-        //       active: true,
-        //       data: this.postData,
-        //     })
-        //   }
-        // })
+        // let oldFile = this.files[this.files.length-1]
+        // if (!oldFile.success) {
+        //   this.$refs.upload.update(oldFile.id, {
+        //     active: true,
+        //     data: this.postData,
+        //   })
+        // }
+        this.files.forEach((v) => {
+          if (!v.success) {
+            this.$refs.upload.update(v.id, {
+              active: true,
+              data: this.postData,
+            })
+          }
+        })
       }
       this.showOption = false
     },
@@ -1698,7 +1697,7 @@ export default {
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'fixAgain']) //百度埋点统计
     },
     cropImage() {
-      let oldFile = this.files[0]
+      let oldFile = this.files[this.files.length - 1]
       let binStr = window.atob(
         this.$refs.cropper.getCroppedCanvas({ maxWidth: 1920, maxHeight: 1200 }).toDataURL(oldFile.type).split(',')[1]
       )
@@ -1709,7 +1708,7 @@ export default {
       let file = new File([arr], oldFile.name, { type: oldFile.type })
       let thumb = URL.createObjectURL(file)
       let cropFile = Object.assign(oldFile, { file, thumb })
-      this.files.splice(0, 1, cropFile)
+      this.files.splice(this.files.length - 1, 1, cropFile)
       this.edit = false
       this.showOption = true
     },
