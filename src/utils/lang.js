@@ -148,7 +148,7 @@ export default {
 	copyrightTxt: '北京但丁科技有限公司 版权所有 京ICP备2021032285号',
     btnTxt: '上传图片（最大3000px）',
     contrastTips: ['后', '前'],
-    contrastType: ['彩色照片优化', '黑白照片上色', '证件照换底色', '图片无损放大', '划痕修复', '强化人像'],
+    contrastType: ['彩色照片优化', '证件照换底色', '黑白照片上色', '图片无损放大', '划痕修复', '强化人像'],
     caseTxt: '案例展示',
     problemTxt: '常见问题',
     problem: [
@@ -345,8 +345,8 @@ export default {
     contrastTips: ['after', 'befor'],
     contrastType: [
       'Enhance color photo',
+	  'Change background color',
       'Colorize black&white photo',
-      'Change background color of ID photo',
       'Lossless amplification',
       'Repair scratched',
       'Enhance face',
@@ -534,7 +534,7 @@ export default {
 	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
     btnTxt: '画像のアップロード（最大3000px）',
     contrastTips: ['後', '前'],
-    contrastType: ['カラー写真を強調', '黒と白の写真を色付', '身分証明書の背景色を変更', 'ロスレス増幅', '傷のある修理', '顔を強調する'],
+    contrastType: ['カラー写真を強調', '背景色を変更', '黒と白の写真を色付', 'ロスレス増幅', '傷のある修理', '顔を強調する'],
     caseTxt: 'ケースショー',
     problemTxt: '一般的な問題',
     problem: [
@@ -727,8 +727,8 @@ export default {
     contrastTips: ['posterior', 'antes'],
     contrastType: [
       'mejorar la foto en color',
+	  'Cambiar el color de fondo',
       'colorear fotos en blanco y negro',
-      'Cambiar el color de fondo de la foto ID',
       'Amplificación sin pérdidas',
       'Reparación de rayado',
       'mejorar la cara',
@@ -926,8 +926,8 @@ export default {
     contrastTips: ['après', 'avant'],
     contrastType: [
       'améliorer la photo couleur',
+	  'Changer la couleur de fond',
       'coloriser des photos en noir et blanc',
-      'Changer la couleur de fond de la photo ID',
       'Amplification non-destructive',
       'Réparer Rayé',
       'améliorer le visage',
