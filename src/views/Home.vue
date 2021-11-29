@@ -324,7 +324,7 @@
           {{ link }}
         </v-btn>
         <!--SEO专用开始-->
-        <v-btn color="white" text rounded class="my-2" onClick="window.open('about.html')">网络营销</v-btn>
+        <v-btn color="white" text rounded class="my-2" onClick="window.open('http://wp.pisaai.com')">行业资讯</v-btn>
         <!--SEO专用结束-->
         <v-col class="py-4 text-center white--text text-body-2" cols="12">
           {{ $vuetify.lang.t('$vuetify.copyrightTxt') }}
@@ -969,7 +969,7 @@ export default {
         this.getFileStatusProgress(v)
         if (v.success) {
           v.blob = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/' + v.status.mdf + '.png'
-          v.thumb = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/icon_' + v.status.mdf + '.png'
+          v.thumb = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/icon_' + v.status.mdf + '.jpg'
         } else {
           //this.files.splice(idx,1)
         }
