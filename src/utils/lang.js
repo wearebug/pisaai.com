@@ -32,8 +32,8 @@ export default {
         list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持'],
       },
       {
-        title: '200张 = ￥600',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持'],
+        title: '包月 = ￥300',
+        list: ['有效期: 一月', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持'],
       },
     ],
     priceType: ['微信支付', '支付宝支付', 'Paypal支付'],
@@ -129,7 +129,7 @@ export default {
     menu: ['Language', 'API', '价格', '关于我们'],
     language: ['简体中文', 'English', '日本语', 'Español', 'Francés'],
     synopsis:
-      'PisaAI（披萨智能）照片优化是利用AI技术对照片进行修复和美化的工具，它可以修复破损的老照片、给黑白照片上色，还可以换背景、优化失焦模糊的照片。',
+      'PisaAI（披萨智能）是利用AI技术对照片进行修复和美化的工具，它可以修复破损的老照片、给黑白照片上色，还可以换背景、优化失焦模糊的照片。',
     电话: '010-5335 5193',
     邮箱: 'wearebug&gmail.com',
     微信: 'wearebug',
@@ -224,8 +224,8 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: '200 photos = ￥600',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+        title: 'monthly package = ￥300',
+        list: ['Expiry:a month', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -421,8 +421,8 @@ export default {
         list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
       {
-        title: '写真200枚 = ￥600',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        title: '月額 = ￥300',
+        list: ['有効期限:1月', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -612,8 +612,8 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: '200 fotos = ￥600',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+        title: 'Paquete mensual = ￥300',
+        list: ['Expiry:Un mes', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
@@ -811,8 +811,8 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: '200 photos = ￥600',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+        title: 'forfait mensuel = ￥300',
+        list: ['Expiry:un mois', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
