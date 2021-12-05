@@ -1431,6 +1431,7 @@ export default {
       }
     },
     onWechatPay(response, item = null) {
+      console.log("onWechatPay")
       // 如果用户没有登陆 或者 用户登录了没有点数
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
       let ffun = () => {
@@ -1443,14 +1444,35 @@ export default {
         let icon = item.status.icon_url
         let timestamp = new Date().valueOf().toString()
         let random = Math.ceil(Math.random() * 100000).toString()
-        let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}&channel=${this.channel}`
-        this.qrcodeUrl = payLink
-
-        this.showQrcode = true
-
-        // chaundibs(payLink) // 传递标识
+        if (isMobile()) {
+          // 调用扣除点数
+          let mdf = response.mdf || response.mdfs[0]
+          photoPhotopay({
+            mdt: mdf,
+            fd: 'h5',
+            ver: 2,
+            ftype: "",
+            channel: this.channel,
+            mobile: `${timestamp}${random}`,
+            openid:`${timestamp}${random}`
+          }).then((res) => {
+            if (res.code === 0) {
+              let reg = new RegExp('&amp;','g')//g代表全部
+              let newUrl = (res.img_url).replace(reg,'&');
+              localStorage("wechatPay" , 1); //未完成，此步应该是针对对应的mdf设置这个标记，然后页面加载的时候，检测这个标志，为1时触发下载，并将该标志置0
+              alert('即将拉起微信支付，支付成功后，请再次点击下载进行下载。') //应该改成toast
+              window.location.href = newUrl;
+            }
+          })
+        } else {
+          let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}&channel=${this.channel}`
+          this.qrcodeUrl = payLink
+          this.showQrcode = true
+          // chaundibs(payLink) // 传递标识
+        }
         response.pc_code = `${timestamp}${random}`
         this.statusLxun(item, response)
+
       }
       if (this.userInfo) {
         photoUserfinace({
@@ -1498,7 +1520,6 @@ export default {
       if (this.userInfo) {
         try {
           const data = {
-            channel: this.channel,
             channel: this.channel,
             fd: isMobile() ? 'h5' : 'pc',
             token:
