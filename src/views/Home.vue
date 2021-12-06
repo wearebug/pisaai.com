@@ -509,9 +509,11 @@
           <v-btn class="mx-4" icon color="white" @click="onMinus">
             <v-icon>mdi-magnify-minus</v-icon>
           </v-btn>
+		  <!--
           <v-btn class="mx-4" icon color="white" @click="onFileDownload(previewFile, findItem)" id="preview-download">
             <v-icon>mdi-file-download</v-icon>
           </v-btn>
+		  -->
         </v-row>
         <preview-scale
           :initWidth="initWidth"
