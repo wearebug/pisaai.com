@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="black" dark>
-      <v-container class="d-flex justify-space-between pa-0" style="max-width:1080px;margin:auto;">
+      <v-container class="d-flex justify-space-between pa-0" style="max-width: 1080px; margin: auto">
         <div class="d-flex align-center pa-0">
           <v-img class="shrink" contain src="http://pisaai.com/img/logo.cf60ae52.png" transition="scale-transition" width="120" eager />
           <!-- <h1 class="ml-4 text-h6">{{ $vuetify.lang.t('$vuetify.name') }}</h1> -->
@@ -78,10 +78,10 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-main style="max-width:1080px;margin:auto;">
+    <v-main style="max-width: 1080px; margin: auto">
       <v-container>
         <v-sheet color="white" tag="section">
-          <p style="text-align: center;">{{ $vuetify.lang.t('$vuetify.synopsis') }}</p>
+          <p style="text-align: center">{{ $vuetify.lang.t('$vuetify.synopsis') }}</p>
         </v-sheet>
         <!--上传按钮-->
         <v-sheet v-if="!files.length" tag="section" class="d-flex align-center justify-center pt-7 pb-7 pt-md-12 pb-md-12 border-dash">
@@ -140,11 +140,10 @@
         </v-sheet>
         <div style="text-align: center; position: relative" v-if="!files.length">
           <p>
-          <!--  <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
+            <!--  <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
               {{ $vuetify.lang.t('$vuetify.maxImgHint') }}
             </a>
-          -->
-          </p>
+          --></p>
         </div>
 
         <!--任务列表-->
@@ -875,7 +874,7 @@ export default {
     ...mapState(['userInfo', 'userNumews']),
     prices() {
       const functionPrice = this.$vuetify.lang.locales[this.curLang.id].functionPrice
-      const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcToBNums200']
+      const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcMonthly']
       return functionPrice.map((v, i) => {
         return { ...v, id: priceIds[i] }
       })
@@ -1388,8 +1387,8 @@ export default {
               ver: 2,
             }).then((res) => {
               this.setNumew(res.data.nums ? res.data.nums : 0)
-
-              if (res.code === 0 && res.data.nums > 0) {
+              console.log(parseInt(res.data.sdate) > parseInt(new Date().getTime() / 1000))
+              if (res.code === 0 && (res.data.nums > 0 || parseInt(res.data.sdate) > parseInt(new Date().getTime() / 1000))) {
                 // 调用扣除点数
                 photoPhotopay({
                   mdt: mdf,
@@ -1431,7 +1430,7 @@ export default {
       }
     },
     onWechatPay(response, item = null) {
-      console.log("onWechatPay")
+      console.log('onWechatPay')
       // 如果用户没有登陆 或者 用户登录了没有点数
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
       let ffun = () => {
@@ -1451,17 +1450,17 @@ export default {
             mdt: mdf,
             fd: 'h5',
             ver: 2,
-            ftype: "",
+            ftype: '',
             channel: this.channel,
             mobile: `${timestamp}${random}`,
-            openid:`${timestamp}${random}`
+            openid: `${timestamp}${random}`,
           }).then((res) => {
             if (res.code === 0) {
-              let reg = new RegExp('&amp;','g')//g代表全部
-              let newUrl = (res.img_url).replace(reg,'&');
-              localStorage("wechatPay" , 1); //未完成，此步应该是针对对应的mdf设置这个标记，然后页面加载的时候，检测这个标志，为1时触发下载，并将该标志置0
+              let reg = new RegExp('&amp;', 'g') //g代表全部
+              let newUrl = res.img_url.replace(reg, '&')
+              localStorage('wechatPay', 1) //未完成，此步应该是针对对应的mdf设置这个标记，然后页面加载的时候，检测这个标志，为1时触发下载，并将该标志置0
               alert('即将拉起微信支付，支付成功后，请再次点击下载进行下载。') //应该改成toast
-              window.location.href = newUrl;
+              window.location.href = newUrl
             }
           })
         } else {
@@ -1472,7 +1471,6 @@ export default {
         }
         response.pc_code = `${timestamp}${random}`
         this.statusLxun(item, response)
-
       }
       if (this.userInfo) {
         photoUserfinace({
