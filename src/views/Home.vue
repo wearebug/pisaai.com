@@ -875,7 +875,7 @@ export default {
     ...mapState(['userInfo', 'userNumews']),
     prices() {
       const functionPrice = this.$vuetify.lang.locales[this.curLang.id].functionPrice
-      const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcToBNums200']
+      const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcMonthly']
       return functionPrice.map((v, i) => {
         return { ...v, id: priceIds[i] }
       })
@@ -1287,7 +1287,8 @@ export default {
           let res = await tocDownload(mdf)
           if (res.code === 200) {
             _hmt.push(['_trackEvent', 'pisaai', 'www', 'downloaded']) //百度埋点统计
-            this.fileDonwload(res.img_url, mdf)
+            this.fileDownload(res.img_url, mdf)
+			localStorage.setItem('pay', 0) //支付下载过
           } else {
             this.onWechatPay(response, item)
           }
@@ -1296,7 +1297,7 @@ export default {
           //if (isWechat) {
           //  this.saveImg(url)
           //} else {
-          //  this.fileDonwload(url)
+          //  this.fileDownload(url)
           //}
         } catch (e) {
           if (e.code === 2) {
@@ -1349,7 +1350,7 @@ export default {
             if (res.code === 200 && window.code111) {
               // 已经支付直接下载
               _hmt.push(['_trackEvent', 'pisaai', 'www', 'payok']) //百度埋点统计
-              this.fileDonwload(res.img_url, mdf)
+              this.fileDownload(res.img_url, mdf)
               // 关闭定时器
               clearInterval(window.dsqq)
               this.$toast.success('支付完成')
@@ -1403,7 +1404,7 @@ export default {
                     this.tongbudian() // 再次同步点数
                     tocDownload(mdf).then((res) => {
                       if (res.code === 200 && window.code111) {
-                        this.fileDonwload(res.img_url, mdf)
+                        this.fileDownload(res.img_url, mdf)
                         clearInterval(window.dsqq)
                         this.$toast.success('成功')
                         // 关闭弹框
@@ -1430,8 +1431,9 @@ export default {
         }
       }
     },
+	
     onWechatPay(response, item = null) {
-      console.log("onWechatPay")
+      //console.log("onWechatPay")
       // 如果用户没有登陆 或者 用户登录了没有点数
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
       let ffun = () => {
@@ -1458,10 +1460,11 @@ export default {
           }).then((res) => {
             if (res.code === 0) {
               let reg = new RegExp('&amp;','g')//g代表全部
-              let newUrl = (res.img_url).replace(reg,'&');
-              localStorage("wechatPay" , 1); //未完成，此步应该是针对对应的mdf设置这个标记，然后页面加载的时候，检测这个标志，为1时触发下载，并将该标志置0
-              alert('即将拉起微信支付，支付成功后，请再次点击下载进行下载。') //应该改成toast
-              window.location.href = newUrl;
+              let newUrl = (res.img_url).replace(reg,'&')
+              //针对的mdf设置标记.页面加载时检测这个标志，为1时触发下载，并将该标志置0
+			  localStorage.setItem('pay', 1)
+              this.$toast.success('即将拉起微信支付，支付成功后请再次点击下载。')
+              window.location.href = newUrl
             }
           })
         } else {
@@ -1499,7 +1502,7 @@ export default {
                 if (res.code === 0) {
                   tocDownload(mdf).then((res) => {
                     if (res.code === 200) {
-                      this.fileDonwload(res.img_url, mdf)
+                      this.fileDownload(res.img_url, mdf)
                     }
                   })
                   this.tongbudian() // 再次同步点数
@@ -1580,7 +1583,7 @@ export default {
     onFilePreview(fileObj, item = null) {
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'ViewContrast']) //百度埋点统计
       this.findItem = item
-      console.log(fileObj)
+      //console.log(fileObj)
       this.previewFile = fileObj
       let img = new Image()
       img.src = this.previewFile.wmk_url
