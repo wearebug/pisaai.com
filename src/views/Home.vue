@@ -36,10 +36,10 @@
             </template>
             <v-list flat>
               <v-list-item-group color="primary">
-                <v-list-item style="display: block">
+                <v-list-item>
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipDateTxt') + (userExDate || 0)"></v-list-item-title>
                 </v-list-item>
-                <v-list-item>
+                <v-list-item>				  
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + (userNumews || 0)"></v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="onLogout">
