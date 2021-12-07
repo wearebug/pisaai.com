@@ -1,4 +1,7 @@
 module.exports = {
+  devServer: {
+    disableHostCheck: true,
+  },
   publicPath: './',
   lintOnSave: false,
   pluginOptions: {
