@@ -36,11 +36,12 @@
             </template>
             <v-list flat>
               <v-list-item-group color="primary">
-                <v-list-item style="display: block">
-                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipDateTxt') + (userExDate || 0)"></v-list-item-title>
-                </v-list-item>
+<!--                <v-list-item style="display: block">-->
+<!--                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipDateTxt') + (userExDate || 0)"></v-list-item-title>-->
+<!--                </v-list-item>-->
                 <v-list-item>
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + (userNumews || 0)"></v-list-item-title>
+                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipDateTxt') + (userExDate || 0)"></v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="onLogout">
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.loginOutBtnTxt')"></v-list-item-title>
@@ -1040,6 +1041,7 @@ export default {
       }
 
       function getImageSize(imgSrc) {
+        console.log(imgSrc)
         return new Promise((resolve, reject) => {
           const newImg = new Image()
           newImg.onload = () => {
@@ -1073,12 +1075,12 @@ export default {
       // 添加或者更新的时候
       if (oldFile || (oldFile && newFile)) {
         try {
-          getImageSize(newFile.blob).then((res) => {
+          getImageSize(oldFile.blob).then((res) => {
             //if (res[0] > 800 || res[1] > 800) {
             if (res[0] > 3000 || res[1] > 3000) {
               _hmt.push(['_trackEvent', 'pisaai', 'www', 'error800']) //百度埋点统计
               this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
-              this.onUploadCancel()
+              //this.onUploadCancel()
             }
           })
         } catch (error) {
@@ -1393,7 +1395,6 @@ export default {
             }).then((res) => {
               this.setNumew(res.data.nums ? res.data.nums : 0)
               this.setExDate(res.data.sdate ? res.data.sdate : 0)
-              console.log("setExDate1:"+res.data.sdate)
               console.log(parseInt(res.data.sdate) > parseInt(new Date().getTime() / 1000))
               if (res.code === 0 && (res.data.nums > 0 || parseInt(res.data.sdate) > parseInt(new Date().getTime() / 1000))) {
                 // 调用扣除点数
@@ -1487,7 +1488,6 @@ export default {
           channel: this.channel,
           ver: 2,
         }).then((res) => {
-          console.log("setExDate2:"+res.data.sdate)
           this.setNumew(res.data.nums ? res.data.nums : 0)
           this.setExDate(res.data.sdate ? res.data.sdate : 0)
           if (res.code === 0) {
@@ -1636,8 +1636,6 @@ export default {
           channel: 'pisaAI',
           ver: 2,
         }).then((res) => {
-          console.log("setExDate3:"+res.data.sdate)
-          console.log(res.data.sdate ? res.data.sdate : 0)
           this.setNumew(res.data.nums ? res.data.nums : 0)
           this.setExDate(res.data.sdate ? res.data.sdate : 0)
         })
@@ -1731,7 +1729,9 @@ export default {
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'fixAgain']) //百度埋点统计
     },
     cropImage() {
+      console.log(this.files)
       let oldFile = this.files[this.files.length - 1]
+      console.log(oldFile)
       let binStr = window.atob(
         this.$refs.cropper.getCroppedCanvas({ maxWidth: 1920, maxHeight: 1200 }).toDataURL(oldFile.type).split(',')[1]
       )
@@ -1742,6 +1742,8 @@ export default {
       let file = new File([arr], oldFile.name, { type: oldFile.type })
       let thumb = URL.createObjectURL(file)
       let cropFile = Object.assign(oldFile, { file, thumb })
+      cropFile.width = Math.floor(this.$refs.cropper.getData().width)
+      cropFile.height = Math.floor(this.$refs.cropper.getData().height)
       this.files.splice(this.files.length - 1, 1, cropFile)
       this.edit = false
       this.showOption = true
