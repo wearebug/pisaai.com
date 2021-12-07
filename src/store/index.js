@@ -33,9 +33,15 @@ const store = new Vuex.Store({
       if (info == 0) {
         state.userExDate = '无'
       } else {
-        let date = new Date(parseInt(info) * 1000)
-        let m = date.getMonth() + 1
-        state.userExDate = date.getFullYear() + '-' + m + '-' + date.getDate()
+        let day = Math.floor((parseInt(info) - new Date().getTime() / 1000) / 86400)
+        if (day < 1) {
+          state.userExDate = '已过期'
+        } else {
+          state.userExDate = day + '天'
+        }
+        // let date = new Date(parseInt(info) * 1000)
+        // let m = date.getMonth() + 1
+        // state.userExDate = date.getFullYear() + '-' + m + '-' + date.getDate()
       }
     },
     removeUserInfo(state) {
