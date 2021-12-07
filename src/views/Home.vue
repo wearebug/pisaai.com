@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="black" dark>
-      <v-container class="d-flex justify-space-between pa-0">
+      <v-container class="d-flex justify-space-between pa-0" style="max-width: 1080px; margin: auto">
         <div class="d-flex align-center pa-0">
           <v-img class="shrink" contain src="http://pisaai.com/img/logo.cf60ae52.png" transition="scale-transition" width="120" eager />
           <!-- <h1 class="ml-4 text-h6">{{ $vuetify.lang.t('$vuetify.name') }}</h1> -->
@@ -37,6 +37,9 @@
             <v-list flat>
               <v-list-item-group color="primary">
                 <v-list-item>
+                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipDateTxt') + (userExDate || 0)"></v-list-item-title>
+                </v-list-item>
+                <v-list-item>				  
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + (userNumews || 0)"></v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="onLogout">
@@ -78,18 +81,17 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-main>
+    <v-main style="max-width: 1080px; margin: auto">
       <v-container>
         <v-sheet color="white" tag="section">
-          <!-- <h1 class="my-4 text-h4">{{ $vuetify.lang.t('$vuetify.name') }}</h1> -->
-          <p class="text--secondary text-justify">{{ $vuetify.lang.t('$vuetify.synopsis') }}</p>
+          <p style="text-align: center">{{ $vuetify.lang.t('$vuetify.synopsis') }}</p>
         </v-sheet>
         <!--上传按钮-->
         <v-sheet v-if="!files.length" tag="section" class="d-flex align-center justify-center pt-7 pb-7 pt-md-12 pb-md-12 border-dash">
           <file-upload
             ref="upload"
             v-model="files"
-            :multiple="true"
+            :multiple="false"
             :thread="thread"
             :post-action="postAction"
             :data="postData"
@@ -141,11 +143,10 @@
         </v-sheet>
         <div style="text-align: center; position: relative" v-if="!files.length">
           <p>
-          <!--  <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
+            <!--  <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
               {{ $vuetify.lang.t('$vuetify.maxImgHint') }}
             </a>
-          -->
-          </p>
+          --></p>
         </div>
 
         <!--任务列表-->
@@ -510,9 +511,11 @@
           <v-btn class="mx-4" icon color="white" @click="onMinus">
             <v-icon>mdi-magnify-minus</v-icon>
           </v-btn>
+          <!--
           <v-btn class="mx-4" icon color="white" @click="onFileDownload(previewFile, findItem)" id="preview-download">
             <v-icon>mdi-file-download</v-icon>
           </v-btn>
+		  -->
         </v-row>
         <preview-scale
           :initWidth="initWidth"
@@ -551,7 +554,7 @@
             ref="cropper"
             :view-mode="0"
             drag-mode="move"
-            :auto-crop-area="0.5"
+            :auto-crop-area="0.9"
             :min-container-width="250"
             :min-container-height="180"
             :background="true"
@@ -873,10 +876,10 @@ export default {
     },
   },
   computed: {
-    ...mapState(['userInfo', 'userNumews']),
+    ...mapState(['userInfo', 'userNumews', 'userExDate']),
     prices() {
       const functionPrice = this.$vuetify.lang.locales[this.curLang.id].functionPrice
-      const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcToBNums200']
+      const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcMonthly']
       return functionPrice.map((v, i) => {
         return { ...v, id: priceIds[i] }
       })
@@ -986,7 +989,7 @@ export default {
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
   methods: {
-    ...mapMutations(['setUserInfo', 'removeUserInfo', 'setNumew']),
+    ...mapMutations(['setUserInfo', 'removeUserInfo', 'setNumew', 'setExDate']),
     getWechatLoginCode() {
       const code = this.getUrlParam()
       if (code) {
@@ -1389,8 +1392,10 @@ export default {
               ver: 2,
             }).then((res) => {
               this.setNumew(res.data.nums ? res.data.nums : 0)
-
-              if (res.code === 0 && res.data.nums > 0) {
+              this.setExDate(res.data.sdate ? res.data.sdate : 0)
+              console.log("setExDate1:"+res.data.sdate)
+              console.log(parseInt(res.data.sdate) > parseInt(new Date().getTime() / 1000))
+              if (res.code === 0 && (res.data.nums > 0 || parseInt(res.data.sdate) > parseInt(new Date().getTime() / 1000))) {
                 // 调用扣除点数
                 photoPhotopay({
                   mdt: mdf,
@@ -1431,7 +1436,9 @@ export default {
         }
       }
     },
+
     onWechatPay(response, item = null) {
+      console.log('onWechatPay')
       // 如果用户没有登陆 或者 用户登录了没有点数
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay']) //百度埋点统计
       let ffun = () => {
@@ -1444,12 +1451,33 @@ export default {
         let icon = item.status.icon_url
         let timestamp = new Date().valueOf().toString()
         let random = Math.ceil(Math.random() * 100000).toString()
-        let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}&channel=${this.channel}`
-        this.qrcodeUrl = payLink
-
-        this.showQrcode = true
-
-        // chaundibs(payLink) // 传递标识
+        if (isMobile()) {
+          // 调用扣除点数
+          let mdf = response.mdf || response.mdfs[0]
+          photoPhotopay({
+            mdt: mdf,
+            fd: 'h5',
+            ver: 2,
+            ftype: '',
+            channel: this.channel,
+            mobile: `${timestamp}${random}`,
+            openid: `${timestamp}${random}`,
+          }).then((res) => {
+            if (res.code === 0) {
+              let reg = new RegExp('&amp;', 'g') //g代表全部
+              let newUrl = res.img_url.replace(reg, '&')
+              //针对的mdf设置标记.页面加载时检测这个标志，为1时触发下载，并将该标志置0
+              localStorage.setItem('pay', 1)
+              this.$toast.success('即将拉起微信支付，支付成功后请再次点击下载。')
+              window.location.href = newUrl
+            }
+          })
+        } else {
+          let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}&channel=${this.channel}`
+          this.qrcodeUrl = payLink
+          this.showQrcode = true
+          // chaundibs(payLink) // 传递标识
+        }
         response.pc_code = `${timestamp}${random}`
         this.statusLxun(item, response)
       }
@@ -1459,7 +1487,9 @@ export default {
           channel: this.channel,
           ver: 2,
         }).then((res) => {
+          console.log("setExDate2:"+res.data.sdate)
           this.setNumew(res.data.nums ? res.data.nums : 0)
+          this.setExDate(res.data.sdate ? res.data.sdate : 0)
           if (res.code === 0) {
             if (res.data.nums <= 0) {
               // 没有点数了
@@ -1499,7 +1529,6 @@ export default {
       if (this.userInfo) {
         try {
           const data = {
-            channel: this.channel,
             channel: this.channel,
             fd: isMobile() ? 'h5' : 'pc',
             token:
@@ -1544,8 +1573,9 @@ export default {
             if (res.data.is_pay !== 2) {
               this.timer2Count = 0
               clearInterval(this.timer2)
-              this.$toast.success(res.msg)
+              this.$toast.success('支付成功')
               this.showQrcode = false
+              this.tongbudian()
             }
           })
           .catch((e) => {
@@ -1606,7 +1636,10 @@ export default {
           channel: 'pisaAI',
           ver: 2,
         }).then((res) => {
+          console.log("setExDate3:"+res.data.sdate)
+          console.log(res.data.sdate ? res.data.sdate : 0)
           this.setNumew(res.data.nums ? res.data.nums : 0)
+          this.setExDate(res.data.sdate ? res.data.sdate : 0)
         })
       }
     },
@@ -1658,6 +1691,7 @@ export default {
     onLogout() {
       this.removeUserInfo()
       this.removeSetNumew()
+      this.removeSetExDate()
     },
     onGetTaskList() {},
     onShowFullscreen(i) {
