@@ -1,24 +1,27 @@
-# 第三方接口文档
+# 第三方接入文档
 
-###准备
+## 准备
 
-    1、线下付款，获取可上传图片次数
-    2、申请请求接口所需的third_code和secret_key
-    3、根据接口文档，接入服务
+    1、联系我们注册渠道信息
+        * 申请`third_code`和`secret_key`
+        * 选择付费模式，我们目前提供以下两种模式
+          * 上传时扣点，根据上传次数扣点，上传失败不扣点
+          * 下载时扣点，根据下载次数扣点，重复下载不扣点
+        * 获取免费点数
+    2、根据接口文档，接入服务
 
-###说明
+## 提示
 
-    1、按照图片上传次数扣费，上传失败不扣费
-    2、获取到的secret_key请妥善保管，不可外传
-    3、所有修复成功的图片本站将保留1小时后自动删除，如需持久化存储请下载至自有系统
+    1、渠道信息`third_code`和`secret_key`请妥善保管
+    2、所有资源，包括上传原图、修复结果图等，本站将在1小时后自动删除，如需持久化请下载至自有存储
 
-###接口说明
+## 接口说明
 
     1、code=200固定为成功，code=9000固定为失败
     2、code=9000时，如需进一步业务判断，可根据errno参数
 
 
-**接口url：http://sdkphoto.fangtangtv.com**
+**接口地址：http://sdkphoto.fangtangtv.com**
 
 1、图片上传接口
 
@@ -108,6 +111,7 @@ rgb  : -1(抠图、透明), 1(渐进灰-遗照), 235,51,35(红), 85,142,213(蓝)
     2007 -> 图像去雾化中
     2008 -> 图像修复中
     2009 -> 图像上色中
+    2010 -> 任务失败
 ```
 
 ```json5
@@ -122,9 +126,9 @@ rgb  : -1(抠图、透明), 1(渐进灰-遗照), 235,51,35(红), 85,142,213(蓝)
                 "code": 1,                                  # 任务状态, 0 处理中、1 成功、2 失败
                 "task": 2002,
                 "state": "任务处理完成",
-                "src_url": "http://192.168.10.90:8500/api/toc/download/input/9804b4cb5b4740fb26afde5f2831c0f5.jpg",         # 原图
-                "wmk_url": "http://192.168.10.90:8500/api/toc/download/output/wmk_9804b4cb5b4740fb26afde5f2831c0f5.jpg",    # 修复水印图
-                "icon_url": "http://192.168.10.90:8500/api/toc/download/output/icon_9804b4cb5b4740fb26afde5f2831c0f5.jpg",  # 修复水印缩略图
+                "src_url": "http://sdkphoto.fangtangtv.com/api/toc/download/input/9804b4cb5b4740fb26afde5f2831.jpg",         # 原图
+                "wmk_url": "http://sdkphoto.fangtangtv.com/api/toc/download/output/wmk_9804b4cb5b4740fb26afde5f2831.jpg",    # 修复水印图
+                "icon_url": "http://sdkphoto.fangtangtv.com/api/toc/download/output/icon_9804b4cb5b4740fb26afde5f2831.jpg",  # 修复水印缩略图
                 "res_size": "1080x1366px 146KB"
             }
         ]
@@ -173,7 +177,7 @@ errno说明
 {
     "code": 200,
     "data": {
-        "url": "http://sdkphoto.fangtangtv.com/api/hiliad/download/res_red_b342067e7719213d0d06a2e835b2ae6c.jpg"
+        "url": "http://sdkphoto.fangtangtv.com/api/hili/download/res_red_b342067e7719213d0d06a2e835b2ae6c.jpg"
     }
 }
 ```
@@ -219,7 +223,7 @@ errno说明
 {
     "code": 200,
     "data": {
-        "code": "hiliad",
+        "code": "hili",
         "nums": 98
     }
 }
@@ -245,7 +249,7 @@ errno说明
 附1、token生成规则
 
     1、拿到服务方提供的secret_key，再生成一个当前时间戳time
-        secret_key = 'hiliad'
+        secret_key = 'hili'
         time = '1629962357'
     2、secret_key + time,两字符串拼接，再md5，得到参数mds
         mds = hashlib.md5((secret_key + time).encode("utf8")).hexdigest()
