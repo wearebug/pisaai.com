@@ -550,7 +550,7 @@
             ref="cropper"
             :view-mode="0"
             drag-mode="move"
-            :auto-crop-area="0.5"
+            :auto-crop-area="0.9"
             :min-container-width="250"
             :min-container-height="180"
             :background="true"
