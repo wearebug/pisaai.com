@@ -1050,7 +1050,6 @@ export default {
       }
 
       function getImageSize(imgSrc) {
-        console.log(imgSrc)
         return new Promise((resolve, reject) => {
           const newImg = new Image()
           newImg.onload = () => {
@@ -1763,8 +1762,8 @@ export default {
       let file = new File([arr], oldFile.name, { type: oldFile.type })
       let thumb = URL.createObjectURL(file)
       let cropFile = Object.assign(oldFile, { file, thumb })
-      cropFile.width = Math.floor(this.$refs.cropper.getData().width)
-      cropFile.height = Math.floor(this.$refs.cropper.getData().height)
+      cropFile.width = this.cropSizeW
+      cropFile.height = this.cropSizeH
       this.files.splice(this.files.length - 1, 1, cropFile)
       this.edit = false
       this.showOption = true
