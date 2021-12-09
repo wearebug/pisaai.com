@@ -122,7 +122,7 @@
             ref="upload"
             v-model="files"
             :thread="thread"
-            :multiple="true"
+            :multiple="false"
             :post-action="postAction"
             :data="postData"
             :extensions="extensions"
