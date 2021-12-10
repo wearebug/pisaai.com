@@ -142,11 +142,7 @@
           </div>
         </v-sheet>
         <div style="text-align: center; position: relative" v-if="!files.length">
-          <p>
-            <!--  <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
-              {{ $vuetify.lang.t('$vuetify.maxImgHint') }}
-            </a>
-          --></p>
+          <p><!--删除按钮下方的提示--></p>
         </div>
 
         <!--任务列表-->
@@ -1080,7 +1076,7 @@ export default {
         }
         img.src = newFile.blob
       }
-      // 添加或者更新的时候
+      //添加或者更新的时候(后置到剪裁时检查）
       // if (oldFile || (oldFile && newFile)) {
       //   try {
       //     getImageSize(newFile.blob).then((res) => {
@@ -1305,13 +1301,7 @@ export default {
           } else {
             this.onWechatPay(response, item)
           }
-          //await fileDownload(mdf)
-          //const url = `https://sdkphoto.fangtangtv.com/api/toc/download/${mdf}`
-          //if (isWechat) {
-          //  this.saveImg(url)
-          //} else {
-          //  this.fileDonwload(url)
-          //}
+          
         } catch (e) {
           if (e.code === 2) {
             this.onWechatPay(response, item)
@@ -1902,11 +1892,11 @@ export default {
   }
 }
 .continue-upload {
-  height: 52px;
-  padding-left: 44px;
-  padding-right: 62px;
+  height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: #db8819;
-  font-size: 18px;
+  font-size: 14px;
   color: #fff;
   font-family: Work Sans;
   font-style: normal;
@@ -1916,7 +1906,7 @@ export default {
       color: #fff !important;
     }
     ::v-deep .v-label {
-      font-size: 18px;
+      font-size: 14px;
       color: #fff;
       font-family: Work Sans;
       font-style: normal;
@@ -1929,7 +1919,7 @@ export default {
   }
   .v-btn--is-elevated {
     box-shadow: none;
-    font-size: 18px;
+    font-size: 14px;
     color: #fff;
     font-family: Work Sans;
     font-style: normal;
@@ -1944,7 +1934,7 @@ export default {
   padding: 0;
   .v-list-item {
     height: 175px;
-    padding-left: 38px !important;
+    padding-left: 10px !important;
 
     .list_item_head_box {
       min-width: 80px !important;
@@ -1965,7 +1955,7 @@ export default {
       .v-btn {
         font-family: Work Sans;
         font-style: normal;
-        font-size: 18px;
+        font-size: 14px;
         box-shadow: none;
         padding: 0px 27px;
         border-radius: 0px;
