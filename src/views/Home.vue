@@ -39,7 +39,7 @@
                 <v-list-item>
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipDateTxt') + (userExDate || 0)"></v-list-item-title>
                 </v-list-item>
-                <v-list-item>				  
+                <v-list-item>
                   <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + (userNumews || 0)"></v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="onLogout">
@@ -122,7 +122,7 @@
             ref="upload"
             v-model="files"
             :thread="thread"
-            :multiple="true"
+            :multiple="false"
             :post-action="postAction"
             :data="postData"
             :extensions="extensions"
@@ -142,11 +142,7 @@
           </div>
         </v-sheet>
         <div style="text-align: center; position: relative" v-if="!files.length">
-          <p>
-            <!--  <a style="top: -50px; position: relative; color: #519eff" href="http://hiliphoto.com" target="_bank">
-              {{ $vuetify.lang.t('$vuetify.maxImgHint') }}
-            </a>
-          --></p>
+          <p><!--删除按钮下方的提示--></p>
         </div>
 
         <!--任务列表-->
@@ -552,9 +548,9 @@
         <v-card-text style="padding-top: 20px">
           <vue-cropper
             ref="cropper"
-            :view-mode="0"
+            :view-mode="2"
             drag-mode="move"
-            :auto-crop-area="0.9"
+            :auto-crop-area="1"
             :min-container-width="250"
             :min-container-height="180"
             :background="true"
@@ -565,7 +561,14 @@
             :img-style="{ width: '400px', height: '400px' }"
             :center="false"
             :highlight="true"
+            @crop="onCroppering"
           />
+          <v-row class="py-2" justify="center" style="top: 10px; position: relative" contenteditable="true">
+            尺寸：
+            <span :style="cropSizeW > 3000 ? 'color: red' : ''">{{ cropSizeW }}</span>
+            *
+            <span :style="cropSizeH > 3000 ? 'color: red' : ''">{{ cropSizeH }}</span>
+          </v-row>
         </v-card-text>
         <v-row class="py-2" justify="center">
           <v-btn class="mx-2" fab dark x-small color="primary" @click="rotate('r')">
@@ -578,7 +581,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn @click="cancelCropImage">取消</v-btn>
-          <v-btn color="primary" @click="cropImage">确定</v-btn>
+          <v-btn :color="cropBtnColor" @click="cropImage">确定</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -679,6 +682,9 @@ export default {
       extensions: 'png,gif,jpg,jpeg,webp',
       showOption: false,
       showPreview: false,
+      cropSizeW: 0,
+      cropSizeH: 0,
+      cropBtnColor: "",
       previewFile: {
         wmk_url: '',
         src_url: '',
@@ -1070,21 +1076,21 @@ export default {
         }
         img.src = newFile.blob
       }
-      // 添加或者更新的时候
-      if (oldFile || (oldFile && newFile)) {
-        try {
-          getImageSize(newFile.blob).then((res) => {
-            //if (res[0] > 800 || res[1] > 800) {
-            if (res[0] > 3000 || res[1] > 3000) {
-              _hmt.push(['_trackEvent', 'pisaai', 'www', 'error800']) //百度埋点统计
-              this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
-              this.onUploadCancel()
-            }
-          })
-        } catch (error) {
-          console.log(error)
-        }
-      }
+      //添加或者更新的时候(后置到剪裁时检查）
+      // if (oldFile || (oldFile && newFile)) {
+      //   try {
+      //     getImageSize(newFile.blob).then((res) => {
+      //       //if (res[0] > 800 || res[1] > 800) {
+      //       if (res[0] > 3000 || res[1] > 3000) {
+      //         _hmt.push(['_trackEvent', 'pisaai', 'www', 'error800']) //百度埋点统计
+      //         //this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
+      //         //this.onUploadCancel()
+      //       }
+      //     })
+      //   } catch (error) {
+      //     console.log(error)
+      //   }
+      // }
     },
     inputFile(newFile, oldFile) {
       if (newFile && !oldFile) {
@@ -1295,13 +1301,7 @@ export default {
           } else {
             this.onWechatPay(response, item)
           }
-          //await fileDownload(mdf)
-          //const url = `https://sdkphoto.fangtangtv.com/api/toc/download/${mdf}`
-          //if (isWechat) {
-          //  this.saveImg(url)
-          //} else {
-          //  this.fileDonwload(url)
-          //}
+          
         } catch (e) {
           if (e.code === 2) {
             this.onWechatPay(response, item)
@@ -1393,7 +1393,6 @@ export default {
             }).then((res) => {
               this.setNumew(res.data.nums ? res.data.nums : 0)
               this.setExDate(res.data.sdate ? res.data.sdate : 0)
-              console.log("setExDate1:"+res.data.sdate)
               console.log(parseInt(res.data.sdate) > parseInt(new Date().getTime() / 1000))
               if (res.code === 0 && (res.data.nums > 0 || parseInt(res.data.sdate) > parseInt(new Date().getTime() / 1000))) {
                 // 调用扣除点数
@@ -1487,7 +1486,6 @@ export default {
           channel: this.channel,
           ver: 2,
         }).then((res) => {
-          console.log("setExDate2:"+res.data.sdate)
           this.setNumew(res.data.nums ? res.data.nums : 0)
           this.setExDate(res.data.sdate ? res.data.sdate : 0)
           if (res.code === 0) {
@@ -1628,6 +1626,18 @@ export default {
       _hmt.push(['_trackEvent', 'pisaai', 'www-nav', 'ClickPriceTAB']) //百度埋点统计
       this.showDialog = true
     },
+    /**
+     * 图片裁剪
+     */
+    onCroppering() {
+      this.cropSizeW = Math.floor(this.$refs.cropper.getData().width)
+      this.cropSizeH = Math.floor(this.$refs.cropper.getData().height)
+      if (this.cropSizeW <= 3000 && this.cropSizeH <= 3000){
+        this.cropBtnColor = "primary"
+      } else {
+        this.cropBtnColor = ""
+      }
+    },
     // 同步点数
     tongbudian() {
       if (this.userInfo) {
@@ -1636,8 +1646,6 @@ export default {
           channel: 'pisaAI',
           ver: 2,
         }).then((res) => {
-          console.log("setExDate3:"+res.data.sdate)
-          console.log(res.data.sdate ? res.data.sdate : 0)
           this.setNumew(res.data.nums ? res.data.nums : 0)
           this.setExDate(res.data.sdate ? res.data.sdate : 0)
         })
@@ -1731,10 +1739,12 @@ export default {
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'fixAgain']) //百度埋点统计
     },
     cropImage() {
+      if (this.cropSizeW > 3000 || this.cropSizeH > 3000) {
+        this.$toast.error(this.$vuetify.lang.t('$vuetify.error800'))
+        return
+      }
       let oldFile = this.files[this.files.length - 1]
-      let binStr = window.atob(
-        this.$refs.cropper.getCroppedCanvas({ maxWidth: 1920, maxHeight: 1200 }).toDataURL(oldFile.type).split(',')[1]
-      )
+      let binStr = window.atob(this.$refs.cropper.getCroppedCanvas().toDataURL(oldFile.type).split(',')[1])
       let arr = new Uint8Array(binStr.length)
       for (let i = 0; i < binStr.length; i++) {
         arr[i] = binStr.charCodeAt(i)
@@ -1742,6 +1752,8 @@ export default {
       let file = new File([arr], oldFile.name, { type: oldFile.type })
       let thumb = URL.createObjectURL(file)
       let cropFile = Object.assign(oldFile, { file, thumb })
+      cropFile.width = this.cropSizeW
+      cropFile.height = this.cropSizeH
       this.files.splice(this.files.length - 1, 1, cropFile)
       this.edit = false
       this.showOption = true
@@ -1880,11 +1892,11 @@ export default {
   }
 }
 .continue-upload {
-  height: 52px;
-  padding-left: 44px;
-  padding-right: 62px;
+  height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: #db8819;
-  font-size: 18px;
+  font-size: 14px;
   color: #fff;
   font-family: Work Sans;
   font-style: normal;
@@ -1894,7 +1906,7 @@ export default {
       color: #fff !important;
     }
     ::v-deep .v-label {
-      font-size: 18px;
+      font-size: 14px;
       color: #fff;
       font-family: Work Sans;
       font-style: normal;
@@ -1907,7 +1919,7 @@ export default {
   }
   .v-btn--is-elevated {
     box-shadow: none;
-    font-size: 18px;
+    font-size: 14px;
     color: #fff;
     font-family: Work Sans;
     font-style: normal;
@@ -1922,7 +1934,7 @@ export default {
   padding: 0;
   .v-list-item {
     height: 175px;
-    padding-left: 38px !important;
+    padding-left: 10px !important;
 
     .list_item_head_box {
       min-width: 80px !important;
@@ -1943,7 +1955,7 @@ export default {
       .v-btn {
         font-family: Work Sans;
         font-style: normal;
-        font-size: 18px;
+        font-size: 14px;
         box-shadow: none;
         padding: 0px 27px;
         border-radius: 0px;
