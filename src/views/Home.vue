@@ -1,86 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="black" dark>
-      <v-container class="d-flex justify-space-between pa-0" style="max-width: 1080px; margin: auto">
-        <div class="d-flex align-center pa-0">
-          <v-img class="shrink" contain src="http://pisaai.com/img/logo.cf60ae52.png" transition="scale-transition" width="120" eager />
-          <!-- <h1 class="ml-4 text-h6">{{ $vuetify.lang.t('$vuetify.name') }}</h1> -->
-        </div>
-        <v-spacer></v-spacer>
-        <!-- 导航菜单 -->
-        <div class="hidden-sm-and-down">
-          <v-btn text large @click="onPriceClick">
-            <span>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</span>
-          </v-btn>
-          <v-menu offset-y nudge-top="-10">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn v-bind="attrs" v-on="on" text large>
-                <span>{{ curLang.name }}</span>
-                <v-icon size="16">mdi-chevron-down</v-icon>
-              </v-btn>
-            </template>
-            <v-list flat>
-              <v-list-item-group v-model="langIndex" color="primary">
-                <v-list-item v-for="item in langs" :key="item.id">
-                  <v-list-item-title v-text="item.name"></v-list-item-title>
-                </v-list-item>
-              </v-list-item-group>
-            </v-list>
-          </v-menu>
-          <!-- 登录 -->
-          <v-menu offset-y nudge-top="-10" nudge-right="20" v-if="userInfo">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn v-bind="attrs" v-on="on" fab class="head_img_btn">
-                <v-img :src="userInfo.headimgurl || require('../assets/head_img.png')" class="head_img"></v-img>
-              </v-btn>
-            </template>
-            <v-list flat>
-              <v-list-item-group color="primary">
-                <v-list-item>
-                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipDateTxt') + (userExDate || 0)"></v-list-item-title>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.vipNumTxt') + (userNumews || 0)"></v-list-item-title>
-                </v-list-item>
-                <v-list-item @click="onLogout">
-                  <v-list-item-title v-text="$vuetify.lang.t('$vuetify.loginOutBtnTxt')"></v-list-item-title>
-                </v-list-item>
-              </v-list-item-group>
-            </v-list>
-          </v-menu>
-          <v-btn text large @click="onLogin" v-else>
-            <span>{{ $vuetify.lang.t('$vuetify.loginTxt') }}</span>
-          </v-btn>
-        </div>
-        <v-app-bar-nav-icon class="hidden-sm-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      </v-container>
-    </v-app-bar>
-    <v-navigation-drawer v-model="drawer" fixed left temporary>
-      <v-list dense>
-        <v-list-item ripple @click="onPriceClick">
-          <v-list-item-title>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</v-list-item-title>
-        </v-list-item>
-        <v-list-group>
-          <template v-slot:activator>
-            <v-list-item-title>{{ curLang.name }}</v-list-item-title>
-          </template>
-          <v-list-item v-for="(item, i) in langs" :key="item.id" @click="onLangChange(i)">
-            <v-list-item-title v-text="item.name"></v-list-item-title>
-          </v-list-item>
-        </v-list-group>
-        <v-list-group v-if="userInfo">
-          <template v-slot:activator>
-            <v-list-item-title>{{ $vuetify.lang.t('$vuetify.userTxt') }}</v-list-item-title>
-          </template>
-          <v-list-item @click="onLogout">
-            <v-list-item-title v-text="$vuetify.lang.t('$vuetify.loginOutBtnTxt')"></v-list-item-title>
-          </v-list-item>
-        </v-list-group>
-        <v-list-item ripple @click="onLogin" v-else>
-          <v-list-item-title>{{ $vuetify.lang.t('$vuetify.loginTxt') }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    <Header />
     <v-main style="max-width: 1080px; margin: auto">
       <v-container>
         <v-sheet color="white" tag="section">
@@ -589,7 +509,8 @@
 </template>
 
 <script>
-import { cloneDeep } from 'lodash'
+import {cloneDeep} from 'lodash'
+import Header from '@/components/Header'
 const CARD_BEFORE1 = require('../assets/contrast1-1.jpg')
 const CARD_BEFORE2 = require('../assets/contrast2-1.jpg')
 const CARD_BEFORE3 = require('../assets/contrast3-1.jpg')
@@ -623,6 +544,7 @@ import {
 } from '@/api/home'
 import VueCropper from 'vue-cropperjs'
 import 'cropperjs/dist/cropper.css'
+
 export default {
   mixins: [validationMixin],
   validations: {
@@ -646,6 +568,7 @@ export default {
   },
   name: 'Home',
   components: {
+    Header,
     VueQr,
     wxlogin,
     PreviewScale,
@@ -658,6 +581,7 @@ export default {
   },
   data() {
     return {
+
       channel: 'pisaAI',
       mobelLoginInfo: {
         headimgurl: '',
@@ -684,7 +608,7 @@ export default {
       showPreview: false,
       cropSizeW: 0,
       cropSizeH: 0,
-      cropBtnColor: "",
+      cropBtnColor: '',
       previewFile: {
         wmk_url: '',
         src_url: '',
@@ -759,16 +683,8 @@ export default {
       staticImgHeight: 0,
       staticImg1Width: 0,
       staticImg1Height: 0,
-      langIndex: 0,
-      curLang: { id: 'zhHans', name: '简体中文' },
-      langs: [
-        { id: 'zhHans', name: '简体中文' },
-        { id: 'en', name: 'English' },
-        { id: 'ja', name: '日本语' },
-        { id: 'es', name: 'Español' },
-        { id: 'fr', name: 'Français' },
-      ],
-      drawer: false,
+
+
       panel: [],
       showDialog: false,
       showLogin: false,
@@ -819,6 +735,7 @@ export default {
       ],
       edit: false,
       imgSrc: '',
+      curLang: { id: 'zhHans', name: '简体中文' },
     }
   },
   watch: {
@@ -866,20 +783,6 @@ export default {
       },
       deep: true,
     },
-    checkedItem(newVal, oldVal) {
-      // alert(JSON.stringify(newVal))
-      if (newVal.length == this.files.length) {
-        this.checkedAllItem = ['all']
-      } else {
-        this.checkedAllItem = []
-      }
-    },
-    // 路由监听
-    $route(to, from) {
-      //  console.log( to , from )
-      // to , from 分别表示从哪跳转到哪，都是一个对象
-      // to.path  ( 表示的是要跳转到的路由的地址 eg: /home );
-    },
   },
   computed: {
     ...mapState(['userInfo', 'userNumews', 'userExDate']),
@@ -919,8 +822,7 @@ export default {
   },
   created() {
     _hmt.push(['_trackEvent', 'pisaai', 'www', 'index']) //百度埋点统计
-    let langIndex = this.langs.findIndex((v) => v.id === this.$vuetify.lang.current)
-    this.langIndex = langIndex
+
     this.getWechatLoginCode()
     let seoTab = checkSeoTab()
     if (seoTab == 'enhance') {
@@ -1212,7 +1114,12 @@ export default {
       }
 
       //console.log('data', data)
-      this.postData = { ...data, platform: isMobile() ? 'h5' : 'pc', token: this.userInfo?.token, channel: this.channel }
+      this.postData = {
+        ...data,
+        platform: isMobile() ? 'h5' : 'pc',
+        token: this.userInfo?.token,
+        channel: this.channel,
+      }
       // 再次处理上传
       if (this.isUploadAgain) {
         let aa = this.$refs.upload.update(this.$refs.upload.add(this.uploadAgainItem), {
@@ -1301,7 +1208,6 @@ export default {
           } else {
             this.onWechatPay(response, item)
           }
-          
         } catch (e) {
           if (e.code === 2) {
             this.onWechatPay(response, item)
@@ -1611,31 +1517,17 @@ export default {
       let mdf = file.status.mdf
       this.files = this.files.filter((item) => item.status.mdf !== mdf)
     },
-    /**
-     * 切换语言
-     */
-    onLangChange(e) {
-      if (e !== this.langIndex) {
-        this.langIndex = e
-      }
-    },
-    /**
-     * 点击价格TAB
-     */
-    onPriceClick() {
-      _hmt.push(['_trackEvent', 'pisaai', 'www-nav', 'ClickPriceTAB']) //百度埋点统计
-      this.showDialog = true
-    },
+
     /**
      * 图片裁剪
      */
     onCroppering() {
       this.cropSizeW = Math.floor(this.$refs.cropper.getData().width)
       this.cropSizeH = Math.floor(this.$refs.cropper.getData().height)
-      if (this.cropSizeW <= 3000 && this.cropSizeH <= 3000){
-        this.cropBtnColor = "primary"
+      if (this.cropSizeW <= 3000 && this.cropSizeH <= 3000) {
+        this.cropBtnColor = 'primary'
       } else {
-        this.cropBtnColor = ""
+        this.cropBtnColor = ''
       }
     },
     // 同步点数
@@ -1696,11 +1588,7 @@ export default {
           })
       }
     },
-    onLogout() {
-      this.removeUserInfo()
-      this.removeSetNumew()
-      this.removeSetExDate()
-    },
+
     onGetTaskList() {},
     onShowFullscreen(i) {
       switch (i) {
@@ -1791,10 +1679,12 @@ export default {
     border-radius: 8px;
   }
 }
+
 .d-rela {
   position: relative;
   overflow: hidden;
 }
+
 .tag-after {
   position: absolute;
   right: 0;
@@ -1803,6 +1693,7 @@ export default {
   padding: 0 20px !important;
   border-radius: 0 !important;
 }
+
 .before-img {
   position: relative;
   /* z-index: 1; */
@@ -1820,6 +1711,7 @@ export default {
   /* z-index: 0; */
   overflow: hidden;
 }
+
 .tag-before {
   position: absolute;
   left: 0;
@@ -1829,6 +1721,7 @@ export default {
   padding: 0 20px !important;
   border-radius: 0 !important;
 }
+
 .card-slider {
   position: absolute;
   width: 100%;
@@ -1836,20 +1729,24 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 .product-tag {
   position: absolute;
   left: 16px;
   top: 16px;
 }
+
 ::v-deep .v-label {
   font-size: 12px;
 }
+
 .login-spacer {
   width: 100%;
   position: relative;
   height: 1px;
   margin-top: 30px;
   background-color: rgba($color: #000000, $alpha: 0.1);
+
   .login-spacer-text {
     position: absolute;
     left: 50%;
@@ -1862,15 +1759,18 @@ export default {
     background-color: #fff;
   }
 }
+
 .qrcode-tip {
   padding-bottom: 16px;
   font-size: 13px;
   color: #333;
   text-align: center;
 }
+
 .p-rela {
   position: relative;
 }
+
 .toolbar {
   position: fixed;
   left: 50%;
@@ -1891,6 +1791,7 @@ export default {
     border-radius: 40px;
   }
 }
+
 .continue-upload {
   height: 50px;
   padding-left: 20px;
@@ -1901,10 +1802,12 @@ export default {
   font-family: Work Sans;
   font-style: normal;
   font-weight: 600;
+
   .continue-upload-check {
     ::v-deep .v-icon {
       color: #fff !important;
     }
+
     ::v-deep .v-label {
       font-size: 14px;
       color: #fff;
@@ -1912,11 +1815,13 @@ export default {
       font-style: normal;
       font-weight: 600;
     }
+
     .primary--text {
       color: #fff !important;
       caret-color: #fff !important;
     }
   }
+
   .v-btn--is-elevated {
     box-shadow: none;
     font-size: 14px;
@@ -1926,12 +1831,14 @@ export default {
     font-weight: 600;
   }
 }
+
 .justify-between {
   justify-content: space-between;
 }
 
 .pic_list {
   padding: 0;
+
   .v-list-item {
     height: 175px;
     padding-left: 10px !important;
@@ -1963,11 +1870,13 @@ export default {
     }
   }
 }
+
 .edit-img-wrap {
   width: 100%;
   padding: 16px;
   box-sizing: border-box;
 }
+
 ::v-deep .cropper-bg {
   background-repeat: repeat;
 }
