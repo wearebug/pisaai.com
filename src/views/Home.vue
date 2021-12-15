@@ -189,6 +189,11 @@
                           <v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response, item)" id="list-download">
                             {{ $vuetify.lang.t('$vuetify.upload.btn[1]') }}
                           </v-btn>
+						  <!--
+						  <v-btn>
+							<span>分享</span><share :config="config"></share>
+						  </v-btn>
+						  -->
                           <v-btn class="mb-1" small color="#333333" style="color: #fff" @click="onFileRemove(item)">
                             {{ $vuetify.lang.t('$vuetify.upload.btn[3]') }}
                           </v-btn>
@@ -623,6 +628,12 @@ import {
 } from '@/api/home'
 import VueCropper from 'vue-cropperjs'
 import 'cropperjs/dist/cropper.css'
+
+//import Share from 'vue-social-share'
+//import 'vue-social-share/dist/client.css'
+
+//Vue.use(Share)
+
 export default {
   mixins: [validationMixin],
   validations: {
