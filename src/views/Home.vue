@@ -1,159 +1,171 @@
 <template>
   <v-app>
     <Header />
-    <v-main style="max-width: 1080px; margin: auto">
+    <!--    移动端导航栏-->
+    <MenuNav />
+    <v-main style='max-width: 1080px; margin: auto'>
       <v-container>
-        <v-sheet color="white" tag="section">
-          <p style="text-align: center">{{ $vuetify.lang.t('$vuetify.synopsis') }}</p>
+        <v-sheet color='white' tag='section'>
+          <p style='text-align: center'>{{ $vuetify.lang.t('$vuetify.synopsis') }}</p>
         </v-sheet>
         <!--上传按钮-->
-        <v-sheet v-if="!files.length" tag="section" class="d-flex align-center justify-center pt-7 pb-7 pt-md-12 pb-md-12 border-dash">
+        <v-sheet v-if='!files.length' tag='section'
+                 class='d-flex align-center justify-center pt-7 pb-7 pt-md-12 pb-md-12 border-dash'>
           <file-upload
-            ref="upload"
-            v-model="files"
-            :multiple="false"
-            :thread="thread"
-            :post-action="postAction"
-            :data="postData"
-            :extensions="extensions"
-            :accept="accept"
-            @input-file="inputFile"
-            @input-filter="inputFilter"
+            ref='upload'
+            v-model='files'
+            :multiple='false'
+            :thread='thread'
+            :post-action='postAction'
+            :data='postData'
+            :extensions='extensions'
+            :accept='accept'
+            @input-file='inputFile'
+            @input-filter='inputFilter'
           >
-            <v-btn class="mt-5 mb-5" color="primary" dark large>
+            <v-btn class='mt-5 mb-5' color='primary' dark large>
               {{ $vuetify.lang.t('$vuetify.btnTxt') }}
               <v-icon right dark>mdi-cloud-upload</v-icon>
             </v-btn>
           </file-upload>
         </v-sheet>
         <!--继续上传-->
-        <v-sheet tag="section" v-else class="continue-upload d-flex align-center justify-between">
-          <div class="check_all">
+        <v-sheet tag='section' v-else class='continue-upload d-flex align-center justify-between'>
+          <div class='check_all'>
             <v-checkbox
-              v-model="checkedAllItem"
+              v-model='checkedAllItem'
               :label="$vuetify.lang.t('$vuetify.pic.checkAll')"
-              value="all"
-              @click="checkedAll"
-              class="continue-upload-check"
+              value='all'
+              @click='checkedAll'
+              class='continue-upload-check'
             ></v-checkbox>
             <!-- <p style="color: #db8819;">{{ $vuetify.lang.t('$vuetify.pic.checkAll') }}</p> -->
           </div>
           <file-upload
-            ref="upload"
-            v-model="files"
-            :thread="thread"
-            :multiple="false"
-            :post-action="postAction"
-            :data="postData"
-            :extensions="extensions"
-            :accept="accept"
-            @input-file="inputFile"
-            @input-filter="inputFilter"
+            ref='upload'
+            v-model='files'
+            :thread='thread'
+            :multiple='false'
+            :post-action='postAction'
+            :data='postData'
+            :extensions='extensions'
+            :accept='accept'
+            @input-file='inputFile'
+            @input-filter='inputFilter'
           >
-            <v-btn class="mt-5 mb-5" color="primary" dark large>
-              <v-img src="../assets/continue-upload.png" style="margin-right: 14px; width: 24px; height: 24px"></v-img>
+            <v-btn class='mt-5 mb-5' color='primary' dark large>
+              <v-img src='../assets/continue-upload.png' style='margin-right: 14px; width: 24px; height: 24px'></v-img>
               {{ $vuetify.lang.t('$vuetify.pic.upload') }}
             </v-btn>
           </file-upload>
           <!--删除按钮-->
-          <div class="delete_all d-flex align-center justify-center">
-            <v-img src="../assets/delete_all.png" style="margin-right: 14px; width: 24px; height: 27px"></v-img>
-            <p style="margin-bottom: 0" @click="deleteAllItem">{{ $vuetify.lang.t('$vuetify.pic.cancel') }}</p>
+          <div class='delete_all d-flex align-center justify-center'>
+            <v-img src='../assets/delete_all.png' style='margin-right: 14px; width: 24px; height: 27px'></v-img>
+            <p style='margin-bottom: 0' @click='deleteAllItem'>{{ $vuetify.lang.t('$vuetify.pic.cancel') }}</p>
           </div>
         </v-sheet>
-        <div style="text-align: center; position: relative" v-if="!files.length">
+        <div style='text-align: center; position: relative' v-if='!files.length'>
           <p><!--删除按钮下方的提示--></p>
         </div>
 
         <!--任务列表-->
-        <v-list three-line v-if="files.length" class="pic_list">
-          <v-list-item v-for="item in c_b.cloneDeep(files).reverse()" :key="item.id" style="border-bottom: 1px solid #c9cbce">
-            <v-list-item-avatar class="list_item_head_box" rounded style="padding-top: 15px; padding-bottom: 37px">
-              <v-checkbox v-model="checkedItem" label="" :value="item.id"></v-checkbox>
-              <v-img :src="item.thumb" style="height: 100%" @click="onFilePreview(item.status, item)"></v-img>
+        <v-list three-line v-if='files.length' class='pic_list'>
+          <v-list-item v-for='item in c_b.cloneDeep(files).reverse()' :key='item.id'
+                       style='border-bottom: 1px solid #c9cbce'>
+            <v-list-item-avatar class='list_item_head_box' rounded style='padding-top: 15px; padding-bottom: 37px'>
+              <v-checkbox v-model='checkedItem' label='' :value='item.id'></v-checkbox>
+              <v-img :src='item.thumb' style='height: 100%' @click='onFilePreview(item.status, item)'></v-img>
             </v-list-item-avatar>
-            <v-list-item-content style="padding: 35px 0 0; padding-top: 15px">
+            <v-list-item-content style='padding: 35px 0 0; padding-top: 15px'>
               <v-list-item-title>
-                <v-progress-linear :value="item.response.code === 200 ? item.progress : 0" height="6"></v-progress-linear>
+                <v-progress-linear :value='item.response.code === 200 ? item.progress : 0'
+                                   height='6'></v-progress-linear>
               </v-list-item-title>
-              <v-list-item-subtitle class="text-caption font-weight-light d-flex align-center justify-between">
-                <div style="font-family: Work Sans; font-style: normal; font-size: 14px; color: #999">
+              <v-list-item-subtitle class='text-caption font-weight-light d-flex align-center justify-between'>
+                <div style='font-family: Work Sans; font-style: normal; font-size: 14px; color: #999'>
                   <span>{{ `${item.width}x${item.height}px` }}</span>
-                  <v-divider class="mx-2" vertical style="height: 16px"></v-divider>
+                  <v-divider class='mx-2' vertical style='height: 16px'></v-divider>
                   <span>{{ item.size | getFileSize }}</span>
-                  <v-divider class="mx-2" vertical style="height: 16px"></v-divider>
+                  <v-divider class='mx-2' vertical style='height: 16px'></v-divider>
                   <span>{{ item.name }}</span>
                 </div>
                 <div
-                  v-if="item.response.code === 200 && item.status"
-                  style="font-family: Work Sans; font-style: normal; color: #db8819; font-size: 14px"
+                  v-if='item.response.code === 200 && item.status'
+                  style='font-family: Work Sans; font-style: normal; color: #db8819; font-size: 14px'
                 >
                   {{ item.status.res_size }}
                 </div>
               </v-list-item-subtitle>
               <v-list-item-subtitle>
-                <template v-if="item.response.code === 200">
-                  <template v-if="item.status">
-                    <template v-if="item.status.code == 1">
+                <template v-if='item.response.code === 200'>
+                  <template v-if='item.status'>
+                    <template v-if='item.status.code == 1'>
                       <!-- <v-chip class="mr-2" color="success" small>{{ $vuetify.lang.t('$vuetify.upload.status[6]') }}</v-chip> -->
-                      <div class="d-flex align-center justify-between btns-box">
+                      <div class='d-flex align-center justify-between btns-box'>
                         <template v-if="item.blob.substring(0, 4) != 'http'">
-                          <v-btn class="mr-2 mb-1" small color="#FBB03B" style="color: #fff" @click="onContinue(item)">
+                          <v-btn class='mr-2 mb-1' small color='#FBB03B' style='color: #fff' @click='onContinue(item)'>
                             {{ $vuetify.lang.t('$vuetify.upload.btn[4]') }}
                           </v-btn>
                         </template>
                         <div>
-                          <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status, item)">
+                          <v-btn class='mr-2 mb-1' small color='primary' @click='onFilePreview(item.status, item)'>
                             {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
                           </v-btn>
-                          <v-btn class="mr-2 mb-1" small color="primary" @click="onFileDownload(item.response, item)" id="list-download">
+                          <v-btn class='mr-2 mb-1' small color='primary' @click='onFileDownload(item.response, item)'
+                                 id='list-download'>
                             {{ $vuetify.lang.t('$vuetify.upload.btn[1]') }}
                           </v-btn>
-                          <v-btn class="mb-1" small color="#333333" style="color: #fff" @click="onFileRemove(item)">
+                          <v-btn class='mb-1' small color='#333333' style='color: #fff' @click='onFileRemove(item)'>
                             {{ $vuetify.lang.t('$vuetify.upload.btn[3]') }}
                           </v-btn>
                         </div>
                       </div>
                     </template>
                     <template v-else>
-                      <v-chip class="mr-2" small>{{ $vuetify.lang.t('$vuetify.upload.status[' + item.status.task + ']') }}</v-chip>
+                      <v-chip class='mr-2' small>{{ $vuetify.lang.t('$vuetify.upload.status[' + item.status.task + ']')
+                        }}
+                      </v-chip>
                     </template>
                   </template>
                 </template>
-                <span v-else class="text-caption">{{ item.response.msg }}</span>
+                <span v-else class='text-caption'>{{ item.response.msg }}</span>
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>
         <!--示例图-->
-        <v-row class="mt-4">
-          <v-col v-for="(card, i) in cards" :key="i" cols="12" md="6">
-            <v-card elevation="4">
-              <v-sheet class="d-flex align-center justify-center" color="primary lighten-2" height="48">
-                <v-icon color="white">{{ card.icon }}</v-icon>
-                <span class="ml-2 text-button white--text">{{ card.tag }}</span>
+        <v-row class='mt-4'>
+          <v-col v-for='(card, i) in cards' :key='i' cols='12' md='6'>
+            <v-card elevation='4'>
+              <v-sheet class='d-flex align-center justify-center' color='primary lighten-2' height='48'>
+                <v-icon color='white'>{{ card.icon }}</v-icon>
+                <span class='ml-2 text-button white--text'>{{ card.tag }}</span>
               </v-sheet>
-              <v-sheet class="d-rela">
-                <div class="before-img">
-                  <img ref="staticImg" :src="card.after" alt="before" />
-                  <v-chip label class="tag-after" color="black" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[0]') }}</v-chip>
+              <v-sheet class='d-rela'>
+                <div class='before-img'>
+                  <img ref='staticImg' :src='card.after' alt='before' />
+                  <v-chip label class='tag-after' color='black' dark>{{ $vuetify.lang.t('$vuetify.contrastTips[0]') }}
+                  </v-chip>
                 </div>
-                <div class="after-img" :style="{ width: cardPercents[i] + '%' }">
-                  <img :src="card.before" alt="after" :style="{ width: staticImgWidth + 'px', height: staticImgHeight + 'px' }" />
-                  <v-chip label class="tag-before" color="black" dark>{{ $vuetify.lang.t('$vuetify.contrastTips[1]') }}</v-chip>
+                <div class='after-img' :style="{ width: cardPercents[i] + '%' }">
+                  <img :src='card.before' alt='after'
+                       :style="{ width: staticImgWidth + 'px', height: staticImgHeight + 'px' }" />
+                  <v-chip label class='tag-before' color='black' dark>{{ $vuetify.lang.t('$vuetify.contrastTips[1]')
+                    }}
+                  </v-chip>
                 </div>
-                <div class="card-slider">
+                <div class='card-slider'>
                   <vue-slider
-                    v-model="cardPercents[i]"
+                    v-model='cardPercents[i]'
                     :railStyle="{ backgroundColor: 'transparent' }"
-                    :process="false"
+                    :process='false'
                     :tooltip="'none'"
-                    :clickable="false"
-                    :dotSize="40"
+                    :clickable='false'
+                    :dotSize='40'
                   >
                     <template v-slot:dot>
-                      <v-btn fab small color="rgba(255,255,255,.5)">
-                        <v-icon color="#666">mdi-arrow-left-right</v-icon>
+                      <v-btn fab small color='rgba(255,255,255,.5)'>
+                        <v-icon color='#666'>mdi-arrow-left-right</v-icon>
                       </v-btn>
                     </template>
                   </vue-slider>
@@ -163,68 +175,68 @@
           </v-col>
         </v-row>
         <!--FAQ-->
-        <v-sheet tag="section" class="mb-8">
-          <h1 class="my-8 text-h5 text-md-h4 text-center">FAQ</h1>
-          <v-expansion-panels v-model="panel" multiple>
+        <v-sheet tag='section' class='mb-8'>
+          <h1 class='my-8 text-h5 text-md-h4 text-center'>FAQ</h1>
+          <v-expansion-panels v-model='panel' multiple>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
+              <v-expansion-panel-header expand-icon='mdi-menu-down' class='text-subtitle-2'>
                 {{ $vuetify.lang.t('$vuetify.problem[0].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <p class="text-justify text-body-2">{{ $vuetify.lang.t('$vuetify.problem[0].info1') }}</p>
-                <v-img src="../assets/faq1.jpg" eager></v-img>
-                <p class="mt-4 text-justify text-body-2" v-html="$vuetify.lang.t('$vuetify.problem[0].info2')"></p>
+                <p class='text-justify text-body-2'>{{ $vuetify.lang.t('$vuetify.problem[0].info1') }}</p>
+                <v-img src='../assets/faq1.jpg' eager></v-img>
+                <p class='mt-4 text-justify text-body-2' v-html="$vuetify.lang.t('$vuetify.problem[0].info2')"></p>
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
+              <v-expansion-panel-header expand-icon='mdi-menu-down' class='text-subtitle-2'>
                 {{ $vuetify.lang.t('$vuetify.problem[1].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <p class="text-justify text-body-2">{{ $vuetify.lang.t('$vuetify.problem[1].info') }}</p>
+                <p class='text-justify text-body-2'>{{ $vuetify.lang.t('$vuetify.problem[1].info') }}</p>
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
+              <v-expansion-panel-header expand-icon='mdi-menu-down' class='text-subtitle-2'>
                 {{ $vuetify.lang.t('$vuetify.problem[2].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <p class="text-justify text-body-2" v-html="$vuetify.lang.t('$vuetify.problem[2].info')"></p>
+                <p class='text-justify text-body-2' v-html="$vuetify.lang.t('$vuetify.problem[2].info')"></p>
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
+              <v-expansion-panel-header expand-icon='mdi-menu-down' class='text-subtitle-2'>
                 {{ $vuetify.lang.t('$vuetify.problem[3].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <p class="text-justify text-body-2">{{ $vuetify.lang.t('$vuetify.problem[3].info') }}</p>
+                <p class='text-justify text-body-2'>{{ $vuetify.lang.t('$vuetify.problem[3].info') }}</p>
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
+              <v-expansion-panel-header expand-icon='mdi-menu-down' class='text-subtitle-2'>
                 {{ $vuetify.lang.t('$vuetify.problem[4].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <p class="text-justify text-body-2" v-html="$vuetify.lang.t('$vuetify.problem[4].info')"></p>
+                <p class='text-justify text-body-2' v-html="$vuetify.lang.t('$vuetify.problem[4].info')"></p>
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
-              <v-expansion-panel-header expand-icon="mdi-menu-down" class="text-subtitle-2">
+              <v-expansion-panel-header expand-icon='mdi-menu-down' class='text-subtitle-2'>
                 {{ $vuetify.lang.t('$vuetify.problem[5].title') }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <p class="text-justify text-body-2" v-html="$vuetify.lang.t('$vuetify.problem[5].info')"></p>
-                <p class="text-justify text-body-2">
+                <p class='text-justify text-body-2' v-html="$vuetify.lang.t('$vuetify.problem[5].info')"></p>
+                <p class='text-justify text-body-2'>
                   <span>Bilibili:</span>
                   <br />
-                  <a href="https://www.bilibili.com/video/BV13g41157hL" target="_blank" class="text-decoration-none">
+                  <a href='https://www.bilibili.com/video/BV13g41157hL' target='_blank' class='text-decoration-none'>
                     https://www.bilibili.com/video/BV13g41157hL
                   </a>
                 </p>
-                <p class="text-justify text-body-2">
+                <p class='text-justify text-body-2'>
                   <span>Youtube:</span>
                   <br />
-                  <a href="https://www.youtube.com/watch?v=XtHbzENmb74" target="_blank" class="text-decoration-none">
+                  <a href='https://www.youtube.com/watch?v=XtHbzENmb74' target='_blank' class='text-decoration-none'>
                     https://www.youtube.com/watch?v=XtHbzENmb74
                   </a>
                 </p>
@@ -235,171 +247,74 @@
       </v-container>
     </v-main>
     <!--页脚-->
-    <v-footer color="black" padless>
-      <v-row justify="center" no-gutters>
-        <v-btn v-for="(link, i) in links" :key="link" color="white" text rounded class="my-2" @click="onShowFullscreen(i)">
+    <v-footer color='black' padless>
+      <v-row justify='center' no-gutters>
+        <v-btn v-for='(link, i) in links' :key='link' color='white' text rounded class='my-2'
+               @click='onShowFullscreen(i)'>
           {{ link }}
         </v-btn>
         <!--SEO专用开始-->
-        <v-btn color="white" text rounded class="my-2" onClick="window.open('http://wp.pisaai.com')">行业资讯</v-btn>
+        <v-btn color='white' text rounded class='my-2' onClick="window.open('http://wp.pisaai.com')">行业资讯</v-btn>
         <!--SEO专用结束-->
-        <v-col class="py-4 text-center white--text text-body-2" cols="12">
+        <v-col class='py-4 text-center white--text text-body-2' cols='12'>
           {{ $vuetify.lang.t('$vuetify.copyrightTxt') }}
         </v-col>
       </v-row>
     </v-footer>
     <!--价格弹窗-->
-    <v-dialog v-model="showDialog" max-width="960">
-      <v-card elevation="2">
-        <v-tabs active-class="primary" background-color="black" align-with-title dark hide-slider>
-          <v-tab>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</v-tab>
-          <v-tab-item>
-            <v-container fluid>
-              <v-row>
-                <v-col v-for="(item, i) in prices" :key="i" cols="12" md="3">
-                  <v-card elevation="2" class="pb-3">
-                    <v-card-title class="black text-subtitle-1 white--text" dark>{{ item.title }}</v-card-title>
-                    <v-card-text class="py-3">{{ item.list[0] }}</v-card-text>
-                    <v-card-text class="py-3">{{ item.list[1] }}</v-card-text>
-                    <v-card-text class="py-3">{{ item.list[2] }}</v-card-text>
-                    <v-card-text class="py-3">{{ item.list[3] }}</v-card-text>
-                    <v-card-text class="py-3">{{ item.list[4] }}</v-card-text>
-                    <v-card-actions>
-                      <v-btn color="success" rounded block @click="onWechatPayPackage(item.id, item.title)">
-                        <v-icon left dark>mdi-wechat</v-icon>
-                        {{ $vuetify.lang.t('$vuetify.priceType[0]') }}
-                      </v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-container>
-            <div class="text-body-2 text-md-body-1 text-center primary--text my-4">
-              {{ $vuetify.lang.t('$vuetify.priceTips') }}
-            </div>
-          </v-tab-item>
-        </v-tabs>
-      </v-card>
-    </v-dialog>
+    <PriceModal />
     <!--登录弹窗-->
-    <v-dialog v-model="showLogin" transition="dialog-bottom-transition" max-width="720">
-      <v-card>
-        <v-tabs active-class="primary" background-color="black" align-with-title dark hide-slider>
-          <v-tab>微信扫码登录</v-tab>
-          <v-tab>邮箱密码登录</v-tab>
-          <v-tab-item>
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="6">
-                  <v-subheader class="text-subtitle-1 font-weight-bold">{{ $vuetify.lang.t('$vuetify.loginTitle') }}</v-subheader>
-                  <ul class="text-button font-weight-light">
-                    <li>{{ $vuetify.lang.t('$vuetify.loginList[0]') }}</li>
-                    <li>{{ $vuetify.lang.t('$vuetify.loginList[1]') }}</li>
-                    <li>{{ $vuetify.lang.t('$vuetify.loginList[2]') }}</li>
-                    <li>{{ $vuetify.lang.t('$vuetify.loginList[3]') }}</li>
-                  </ul>
-                </v-col>
-                <v-col class="d-flex justify-center" cols="12" md="6">
-                  <wxlogin
-                    appid="wx4f357b743df13731"
-                    scope="snsapi_login"
-                    theme="'black'"
-                    :redirect_uri="encodeURIComponent('http://pisaai.com')"
-                  ></wxlogin>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-tab-item>
-          <v-tab-item>
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="6">
-                  <v-subheader class="text-subtitle-1 font-weight-bold">{{ $vuetify.lang.t('$vuetify.loginTitle') }}</v-subheader>
-                  <ul class="text-button font-weight-light">
-                    <li>{{ $vuetify.lang.t('$vuetify.loginList[0]') }}</li>
-                    <li>{{ $vuetify.lang.t('$vuetify.loginList[1]') }}</li>
-                    <li>{{ $vuetify.lang.t('$vuetify.loginList[2]') }}</li>
-                    <li>{{ $vuetify.lang.t('$vuetify.loginList[3]') }}</li>
-                  </ul>
-                </v-col>
-                <v-col cols="12" md="6">
-                  <form>
-                    <v-text-field
-                      v-model="email"
-                      :error-messages="emailErrors"
-                      label="邮箱"
-                      required
-                      @input="$v.email.$touch()"
-                      @blur="$v.email.$touch()"
-                    ></v-text-field>
-                    <v-text-field
-                      v-model="pwd"
-                      type="password"
-                      :error-messages="pwdErrors"
-                      label="密码"
-                      required
-                      @input="$v.pwd.$touch()"
-                      @blur="$v.pwd.$touch()"
-                    ></v-text-field>
-                    <v-checkbox v-model="isRegister" label="创建新的账户"></v-checkbox>
-
-                    <v-btn class="my-4" block color="primary" @click="onSubmit">登录</v-btn>
-                  </form>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-tab-item>
-        </v-tabs>
-      </v-card>
-    </v-dialog>
+    <LoginModal />
     <!--任务配置-->
-    <v-dialog v-model="showOption" max-width="720" persistent>
+    <v-dialog v-model='showOption' max-width='720' persistent>
       <v-card>
-        <v-tabs v-model="optionsTab" active-class="primary" background-color="black" align-with-title dark hide-slider>
-          <v-tab v-for="tab in optionTabs" :key="tab.id">{{ tab.name }}</v-tab>
+        <v-tabs v-model='optionsTab' active-class='primary' background-color='black' align-with-title dark hide-slider>
+          <v-tab v-for='tab in optionTabs' :key='tab.id'>{{ tab.name }}</v-tab>
         </v-tabs>
-        <v-tabs-items v-model="optionsTab">
-          <v-tab-item v-for="tab in optionTabs" :key="tab.id">
+        <v-tabs-items v-model='optionsTab'>
+          <v-tab-item v-for='tab in optionTabs' :key='tab.id'>
             <v-container fluid>
-              <v-row align="center" v-if="tab.types">
-                <v-col class="text-button" cols="12" sm="2">图片类型</v-col>
-                <v-col class="py-0" cols="12" sm="10">
-                  <v-radio-group row v-model="tab.typeValue">
-                    <v-radio v-for="item in tab.types" :key="item.value" :label="item.label" :value="item.value"></v-radio>
+              <v-row align='center' v-if='tab.types'>
+                <v-col class='text-button' cols='12' sm='2'>图片类型</v-col>
+                <v-col class='py-0' cols='12' sm='10'>
+                  <v-radio-group row v-model='tab.typeValue'>
+                    <v-radio v-for='item in tab.types' :key='item.value' :label='item.label'
+                             :value='item.value'></v-radio>
                   </v-radio-group>
                 </v-col>
               </v-row>
-              <v-row align="center" v-else>
-                <v-col class="text-button" cols="12" sm="2">背景色</v-col>
-                <v-col class="py-0" cols="12" sm="10">
-                  <v-radio-group row v-model="tab.bgValue">
-                    <v-radio v-for="item in tab.bgs" :key="item.value" :label="item.label" :value="item.value"></v-radio>
+              <v-row align='center' v-else>
+                <v-col class='text-button' cols='12' sm='2'>背景色</v-col>
+                <v-col class='py-0' cols='12' sm='10'>
+                  <v-radio-group row v-model='tab.bgValue'>
+                    <v-radio v-for='item in tab.bgs' :key='item.value' :label='item.label'
+                             :value='item.value'></v-radio>
                   </v-radio-group>
                 </v-col>
               </v-row>
-              <v-row align="center">
-                <v-col class="text-button" cols="12" sm="2">高级选项</v-col>
-                <v-col class="d-flex flex-wrap py-0" cols="12" sm="10">
+              <v-row align='center'>
+                <v-col class='text-button' cols='12' sm='2'>高级选项</v-col>
+                <v-col class='d-flex flex-wrap py-0' cols='12' sm='10'>
                   <v-checkbox
-                    v-model="tab.optionValue"
-                    class="mr-4"
-                    v-for="item in tab.options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
+                    v-model='tab.optionValue'
+                    class='mr-4'
+                    v-for='item in tab.options'
+                    :key='item.value'
+                    :label='item.label'
+                    :value='item.value'
                   ></v-checkbox>
                 </v-col>
               </v-row>
-              <v-row align="center">
-                <v-col class="text-button" cols="12" sm="2">输出选项</v-col>
-                <v-col class="d-flex flex-wrap py-0" cols="12" sm="10">
+              <v-row align='center'>
+                <v-col class='text-button' cols='12' sm='2'>输出选项</v-col>
+                <v-col class='d-flex flex-wrap py-0' cols='12' sm='10'>
                   <v-checkbox
-                    v-model="tab.outputValue"
-                    class="mr-4"
-                    v-for="item in tab.output"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
+                    v-model='tab.outputValue'
+                    class='mr-4'
+                    v-for='item in tab.output'
+                    :key='item.value'
+                    :label='item.label'
+                    :value='item.value'
                   ></v-checkbox>
                 </v-col>
               </v-row>
@@ -408,23 +323,23 @@
         </v-tabs-items>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click="onUploadCancel">
+          <v-btn @click='onUploadCancel'>
             {{ $vuetify.lang.t('$vuetify.choiceType.cancel') }}
           </v-btn>
-          <v-btn color="primary darken-1" @click="onUploadConfirm">
+          <v-btn color='primary darken-1' @click='onUploadConfirm'>
             {{ $vuetify.lang.t('$vuetify.choiceType.btn') }}
           </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
     <!--查看结果-->
-    <v-dialog v-model="showPreview" :max-width="initWidth">
-      <v-card class="p-rela" :max-width="initWidth" :height="initHeight">
-        <v-row class="toolbar" :style="{ top: toolbarTop + 'px' }">
-          <v-btn class="mx-4" icon color="white" @click="onPlus">
+    <v-dialog v-model='showPreview' :max-width='initWidth'>
+      <v-card class='p-rela' :max-width='initWidth' :height='initHeight'>
+        <v-row class='toolbar' :style="{ top: toolbarTop + 'px' }">
+          <v-btn class='mx-4' icon color='white' @click='onPlus'>
             <v-icon>mdi-magnify-plus</v-icon>
           </v-btn>
-          <v-btn class="mx-4" icon color="white" @click="onMinus">
+          <v-btn class='mx-4' icon color='white' @click='onMinus'>
             <v-icon>mdi-magnify-minus</v-icon>
           </v-btn>
           <!--
@@ -434,74 +349,69 @@
 		  -->
         </v-row>
         <preview-scale
-          :initWidth="initWidth"
-          :initHeight="initHeight"
-          :iconUrl="previewFile.wmk_url"
-          :srcUrl="previewFile.src_url"
-          :scaleRatio="scaleRatio"
+          :initWidth='initWidth'
+          :initHeight='initHeight'
+          :iconUrl='previewFile.wmk_url'
+          :srcUrl='previewFile.src_url'
+          :scaleRatio='scaleRatio'
         />
       </v-card>
     </v-dialog>
     <!--付款二维码弹窗-->
-    <v-dialog v-model="showQrcode" max-width="320">
+    <QrcodeModal />
+    <v-dialog v-model='showFullScreen' fullscreen hide-overlay transition='dialog-bottom-transition'>
       <v-card>
-        <vue-qr :correctLevel="3" :text="qrcodeUrl" :size="320"></vue-qr>
-        <div class="qrcode-tip">{{ $vuetify.lang.t('$vuetify.priceType[0]') }}</div>
-      </v-card>
-    </v-dialog>
-    <v-dialog v-model="showFullScreen" fullscreen hide-overlay transition="dialog-bottom-transition">
-      <v-card>
-        <v-toolbar dark color="black">
-          <v-btn icon dark @click="showFullScreen = false">
+        <v-toolbar dark color='black'>
+          <v-btn icon dark @click='showFullScreen = false'>
             <v-icon>mdi-close</v-icon>
           </v-btn>
           <v-toolbar-title>{{ fullscreenTitle }}</v-toolbar-title>
         </v-toolbar>
-        <div class="px-4 py-2 text-caption" v-html="fullscreenHtml"></div>
+        <div class='px-4 py-2 text-caption' v-html='fullscreenHtml'></div>
       </v-card>
     </v-dialog>
 
     <!-- 裁剪、旋转图片  -->
-    <v-dialog v-model="edit" eager persistent max-width="600px" max-height="0.8vh">
+    <v-dialog v-model='edit' eager persistent max-width='600px' max-height='0.8vh'>
       <v-card>
-        <v-card-title class="text-h5 grey lighten-2">编辑图片</v-card-title>
-        <v-card-text style="padding-top: 20px">
+        <v-card-title class='text-h5 grey lighten-2'>编辑图片</v-card-title>
+        <v-card-text style='padding-top: 20px'>
           <vue-cropper
-            ref="cropper"
-            :view-mode="2"
-            drag-mode="move"
-            :auto-crop-area="1"
-            :min-container-width="250"
-            :min-container-height="180"
-            :background="true"
-            :rotatable="true"
-            :src="imgSrc"
-            alt="Source Image"
-            :modal="true"
+            ref='cropper'
+            :view-mode='2'
+            drag-mode='move'
+            :auto-crop-area='1'
+            :min-container-width='250'
+            :min-container-height='180'
+            :background='true'
+            :rotatable='true'
+            :src='imgSrc'
+            alt='Source Image'
+            :modal='true'
             :img-style="{ width: '400px', height: '400px' }"
-            :center="false"
-            :highlight="true"
-            @crop="onCroppering"
+            :center='false'
+            :highlight='true'
+            @crop='onCroppering'
           />
-          <v-row class="py-2" justify="center" style="top: 10px; position: relative" contenteditable="true">
+          <v-row class='py-2' justify='center' style='top: 10px; position: relative' contenteditable='true'>
             尺寸：
             <span :style="cropSizeW > 3000 ? 'color: red' : ''">{{ cropSizeW }}</span>
             *
             <span :style="cropSizeH > 3000 ? 'color: red' : ''">{{ cropSizeH }}</span>
           </v-row>
         </v-card-text>
-        <v-row class="py-2" justify="center">
-          <v-btn class="mx-2" fab dark x-small color="primary" @click="rotate('r')">
+        <v-row class='py-2' justify='center'>
+          <v-btn class='mx-2' fab dark x-small color='primary' @click="rotate('r')">
             <v-icon dark>mdi-rotate-right</v-icon>
           </v-btn>
-          <v-btn class="mx-2" fab dark x-small color="primary" @click="rotate('l')">
+          <v-btn class='mx-2' fab dark x-small color='primary' @click="rotate('l')">
             <v-icon dark>mdi-rotate-left</v-icon>
           </v-btn>
         </v-row>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click="cancelCropImage">取消</v-btn>
-          <v-btn :color="cropBtnColor" @click="cropImage">确定</v-btn>
+          <v-btn @click='cancelCropImage'>取消</v-btn>
+          <v-btn :color='cropBtnColor' @click='cropImage'>确定</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -509,8 +419,9 @@
 </template>
 
 <script>
-import {cloneDeep} from 'lodash'
+import { cloneDeep } from 'lodash'
 import Header from '@/components/Header'
+
 const CARD_BEFORE1 = require('../assets/contrast1-1.jpg')
 const CARD_BEFORE2 = require('../assets/contrast2-1.jpg')
 const CARD_BEFORE3 = require('../assets/contrast3-1.jpg')
@@ -521,12 +432,8 @@ const CARD_AFTER3 = require('../assets/contrast3-2.jpg')
 const CARD_AFTER4 = require('../assets/contrast4-2.jpg')
 const payok = new Array()
 import { mapState, mapMutations } from 'vuex'
-import VueQr from 'vue-qr'
-import wxlogin from 'vue-wxlogin'
-import { validationMixin } from 'vuelidate'
-import { required, minLength, email } from 'vuelidate/lib/validators'
 import PreviewScale from '@/components/PreviewScale'
-import { getfilesize, isMobile, isWechat, checkSeoTab } from '@/utils'
+import { getfilesize, isMobile, checkSeoTab } from '@/utils'
 import {
   fileDownload,
   loginGetStatus,
@@ -540,234 +447,71 @@ import {
   packageStatus,
   photoUserfinace,
   photoPhotopay,
-  tocDownload,
+  tocDownload
 } from '@/api/home'
 import VueCropper from 'vue-cropperjs'
 import 'cropperjs/dist/cropper.css'
+import PriceModal from '../components/PriceModal'
+import LoginModal from '../components/LoginModal'
+import QrcodeModal from '../components/QrCodeModal'
+import MenuNav from '../components/MenuNav'
 
 export default {
-  mixins: [validationMixin],
-  validations: {
-    email: { required, email },
-    pwd: { required, minLength: minLength(6) },
-  },
   metaInfo() {
     return {
       title: this.$vuetify.lang.t('$vuetify.name'),
       meta: [
         {
           name: 'keywords',
-          content: this.$vuetify.lang.t('$vuetify.keyword'),
+          content: this.$vuetify.lang.t('$vuetify.keyword')
         },
         {
           name: 'description',
-          content: this.$vuetify.lang.t('$vuetify.description'),
-        },
-      ],
+          content: this.$vuetify.lang.t('$vuetify.description')
+        }
+      ]
     }
   },
   name: 'Home',
   components: {
+    MenuNav,
+    QrcodeModal,
+    LoginModal,
+    PriceModal,
     Header,
-    VueQr,
-    wxlogin,
     PreviewScale,
-    VueCropper,
+    VueCropper
   },
-  filters: {
-    getFileSize(size) {
-      return getfilesize(size)
-    },
-  },
-  data() {
-    return {
 
-      channel: 'pisaAI',
-      mobelLoginInfo: {
-        headimgurl: '',
-        nickname: '',
-      },
-      findItem: {},
-      c_b: _,
-      timer: null,
-      timer1: null,
-      timer1Count: 0,
-      timer2: null,
-      timer2Count: 0,
-      postAction: 'https://sdkphoto.fangtangtv.com/api/toc/uploads',
-      postData: {},
-      file: null,
-      files: [],
-      files1: [],
-      checkedAllItem: [],
-      checkedItem: [],
-      thread: 3,
-      accept: 'image/png,image/gif,image/jpeg,image/webp',
-      extensions: 'png,gif,jpg,jpeg,webp',
-      showOption: false,
-      showPreview: false,
-      cropSizeW: 0,
-      cropSizeH: 0,
-      cropBtnColor: '',
-      previewFile: {
-        wmk_url: '',
-        src_url: '',
-      },
-      optionsTab: 0,
-      optionTabs: [
-        {
-          id: 'colour',
-          name: '彩照优化',
-          typeValue: 'people',
-          optionValue: [],
-          outputValue: [],
-          types: [
-            { label: '人物', value: 'people' },
-            { label: '漫画插图', value: 'cortoon' },
-            { label: '风景', value: 'landscape' },
-          ],
-          options: [
-            { label: '去雾', value: 'defogging' },
-            //{ label: '去划痕', value: 'scratch' },
-          ],
-          output: [{ label: '300dpi（印刷级）', value: 'dpi' }],
-        },
-        {
-          id: 'b&w',
-          name: '黑白优化',
-          typeValue: 'people',
-          optionValue: [],
-          outputValue: [],
-          types: [
-            { label: '人物', value: 'people' },
-            { label: '漫画插图', value: 'cortoon' },
-            { label: '风景', value: 'landscape' },
-          ],
-          options: [
-            { label: '去雾', value: 'defogging' },
-            //{ label: '去划痕', value: 'scratch' },
-            { label: '上色', value: 'colour' },
-          ],
-          output: [{ label: '300dpi（印刷级）', value: 'dpi' }],
-        },
-        {
-          id: 'changeBg）',
-          name: '证件换背景',
-          bgValue: 'blue',
-          optionValue: ['repair'],
-          outputValue: [],
-          bgs: [
-            { label: '蓝色', value: 'blue' },
-            { label: '白色', value: 'white' },
-            { label: '红色', value: 'red' },
-            { label: '透明（抠图）', value: 'transparent' },
-          ],
-          options: [{ label: '人像优化', value: 'repair' }],
-          output: [{ label: '300dpi（印刷级）', value: 'dpi' }],
-        },
-        {
-          id: 'deadee',
-          name: '遗像照',
-          bgValue: 'white',
-          optionValue: [],
-          outputValue: [],
-          bgs: [
-            { label: '白色', value: 'white' },
-            { label: '渐变灰', value: 'grey' },
-          ],
-          options: [{ label: '人像优化', value: 'repair' }],
-          output: [{ label: '300dpi（印刷级）', value: 'dpi' }],
-        },
-      ],
-      staticImgWidth: 0,
-      staticImgHeight: 0,
-      staticImg1Width: 0,
-      staticImg1Height: 0,
-
-
-      panel: [],
-      showDialog: false,
-      showLogin: false,
-      showQrcode: false,
-      qrcodeUrl: '',
-      cardPercents: [50, 50, 50, 50],
-      showFullScreen: false,
-      fullscreenTitle: '',
-      fullscreenHtml: '',
-      winWidth: 0,
-      winHeight: 0,
-      initWidth: 0,
-      initHeight: 0,
-      scaleRatio: 1,
-      email: '',
-      pwd: '',
-      isRegister: false,
-      isWechatLogin: false, // 是否微信扫码登录
-      wechatHead: '',
-      isUploadAgain: false, // 是否再次处理上传
-      uploadAgainItem: '',
-      uploadAgainItemMdf: '',
-      cards: [
-        {
-          before: CARD_BEFORE1,
-          after: CARD_AFTER1,
-          icon: 'mdi-image-area',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
-        },
-        {
-          before: CARD_BEFORE2,
-          after: CARD_AFTER2,
-          icon: 'mdi-palette',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
-        },
-        {
-          before: CARD_BEFORE3,
-          after: CARD_AFTER3,
-          icon: 'mdi-account-box',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
-        },
-        {
-          before: CARD_BEFORE4,
-          after: CARD_AFTER4,
-          icon: 'mdi-fullscreen-exit',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
-        },
-      ],
-      edit: false,
-      imgSrc: '',
-      curLang: { id: 'zhHans', name: '简体中文' },
-    }
-  },
   watch: {
     langIndex(value) {
+      console.log(value)
       if (value >= 0) {
-        this.curLang = this.langs[value]
-        this.$vuetify.lang.current = this.curLang.id
         this.cards = [
           {
             before: CARD_BEFORE1,
             after: CARD_AFTER1,
             icon: 'mdi-image-area',
-            tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
+            tag: this.$vuetify.lang.t('$vuetify.contrastType[0]')
           },
           {
             before: CARD_BEFORE2,
             after: CARD_AFTER2,
             icon: 'mdi-palette',
-            tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
+            tag: this.$vuetify.lang.t('$vuetify.contrastType[1]')
           },
           {
             before: CARD_BEFORE3,
             after: CARD_AFTER3,
             icon: 'mdi-account-box',
-            tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
+            tag: this.$vuetify.lang.t('$vuetify.contrastType[2]')
           },
           {
             before: CARD_BEFORE4,
             after: CARD_AFTER4,
             icon: 'mdi-fullscreen-exit',
-            tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
-          },
+            tag: this.$vuetify.lang.t('$vuetify.contrastType[3]')
+          }
         ]
       }
     },
@@ -781,123 +525,27 @@ export default {
           localStorage.removeItem('FILE_RECORDS')
         }
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   computed: {
-    ...mapState(['userInfo', 'userNumews', 'userExDate']),
-    prices() {
-      const functionPrice = this.$vuetify.lang.locales[this.curLang.id].functionPrice
-      const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcMonthly']
-      return functionPrice.map((v, i) => {
-        return { ...v, id: priceIds[i] }
-      })
-    },
+    ...mapState(['userInfo', 'userNumews', 'userExDate', 'showQrcode', 'langIndex']),
+
     links() {
       return [
         this.$vuetify.lang.t('$vuetify.menu[3]'),
         this.$vuetify.lang.t('$vuetify.privacyTxt'),
         this.$vuetify.lang.t('$vuetify.agreementTxt'),
-        this.$vuetify.lang.t('$vuetify.contactTxt'),
+        this.$vuetify.lang.t('$vuetify.contactTxt')
       ]
     },
     toolbarTop() {
       let top = (this.winHeight - this.initHeight) / 2
       return top <= 22 ? 22 : top
-    },
-    pwdErrors() {
-      const errors = []
-      if (!this.$v.pwd.$dirty) return errors
-      !this.$v.pwd.required && errors.push('请输入密码')
-      !this.$v.pwd.minLength && errors.push('请输入至少6位数密码')
-      return errors
-    },
-    emailErrors() {
-      const errors = []
-      if (!this.$v.email.$dirty) return errors
-      !this.$v.email.email && errors.push('邮箱格式有误')
-      !this.$v.email.required && errors.push('请输入邮箱')
-      return errors
-    },
-  },
-  created() {
-    _hmt.push(['_trackEvent', 'pisaai', 'www', 'index']) //百度埋点统计
-
-    this.getWechatLoginCode()
-    let seoTab = checkSeoTab()
-    if (seoTab == 'enhance') {
-      // 彩色照片优化
-      this.optionsTab = 0
-      this.cards = [
-        {
-          before: CARD_BEFORE1,
-          after: CARD_AFTER1,
-          icon: 'mdi-image-area',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[0]'),
-        },
-      ]
-    } else if (seoTab == 'color') {
-      // 黑白照片上色
-      this.optionsTab = 1
-      this.cards = [
-        {
-          before: CARD_BEFORE2,
-          after: CARD_AFTER2,
-          icon: 'mdi-palette',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[1]'),
-        },
-      ]
-    } else if (seoTab == 'changeBG') {
-      // 证件照换背景
-      this.optionsTab = 2
-      this.cards = [
-        {
-          before: CARD_BEFORE3,
-          after: CARD_AFTER3,
-          icon: 'mdi-account-box',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[2]'),
-        },
-      ]
-    } else if (seoTab == 'deadee') {
-      // 遗像照
-      this.optionsTab = 3
-      this.cards = [
-        {
-          before: CARD_BEFORE4,
-          after: CARD_AFTER4,
-          icon: 'mdi-fullscreen-exit',
-          tag: this.$vuetify.lang.t('$vuetify.contrastType[3]'),
-        },
-      ]
     }
-    //读取本地存储的上传记录
-    const FILE_RECORDS = localStorage.getItem('FILE_RECORDS') && JSON.parse(localStorage.getItem('FILE_RECORDS'))
-    //console.log('file:', FILE_RECORDS)
-    if (FILE_RECORDS && FILE_RECORDS.length) {
-      this.files = FILE_RECORDS
-      let idx = 0
-      this.files.forEach((v) => {
-        this.getFileStatusProgress(v)
-        if (v.success) {
-          v.blob = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/' + v.status.mdf + '.png'
-          v.thumb = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/icon_' + v.status.mdf + '.jpg'
-        } else {
-          //this.files.splice(idx,1)
-        }
-        //idx = idx + 1
-      })
-    }
-  },
-  mounted() {
-    this.onResize()
-    window.addEventListener('resize', this.onResize, { passive: true })
-  },
-  beforeDestroy() {
-    if (typeof window === 'undefined') return
-    window.removeEventListener('resize', this.onResize, { passive: true })
   },
   methods: {
-    ...mapMutations(['setUserInfo', 'removeUserInfo', 'setNumew', 'setExDate']),
+    ...mapMutations(['removeUserInfo', 'setNumew', 'setExDate', 'save']),
     getWechatLoginCode() {
       const code = this.getUrlParam()
       if (code) {
@@ -1060,7 +708,7 @@ export default {
         grey: 1,
         white: '255,255,255',
         blue: '85,142,213',
-        red: '235,51,35',
+        red: '235,51,35'
       }
       let data = {}
       if (this.optionsTab === 0 || this.optionsTab === 1) {
@@ -1071,7 +719,7 @@ export default {
             data = {
               type: opt.typeValue,
               seq: seq.join(),
-              dpi: opt.outputValue.length ? 300 : '',
+              dpi: opt.outputValue.length ? 300 : ''
             }
             break
           case 'cortoon':
@@ -1080,7 +728,7 @@ export default {
               type: opt.typeValue,
               seq: seq.join(),
               rate: 4,
-              dpi: opt.outputValue.length ? 300 : '',
+              dpi: opt.outputValue.length ? 300 : ''
             }
             break
           case 'landscape':
@@ -1089,7 +737,7 @@ export default {
               type: opt.typeValue,
               seq: seq.join(),
               rate: 2,
-              dpi: opt.outputValue.length ? 300 : '',
+              dpi: opt.outputValue.length ? 300 : ''
             }
             break
         }
@@ -1100,7 +748,7 @@ export default {
           type: 'people',
           seq: seq.join(),
           dpi: opt.outputValue.length ? 300 : '',
-          rgb: rgb,
+          rgb: rgb
         }
       } else if (this.optionsTab === 3) {
         let seq = [...opt.optionValue, 'bg']
@@ -1109,7 +757,7 @@ export default {
           type: 'portrait',
           seq: seq.join(),
           dpi: opt.outputValue.length ? 300 : '',
-          rgb: rgb,
+          rgb: rgb
         }
       }
 
@@ -1118,7 +766,7 @@ export default {
         ...data,
         platform: isMobile() ? 'h5' : 'pc',
         token: this.userInfo?.token,
-        channel: this.channel,
+        channel: this.channel
       }
       // 再次处理上传
       if (this.isUploadAgain) {
@@ -1127,7 +775,7 @@ export default {
           success: false,
           response: {},
           status: {},
-          data: { ...this.postData, mdf: this.uploadAgainItemMdf, channel: this.channel },
+          data: { ...this.postData, mdf: this.uploadAgainItemMdf, channel: this.channel }
         })
         //console.log('aa', aa)
         this.getFileStatusProgress(aa)
@@ -1144,7 +792,7 @@ export default {
           if (!v.success) {
             this.$refs.upload.update(v.id, {
               active: true,
-              data: this.postData,
+              data: this.postData
             })
           }
         })
@@ -1195,7 +843,7 @@ export default {
       //解决部分浏览器拦截下载问题
       if (payok.hasOwnProperty(mdf)) {
         //console.log('download_url:'+payok[mdf])
-        setTimeout(function () {
+        setTimeout(function() {
           window.open(payok[mdf])
           //me.downloadImage(payok[mdf], mdf)
         }, 500)
@@ -1264,7 +912,9 @@ export default {
               clearInterval(window.dsqq)
               this.$toast.success('支付完成')
               // 关闭弹框
-              this.showQrcode = false
+              //this.showQrcode = false
+              this.save({ key: 'showQrcode', payload: false })
+
               window.code111 = false
             }
           })
@@ -1273,7 +923,7 @@ export default {
           if (window.infoStatus) {
             loginGetStatus({
               pc_code: response.pc_code,
-              channel: this.channel,
+              channel: this.channel
             }).then((res) => {
               if (res.data) {
                 // 手机已经登陆 踢掉当前登录状态
@@ -1295,7 +945,7 @@ export default {
             photoUserfinace({
               token: this.userInfo.token,
               channel: this.channel,
-              ver: 2,
+              ver: 2
             }).then((res) => {
               this.setNumew(res.data.nums ? res.data.nums : 0)
               this.setExDate(res.data.sdate ? res.data.sdate : 0)
@@ -1308,7 +958,7 @@ export default {
                   ver: 2,
                   ftype: 1,
                   channel: this.channel,
-                  mobile: this.userInfo.token,
+                  mobile: this.userInfo.token
                 }).then((res) => {
                   if (res.code === 0) {
                     this.tongbudian() // 再次同步点数
@@ -1318,7 +968,7 @@ export default {
                         clearInterval(window.dsqq)
                         this.$toast.success('成功')
                         // 关闭弹框
-                        this.showQrcode = false
+                        this.save({ key: 'showQrcode', payload: false })
                         window.code111 = false
                       }
                     })
@@ -1350,7 +1000,7 @@ export default {
         const data = {
           goodsid: 'BV11r4y1T7aX',
           channel: this.channel,
-          mdf: response.mdf || response.mdfs[0],
+          mdf: response.mdf || response.mdfs[0]
         }
 
         let icon = item.status.icon_url
@@ -1366,7 +1016,7 @@ export default {
             ftype: '',
             channel: this.channel,
             mobile: `${timestamp}${random}`,
-            openid: `${timestamp}${random}`,
+            openid: `${timestamp}${random}`
           }).then((res) => {
             if (res.code === 0) {
               let reg = new RegExp('&amp;', 'g') //g代表全部
@@ -1380,7 +1030,8 @@ export default {
         } else {
           let payLink = `http://api.es.hiliad.com/photo/redSku?mdt=${data.mdf}&img_icon=${icon}&pc_code=${timestamp}${random}&channel=${this.channel}`
           this.qrcodeUrl = payLink
-          this.showQrcode = true
+          //this.showQrcode = true
+          this.save({ key: 'showQrcode', payload: true })
           // chaundibs(payLink) // 传递标识
         }
         response.pc_code = `${timestamp}${random}`
@@ -1390,7 +1041,7 @@ export default {
         photoUserfinace({
           token: this.userInfo.token,
           channel: this.channel,
-          ver: 2,
+          ver: 2
         }).then((res) => {
           this.setNumew(res.data.nums ? res.data.nums : 0)
           this.setExDate(res.data.sdate ? res.data.sdate : 0)
@@ -1407,7 +1058,7 @@ export default {
                 ver: 2,
                 ftype: 1,
                 channel: this.channel,
-                mobile: this.userInfo.token,
+                mobile: this.userInfo.token
               }).then((res) => {
                 if (res.code === 0) {
                   tocDownload(mdf).then((res) => {
@@ -1427,32 +1078,6 @@ export default {
       }
 
       return false
-    },
-    async onWechatPayPackage(id, title) {
-      _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay:' + title]) //百度埋点统计
-      if (this.userInfo) {
-        try {
-          const data = {
-            channel: this.channel,
-            fd: isMobile() ? 'h5' : 'pc',
-            token:
-              this.userInfo?.token ||
-              'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJmZCI6InBjIiwic3ViIjoiNDU4NDA0MTk3QHFxLmNvbSIsInVpZCI6ODUyMH0.utfh-gpwheIAl5oH6HYOW2mWAFWy8Xv7-QLbFkp-OcF8Q0C-u5pjlHRACwoG67vEqTEC5Qus1vA0LVYPICmSMg',
-            goodsid: id,
-          }
-          const res = await packagePay(data)
-          const { order_id, url } = res.data
-          this.qrcodeUrl = url
-          this.showQrcode = true
-          if (order_id) {
-            this.getPackageOrderStataus(order_id)
-          }
-        } catch (e) {
-          this.$toast.error(e.msg)
-        }
-      } else {
-        this.showLogin = true
-      }
     },
     getPackageOrderStataus(order_id) {
       packageStatus({ order_id, channel: this.channel })
@@ -1478,7 +1103,8 @@ export default {
               this.timer2Count = 0
               clearInterval(this.timer2)
               this.$toast.success('支付成功')
-              this.showQrcode = false
+              //this.showQrcode = false
+              this.save({ key: 'showQrcode', payload: false })
               this.tongbudian()
             }
           })
@@ -1536,7 +1162,7 @@ export default {
         photoUserfinace({
           token: this.userInfo.token,
           channel: 'pisaAI',
-          ver: 2,
+          ver: 2
         }).then((res) => {
           this.setNumew(res.data.nums ? res.data.nums : 0)
           this.setExDate(res.data.sdate ? res.data.sdate : 0)
@@ -1567,29 +1193,9 @@ export default {
         // this.$toast.error(e.message)
       }
     },
-    onSubmit() {
-      this.$v.$touch()
-      if (!this.$v.$invalid) {
-        const data = {
-          channel: this.channel,
-          email: this.email,
-          pws: this.pwd,
-          ty: this.isRegister ? 2 : 1,
-        }
-        login(data)
-          .then((res) => {
-            this.setUserInfo(res.data)
-            this.isWechatLogin = false
-            this.$toast.success('登录成功')
-            this.showLogin = false
-          })
-          .catch((e) => {
-            this.$toast.error(e.message)
-          })
-      }
-    },
 
-    onGetTaskList() {},
+    onGetTaskList() {
+    },
     onShowFullscreen(i) {
       switch (i) {
         case 0:
@@ -1667,12 +1273,242 @@ export default {
       } else {
         this.$refs.cropper.scale(-1 * scaleX, scaleY)
       }
-    },
+    }
   },
+  filters: {
+    getFileSize(size) {
+      return getfilesize(size)
+    }
+  },
+  data() {
+    return {
+      channel: 'pisaAI',
+      mobelLoginInfo: {
+        headimgurl: '',
+        nickname: ''
+      },
+      findItem: {},
+      c_b: _,
+      timer: null,
+      timer1: null,
+      timer1Count: 0,
+      timer2: null,
+      timer2Count: 0,
+      postAction: 'https://sdkphoto.fangtangtv.com/api/toc/uploads',
+      postData: {},
+      file: null,
+      files: [],
+      files1: [],
+      checkedAllItem: [],
+      checkedItem: [],
+      thread: 3,
+      accept: 'image/png,image/gif,image/jpeg,image/webp',
+      extensions: 'png,gif,jpg,jpeg,webp',
+      showOption: false,
+      showPreview: false,
+      cropSizeW: 0,
+      cropSizeH: 0,
+      cropBtnColor: '',
+      previewFile: {
+        wmk_url: '',
+        src_url: ''
+      },
+      optionsTab: 0,
+      optionTabs: [
+        {
+          id: 'colour',
+          name: '彩照优化',
+          typeValue: 'people',
+          optionValue: [],
+          outputValue: [],
+          types: [
+            { label: '人物', value: 'people' },
+            { label: '漫画插图', value: 'cortoon' },
+            { label: '风景', value: 'landscape' }
+          ],
+          options: [
+            { label: '去雾', value: 'defogging' }
+            //{ label: '去划痕', value: 'scratch' },
+          ],
+          output: [{ label: '300dpi（印刷级）', value: 'dpi' }]
+        },
+        {
+          id: 'b&w',
+          name: '黑白优化',
+          typeValue: 'people',
+          optionValue: [],
+          outputValue: [],
+          types: [
+            { label: '人物', value: 'people' },
+            { label: '漫画插图', value: 'cortoon' },
+            { label: '风景', value: 'landscape' }
+          ],
+          options: [
+            { label: '去雾', value: 'defogging' },
+            //{ label: '去划痕', value: 'scratch' },
+            { label: '上色', value: 'colour' }
+          ],
+          output: [{ label: '300dpi（印刷级）', value: 'dpi' }]
+        },
+        {
+          id: 'changeBg）',
+          name: '证件换背景',
+          bgValue: 'blue',
+          optionValue: ['repair'],
+          outputValue: [],
+          bgs: [
+            { label: '蓝色', value: 'blue' },
+            { label: '白色', value: 'white' },
+            { label: '红色', value: 'red' },
+            { label: '透明（抠图）', value: 'transparent' }
+          ],
+          options: [{ label: '人像优化', value: 'repair' }],
+          output: [{ label: '300dpi（印刷级）', value: 'dpi' }]
+        },
+        {
+          id: 'deadee',
+          name: '遗像照',
+          bgValue: 'white',
+          optionValue: [],
+          outputValue: [],
+          bgs: [
+            { label: '白色', value: 'white' },
+            { label: '渐变灰', value: 'grey' }
+          ],
+          options: [{ label: '人像优化', value: 'repair' }],
+          output: [{ label: '300dpi（印刷级）', value: 'dpi' }]
+        }
+      ],
+      staticImgWidth: 0,
+      staticImgHeight: 0,
+      staticImg1Width: 0,
+      staticImg1Height: 0,
+
+      panel: [],
+
+      cardPercents: [50, 50, 50, 50],
+      showFullScreen: false,
+      fullscreenTitle: '',
+      fullscreenHtml: '',
+      winWidth: 0,
+      winHeight: 0,
+      initWidth: 0,
+      initHeight: 0,
+      scaleRatio: 1,
+      wechatHead: '',
+      isUploadAgain: false, // 是否再次处理上传
+      uploadAgainItem: '',
+      uploadAgainItemMdf: '',
+      cards: [
+        {
+          before: CARD_BEFORE1,
+          after: CARD_AFTER1,
+          icon: 'mdi-image-area',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[0]')
+        },
+        {
+          before: CARD_BEFORE2,
+          after: CARD_AFTER2,
+          icon: 'mdi-palette',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[1]')
+        },
+        {
+          before: CARD_BEFORE3,
+          after: CARD_AFTER3,
+          icon: 'mdi-account-box',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[2]')
+        },
+        {
+          before: CARD_BEFORE4,
+          after: CARD_AFTER4,
+          icon: 'mdi-fullscreen-exit',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[3]')
+        }
+      ],
+      edit: false,
+      imgSrc: ''
+    }
+  },
+  created() {
+    _hmt.push(['_trackEvent', 'pisaai', 'www', 'index']) //百度埋点统计
+
+    this.getWechatLoginCode()
+    let seoTab = checkSeoTab()
+    if (seoTab == 'enhance') {
+      // 彩色照片优化
+      this.optionsTab = 0
+      this.cards = [
+        {
+          before: CARD_BEFORE1,
+          after: CARD_AFTER1,
+          icon: 'mdi-image-area',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[0]')
+        }
+      ]
+    } else if (seoTab == 'color') {
+      // 黑白照片上色
+      this.optionsTab = 1
+      this.cards = [
+        {
+          before: CARD_BEFORE2,
+          after: CARD_AFTER2,
+          icon: 'mdi-palette',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[1]')
+        }
+      ]
+    } else if (seoTab == 'changeBG') {
+      // 证件照换背景
+      this.optionsTab = 2
+      this.cards = [
+        {
+          before: CARD_BEFORE3,
+          after: CARD_AFTER3,
+          icon: 'mdi-account-box',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[2]')
+        }
+      ]
+    } else if (seoTab == 'deadee') {
+      // 遗像照
+      this.optionsTab = 3
+      this.cards = [
+        {
+          before: CARD_BEFORE4,
+          after: CARD_AFTER4,
+          icon: 'mdi-fullscreen-exit',
+          tag: this.$vuetify.lang.t('$vuetify.contrastType[3]')
+        }
+      ]
+    }
+    //读取本地存储的上传记录
+    const FILE_RECORDS = localStorage.getItem('FILE_RECORDS') && JSON.parse(localStorage.getItem('FILE_RECORDS'))
+    //console.log('file:', FILE_RECORDS)
+    if (FILE_RECORDS && FILE_RECORDS.length) {
+      this.files = FILE_RECORDS
+      let idx = 0
+      this.files.forEach((v) => {
+        this.getFileStatusProgress(v)
+        if (v.success) {
+          v.blob = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/' + v.status.mdf + '.png'
+          v.thumb = 'https://sdkphoto.fangtangtv.com/api/toc/download/input/icon_' + v.status.mdf + '.jpg'
+        } else {
+          //this.files.splice(idx,1)
+        }
+        //idx = idx + 1
+      })
+    }
+  },
+  mounted() {
+    this.onResize()
+    window.addEventListener('resize', this.onResize, { passive: true })
+  },
+  beforeDestroy() {
+    if (typeof window === 'undefined') return
+    window.removeEventListener('resize', this.onResize, { passive: true })
+  }
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 .v-sheet {
   &.border-dash {
     border: 2px dashed #e5e5e5;
@@ -1760,13 +1596,6 @@ export default {
   }
 }
 
-.qrcode-tip {
-  padding-bottom: 16px;
-  font-size: 13px;
-  color: #333;
-  text-align: center;
-}
-
 .p-rela {
   position: relative;
 }
@@ -1778,18 +1607,6 @@ export default {
   height: 44px;
   line-height: 44px;
   transform: translateX(-50%);
-}
-
-.head_img_btn {
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 40px;
-
-  .head_img {
-    width: 40px;
-    height: 40px;
-    border-radius: 40px;
-  }
 }
 
 .continue-upload {

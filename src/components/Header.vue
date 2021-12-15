@@ -12,9 +12,10 @@
 
 <script>
 import Menu from '@/components/Menu'
+
 export default {
   name: 'Header',
-  components: { Menu },
+  components: {  Menu },
   data() {
     return {}
   },
