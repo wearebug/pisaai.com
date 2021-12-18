@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer :value="showMenuNav"  fixed left temporary>
+  <v-navigation-drawer v-model="showMenuNav" fixed left temporary>
     <v-list dense>
       <v-list-item ripple @click="onPriceClick">
         <v-list-item-title>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</v-list-item-title>
@@ -42,7 +42,7 @@ export default {
       },
       set(v) {
         console.log(v, 324)
-        this.changeMenuNavShow()
+        this.changeMenuNavShow(v)
       },
     },
   },

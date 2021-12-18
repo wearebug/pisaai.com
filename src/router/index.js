@@ -12,27 +12,27 @@ const routes = [
   {
     path: '/enhance',
     name: 'enhance',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views//home/Home.vue'),
   },
   {
     path: '/color',
     name: 'color',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views/home/Home.vue'),
   },
   {
     path: '/changeBG',
     name: 'changeBG',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views/home/Home.vue'),
   },
   {
     path: '/deadee',
     name: 'deadee',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views/home/Home.vue'),
   },
   {
     path: '/idphoto',
     name: 'idphoto',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views/home/Home.vue'),
   },
   {
     path: '/about',

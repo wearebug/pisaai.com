@@ -69,9 +69,9 @@ const store = new Vuex.Store({
     save(state, { key, payload }) {
       state[key] = payload
     },
-    changeMenuNavShow: (state) => {
+    changeMenuNavShow: (state, value) => {
       //this.save({ key: 'showMenuNav', payload: !this.showMenuNav })
-      state.showMenuNav = !state.showMenuNav
+      state.showMenuNav = value // !state.showMenuNav
     },
   },
   actions: {

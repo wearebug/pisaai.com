@@ -45,7 +45,7 @@
         <span>{{ $vuetify.lang.t('$vuetify.loginTxt') }}</span>
       </v-btn>
     </div>
-    <v-app-bar-nav-icon class="hidden-sm-and-up" @click.stop="this.changeMenuNavShow" />
+    <v-app-bar-nav-icon class="hidden-sm-and-up" @click.stop="changeMenuNavShow" />
   </div>
 </template>
 <script>
