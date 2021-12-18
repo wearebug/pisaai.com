@@ -33,6 +33,7 @@ const store = new Vuex.Store({
       { id: 'es', name: 'Español' },
       { id: 'fr', name: 'Français' },
     ],
+    showMenuNav: false,
   },
   mutations: {
     setUserInfo(state, userInfo) {
@@ -67,6 +68,10 @@ const store = new Vuex.Store({
     },
     save(state, { key, payload }) {
       state[key] = payload
+    },
+    changeMenuNavShow: (state) => {
+      //this.save({ key: 'showMenuNav', payload: !this.showMenuNav })
+      state.showMenuNav = !state.showMenuNav
     },
   },
   actions: {
