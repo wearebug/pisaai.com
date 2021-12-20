@@ -226,7 +226,7 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: 'monthly package = ￥300',
+        title: 'monthly = ￥300',
         list: ['Expiry:a month', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
@@ -616,7 +616,7 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: 'Paquete mensual = ￥300',
+        title: 'mensual = ￥300',
         list: ['Expiry:Un mes', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
@@ -816,7 +816,7 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: 'forfait mensuel = ￥300',
+        title: 'mensuel = ￥300',
         list: ['Expiry:un mois', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
