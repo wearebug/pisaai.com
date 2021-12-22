@@ -34,7 +34,7 @@ const store = new Vuex.Store({
       { id: 'fr', name: 'Français' },
     ],
     showMenuNav: false,
-    channel:'pisaAI',
+    channel: 'pisaAI',
   },
   mutations: {
     setUserInfo(state, userInfo) {
