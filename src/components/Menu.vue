@@ -93,9 +93,16 @@ export default {
   mixins: [menu],
   methods: {
     ...mapMutations(['removeUserInfo', 'removeSetNumew', 'removeSetExDate', 'save', 'changeMenuNavShow']),
+    //点击Menu菜单
     onClickMenu(index) {
-      if (index == 0) {
-        this.onPriceClick()
+      switch (index) {
+        case 0: {
+          this.onPriceClick()
+          break
+        }
+        case 1: {
+          window.open('https://songzhaopian.com/?channel=hlkj-5czp')
+        }
       }
     },
   },
