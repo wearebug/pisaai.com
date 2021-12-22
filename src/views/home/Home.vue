@@ -309,10 +309,11 @@ export default {
       winHeight: 0,
       scaleRatio: 1,
       qrcodeUrl: '', //支付二维码
+      isWechatLogin: false, // 是否微信扫码登录
     }
   },
   methods: {
-    ...mapMutations(['removeUserInfo', 'setNumew', 'setExDate', 'save']),
+    ...mapMutations(['removeUserInfo', 'setNumew', 'setExDate', 'save','setUserInfo']),
     onShowPay(url, order_id) {
       this.qrcodeUrl = url
       this.save({ key: 'showQrcode', payload: true })
@@ -334,7 +335,7 @@ export default {
       const code = this.getUrlParam()
       console.log(code)
       if (code) {
-        this.wechatLogin(code)
+        this._wechatLogin(code)
       }
       //this.getPhonrDs()
       this.tongbudian() // 点数
@@ -861,19 +862,22 @@ export default {
       }
     },
 
-    async wechatLogin(code) {
+    async _wechatLogin(code) {
       let gdsa = () => {
         this.tongbudian()
       }
       try {
-        const res = await wechatLogin({ code, channel: this.channel })
+        let res = await wechatLogin({ code, channel: this.channel })
         console.log('wechatLogin', res)
-        this.setUserInfo(res.data)
-        this.wechatHead = res.data.headimgurl
-        this.isWechatLogin = true
-        this.$toast.success('登录成功')
-        gdsa()
+        if (res.data) {
+          this.setUserInfo(res.data)
+          this.wechatHead = res.data.headimgurl
+          this.isWechatLogin = true
+          this.$toast.success('登录成功')
+          gdsa()
+        }
       } catch (e) {
+        console.log(e)
         gdsa()
         // this.$toast.error(e.message)
       }
