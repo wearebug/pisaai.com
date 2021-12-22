@@ -85,7 +85,7 @@ export default {
       email: '',
       pwd: '',
       isRegister: false,
-      isWechatLogin: false, // 是否微信扫码登录
+
     }
   },
   mixins: [validationMixin],
@@ -134,7 +134,6 @@ export default {
         login(data)
           .then((res) => {
             this.setUserInfo(res.data)
-            this.isWechatLogin = false
             this.$toast.success('登录成功')
             this.save({ key: 'showLogin', payload: false })
           })
