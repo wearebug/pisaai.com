@@ -2,9 +2,11 @@
   <div>
     <!-- 导航菜单 -->
     <div class="hidden-sm-and-down">
-      <v-btn text large @click="onPriceClick">
-        <span>{{ $vuetify.lang.t('$vuetify.functionTxt[0]') }}</span>
-      </v-btn>
+      <span v-for="(item, index) in functionTxt" :key="index">
+        <v-btn text large @click="onClickMenu(index)">
+          <span>{{ item }}</span>
+        </v-btn>
+      </span>
       <v-menu offset-y nudge-top="-10">
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" text large>
@@ -77,16 +79,32 @@ export default {
     },
   },
   data() {
-    return {}
+    return {
+      functionTxt: [],
+    }
   },
 
   created() {
     let langIndex = this.langs.findIndex((v) => v.id === this.$vuetify.lang.current)
     this.save({ key: 'langIndex', payload: langIndex })
+    this.functionTxt = this.$vuetify.lang.locales[this.$store.state.curLang.id].functionTxt
+    console.log(this.functionTxt)
   },
   mixins: [menu],
   methods: {
     ...mapMutations(['removeUserInfo', 'removeSetNumew', 'removeSetExDate', 'save', 'changeMenuNavShow']),
+    //点击Menu菜单
+    onClickMenu(index) {
+      switch (index) {
+        case 0: {
+          this.onPriceClick()
+          break
+        }
+        case 1: {
+          window.open('https://songzhaopian.com/?channel=hlkj-5czp')
+        }
+      }
+    },
   },
 }
 </script>

@@ -18,7 +18,7 @@ export default {
     vipBuyTips: '购买成功',
     uploadListTxt: '最近任务',
     registerBtnTxt: '注册',
-    functionTxt: ['价格', 'API'],
+    functionTxt: ['价格', '照片打印'],
     functionPrice: [
       {
         title: '3张 = ￥25',
