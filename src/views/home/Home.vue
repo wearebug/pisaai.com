@@ -69,21 +69,21 @@
 
         <!--任务列表-->
         <v-list three-line v-if="files.length" class="pic_list">
-          <v-list-item v-for="item in lodash.cloneDeep(files).reverse()" :key="item.id" style="border-bottom: 1px solid #c9cbce">
+          <v-list-item v-for="item in files" :key="item.id" style="border-bottom: 1px solid #c9cbce">
             <v-list-item-avatar class="list_item_head_box" rounded style="padding-top: 15px; padding-bottom: 37px">
               <v-checkbox v-model="checkedItem" label="" :value="item.id" />
               <v-img :src="item.thumb" style="height: 100%" @click="onFilePreview(item.status, item)" />
             </v-list-item-avatar>
             <v-list-item-content style="padding: 35px 0 0; padding-top: 15px">
               <v-list-item-title>
-                <v-progress-linear :value="item.response.code === 200 ? item.progress : 0" height="6" />
+                <v-progress-linear ref="_progress" :value="getProcessNumber(item)" height="6" />
               </v-list-item-title>
               <v-list-item-subtitle class="text-caption font-weight-light d-flex align-center justify-between">
                 <div style="font-family: Work Sans; font-style: normal; font-size: 14px; color: #999">
                   <span>{{ `${item.width}x${item.height}px` }}</span>
-                  <v-divider class="mx-2" vertical style="height: 16px"></v-divider>
+                  <v-divider class="mx-2" vertical style="height: 16px" />
                   <span>{{ item.size | getFileSize }}</span>
-                  <v-divider class="mx-2" vertical style="height: 16px"></v-divider>
+                  <v-divider class="mx-2" vertical style="height: 16px" />
                   <span>{{ item.name }}</span>
                 </div>
                 <div
@@ -127,7 +127,6 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
-
 
         <!--示例图-->
         <ExampleList ref="exampleList" />
@@ -212,7 +211,7 @@ import { seoTab_arr } from '../../utils/contants'
 import PreviewScale from '@/components/PreviewScale'
 
 const payok = new Array()
-
+let PROCESS_NUMBER = 30
 export default {
   metaInfo() {
     return {
@@ -241,15 +240,17 @@ export default {
     LoginModal,
     PriceModal,
     Header,
-    PreviewScale
+    PreviewScale,
   },
 
   watch: {
     files: {
       handler(value) {
+        console.log('flies', value[0])
         //刷新本地保存的任务状态
         if (value.length) {
           //this.files1 = cloneDeep(value).reverse()
+          //this.files = value.sort((a, b) => a.file.lastModified - b.file.lastModified)
           localStorage.setItem('FILE_RECORDS', JSON.stringify(value))
         } else {
           localStorage.removeItem('FILE_RECORDS')
@@ -973,6 +974,13 @@ export default {
     onMinus() {
       if (this.scaleRatio.toFixed(1) < 0.1) return
       this.scaleRatio -= 0.1
+    },
+    getProcessNumber(item) {
+      console.log(this.$refs?._progress, 44)
+      if (item?.status?.task == 2002) {
+        PROCESS_NUMBER = 30
+      }
+      return item.success ? (item?.status?.task == 2002 ? 100 : (PROCESS_NUMBER += 5)) : 0
     },
   },
 

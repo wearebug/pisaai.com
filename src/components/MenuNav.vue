@@ -17,7 +17,7 @@
           <v-list-item-title>{{ $vuetify.lang.t('$vuetify.userTxt') }}</v-list-item-title>
         </template>
         <v-list-item @click="onLogout">
-          <v-list-item-title v-text="$vuetify.lang.t('$vuetify.loginOutBtnTxt')"></v-list-item-title>
+          <v-list-item-title v-text="$vuetify.lang.t('$vuetify.loginOutBtnTxt')"/>
         </v-list-item>
       </v-list-group>
       <v-list-item ripple @click="onLogin" v-else>
