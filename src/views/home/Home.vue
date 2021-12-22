@@ -151,7 +151,7 @@
 
     <ImageOptionModal :value="showImageOptionModal" :onOk="onUploadConfirm" :onCancel="onUploadCancel" />
     <!--付款二维码弹窗-->
-    <QrcodeModal />
+    <QrcodeModal :qrcodeUrl="qrcodeUrl" />
 
     <!--查看结果-->
     <v-dialog v-model="showPreview" :max-width="initWidth">
@@ -260,7 +260,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(['userInfo', 'userNumews', 'userExDate', 'showQrcode', 'langIndex']),
+    ...mapState(['userInfo', 'userNumews', 'userExDate', 'showQrcode', 'langIndex', 'channel']),
     toolbarTop() {
       let top = (this.winHeight - this.initHeight) / 2
       return top <= 22 ? 22 : top
@@ -268,7 +268,6 @@ export default {
   },
   data() {
     return {
-      channel: 'pisaAI',
       mobelLoginInfo: {
         headimgurl: '',
         nickname: '',
@@ -309,6 +308,7 @@ export default {
       winWidth: 0,
       winHeight: 0,
       scaleRatio: 1,
+      qrcodeUrl: '', //支付二维码
     }
   },
   methods: {
@@ -325,6 +325,7 @@ export default {
     },
     getWechatLoginCode() {
       const code = this.getUrlParam()
+      console.log(code)
       if (code) {
         this.wechatLogin(code)
       }
@@ -859,6 +860,7 @@ export default {
       }
       try {
         const res = await wechatLogin({ code, channel: this.channel })
+        console.log('wechatLogin', res)
         this.setUserInfo(res.data)
         this.wechatHead = res.data.headimgurl
         this.isWechatLogin = true

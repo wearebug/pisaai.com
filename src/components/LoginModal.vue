@@ -72,7 +72,7 @@
 </template>
 <script>
 import { login } from '../api/home'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 import { validationMixin } from 'vuelidate'
 import { email, minLength, required } from 'vuelidate/lib/validators'
 import wxlogin from 'vue-wxlogin'
@@ -94,6 +94,7 @@ export default {
     pwd: { required, minLength: minLength(6) },
   },
   computed: {
+    ...mapState(['channel']),
     showLogin: {
       get() {
         return this.$store.state.showLogin
@@ -142,6 +143,9 @@ export default {
           })
       }
     },
+  },
+  created() {
+    console.log(process.env)
   },
 }
 </script>

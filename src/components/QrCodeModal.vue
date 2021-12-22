@@ -12,10 +12,11 @@ import VueQr from 'vue-qr'
 
 export default {
   name: 'QrcodeModal',
+  props: ['qrcodeUrl'],
   components: { VueQr },
   data() {
     return {
-      qrcodeUrl: '',
+      //qrcodeUrl: '',
     }
   },
   computed: {

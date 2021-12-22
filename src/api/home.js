@@ -58,6 +58,7 @@ export function getOrderStataus(params) {
 }
 
 export function wechatLogin(data) {
+  console.log(data)
   return request({
     url: urlPay + 'photo/login/wechat',
     method: 'post',
