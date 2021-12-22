@@ -41,8 +41,9 @@ import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'PriceModal',
+  props: ['onPay'],
   computed: {
-    ...mapState(['userInfo', 'showQrcode','channel']),
+    ...mapState(['userInfo', 'showQrcode', 'channel']),
     showPriceModal: {
       get() {
         return this.$store.state.showPriceModal
@@ -54,7 +55,7 @@ export default {
     },
     prices() {
       const functionPrice = this.$vuetify.lang.locales[this.$store.state.curLang.id].functionPrice
-      const priceIds = ['PCToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcMonthly']
+      const priceIds = ['PcToBNums3', 'PcToBNums10', 'PcToBNums50', 'PcMonthly']
       return functionPrice.map((v, i) => {
         return { ...v, id: priceIds[i] }
       })
@@ -63,7 +64,7 @@ export default {
   methods: {
     ...mapMutations(['save']),
     async onWechatPayPackage(id, title) {
-      console.log('onWechatPayPackage',id, title)
+      console.log('onWechatPayPackage', id, title)
       _hmt.push(['_trackEvent', 'pisaai', 'www', 'pay:' + title]) //百度埋点统计
       if (this.userInfo) {
         try {
@@ -78,12 +79,10 @@ export default {
           const res = await packagePay(data)
           const { order_id, url } = res.data
           this.qrcodeUrl = url
-          this.save({ key: 'showQrcode', payload: true })
-
-          if (order_id) {
-            this.getPackageOrderStataus(order_id)
-          }
+          // this.save({ key: 'showQrcode', payload: true })
+          this.onPay(url, order_id)
         } catch (e) {
+          console.log('error', e)
           this.$toast.error(e.msg)
         }
       } else {

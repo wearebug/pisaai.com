@@ -136,7 +136,7 @@
     </v-main>
 
     <!--价格弹窗-->
-    <PriceModal />
+    <PriceModal :onPay="onShowPay" />
     <!--登录弹窗-->
     <LoginModal />
     <!--图片编辑弹窗-->
@@ -313,6 +313,13 @@ export default {
   },
   methods: {
     ...mapMutations(['removeUserInfo', 'setNumew', 'setExDate', 'save']),
+    onShowPay(url, order_id) {
+      this.qrcodeUrl = url
+      this.save({ key: 'showQrcode', payload: true })
+      if (order_id) {
+        this.getPackageOrderStataus(order_id)
+      }
+    },
     onImageEditOk(v) {
       console.log('onImageEditOk', v)
       this.files.splice(this.files.length - 1, 1, v)
