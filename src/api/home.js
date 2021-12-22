@@ -7,7 +7,7 @@ import qs from 'qs'
 
 //正式线
 let urlCN = 'https://sdkphoto.fangtangtv.com/'
-let urlPay = 'https://photopay.fangtangtv.com/'
+let urlPay = 'https://payapi.fangtangtv.com/'
 
 export function login(data) {
   return request({
@@ -58,6 +58,7 @@ export function getOrderStataus(params) {
 }
 
 export function wechatLogin(data) {
+  console.log(data)
   return request({
     url: urlPay + 'photo/login/wechat',
     method: 'post',

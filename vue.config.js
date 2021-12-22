@@ -1,6 +1,8 @@
+
 module.exports = {
   devServer: {
     disableHostCheck: true,
+    //proxy: 'http://pisaai.com',
   },
   publicPath: './',
   lintOnSave: false,
