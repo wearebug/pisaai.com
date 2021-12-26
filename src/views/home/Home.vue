@@ -313,7 +313,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['removeUserInfo', 'setNumew', 'setExDate', 'save','setUserInfo']),
+    ...mapMutations(['removeUserInfo', 'setNumew', 'setExDate', 'save', 'setUserInfo']),
     onShowPay(url, order_id) {
       this.qrcodeUrl = url
       this.save({ key: 'showQrcode', payload: true })
@@ -323,7 +323,8 @@ export default {
     },
     onImageEditOk(v) {
       console.log('onImageEditOk', v)
-      this.files.splice(this.files.length - 1, 1, v)
+      //this.files.splice(this.files.length - 1, 1, v)
+      this.files.shift(v)
       this.showImageEditModal = false
       this.showImageOptionModal = true
     },
