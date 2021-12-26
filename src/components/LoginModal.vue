@@ -18,7 +18,7 @@
               </v-col>
               <v-col class="d-flex justify-center" cols="12" md="6">
                 <wxlogin
-                  appid="wx4f357b743df13731"
+                  appid="wx398b230d26c5b01d"
                   scope="snsapi_login"
                   theme="'black'"
                   :redirect_uri="encodeURIComponent('http://pisaai.com')"

@@ -323,8 +323,8 @@ export default {
     },
     onImageEditOk(v) {
       console.log('onImageEditOk', v)
-      //this.files.splice(this.files.length - 1, 1, v)
-      this.files.shift(v)
+      this.files.splice(this.files.length - 1, 1, v)
+      //this.files.shift(v)
       this.showImageEditModal = false
       this.showImageOptionModal = true
     },
@@ -641,7 +641,7 @@ export default {
             if (res.code === 200 && window.code111) {
               // 已经支付直接下载
               _hmt.push(['_trackEvent', 'pisaai', 'www', 'payok']) //百度埋点统计
-              this.fileDonwload(res.img_url, mdf)
+              this.fileDownload(res.img_url, mdf)
               // 关闭定时器
               clearInterval(window.dsqq)
               this.$toast.success('支付完成')
@@ -698,7 +698,7 @@ export default {
                     this.tongbudian() // 再次同步点数
                     tocDownload(mdf).then((res) => {
                       if (res.code === 200 && window.code111) {
-                        this.fileDonwload(res.img_url, mdf)
+                        this.fileDownload(res.img_url, mdf)
                         clearInterval(window.dsqq)
                         this.$toast.success('成功')
                         // 关闭弹框
@@ -797,7 +797,7 @@ export default {
                 if (res.code === 0) {
                   tocDownload(mdf).then((res) => {
                     if (res.code === 200) {
-                      this.fileDonwload(res.img_url, mdf)
+                      this.fileDownload(res.img_url, mdf)
                     }
                   })
                   this.tongbudian() // 再次同步点数
