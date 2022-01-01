@@ -26,7 +26,7 @@
               {{ $vuetify.lang.t('$vuetify.btnTxt') }}
               <v-icon right dark>mdi-cloud-upload</v-icon>
             </v-btn>
-          </file-upload>
+          </file-upload>		  
         </v-sheet>
         <!--继续上传-->
         <v-sheet tag="section" v-else class="continue-upload d-flex align-center justify-between">
@@ -64,7 +64,9 @@
           </div>
         </v-sheet>
         <div style="text-align: center; position: relative" v-if="!files.length">
-          <p><!--删除按钮下方的提示--></p>
+		  <p style="top: -50px; position: relative; color: #519eff">
+            {{ $vuetify.lang.t('$vuetify.uploadBtnTips')}}
+          </p>
         </div>
 
         <!--任务列表-->
