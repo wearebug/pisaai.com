@@ -4,8 +4,10 @@ export default {
     error800: '图片的宽和高最大3000px',
     uploadBtnTips: '上传的照片将在24小时内被自动删除，请及时下载结果',
     maxImgYh: '大图优化',
-    keyword: '老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照,修复旧照片,照片模糊怎么变清晰,模糊图片秒转高清图,ps怎么把图片变清晰,一键抠图,图片模糊怎么变清晰,免费把模糊照片修高清的软件,怎么把模糊的照片变清晰,模糊的图片怎么变清晰,抠图,证件照换底色,照片换背景底色,ps证件照换底色,照片换底色,证件照换底色app免费,ps抠图,ps怎么抠图,ps如何抠图,在线抠图,抠图软件',
-    description: 'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景,主要可以：老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照,修复旧照片,照片模糊怎么变清晰,模糊图片秒转高清图,ps怎么把图片变清晰,一键抠图,图片模糊怎么变清晰,免费把模糊照片修高清的软件,怎么把模糊的照片变清晰,模糊的图片怎么变清晰,抠图,证件照换底色,照片换背景底色,ps证件照换底色,照片换底色,证件照换底色app免费,ps抠图,ps怎么抠图,ps如何抠图,在线抠图,抠图软件。',
+    keyword:
+      '老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照,修复旧照片,照片模糊怎么变清晰,模糊图片秒转高清图,ps怎么把图片变清晰,一键抠图,图片模糊怎么变清晰,免费把模糊照片修高清的软件,怎么把模糊的照片变清晰,模糊的图片怎么变清晰,抠图,证件照换底色,照片换背景底色,ps证件照换底色,照片换底色,证件照换底色app免费,ps抠图,ps怎么抠图,ps如何抠图,在线抠图,抠图软件',
+    description:
+      'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景,主要可以：老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照,修复旧照片,照片模糊怎么变清晰,模糊图片秒转高清图,ps怎么把图片变清晰,一键抠图,图片模糊怎么变清晰,免费把模糊照片修高清的软件,怎么把模糊的照片变清晰,模糊的图片怎么变清晰,抠图,证件照换底色,照片换背景底色,ps证件照换底色,照片换底色,证件照换底色app免费,ps抠图,ps怎么抠图,ps如何抠图,在线抠图,抠图软件。',
     loginTxt: '登录',
     userTxt: '用户中心',
     loginTitle: '感谢支持PisaAI ！',
@@ -22,20 +24,20 @@ export default {
     functionPrice: [
       {
         title: '3张 = ￥25',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 无'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 无']
       },
       {
         title: '10张 = ￥75',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持']
       },
       {
         title: '50张 = ￥200',
-        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持'],
+        list: ['有效期: 一年', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持']
       },
       {
         title: '包月 = ￥300',
-        list: ['有效期: 一月', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持'],
-      },
+        list: ['有效期: 一月', '优先处理: 是', '上传尺寸: 3000px', '老照片修复: 支持', '批量处理: 支持']
+      }
     ],
     priceType: ['微信支付', '支付宝支付', 'Paypal支付'],
     priceTips: '单张￥16.8，购买越多赠送越多，更低折扣请加微信wearebug咨询。',
@@ -56,9 +58,9 @@ export default {
         2012: '图像格式不支持（支持jpg/jpeg/png）',
         2013: '正在准备图片……',
         2014: '图片上传失败，请重试',
-		undefined: '未定义',
+        undefined: '未定义'
       },
-      btn: ['人工精修', '下载', '查看结果', '删除', '再次处理'],
+      btn: ['人工精修', '下载', '查看结果', '删除', '再次处理']
     },
     artificial: {
       title: '人工精修',
@@ -68,12 +70,12 @@ export default {
       info: '修改要求',
       checkTxt: '我已阅读并同意',
       services: '服务声明',
-      btn: '提交',
+      btn: '提交'
     },
     choiceType: {
       title: '任务配置',
       btn: '立即开始任务',
-	  cancel: '取消',
+      cancel: '取消',
       tips: '请输入RGB色值',
       list: [
         {
@@ -81,50 +83,50 @@ export default {
           info: [
             {
               name: '模糊变清晰',
-              tips: '彩色照片优化',
-            },
-          ],
+              tips: '彩色照片优化'
+            }
+          ]
         },
         {
           title: '黑白照片',
           info: [
             {
               name: '黑白变彩色',
-              tips: '黑白变彩色',
-            },
-          ],
+              tips: '黑白变彩色'
+            }
+          ]
         },
         {
           title: '证件照换底色',
           info: [
             {
               name: '白底',
-              tips: '证件照换底色(白底)',
+              tips: '证件照换底色(白底)'
             },
             {
               name: '红底',
-              tips: '证件照换底色(红底)',
+              tips: '证件照换底色(红底)'
             },
             {
               name: '蓝底',
-              tips: '证件照换底色(蓝底)',
+              tips: '证件照换底色(蓝底)'
             },
             {
               name: '自定义色值',
-              tips: '证件照换底色(自定义)',
-            },
-          ],
+              tips: '证件照换底色(自定义)'
+            }
+          ]
         },
         {
           title: '图片无损放大',
           info: [
             {
               name: '放大四倍',
-              tips: '无损放大四倍',
-            },
-          ],
-        },
-      ],
+              tips: '无损放大四倍'
+            }
+          ]
+        }
+      ]
     },
     functionFun: [],
     menu: ['Language', 'API', '价格', '关于我们'],
@@ -134,7 +136,7 @@ export default {
     电话: '010-5335 5193',
     邮箱: 'wearebug&gmail.com',
     微信: 'wearebug',
-	aboutTxt: '关于我们',
+    aboutTxt: '关于我们',
     aboutInfo:
       '北京但丁科技有限公司成立于2018年，是一家由AI行业资深从业者组成的创业公司，致力于将人工智能和计算机视觉技术应用于图像和视频处理领域。我们向客户提供各种可定制的图像视频处理解决方案。<br/>QQ群：623946846 <br/>销售微信：12145508',
     agreementTxt: '用户协议',
@@ -146,7 +148,7 @@ export default {
     contactTxt: '联系我们',
     contactInfo:
       '北京但丁科技有限公司<br/>公司地址：北京市海淀区西二旗中关村软件园华夏科技大厦329<br/>电话：010-5335 5193<br/>用户QQ群：623946846 <br/>销售微信：12145508',
-	copyrightTxt: '北京但丁科技有限公司 版权所有 京ICP备2021032285号',
+    copyrightTxt: '北京但丁科技有限公司 版权所有 京ICP备2021032285号',
     btnTxt: '上传图片（最大3000px）',
     contrastTips: ['后', '前'],
     contrastType: ['彩色照片优化', '证件照换底色', '黑白照片上色', '图片无损放大', '划痕修复', '强化人像'],
@@ -157,43 +159,58 @@ export default {
         title: '修复前的准备',
         info1: '1. 旋转照片到正确角度并且裁掉无用的边缘，这样能大大提高AI修复效果。',
         info2:
-          '2. 已经是彩色的照片无需再次上色：由于AI修复是算法修复，与原始图像会有差异，再次上色后会与原图不一致，因此建议彩色照片无需上色。<br/>3. 付费后，可下载高清无水印的图片，付费即认为您已认可对比图中的效果，同一张照片（同一格式、尺寸的照片）只需支付一次费用，如果照片显示后未进入您的相册，请手动长按图片保存入您的相册，如果还无法保存，请加我们的QQ群（579786037）寻求协助。',
+          '2. 已经是彩色的照片无需再次上色：由于AI修复是算法修复，与原始图像会有差异，再次上色后会与原图不一致，因此建议彩色照片无需上色。<br/>3. 付费后，可下载高清无水印的图片，付费即认为您已认可对比图中的效果，同一张照片（同一格式、尺寸的照片）只需支付一次费用，如果照片显示后未进入您的相册，请手动长按图片保存入您的相册，如果还无法保存，请加我们的QQ群（579786037）寻求协助。'
       },
       {
         title: '什么是AI照片修复？',
-        info: 'AI修复照片是指使用人工智能技术来修复图片，使老旧图片焕发出新的活力。比如，80年代之前，很多录像和照片都是黑白的，可以用AI修复技术去修复画面泛黄模糊的老旧的黑白照片，就可以把年代久远的黑白老照片修复成彩色的数码照片。也可以把原本模糊的照片，通过AI技术补充细节，还原出高清晰度的照片。',
+        info: 'AI修复照片是指使用人工智能技术来修复图片，使老旧图片焕发出新的活力。比如，80年代之前，很多录像和照片都是黑白的，可以用AI修复技术去修复画面泛黄模糊的老旧的黑白照片，就可以把年代久远的黑白老照片修复成彩色的数码照片。也可以把原本模糊的照片，通过AI技术补充细节，还原出高清晰度的照片。'
       },
       {
         title: 'AI照片修复的原理是什么？',
-        info: 'AI会自动学习和记忆这些关键信息的颜色 ，比如树叶是绿色、人脸是肤色等。因此，它可以很快开始对黑白照片里的场景进行彩色化。AI通过算法和大量已有图片的训练完成的学习。先对照片进行图像分割，区分出标志性物体。 比如树木、天空、人脸、服装……尽管很难做到完美无缺，但还原过后的老照片还是能给人很多惊喜。\nPS：由于AI修复是算法学习的“经验”，推演出来的结果，因此和真实照片、真实景物会存在差异。\n',
+        info: 'AI会自动学习和记忆这些关键信息的颜色 ，比如树叶是绿色、人脸是肤色等。因此，它可以很快开始对黑白照片里的场景进行彩色化。AI通过算法和大量已有图片的训练完成的学习。先对照片进行图像分割，区分出标志性物体。 比如树木、天空、人脸、服装……尽管很难做到完美无缺，但还原过后的老照片还是能给人很多惊喜。\nPS：由于AI修复是算法学习的“经验”，推演出来的结果，因此和真实照片、真实景物会存在差异。\n'
       },
       {
         title: '什么样的照片适合AI修复？',
-        info: '黑白照片、模糊的人像照片、大头照、半身照等。',
+        info: '黑白照片、模糊的人像照片、大头照、半身照等。'
       },
       {
         title: '什么照片不适用AI？',
-        info: '1.由于模糊照片修复清晰度主要针对人物照片进行的训练，因此针对无人物的纯景物照片可以上色但无法修复清晰度。<br/>2.原照片过于模糊，或原照片中人物头像过小的，或照片本身过小的，无法修复。<br/>3. 纯文字类图片无法修复，由于未针对纯文字类的图片进行专项训练，也未设计针对性的算法，因此对纯文字类的图片无法修复。',
+        info: '1.由于模糊照片修复清晰度主要针对人物照片进行的训练，因此针对无人物的纯景物照片可以上色但无法修复清晰度。<br/>2.原照片过于模糊，或原照片中人物头像过小的，或照片本身过小的，无法修复。<br/>3. 纯文字类图片无法修复，由于未针对纯文字类的图片进行专项训练，也未设计针对性的算法，因此对纯文字类的图片无法修复。'
       },
       {
         title: '可以修复老视频么？',
-        info: '当然可以，这是我们的企业服务，您可以联系微信wearebug<br/>效果展示：',
-      },
+        info: '当然可以，这是我们的企业服务，您可以联系微信wearebug<br/>效果展示：'
+      }
     ],
     pic: {
       checkAll: '全选',
       start: '开始任务',
       cancel: '删除全部',
-      upload: '继续上传（最大3000px）',
+      upload: '继续上传（最大3000px）'
     },
+    shareText: '分享领红包',
+    shareTitle: '用户分享协议',
+    shareContent: `
+    请您在使用分享功能前阅读以下协议内容：
+      1）分享操作将会把您选择的照片（含修复前后的）发布到本平台的客户案例展示区，向所有访客公开；
+      2）分享付费后的照片，分享者将会得到10元修复代金券；
+      3）上传者拥有照片版权，授权本平台展示和居间销售照片（如果需要）；
+      4）您分享的照片会被内部用于分析和优化AI算法。
+      使用本功能即视为您已阅读、理解并同意上述协议。`,
+    shareAgree: '我已阅读并同意',
+    shareBtn: '分享',
+    shareSuccess: '分享成功',
+    shareFail: '分享失败',
+    shareCheckTip:'请先确认分享协议'
   },
   english: {
     name: 'PisaAI Enhance Photo-Repair Old Photos_matting photos_cutout photo Software',
-    error800:'The width and height of the picture are up to 3000px',
-    uploadBtnTips:'The uploaded photos will be automatically deleted within 24 hours',
+    error800: 'The width and height of the picture are up to 3000px',
+    uploadBtnTips: 'The uploaded photos will be automatically deleted within 24 hours',
     maxImgYh: 'Large map enhance',
     keyword: 'Old photo enhance, photo repair,  photo coloring, repair scratches, ID photo, ID photo background change, portrait photo',
-    description: 'PisaAI PhotoEnhance is to colorize photos, repair scratches, face refinement, photo sharpening, etc. by AI algorithm. Fix old photos and ID photos before, ID photos for red, white, blue background.',
+    description:
+      'PisaAI PhotoEnhance is to colorize photos, repair scratches, face refinement, photo sharpening, etc. by AI algorithm. Fix old photos and ID photos before, ID photos for red, white, blue background.',
     loginTxt: 'Sign in',
     userTxt: 'User center',
     loginTitle: 'Thanks for choosing PisaAI',
@@ -201,7 +218,7 @@ export default {
       'Discounts for logged-in users',
       'After logging in, the browser closes and the task will not be lost',
       'Processing records can be viewed at any time',
-      'Use the latest AI HD model',
+      'Use the latest AI HD model'
     ],
     loginTip: ['E-mail', 'Password', 'Create a new account', 'Forget password', 'Third party login'],
     loginBtnTxt: 'Sign in',
@@ -215,26 +232,26 @@ export default {
     functionPrice: [
       {
         title: '3 photos = ￥25',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:NO'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:NO']
       },
       {
         title: '10 photos = ￥75',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
       },
       {
         title: '50 photos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
       },
       {
         title: 'monthly = ￥300',
-        list: ['Expiry:a month', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
-      },
+        list: ['Expiry:a month', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
+      }
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
     weChatVip: [
       'Scan the QR code on WeChat to download HD images without watermark',
       'Package purchase',
-      'Download watermark Free HD image',
+      'Download watermark Free HD image'
     ],
     upload: {
       status: {
@@ -251,9 +268,9 @@ export default {
         2011: 'Uploading image',
         2012: 'Image format not supported（support jpg/jpeg/png）',
         2013: 'Preparing the picture……',
-        2014: 'Upload fail, please try again',
+        2014: 'Upload fail, please try again'
       },
-      btn: ['Manual refinement', 'Download', 'View results', 'Delete', 'Reprocess'],
+      btn: ['Manual refinement', 'Download', 'View results', 'Delete', 'Reprocess']
     },
     artificial: {
       title: 'Manual finishing',
@@ -263,12 +280,12 @@ export default {
       info: 'Modification requirements',
       checkTxt: 'I have read and agree',
       services: 'Service statement',
-      btn: 'Submit',
+      btn: 'Submit'
     },
     choiceType: {
       title: 'Task configuration',
       btn: 'Start task now',
-	  cancel: 'cancel',
+      cancel: 'cancel',
       tips: 'Please enter RGB color value',
       list: [
         {
@@ -276,50 +293,50 @@ export default {
           info: [
             {
               name: 'Blur becomes clear',
-              tips: 'Color photo enhance',
-            },
-          ],
+              tips: 'Color photo enhance'
+            }
+          ]
         },
         {
           title: 'B&W photo',
           info: [
             {
               name: 'Black and white to color',
-              tips: 'Black and white to color',
-            },
-          ],
+              tips: 'Black and white to color'
+            }
+          ]
         },
         {
           title: 'Change BG color',
           info: [
             {
               name: 'White',
-              tips: 'Change background to white',
+              tips: 'Change background to white'
             },
             {
               name: 'Red',
-              tips: 'Change background to red',
+              tips: 'Change background to red'
             },
             {
               name: 'Blue',
-              tips: 'Change background to blue',
+              tips: 'Change background to blue'
             },
             {
               name: 'Custom',
-              tips: 'Change background to Custom',
-            },
-          ],
+              tips: 'Change background to Custom'
+            }
+          ]
         },
         {
           title: 'Lossless amplification',
           info: [
             {
               name: 'Enlarge four times',
-              tips: 'Enlarge four times',
-            },
-          ],
-        },
-      ],
+              tips: 'Enlarge four times'
+            }
+          ]
+        }
+      ]
     },
     priceTips: 'For lower prices, please join the wechat (wearebug) for consultation',
     functionFun: [],
@@ -331,7 +348,7 @@ export default {
     mail: 'wearebug&gmail.com',
     wechat: 'wearebug',
     aboutTxt: 'About us',
-	aboutInfo:
+    aboutInfo:
       'Founded in 2018, Beijing Dante Technology Co., Ltd. is a startup company composed of senior practitioners in AI. It is committed to applying artificial intelligence and computer vision technologies to the field of video/image processing.We provide customers with a variety of customizable image and video processing solutions.<br/>',
     agreementTxt: 'User agreement',
     agreementInfo:
@@ -342,16 +359,16 @@ export default {
     contactTxt: 'Contact us',
     contactInfo:
       'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>Tel:010-5335 5193<br/>User QQ Group：623946846 <br/>wechat：12145508',
-	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
+    copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
     btnTxt: 'Upload Images(Max 3000px)',
     contrastTips: ['after', 'befor'],
     contrastType: [
       'Enhance color photo',
-	  'Change background color',
+      'Change background color',
       'Colorize black&white photo',
       'Lossless amplification',
       'Repair scratched',
-      'Enhance face',
+      'Enhance face'
     ],
     caseTxt: 'Case Display',
     problemTxt: 'Common Problem',
@@ -360,43 +377,44 @@ export default {
         title: 'Preparation before repair',
         info1: '1. Rotate the photo to the correct angle and cut off the useless edges, which can greatly improve the AI repair effect.',
         info2:
-          '2. The photo that is already in color does NOT need to be colored again: As AI repair is an algorithmic restoration, it will be different from the original image, and it will be inconsistent with the original image after it is colored again. Therefore, it is recommended that color photos do not need to be colored.<br/>3. After paying, you can download the complete picture without a watermark in high-definition. The payment means that you have agreed to the effect of the comparison picture. The same photo (photo of the same format, size) only needs to pay once. If the photo does not enter your photo album after it is displayed, please manually long-press the photo to save it into your photo album. If you still cannot save it, please add our QQ group (579786037) for assistance.',
+          '2. The photo that is already in color does NOT need to be colored again: As AI repair is an algorithmic restoration, it will be different from the original image, and it will be inconsistent with the original image after it is colored again. Therefore, it is recommended that color photos do not need to be colored.<br/>3. After paying, you can download the complete picture without a watermark in high-definition. The payment means that you have agreed to the effect of the comparison picture. The same photo (photo of the same format, size) only needs to pay once. If the photo does not enter your photo album after it is displayed, please manually long-press the photo to save it into your photo album. If you still cannot save it, please add our QQ group (579786037) for assistance.'
       },
       {
         title: 'what is the AI repair ?',
-        info: 'AI repair of photos is the use of artificial intelligence technology to repair pictures, making old pictures glow with new vitality. For example, before the 1980s, many videos and photos were in black and white. AI repair technology can be used to repair old black and white photos with yellow and blurry pictures, and old black and white photos can be restored into color digital photos. You can also use AI technology to supplement the details of the originally blurred photos to restore high-definition photos.',
+        info: 'AI repair of photos is the use of artificial intelligence technology to repair pictures, making old pictures glow with new vitality. For example, before the 1980s, many videos and photos were in black and white. AI repair technology can be used to repair old black and white photos with yellow and blurry pictures, and old black and white photos can be restored into color digital photos. You can also use AI technology to supplement the details of the originally blurred photos to restore high-definition photos.'
       },
       {
         title: 'What is the principle of AI photo repair?',
-        info: 'AI will automatically learn and remember the color of these key information, such as leaves are green, human faces are skin color, etc. Therefore, it can quickly start to colorize scenes in black and white photos. AI learns through algorithms and training of a large number of existing pictures. First perform image segmentation on the photo to distinguish landmark objects. For example, trees, sky, human faces, clothing... Although it is difficult to be perfect, the restored old photos can still give people a lot of surprises.<br/>PS: Because AI repair is the "experience" of algorithm learning and the result of deduction, it will be different from real photos and real scenes.',
+        info: 'AI will automatically learn and remember the color of these key information, such as leaves are green, human faces are skin color, etc. Therefore, it can quickly start to colorize scenes in black and white photos. AI learns through algorithms and training of a large number of existing pictures. First perform image segmentation on the photo to distinguish landmark objects. For example, trees, sky, human faces, clothing... Although it is difficult to be perfect, the restored old photos can still give people a lot of surprises.<br/>PS: Because AI repair is the "experience" of algorithm learning and the result of deduction, it will be different from real photos and real scenes.'
       },
       {
         title: 'What kind of photo is suitable for AI repair? ',
-        info: 'Black and white photos, blurry portrait photos, headshots, half-length photos, etc.',
+        info: 'Black and white photos, blurry portrait photos, headshots, half-length photos, etc.'
       },
       {
         title: 'What photos are not suitable for AI?',
-        info: 'Since blurry photo repairing sharpness is mainly for the training of photos of people, photos of pure scenery without people can be colored, but sharpness cannot be repaired. <br/>The original photo is too blurry, or the portrait of the person in the original photo is too small, or the photo itself is too small to be repaired.<br/>Text-only pictures cannot be repaired. Since no special training has been carried out for text-only pictures, and no targeted algorithms have been designed, it is impossible to repair text-only pictures. ',
+        info: 'Since blurry photo repairing sharpness is mainly for the training of photos of people, photos of pure scenery without people can be colored, but sharpness cannot be repaired. <br/>The original photo is too blurry, or the portrait of the person in the original photo is too small, or the photo itself is too small to be repaired.<br/>Text-only pictures cannot be repaired. Since no special training has been carried out for text-only pictures, and no targeted algorithms have been designed, it is impossible to repair text-only pictures. '
       },
       {
         title: 'Can the old video be repaired?',
-        info: 'Of course, this is our corporate service, you can contact wechat wearebug<br/>case show:<br/>',
-      },
+        info: 'Of course, this is our corporate service, you can contact wechat wearebug<br/>case show:<br/>'
+      }
     ],
     pic: {
       checkAll: 'All',
       start: 'Start task',
       cancel: 'Delete all',
-      upload: 'Continue to upload images(Max 3000px)',
-    },
+      upload: 'Continue to upload images(Max 3000px)'
+    }
   },
   japanese: {
     name: 'PisaAI写真強化-古い写真を修復する_画像マット_切り抜き写真ソフト',
-    error800:'画像の幅と高さは最大800 pxです。',
-    uploadBtnTips:'写真は24時間以内に自動的に削除されます',
+    error800: '画像の幅と高さは最大800 pxです。',
+    uploadBtnTips: '写真は24時間以内に自動的に削除されます',
     maxImgYh: '大いに最適化を図る',
     keyword: '古い写真、写真の修復、写真の着色、傷の修復、ID写真、ID写真の背景の変更、ポートレート',
-    description: 'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景。',
+    description:
+      'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景。',
     loginTxt: 'ログイン',
     userTxt: '使用者',
     loginTitle: 'PisaAI をご利用いただきありがとうございます',
@@ -413,20 +431,20 @@ export default {
     functionPrice: [
       {
         title: '写真3枚 = ￥25',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:NO'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:NO']
       },
       {
         title: '写真10枚 = ￥75',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES']
       },
       {
         title: '写真50枚 = ￥200',
-        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES'],
+        list: ['有効期限:1年', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES']
       },
       {
         title: '月額 = ￥300',
-        list: ['有効期限:1月', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES'],
-      },
+        list: ['有効期限:1月', '優先順位:YES', '画像サイズ:3000px', '古い写真の修理:YES', 'バッチ処理:YES']
+      }
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
     weChatVip: ['ウィーチャット・スキャン', 'パッケージ購入', '透かしなしハイビジョンをダウンロード'],
@@ -445,9 +463,9 @@ export default {
         2011: '画像をアップロードしています',
         2012: '画像フォーマットはサポートされていません（jpg/jpeg/png is ok）',
         2013: '画像を準備しています……',
-        2014: 'アップロードに失敗しました，やり直してください。',
+        2014: 'アップロードに失敗しました，やり直してください。'
       },
-      btn: ['人工的に修理する', 'ダウンロード', '結果を表示', '削除', '再処理'],
+      btn: ['人工的に修理する', 'ダウンロード', '結果を表示', '削除', '再処理']
     },
     artificial: {
       title: '人工的に修理する',
@@ -457,12 +475,12 @@ export default {
       info: '要求を修正する',
       checkTxt: '私はすでに読んで同意しました',
       services: 'サービス宣言',
-      btn: '送信',
+      btn: '送信'
     },
     choiceType: {
       title: 'タスクの設定',
       btn: '直ちに任務を開始する',
-	  cancel: '中止',
+      cancel: '中止',
       tips: 'RGBの色の値を入力',
       list: [
         {
@@ -470,50 +488,50 @@ export default {
           info: [
             {
               name: 'ぼかして鮮明にする',
-              tips: 'カラー写真修復',
-            },
-          ],
+              tips: 'カラー写真修復'
+            }
+          ]
         },
         {
           title: '白黒写真',
           info: [
             {
               name: '白黒で色を変える',
-              tips: '白黒で色を変える',
-            },
-          ],
+              tips: '白黒で色を変える'
+            }
+          ]
         },
         {
           title: '身分証明書の背景色',
           info: [
             {
               name: '白い底',
-              tips: '証明書の写真を下の色に交換する（白地）',
+              tips: '証明書の写真を下の色に交換する（白地）'
             },
             {
               name: '赤い底',
-              tips: '証明書の写真を下の色に交換する（赤い底）',
+              tips: '証明書の写真を下の色に交換する（赤い底）'
             },
             {
               name: '青い底',
-              tips: '証明書の写真を下の色に変えます（青い底）',
+              tips: '証明書の写真を下の色に変えます（青い底）'
             },
             {
               name: 'カスタム',
-              tips: '証明書の写真を下の色に変えます（カスタム）',
-            },
-          ],
+              tips: '証明書の写真を下の色に変えます（カスタム）'
+            }
+          ]
         },
         {
           title: 'ロスレス増幅',
           info: [
             {
               name: '4倍に拡大する',
-              tips: '無損失拡大4倍',
-            },
-          ],
-        },
-      ],
+              tips: '無損失拡大4倍'
+            }
+          ]
+        }
+      ]
     },
     priceTips: '低価格については、wechat（wearebug）に参加して相談してください',
     functionFun: [],
@@ -524,7 +542,7 @@ export default {
     phone: '010-5335 5193',
     mail: 'wearebug&gmail.com',
     wechat: 'wearebug',
-	aboutTxt: '我社',
+    aboutTxt: '我社',
     aboutInfo:
       '2019年に設立されたBeijingDante Technology Co.、Ltd。は、OTTおよびIPTVビデオ業界の上級実務家で構成される新興企業です。 人工知能とコンピュータービジョン技術をビデオ/画像処理の分野に適用することに取り組んでいます。私たちは、カスタマイズ可能なさまざまな画像およびビデオ処理ソリューションをお客様に提供します。<br/>連絡先番号：010-5335 5193<br/>QQグループ：579786037<br/>メール：wearebug＆gmail.com',
     agreementTxt: 'ユーザー規約',
@@ -532,9 +550,8 @@ export default {
     privacyTxt: '個人情報保護方針',
     privacyInfo: '<p class="Standard">英語版を参照してください</p>',
     contactTxt: 'お問い合わせ',
-    contactInfo:
-      'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
-	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
+    contactInfo: 'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
+    copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
     btnTxt: '画像のアップロード（最大3000px）',
     contrastTips: ['後', '前'],
     contrastType: ['カラー写真を強調', '背景色を変更', '黒と白の写真を色付', 'ロスレス増幅', '傷のある修理', '顔を強調する'],
@@ -545,40 +562,40 @@ export default {
         title: '修理前の準備',
         info1: '1. 写真を正しい角度に回転させ、無駄なエッジを切り取ります。これにより、AIの修復効果を大幅に向上させることができます。',
         info2:
-          '2. すでにカラーになっている写真を再度カラーリングする必要はありません。AI修復はアルゴリズムによる復元であるため、元の画像とは異なり、再度カラーリングした後は元の画像と一致しなくなります。 したがって、カラー写真に色を付ける必要はないことをお勧めします。<br/>3.支払い後、透かしのない画像全体を高解像度でダウンロードできます。 支払いとは、比較画像の効果に同意したことを意味します。 同じ写真（同じフォーマット、同じサイズの写真）は一度だけ支払う必要があります。 表示した後、写真がフォトアルバムに入らない場合は、手動で写真を長押ししてフォトアルバムに保存してください。 それでも保存できない場合は、QQグループ（579786037）を追加してください。',
+          '2. すでにカラーになっている写真を再度カラーリングする必要はありません。AI修復はアルゴリズムによる復元であるため、元の画像とは異なり、再度カラーリングした後は元の画像と一致しなくなります。 したがって、カラー写真に色を付ける必要はないことをお勧めします。<br/>3.支払い後、透かしのない画像全体を高解像度でダウンロードできます。 支払いとは、比較画像の効果に同意したことを意味します。 同じ写真（同じフォーマット、同じサイズの写真）は一度だけ支払う必要があります。 表示した後、写真がフォトアルバムに入らない場合は、手動で写真を長押ししてフォトアルバムに保存してください。 それでも保存できない場合は、QQグループ（579786037）を追加してください。'
       },
       {
         title: 'AI修復とは何ですか？',
-        info: '写真のAI修復は、人工知能技術を使用して写真を修復し、古い写真を新しい活力で輝かせます。 たとえば、1980年代以前は、多くのビデオや写真が白黒でした。 AI修復技術を使用して、古い白黒写真を黄色やぼやけた写真で修復したり、古い白黒写真をカラーデジタル写真に復元したりできます。 AIテクノロジーを使用して、元々ぼやけていた写真の詳細を補足して、高解像度の写真を復元することもできます。',
+        info: '写真のAI修復は、人工知能技術を使用して写真を修復し、古い写真を新しい活力で輝かせます。 たとえば、1980年代以前は、多くのビデオや写真が白黒でした。 AI修復技術を使用して、古い白黒写真を黄色やぼやけた写真で修復したり、古い白黒写真をカラーデジタル写真に復元したりできます。 AIテクノロジーを使用して、元々ぼやけていた写真の詳細を補足して、高解像度の写真を復元することもできます。'
       },
       {
         title: 'AI写真修復の原理は何ですか？',
-        info: 'AIは、葉が緑、人間の顔が肌の色など、これらの重要な情報の色を自動的に学習して記憶します。したがって、AIは、白黒写真のシーンの色付けをすぐに開始できます。 AIは、アルゴリズムと多数の既存の画像のトレーニングを通じて学習します。 まず、写真に対して画像セグメンテーションを実行して、ランドマークオブジェクトを区別します。 たとえば、木、空、人間の顔、衣服...完璧にするのは難しいですが、復元された古い写真は、人々に多くの驚きを与える可能性があります。<br/>PS：AI修復はアルゴリズム学習の「経験」であり、推論の結果であるため、実際の写真や実際のシーンとは異なります。',
+        info: 'AIは、葉が緑、人間の顔が肌の色など、これらの重要な情報の色を自動的に学習して記憶します。したがって、AIは、白黒写真のシーンの色付けをすぐに開始できます。 AIは、アルゴリズムと多数の既存の画像のトレーニングを通じて学習します。 まず、写真に対して画像セグメンテーションを実行して、ランドマークオブジェクトを区別します。 たとえば、木、空、人間の顔、衣服...完璧にするのは難しいですが、復元された古い写真は、人々に多くの驚きを与える可能性があります。<br/>PS：AI修復はアルゴリズム学習の「経験」であり、推論の結果であるため、実際の写真や実際のシーンとは異なります。'
       },
       {
         title: 'AIの修理にはどのような写真が適していますか？',
-        info: '白黒写真、ぼやけたポートレート写真、顔写真、半身写真など。',
+        info: '白黒写真、ぼやけたポートレート写真、顔写真、半身写真など。'
       },
       {
         title: 'AIに適さない写真は何ですか？',
-        info: 'ぼやけた写真修復シャープネスは主に人物写真のトレーニング用であるため、人物のいない純粋な風景の写真に色を付けることはできますが、シャープネスを修復することはできません。 <br/>元の写真がぼやけているか、元の写真の人物のポートレートが小さすぎるか、写真自体が小さすぎて修復できません。<br/>テキストのみの画像は修復できません。 テキストのみの画像に対して特別なトレーニングが実施されておらず、対象となるアルゴリズムが設計されていないため、テキストのみの画像を修復することは不可能です。',
+        info: 'ぼやけた写真修復シャープネスは主に人物写真のトレーニング用であるため、人物のいない純粋な風景の写真に色を付けることはできますが、シャープネスを修復することはできません。 <br/>元の写真がぼやけているか、元の写真の人物のポートレートが小さすぎるか、写真自体が小さすぎて修復できません。<br/>テキストのみの画像は修復できません。 テキストのみの画像に対して特別なトレーニングが実施されておらず、対象となるアルゴリズムが設計されていないため、テキストのみの画像を修復することは不可能です。'
       },
       {
         title: '古いビデオを修復できますか？',
-        info: 'もちろん、これは私たちの企業サービスです、あなたはwechat wearebugに連絡することができます <br/>キャストショー:<br/>',
-      },
+        info: 'もちろん、これは私たちの企業サービスです、あなたはwechat wearebugに連絡することができます <br/>キャストショー:<br/>'
+      }
     ],
     pic: {
       checkAll: '全て',
       start: 'タスクを開始',
       cancel: 'すべて削除',
-      upload: '画像のアップロードを続ける（最大3000px）',
-    },
+      upload: '画像のアップロードを続ける（最大3000px）'
+    }
   },
   spanish: {
     name: 'PisaAI Retoque Fotográfico-Repair Old Photos_image matting_cutout photo Software',
-    error800:'Anchura y altura máximas de la imagen 3000px',
-    uploadBtnTips:'Las fotos se borrarán automáticamente en 24 horas',
+    error800: 'Anchura y altura máximas de la imagen 3000px',
+    uploadBtnTips: 'Las fotos se borrarán automáticamente en 24 horas',
     maxImgYh: 'Optimización de gráficos grandes',
     keyword:
       'Fotos antiguas, reparación de fotos, coloración de fotos, reparación de arañazos, fotos de identificación, fotos de identificación para el fondo, fotos de retrato',
@@ -591,7 +608,7 @@ export default {
       'Descuentos para usuarios registrados',
       'Después de iniciar sesión, la tarea no se perderá',
       'Ver registros recientes en cualquier momento',
-      'Utilice el último modelo AI HD',
+      'Utilice el último modelo AI HD'
     ],
     loginTip: ['E-mail', 'Password', 'Crea una cuenta nueva', 'Contraseña olvidada', 'Inicio de sesión de terceros'],
     loginBtnTxt: 'Iniciar sesión',
@@ -605,20 +622,20 @@ export default {
     functionPrice: [
       {
         title: '3 fotos = ￥25',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:NO'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:NO']
       },
       {
         title: '10 fotos = ￥75',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
       },
       {
         title: '50 fotos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
       },
       {
         title: 'mensual = ￥300',
-        list: ['Expiry:Un mes', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
-      },
+        list: ['Expiry:Un mes', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
+      }
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
     weChatVip: ['Código de barrido Wechat', 'Compra del paquete', 'Descargar imágenes de alta definición sin marca de agua'],
@@ -637,9 +654,9 @@ export default {
         2011: 'Uploading image',
         2012: 'Image format not supported（support jpg/jpeg/png）',
         2013: 'Preparing the picture……',
-        2014: 'Upload fail, please try again',
+        2014: 'Upload fail, please try again'
       },
-      btn: ['Refinamiento artificial', 'Descargar', 'Ver resultados', 'Borrar', 'Reprocesamiento'],
+      btn: ['Refinamiento artificial', 'Descargar', 'Ver resultados', 'Borrar', 'Reprocesamiento']
     },
     artificial: {
       title: 'Refinamiento artificial',
@@ -649,12 +666,12 @@ export default {
       info: 'Requisitos de modificación',
       checkTxt: 'He leído y estoy de acuerdo',
       services: 'Declaración de servicio',
-      btn: 'Submission',
+      btn: 'Submission'
     },
     choiceType: {
       title: 'Configuración de la tarea',
       btn: 'Iniciar la tarea inmediatamente',
-	  cancel: 'cancelar',
+      cancel: 'cancelar',
       tips: 'Introduzca un valor de color RGB',
       list: [
         {
@@ -662,50 +679,50 @@ export default {
           info: [
             {
               name: 'Fuzziness to clear',
-              tips: 'Restauración de fotografías en color',
-            },
-          ],
+              tips: 'Restauración de fotografías en color'
+            }
+          ]
         },
         {
           title: 'Fotos en blanco y negro',
           info: [
             {
               name: 'Cambio de color blanco y negro',
-              tips: 'Cambio de color blanco y negro',
-            },
-          ],
+              tips: 'Cambio de color blanco y negro'
+            }
+          ]
         },
         {
           title: 'Cambio de color del documento',
           info: [
             {
               name: 'Fondo blanco',
-              tips: 'Fondo blanco',
+              tips: 'Fondo blanco'
             },
             {
               name: 'Fondo rojo',
-              tips: 'Fondo rojo',
+              tips: 'Fondo rojo'
             },
             {
               name: 'Fondo azul',
-              tips: 'Fondo azul',
+              tips: 'Fondo azul'
             },
             {
               name: 'Personalizado',
-              tips: 'Color de fondo personalizado',
-            },
-          ],
+              tips: 'Color de fondo personalizado'
+            }
+          ]
         },
         {
           title: 'Ampliación sin pérdidas',
           info: [
             {
               name: 'Ampliar cuatro veces',
-              tips: 'Ampliar cuatro veces',
-            },
-          ],
-        },
-      ],
+              tips: 'Ampliar cuatro veces'
+            }
+          ]
+        }
+      ]
     },
     priceTips: 'Para precios más bajos, únase al wechat (wearebug) para consultar.',
     functionFun: [],
@@ -716,7 +733,7 @@ export default {
     phone: '010-5335 5193',
     mail: 'wearebug&gmail.com',
     wechat: 'wearebug',
-	aboutTxt: 'Sobre nosotros',
+    aboutTxt: 'Sobre nosotros',
     aboutInfo:
       'Fundada en 2019, Beijing Dante Technology Co., Ltd. es una empresa de nueva creación compuesta por profesionales de alto nivel en las industrias de AI. Se compromete a aplicar tecnologías de inteligencia artificial y visión por computadora al campo del procesamiento de video / imágenes.Brindamos a los clientes una variedad de soluciones de procesamiento de imágenes y video personalizables.<br/>Número de contacto: 010-5335 5193 <br/>Grupo QQ: 579786037 <br/>Email: wearebug & gmail.com',
     agreementTxt: 'Acuerdo del Usuario',
@@ -724,18 +741,17 @@ export default {
     privacyTxt: 'política de privacidad',
     privacyInfo: '<p class="Standard">Consulte la versión en inglés.</p>',
     contactTxt: 'Contace us',
-    contactInfo:
-      'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
-	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
+    contactInfo: 'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
+    copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
     btnTxt: 'Cargar imagenes(Max 3000px)',
     contrastTips: ['posterior', 'antes'],
     contrastType: [
       'mejorar la foto en color',
-	  'Cambiar el color de fondo',
+      'Cambiar el color de fondo',
       'colorear fotos en blanco y negro',
       'Amplificación sin pérdidas',
       'Reparación de rayado',
-      'mejorar la cara',
+      'mejorar la cara'
     ],
     caseTxt: 'Exhibición del caso',
     problemTxt: 'Problema comun',
@@ -745,45 +761,45 @@ export default {
         info1:
           '1. Gire la foto al ángulo correcto y corte los bordes inútiles, lo que puede mejorar en gran medida el efecto de reparación de IA.',
         info2:
-          '2. La foto que ya está en color NO necesita ser coloreada nuevamente: como la reparación de IA es una restauración algorítmica, será diferente de la imagen original y será inconsistente con la imagen original después de que se vuelva a colorear. Por lo tanto, se recomienda que las fotografías en color no necesiten ser coloreadas.<br/>3. Después de pagar, puede descargar la imagen completa sin marca de agua en alta definición. El pago significa que ha aceptado el efecto de la imagen de comparación. La misma foto (foto del mismo formato, tamaño) solo necesita pagar una vez. Si la foto no entra en su álbum de fotos después de que se muestra, mantenga presionada manualmente la foto para guardarla en su álbum de fotos. Si aún no puede guardarlo, agregue nuestro grupo QQ (579786037) para obtener ayuda.',
+          '2. La foto que ya está en color NO necesita ser coloreada nuevamente: como la reparación de IA es una restauración algorítmica, será diferente de la imagen original y será inconsistente con la imagen original después de que se vuelva a colorear. Por lo tanto, se recomienda que las fotografías en color no necesiten ser coloreadas.<br/>3. Después de pagar, puede descargar la imagen completa sin marca de agua en alta definición. El pago significa que ha aceptado el efecto de la imagen de comparación. La misma foto (foto del mismo formato, tamaño) solo necesita pagar una vez. Si la foto no entra en su álbum de fotos después de que se muestra, mantenga presionada manualmente la foto para guardarla en su álbum de fotos. Si aún no puede guardarlo, agregue nuestro grupo QQ (579786037) para obtener ayuda.'
       },
       {
         title: '¿Qué es la reparación de la IA?',
-        info: 'La reparación de fotos por IA es el uso de tecnología de inteligencia artificial para reparar imágenes, haciendo que las imágenes antiguas brillen con nueva vitalidad. Por ejemplo, antes de la década de 1980, muchos videos y fotos estaban en blanco y negro. La tecnología de reparación de IA se puede utilizar para reparar fotos antiguas en blanco y negro con imágenes amarillas y borrosas, y las fotos antiguas en blanco y negro se pueden restaurar en fotos digitales en color. También puede utilizar la tecnología AI para complementar los detalles de las fotos originalmente borrosas para restaurar fotos de alta definición.',
+        info: 'La reparación de fotos por IA es el uso de tecnología de inteligencia artificial para reparar imágenes, haciendo que las imágenes antiguas brillen con nueva vitalidad. Por ejemplo, antes de la década de 1980, muchos videos y fotos estaban en blanco y negro. La tecnología de reparación de IA se puede utilizar para reparar fotos antiguas en blanco y negro con imágenes amarillas y borrosas, y las fotos antiguas en blanco y negro se pueden restaurar en fotos digitales en color. También puede utilizar la tecnología AI para complementar los detalles de las fotos originalmente borrosas para restaurar fotos de alta definición.'
       },
       {
         title: '¿Cuál es el principio de la reparación de fotos con IA?',
-        info: "La IA aprenderá y recordará automáticamente el color de esta información clave, como las hojas son verdes, los rostros humanos son el color de la piel, etc. Por lo tanto, puede comenzar rápidamente a colorear escenas en fotografías en blanco y negro. La IA aprende a través de algoritmos y el entrenamiento de una gran cantidad de imágenes existentes. Primero, realice la segmentación de la imagen en la foto para distinguir los objetos emblemáticos. Por ejemplo, árboles, cielo, rostros humanos, ropa ... Aunque es difícil ser perfecto, las fotos antiguas restauradas aún pueden dar muchas sorpresas a la gente.<br/>PD: Debido a que la reparación de IA es la 'experiencia' del aprendizaje de algoritmos y el resultado de la deducción, será diferente de las fotos y escenas reales.",
+        info: 'La IA aprenderá y recordará automáticamente el color de esta información clave, como las hojas son verdes, los rostros humanos son el color de la piel, etc. Por lo tanto, puede comenzar rápidamente a colorear escenas en fotografías en blanco y negro. La IA aprende a través de algoritmos y el entrenamiento de una gran cantidad de imágenes existentes. Primero, realice la segmentación de la imagen en la foto para distinguir los objetos emblemáticos. Por ejemplo, árboles, cielo, rostros humanos, ropa ... Aunque es difícil ser perfecto, las fotos antiguas restauradas aún pueden dar muchas sorpresas a la gente.<br/>PD: Debido a que la reparación de IA es la \'experiencia\' del aprendizaje de algoritmos y el resultado de la deducción, será diferente de las fotos y escenas reales.'
       },
       {
         title: '¿Qué tipo de foto es adecuada para la reparación de IA?',
-        info: 'Fotografías en blanco y negro, retratos borrosos, disparos a la cabeza, fotografías de medio cuerpo, etc.',
+        info: 'Fotografías en blanco y negro, retratos borrosos, disparos a la cabeza, fotografías de medio cuerpo, etc.'
       },
       {
         title: '¿Qué fotos no son adecuadas para la IA?？',
-        info: 'Dado que la nitidez de reparación de fotografías borrosas es principalmente para el entrenamiento de fotografías de personas, las fotografías de paisajes puros sin personas se pueden colorear, pero la nitidez no se puede reparar. <br/>La photo originale est trop floue, ou le portrait de la personne sur la photo originale est trop petit, ou la photo elle-même est trop petite pour être réparée. …<br/>Las imágenes de solo texto no se pueden reparar. Dado que no se ha realizado ningún entrenamiento especial para imágenes de solo texto, y no se han diseñado algoritmos específicos, es imposible reparar imágenes de solo texto. ',
+        info: 'Dado que la nitidez de reparación de fotografías borrosas es principalmente para el entrenamiento de fotografías de personas, las fotografías de paisajes puros sin personas se pueden colorear, pero la nitidez no se puede reparar. <br/>La photo originale est trop floue, ou le portrait de la personne sur la photo originale est trop petit, ou la photo elle-même est trop petite pour être réparée. …<br/>Las imágenes de solo texto no se pueden reparar. Dado que no se ha realizado ningún entrenamiento especial para imágenes de solo texto, y no se han diseñado algoritmos específicos, es imposible reparar imágenes de solo texto. '
       },
       {
         title: '¿Se puede reparar el video antiguo?',
-        info: 'Por supuesto, este es nuestro servicio corporativo, puede contactar wechat wearebug <br/>espectáculo de reparto<br/>',
-      },
+        info: 'Por supuesto, este es nuestro servicio corporativo, puede contactar wechat wearebug <br/>espectáculo de reparto<br/>'
+      }
     ],
     pic: {
       checkAll: 'todos',
       start: 'Iniciar tarea',
       cancel: 'Eliminar todos',
-      upload: 'Seguir subiendo（Máximo 3000px）',
-    },
+      upload: 'Seguir subiendo（Máximo 3000px）'
+    }
   },
   french: {
     name: 'PisaAI Photo Améliorer-Repair Old Photos_image matting_cutout photo Software',
-    error800:`Largeur et hauteur de l'image jusqu'à 3000px`,
-    uploadBtnTips:`Les photos seront automatiquement supprimées dans les 24 heures`,
+    error800: `Largeur et hauteur de l'image jusqu'à 3000px`,
+    uploadBtnTips: `Les photos seront automatiquement supprimées dans les 24 heures`,
     maxImgYh: 'Optimisation des grandes cartes',
     keyword:
-      "Photos anciennes, réparation de photo, coloriage de photo, réparation de rayures, photos d'identité, photos d'identité pour le fond, photos de portrait",
+      'Photos anciennes, réparation de photo, coloriage de photo, réparation de rayures, photos d\'identité, photos d\'identité pour le fond, photos de portrait',
     description:
-      "L'optimisation PisaAI est un algorithme d'IA qui permet de colorer les photos, de réparer les rayures, d'affiner le visage, de rendre les photos plus nettes, etc. Réparez les vieilles photos et les photos d'identité, les photos d'identité sur fond rouge, blanc et bleu.",
+      'L\'optimisation PisaAI est un algorithme d\'IA qui permet de colorer les photos, de réparer les rayures, d\'affiner le visage, de rendre les photos plus nettes, etc. Réparez les vieilles photos et les photos d\'identité, les photos d\'identité sur fond rouge, blanc et bleu.',
     loginTxt: 'Connexion',
     userTxt: 'User center',
     loginTitle: 'Merci de soutenir PisaAI',
@@ -791,7 +807,7 @@ export default {
       'Réductions pour les utilisateurs connectés',
       'Après la connexion, la tâche ne sera pas perdue',
       'Afficher les enregistrements récents',
-      'Utilisez le dernier modèle AI HD',
+      'Utilisez le dernier modèle AI HD'
     ],
     loginTip: ['E-mail', 'Password', 'Créer un nouveau compte', 'Mot de passe oublié', 'Connexion tiers'],
     loginBtnTxt: 'Connexion',
@@ -805,23 +821,23 @@ export default {
     functionPrice: [
       {
         title: '3 photos = ￥25',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:NO'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:NO']
       },
       {
         title: '10 photos = ￥75',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
       },
       {
         title: '50 photos = ￥200',
-        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+        list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
       },
       {
         title: 'mensuel = ￥300',
-        list: ['Expiry:un mois', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
-      },
+        list: ['Expiry:un mois', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
+      }
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
-    weChatVip: ["Code d'analyse WeChat", 'Achat de forfait', 'Télécharger une image HD sans filigrane'],
+    weChatVip: ['Code d\'analyse WeChat', 'Achat de forfait', 'Télécharger une image HD sans filigrane'],
     upload: {
       status: {
         2001: 'Task is lining up',
@@ -837,9 +853,9 @@ export default {
         2011: 'Uploading image',
         2012: 'Image format not supported（support jpg/jpeg/png）',
         2013: 'Preparing the picture……',
-        2014: 'Upload fail, please try again',
+        2014: 'Upload fail, please try again'
       },
-      btn: ['Finition manuelle', 'Télécharger', 'Voir les résultats', 'Supprimer', 'Encore une fois.'],
+      btn: ['Finition manuelle', 'Télécharger', 'Voir les résultats', 'Supprimer', 'Encore une fois.']
     },
     artificial: {
       title: 'Finition manuelle',
@@ -847,14 +863,14 @@ export default {
       email: 'E - mail',
       phone: 'Téléphone',
       info: 'Modifier les exigences',
-      checkTxt: "J'ai lu et accepté",
+      checkTxt: 'J\'ai lu et accepté',
       services: 'Déclaration de service',
-      btn: 'Présentation',
+      btn: 'Présentation'
     },
     choiceType: {
       title: 'Configuration des tâches',
       btn: 'Démarrer la tâche maintenant',
-	  cancel: 'annuler',
+      cancel: 'annuler',
       tips: 'Veuillez saisir une valeur de couleur RGB',
       list: [
         {
@@ -862,80 +878,79 @@ export default {
           info: [
             {
               name: 'Flou clair',
-              tips: 'Réparation de photos en couleur',
-            },
-          ],
+              tips: 'Réparation de photos en couleur'
+            }
+          ]
         },
         {
           title: 'Photos en noir et blanc',
           info: [
             {
               name: 'Couleur noir et blanc',
-              tips: 'Couleur noir et blanc',
-            },
-          ],
+              tips: 'Couleur noir et blanc'
+            }
+          ]
         },
         {
-          title: "photo d'identité",
+          title: 'photo d\'identité',
           info: [
             {
               name: 'Fond blanc',
-              tips: 'fond blanc',
+              tips: 'fond blanc'
             },
             {
               name: 'Fond rouge',
-              tips: 'Fond rouge',
+              tips: 'Fond rouge'
             },
             {
               name: 'Fond bleu',
-              tips: 'Fond bleu',
+              tips: 'Fond bleu'
             },
             {
               name: 'Personnalisé',
-              tips: 'Couleur personnalisée',
-            },
-          ],
+              tips: 'Couleur personnalisée'
+            }
+          ]
         },
         {
           title: 'Amplification',
           info: [
             {
               name: 'Agrandir quatre fois',
-              tips: 'Agrandir quatre fois',
-            },
-          ],
-        },
-      ],
+              tips: 'Agrandir quatre fois'
+            }
+          ]
+        }
+      ]
     },
     priceTips: 'Pour des prix inférieurs, veuillez joindre le wechat (wearebug) pour consultation',
     functionFun: [],
     menu: ['Language', 'API', 'Prix', 'à propos de nous'],
     language: ['简体中文', 'English', '日本语', 'Español', 'Francés'],
     synopsis:
-      "PisaAI PhotoEnhance est un outil de réparation et de retouche photo qui utilise des algorithmes d'IA pour colorer automatiquement les photos en noir et blanc, réparer les anciennes photos et optimiser les photos floues et floues.",
+      'PisaAI PhotoEnhance est un outil de réparation et de retouche photo qui utilise des algorithmes d\'IA pour colorer automatiquement les photos en noir et blanc, réparer les anciennes photos et optimiser les photos floues et floues.',
     phone: '010-5335 5193',
     mail: 'wearebug&gmail.com',
     wechat: 'wearebug',
-	aboutTxt: 'à propos de nous',
+    aboutTxt: 'à propos de nous',
     aboutInfo:
-      "Fondée en 2019, Beijing Dante Technology Co., Ltd. est une start-up composée de praticiens chevronnés des secteurs de la vidéo OTT et IPTV. Il s'engage à appliquer les technologies de l'intelligence artificielle et de la vision par ordinateur au domaine du traitement de la vidéo/de l'image.Nous fournissons à nos clients une variété de solutions de traitement d'images et de vidéos personnalisables.<br/>Numéro de téléphone : 010-5335 5193<br/>Groupe QQ : 579786037<br/>Courriel : wearebug&gmail.com",
-    agreementTxt: "Accord de l'utilisateur",
+      'Fondée en 2019, Beijing Dante Technology Co., Ltd. est une start-up composée de praticiens chevronnés des secteurs de la vidéo OTT et IPTV. Il s\'engage à appliquer les technologies de l\'intelligence artificielle et de la vision par ordinateur au domaine du traitement de la vidéo/de l\'image.Nous fournissons à nos clients une variété de solutions de traitement d\'images et de vidéos personnalisables.<br/>Numéro de téléphone : 010-5335 5193<br/>Groupe QQ : 579786037<br/>Courriel : wearebug&gmail.com',
+    agreementTxt: 'Accord de l\'utilisateur',
     agreementInfo: '<p class="Standard">Veuillez vous référer à la version anglaise. </p>',
     privacyTxt: 'política de privacidad',
     privacyInfo: '<p class="Standard">Veuillez vous référer à la version anglaise. </p>',
     contactTxt: 'Contace us',
-    contactInfo:
-      'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
-	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
+    contactInfo: 'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
+    copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
     btnTxt: 'Télécharger une images(Maximum 3000px)',
     contrastTips: ['après', 'avant'],
     contrastType: [
       'améliorer la photo couleur',
-	  'Changer la couleur de fond',
+      'Changer la couleur de fond',
       'coloriser des photos en noir et blanc',
       'Amplification non-destructive',
       'Réparer Rayé',
-      'améliorer le visage',
+      'améliorer le visage'
     ],
     caseTxt: 'Affichage de cas',
     problemTxt: 'Problème commun',
@@ -943,36 +958,36 @@ export default {
       {
         title: 'Préparation avant réparation',
         info1:
-          "1. Faites pivoter la photo au bon angle et coupez les bords inutiles, ce qui peut grandement améliorer l'effet de réparation de l'IA.",
+          '1. Faites pivoter la photo au bon angle et coupez les bords inutiles, ce qui peut grandement améliorer l\'effet de réparation de l\'IA.',
         info2:
-          "2. La photo qui est déjà en couleur n'a PAS besoin d'être à nouveau colorée : comme la réparation AI est une restauration algorithmique, elle sera différente de l'image d'origine et elle sera incohérente avec l'image d'origine après avoir été à nouveau colorée. Par conséquent, il est recommandé que les photos en couleur n'aient pas besoin d'être colorées.<br/>3. Après avoir payé, vous pouvez télécharger l'image complète sans filigrane en haute définition. Le paiement signifie que vous avez accepté l'effet de l'image de comparaison. La même photo (photo du même format, taille) ne doit payer qu'une seule fois. Si la photo n'entre pas dans votre album photo après son affichage, appuyez longuement manuellement sur la photo pour l'enregistrer dans votre album photo. Si vous ne pouvez toujours pas l'enregistrer, veuillez ajouter notre groupe QQ (579786037) pour obtenir de l'aide.",
+          '2. La photo qui est déjà en couleur n\'a PAS besoin d\'être à nouveau colorée : comme la réparation AI est une restauration algorithmique, elle sera différente de l\'image d\'origine et elle sera incohérente avec l\'image d\'origine après avoir été à nouveau colorée. Par conséquent, il est recommandé que les photos en couleur n\'aient pas besoin d\'être colorées.<br/>3. Après avoir payé, vous pouvez télécharger l\'image complète sans filigrane en haute définition. Le paiement signifie que vous avez accepté l\'effet de l\'image de comparaison. La même photo (photo du même format, taille) ne doit payer qu\'une seule fois. Si la photo n\'entre pas dans votre album photo après son affichage, appuyez longuement manuellement sur la photo pour l\'enregistrer dans votre album photo. Si vous ne pouvez toujours pas l\'enregistrer, veuillez ajouter notre groupe QQ (579786037) pour obtenir de l\'aide.'
       },
       {
-        title: "qu'est-ce que la réparation de l'IA ?",
-        info: "La réparation de photos par l'IA est l'utilisation de la technologie de l'intelligence artificielle pour réparer les images, faisant briller les vieilles images d'une nouvelle vitalité. Par exemple, avant les années 1980, de nombreuses vidéos et photos étaient en noir et blanc. La technologie de réparation AI peut être utilisée pour réparer de vieilles photos en noir et blanc avec des images jaunes et floues, et les vieilles photos en noir et blanc peuvent être restaurées en photos numériques couleur. Vous pouvez également utiliser la technologie d'IA pour compléter les détails des photos floues à l'origine afin de restaurer des photos haute définition.",
+        title: 'qu\'est-ce que la réparation de l\'IA ?',
+        info: 'La réparation de photos par l\'IA est l\'utilisation de la technologie de l\'intelligence artificielle pour réparer les images, faisant briller les vieilles images d\'une nouvelle vitalité. Par exemple, avant les années 1980, de nombreuses vidéos et photos étaient en noir et blanc. La technologie de réparation AI peut être utilisée pour réparer de vieilles photos en noir et blanc avec des images jaunes et floues, et les vieilles photos en noir et blanc peuvent être restaurées en photos numériques couleur. Vous pouvez également utiliser la technologie d\'IA pour compléter les détails des photos floues à l\'origine afin de restaurer des photos haute définition.'
       },
       {
         title: 'Quel est le principe de la réparation photo AI ？',
-        info: "L'IA apprendra et se souviendra automatiquement de la couleur de ces informations clés, telles que les feuilles sont vertes, les visages humains sont la couleur de la peau, etc. Par conséquent, elle peut rapidement commencer à coloriser des scènes sur des photos en noir et blanc. L'IA apprend grâce à des algorithmes et à l'apprentissage d'un grand nombre d'images existantes. Tout d'abord, effectuez une segmentation de l'image sur la photo pour distinguer les objets de repère. Par exemple, les arbres, le ciel, les visages humains, les vêtements... Même s'il est difficile d'être parfait, les vieilles photos restaurées peuvent encore réserver bien des surprises.<br/>PS : Parce que la réparation de l'IA est \"l'expérience\" de l'apprentissage d'algorithmes et le résultat de la déduction, elle sera différente des vraies photos et des vraies scènes.",
+        info: 'L\'IA apprendra et se souviendra automatiquement de la couleur de ces informations clés, telles que les feuilles sont vertes, les visages humains sont la couleur de la peau, etc. Par conséquent, elle peut rapidement commencer à coloriser des scènes sur des photos en noir et blanc. L\'IA apprend grâce à des algorithmes et à l\'apprentissage d\'un grand nombre d\'images existantes. Tout d\'abord, effectuez une segmentation de l\'image sur la photo pour distinguer les objets de repère. Par exemple, les arbres, le ciel, les visages humains, les vêtements... Même s\'il est difficile d\'être parfait, les vieilles photos restaurées peuvent encore réserver bien des surprises.<br/>PS : Parce que la réparation de l\'IA est "l\'expérience" de l\'apprentissage d\'algorithmes et le résultat de la déduction, elle sera différente des vraies photos et des vraies scènes.'
       },
       {
-        title: "Quel type de photo convient à la réparation de l'IA ? ",
-        info: 'Photos noir et blanc, portraits flous, portraits, photos demi-longueur.',
+        title: 'Quel type de photo convient à la réparation de l\'IA ? ',
+        info: 'Photos noir et blanc, portraits flous, portraits, photos demi-longueur.'
       },
       {
-        title: "Quelles photos ne conviennent pas à l'IA？",
-        info: "Étant donné que la netteté de réparation de photos floues est principalement destinée à la formation de photos de personnes, les photos de paysages purs sans personnes peuvent être colorées, mais la netteté ne peut pas être réparée. <br/>La photo originale est trop floue, ou le portrait de la personne sur la photo originale est trop petit, ou la photo elle-même est trop petite pour être réparée.<br/>Les images contenant uniquement du texte ne peuvent pas être réparées. Étant donné qu'aucune formation spéciale n'a été effectuée pour les images contenant uniquement du texte et qu'aucun algorithme ciblé n'a été conçu, il est impossible de réparer les images contenant uniquement du texte. ",
+        title: 'Quelles photos ne conviennent pas à l\'IA？',
+        info: 'Étant donné que la netteté de réparation de photos floues est principalement destinée à la formation de photos de personnes, les photos de paysages purs sans personnes peuvent être colorées, mais la netteté ne peut pas être réparée. <br/>La photo originale est trop floue, ou le portrait de la personne sur la photo originale est trop petit, ou la photo elle-même est trop petite pour être réparée.<br/>Les images contenant uniquement du texte ne peuvent pas être réparées. Étant donné qu\'aucune formation spéciale n\'a été effectuée pour les images contenant uniquement du texte et qu\'aucun algorithme ciblé n\'a été conçu, il est impossible de réparer les images contenant uniquement du texte. '
       },
       {
-        title: "L'ancienne vidéo peut-elle être réparée ?",
-        info: "Bien sûr, ceci est notre service d'entreprise, vous pouvez contacter wechat wearebug <br/>spectacle de casting<br/>",
-      },
+        title: 'L\'ancienne vidéo peut-elle être réparée ?',
+        info: 'Bien sûr, ceci est notre service d\'entreprise, vous pouvez contacter wechat wearebug <br/>spectacle de casting<br/>'
+      }
     ],
     pic: {
       checkAll: 'Tous',
       start: 'Démarrer la tâche',
       cancel: 'Tout supprimer',
-      upload: 'Continuer le chargement(Maximum 3000px)',
-    },
-  },
+      upload: 'Continuer le chargement(Maximum 3000px)'
+    }
+  }
 }
