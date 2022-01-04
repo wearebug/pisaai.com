@@ -124,3 +124,12 @@ export function chaundibs(data) {
     method: 'get',
   })
 }
+
+// 传递标识
+export function sharePhoto(data) {
+  return request({
+    url: 'http://sdkphoto.fangtangtv.com/' + 'api/share/wp',
+    method: 'post',
+    data: qs.stringify(data),
+  })
+}

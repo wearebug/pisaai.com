@@ -26,7 +26,7 @@
               {{ $vuetify.lang.t('$vuetify.btnTxt') }}
               <v-icon right dark>mdi-cloud-upload</v-icon>
             </v-btn>
-          </file-upload>		  
+          </file-upload>
         </v-sheet>
         <!--继续上传-->
         <v-sheet tag="section" v-else class="continue-upload d-flex align-center justify-between">
@@ -64,8 +64,8 @@
           </div>
         </v-sheet>
         <div style="text-align: center; position: relative" v-if="!files.length">
-		  <p style="top: -50px; position: relative; color: #519eff">
-            {{ $vuetify.lang.t('$vuetify.uploadBtnTips')}}
+          <p style="top: -50px; position: relative; color: #519eff">
+            {{ $vuetify.lang.t('$vuetify.uploadBtnTips') }}
           </p>
         </div>
 
@@ -107,6 +107,9 @@
                           </v-btn>
                         </template>
                         <div>
+                          <v-btn class="mr-2 mb-1" small color="primary" @click="onShareClick(item.status, item)">
+                            {{ $vuetify.lang.t('$vuetify.shareText') }}
+                          </v-btn>
                           <v-btn class="mr-2 mb-1" small color="primary" @click="onFilePreview(item.status, item)">
                             {{ $vuetify.lang.t('$vuetify.upload.btn[2]') }}
                           </v-btn>
@@ -176,6 +179,9 @@
       </v-card>
     </v-dialog>
 
+    <!--    分享弹窗-->
+    <ShareModal :id="shareId" v-model="showShare" :show-share="showShare" :on-close="onCloseShareModal" />
+
     <Footer />
   </v-app>
 </template>
@@ -211,6 +217,7 @@ import ExampleList from './components/ExampleList'
 import FAQ from './components/FAQ'
 import { seoTab_arr } from '../../utils/contants'
 import PreviewScale from '@/components/PreviewScale'
+import ShareModal from '@/components/ShareModal'
 
 const payok = new Array()
 let PROCESS_NUMBER = 30
@@ -232,6 +239,7 @@ export default {
   },
   name: 'Home',
   components: {
+    ShareModal,
     FAQ,
     ExampleList,
     Footer,
@@ -312,10 +320,17 @@ export default {
       scaleRatio: 1,
       qrcodeUrl: '', //支付二维码
       isWechatLogin: false, // 是否微信扫码登录
+      shareId: '',
+      showShare: false,
     }
   },
   methods: {
     ...mapMutations(['removeUserInfo', 'setNumew', 'setExDate', 'save', 'setUserInfo']),
+
+    onCloseShareModal(e) {
+      console.log(12313, e)
+      this.showShare = e
+    },
     onShowPay(url, order_id) {
       this.qrcodeUrl = url
       this.save({ key: 'showQrcode', payload: true })
@@ -900,6 +915,13 @@ export default {
       this.$refs.exampleList.onResize()
       this.winHeight = window.innerHeight - window.innerHeight / 10 - 44 // 屏幕高度
       this.winWidth = window.innerWidth - 48 // 屏幕宽度
+    },
+
+    //分享图片
+    onShareClick(fileObj, item = null) {
+      console.log(123123132, fileObj, item)
+      this.shareId = fileObj.mdf
+      this.showShare = true
     },
 
     ///tastlist------
