@@ -192,13 +192,13 @@ export default {
     shareTitle: '用户分享协议',
     shareContent: `
     请您在使用分享功能前阅读以下协议内容：
-      1）分享操作将会把您选择的照片（含修复前后的）发布到本平台的客户案例展示区，向所有访客公开；
-      2）分享付费后的照片，分享者将会得到10元修复代金券；
-      3）上传者拥有照片版权，授权本平台展示和居间销售照片（如果需要）；
-      4）您分享的照片会被内部用于分析和优化AI算法。
-      使用本功能即视为您已阅读、理解并同意上述协议。`,
+    1）分享操作将会把您选择的照片（含修复前后的）发布到本平台的客户案例展示区，向所有访客公开；
+    2）分享付费后的照片，分享者将会得到10元修复代金券；
+    3）上传者拥有照片版权，授权本平台展示和居间销售照片（如果需要）；
+    4）您分享的照片会被内部用于分析和优化AI算法。
+    使用本功能即视为您已阅读、理解并同意上述协议。`,
     shareAgree: '我已阅读并同意',
-    shareBtn: '分享',
+    shareBtn: '确认',
     shareSuccess: '分享成功',
     shareFail: '分享失败',
     shareCheckTip:'请先确认分享协议'
@@ -405,7 +405,20 @@ export default {
       start: 'Start task',
       cancel: 'Delete all',
       upload: 'Continue to upload images(Max 3000px)'
-    }
+    },
+	shareText: 'Share',
+    shareTitle: 'User Sharing Agreement',
+    shareContent: `
+    Please read the following agreement before share:
+    1）Sharing will post the photos you choose to the customer case display area of this platform;
+    2）The uploader owns the copyright of the photo and authorizes PisaAI to display and sell the photo (if needed);
+    3）The photos you share will be used internally to analyze and optimize AI algorithms.
+    Using this function means that you have read, understood and agreed to the above agreement.`,
+    shareAgree: 'I have read and agree',
+    shareBtn: 'Confirm',
+    shareSuccess: 'Sharing is complete',
+    shareFail: 'Sharing error',
+    shareCheckTip:'Please confirm the sharing agreement first'
   },
   japanese: {
     name: 'PisaAI写真強化-古い写真を修復する_画像マット_切り抜き写真ソフト',
@@ -590,7 +603,20 @@ export default {
       start: 'タスクを開始',
       cancel: 'すべて削除',
       upload: '画像のアップロードを続ける（最大3000px）'
-    }
+    },
+	shareText: 'シェア',
+    shareTitle: 'User Sharing Agreement',
+    shareContent: `
+    Please read the following agreement before share:
+    1）Sharing will post the photos you choose to the customer case display area of this platform;
+    2）The uploader owns the copyright of the photo and authorizes PisaAI to display and sell the photo (if needed);
+    3）The photos you share will be used internally to analyze and optimize AI algorithms.
+    Using this function means that you have read, understood and agreed to the above agreement.`,
+    shareAgree: '読んで同意しました',
+    shareBtn: '確認',
+    shareSuccess: 'Sharing is complete',
+    shareFail: 'Sharing error',
+    shareCheckTip:'Please confirm the sharing agreement first'
   },
   spanish: {
     name: 'PisaAI Retoque Fotográfico-Repair Old Photos_image matting_cutout photo Software',
@@ -789,7 +815,20 @@ export default {
       start: 'Iniciar tarea',
       cancel: 'Eliminar todos',
       upload: 'Seguir subiendo（Máximo 3000px）'
-    }
+    },
+	shareText: 'Share',
+    shareTitle: 'User Sharing Agreement',
+    shareContent: `
+    Please read the following agreement before share:
+    1）Sharing will post the photos you choose to the customer case display area of this platform;
+    2）The uploader owns the copyright of the photo and authorizes PisaAI to display and sell the photo (if needed);
+    3）The photos you share will be used internally to analyze and optimize AI algorithms.
+    Using this function means that you have read, understood and agreed to the above agreement.`,
+    shareAgree: 'I have read and agree',
+    shareBtn: 'Confirm',
+    shareSuccess: 'Sharing is complete',
+    shareFail: 'Sharing error',
+    shareCheckTip:'Please confirm the sharing agreement first'
   },
   french: {
     name: 'PisaAI Photo Améliorer-Repair Old Photos_image matting_cutout photo Software',
@@ -988,6 +1027,19 @@ export default {
       start: 'Démarrer la tâche',
       cancel: 'Tout supprimer',
       upload: 'Continuer le chargement(Maximum 3000px)'
-    }
+    },
+	shareText: 'Share',
+    shareTitle: 'User Sharing Agreement',
+    shareContent: `
+    Please read the following agreement before share:
+    1）Sharing will post the photos you choose to the customer case display area of this platform;
+    2）The uploader owns the copyright of the photo and authorizes PisaAI to display and sell the photo (if needed);
+    3）The photos you share will be used internally to analyze and optimize AI algorithms.
+    Using this function means that you have read, understood and agreed to the above agreement.`,
+    shareAgree: 'I have read and agree',
+    shareBtn: 'Confirm',
+    shareSuccess: 'Sharing is complete',
+    shareFail: 'Sharing error',
+    shareCheckTip:'Please confirm the sharing agreement first'
   }
 }

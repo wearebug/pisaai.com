@@ -69,23 +69,23 @@ export default {
 </script>
 <style>
 .home__share__box {
-  padding: 16px;
+  padding: 20px;
 }
 
 .home__choiceType__title {
   color: #333;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .home__share__tip {
-  line-height: 33px;
-  font-size: 16px;
+  line-height: 30px;
+  font-size: 14px;
 }
 
 .share_footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 40px;
+  padding: 10px 26px;
 }
 </style>
