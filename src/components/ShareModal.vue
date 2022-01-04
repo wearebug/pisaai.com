@@ -78,7 +78,7 @@ export default {
 }
 
 .home__share__tip {
-  /*line-height: 33px;*/
+  line-height: 33px;
   font-size: 16px;
 }
 
