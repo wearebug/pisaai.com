@@ -127,13 +127,13 @@ export default {
         },
         {
           id: 'deadee',
-          name: '遗像照',
+          name: '特种照',
           bgValue: 'white',
           optionValue: [],
           outputValue: [],
           bgs: [
-            { label: '白色', value: 'white' },
-            { label: '渐变灰', value: 'grey' },
+            { label: '新农合（渐变蓝）', value: 'nrcms' },
+            { label: '遗像照（渐变灰）', value: 'grey' },
           ],
           options: [{ label: '人像优化', value: 'repair' }],
           output: [{ label: '300dpi（印刷级）', value: 'dpi' }],

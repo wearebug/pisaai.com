@@ -521,6 +521,7 @@ export default {
       const bgMap = {
         transparent: -1,
         grey: 1,
+		nrcms: 2,
         white: '255,255,255',
         blue: '85,142,213',
         red: '235,51,35',
