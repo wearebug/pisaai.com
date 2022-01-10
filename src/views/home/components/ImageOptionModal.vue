@@ -107,6 +107,7 @@ export default {
             { label: '去雾', value: 'defogging' },
             //{ label: '去划痕', value: 'scratch' },
             { label: '上色', value: 'colour' },
+			{ label: '上色(实验版)', value: 'colourbeta' },
           ],
           output: [{ label: '300dpi（印刷级）', value: 'dpi' }],
         },
