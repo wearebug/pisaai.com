@@ -11,6 +11,7 @@
         <!--SEO专用结束-->
         <v-col class="py-4 text-center white--text text-body-2" cols="12">
           {{ $vuetify.lang.t('$vuetify.copyrightTxt') }}
+          <a style="color: #ffffff" href="https://beian.miit.gov.cn/" target="_blank">{{ $vuetify.lang.t('$vuetify.copyrightTxt1') }}</a>
         </v-col>
       </v-row>
     </v-footer>

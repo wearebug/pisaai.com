@@ -58,7 +58,8 @@ export default {
         2012: '图像格式不支持（支持jpg/jpeg/png）',
         2013: '正在准备图片……',
         2014: '图片上传失败，请重试',
-        undefined: '未定义'
+        undefined: '未定义',
+        
       },
       btn: ['人工精修', '下载', '查看结果', '删除', '再次处理']
     },
@@ -148,7 +149,10 @@ export default {
     contactTxt: '联系我们',
     contactInfo:
       '北京但丁科技有限公司<br/>公司地址：北京市海淀区西二旗中关村软件园华夏科技大厦329<br/>电话：010-5335 5193<br/>用户QQ群：623946846 <br/>销售微信：12145508',
-    copyrightTxt: '北京但丁科技有限公司 版权所有 京ICP备2021032285号',
+
+    copyrightTxt: '北京但丁科技有限公司 版权所有 ',
+    copyrightTxt1: '京ICP备2021032285号',
+
     btnTxt: '上传图片（最大3000px）',
     contrastTips: ['后', '前'],
     contrastType: ['彩色照片优化', '证件照换底色', '黑白照片上色', '图片无损放大', '划痕修复', '强化人像'],
@@ -201,7 +205,9 @@ export default {
     shareBtn: '确认',
     shareSuccess: '分享成功',
     shareFail: '分享失败',
-    shareCheckTip:'请先确认分享协议'
+
+    shareCheckTip: '请先确认分享协议',
+
   },
   english: {
     name: 'PisaAI Enhance Photo-Repair Old Photos_matting photos_cutout photo Software',
@@ -244,8 +250,10 @@ export default {
       },
       {
         title: 'monthly = ￥300',
-        list: ['Expiry:a month', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
-      }
+
+        list: ['Expiry:a month', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+      },
+
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
     weChatVip: [
@@ -406,7 +414,9 @@ export default {
       cancel: 'Delete all',
       upload: 'Continue to upload images(Max 3000px)'
     },
-	shareText: 'Share',
+
+    shareText: 'Share',
+
     shareTitle: 'User Sharing Agreement',
     shareContent: `
     Please read the following agreement before share:
@@ -418,7 +428,9 @@ export default {
     shareBtn: 'Confirm',
     shareSuccess: 'Sharing is complete',
     shareFail: 'Sharing error',
-    shareCheckTip:'Please confirm the sharing agreement first'
+
+    shareCheckTip: 'Please confirm the sharing agreement first',
+
   },
   japanese: {
     name: 'PisaAI写真強化-古い写真を修復する_画像マット_切り抜き写真ソフト',
@@ -604,7 +616,9 @@ export default {
       cancel: 'すべて削除',
       upload: '画像のアップロードを続ける（最大3000px）'
     },
-	shareText: 'シェア',
+
+    shareText: 'シェア',
+
     shareTitle: 'User Sharing Agreement',
     shareContent: `
     Please read the following agreement before share:
@@ -616,7 +630,9 @@ export default {
     shareBtn: '確認',
     shareSuccess: 'Sharing is complete',
     shareFail: 'Sharing error',
-    shareCheckTip:'Please confirm the sharing agreement first'
+
+    shareCheckTip: 'Please confirm the sharing agreement first',
+
   },
   spanish: {
     name: 'PisaAI Retoque Fotográfico-Repair Old Photos_image matting_cutout photo Software',
@@ -660,8 +676,10 @@ export default {
       },
       {
         title: 'mensual = ￥300',
-        list: ['Expiry:Un mes', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
-      }
+
+        list: ['Expiry:Un mes', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+      },
+
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
     weChatVip: ['Código de barrido Wechat', 'Compra del paquete', 'Descargar imágenes de alta definición sin marca de agua'],
@@ -816,7 +834,9 @@ export default {
       cancel: 'Eliminar todos',
       upload: 'Seguir subiendo（Máximo 3000px）'
     },
-	shareText: 'Share',
+
+    shareText: 'Share',
+
     shareTitle: 'User Sharing Agreement',
     shareContent: `
     Please read the following agreement before share:
@@ -828,7 +848,9 @@ export default {
     shareBtn: 'Confirm',
     shareSuccess: 'Sharing is complete',
     shareFail: 'Sharing error',
-    shareCheckTip:'Please confirm the sharing agreement first'
+
+    shareCheckTip: 'Please confirm the sharing agreement first',
+
   },
   french: {
     name: 'PisaAI Photo Améliorer-Repair Old Photos_image matting_cutout photo Software',
@@ -872,8 +894,10 @@ export default {
       },
       {
         title: 'mensuel = ￥300',
-        list: ['Expiry:un mois', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES']
-      }
+
+        list: ['Expiry:un mois', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
+      },
+
     ],
     priceType: ['Wechat', 'Alipay', 'Paypal'],
     weChatVip: ['Code d\'analyse WeChat', 'Achat de forfait', 'Télécharger une image HD sans filigrane'],
@@ -1028,7 +1052,9 @@ export default {
       cancel: 'Tout supprimer',
       upload: 'Continuer le chargement(Maximum 3000px)'
     },
-	shareText: 'Share',
+
+    shareText: 'Share',
+
     shareTitle: 'User Sharing Agreement',
     shareContent: `
     Please read the following agreement before share:
@@ -1040,6 +1066,8 @@ export default {
     shareBtn: 'Confirm',
     shareSuccess: 'Sharing is complete',
     shareFail: 'Sharing error',
-    shareCheckTip:'Please confirm the sharing agreement first'
-  }
+
+    shareCheckTip: 'Please confirm the sharing agreement first',
+  },
+
 }
