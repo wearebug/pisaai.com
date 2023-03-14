@@ -20,7 +20,21 @@ const store = new Vuex.Store({
   state: {
     userInfo: null,
     userNumews: null,
-    userExDate: null
+    userExDate: null,
+    showPriceModal: false,
+    showLogin: false,
+    showQrcode: false,
+    curLang: { id: 'zhHans', name: '简体中文' },
+    langIndex: 0,
+    langs: [
+      { id: 'zhHans', name: '简体中文' },
+      { id: 'en', name: 'English' },
+      { id: 'ja', name: '日本语' },
+      { id: 'es', name: 'Español' },
+      { id: 'fr', name: 'Français' },
+    ],
+    showMenuNav: false,
+    channel: 'pisaAI',
   },
   mutations: {
     setUserInfo(state, userInfo) {
@@ -52,6 +66,20 @@ const store = new Vuex.Store({
     },
     removeSetExDate(state) {
       state.userExDate = 0
+    },
+    save(state, { key, payload }) {
+      state[key] = payload
+    },
+    changeMenuNavShow: (state, value) => {
+      //this.save({ key: 'showMenuNav', payload: !this.showMenuNav })
+      state.showMenuNav = value // !state.showMenuNav
+    },
+  },
+  actions: {
+    onLogout({ commit, state }) {
+      commit('removeUserInfo')
+      commit('removeSetNumew')
+      commit('removeSetExDate')
     },
   },
 })

@@ -2,10 +2,12 @@ export default {
   chinese: {
     name: 'PisaAI披萨智能-修复老照片_一键抠图_抠图软件',
     error800: '图片的宽和高最大3000px',
-    maxImgHint: ' 处理更大图片请访问高光照片优化 ',
+    uploadBtnTips: '上传的照片将在24小时内被自动删除，请及时下载结果',
     maxImgYh: '大图优化',
-    keyword: '老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照,修复旧照片,照片模糊怎么变清晰,模糊图片秒转高清图,ps怎么把图片变清晰,一键抠图,图片模糊怎么变清晰,免费把模糊照片修高清的软件,怎么把模糊的照片变清晰,模糊的图片怎么变清晰,抠图,证件照换底色,照片换背景底色,ps证件照换底色,照片换底色,证件照换底色app免费,ps抠图,ps怎么抠图,ps如何抠图,在线抠图,抠图软件',
-    description: 'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景,主要可以：老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照,修复旧照片,照片模糊怎么变清晰,模糊图片秒转高清图,ps怎么把图片变清晰,一键抠图,图片模糊怎么变清晰,免费把模糊照片修高清的软件,怎么把模糊的照片变清晰,模糊的图片怎么变清晰,抠图,证件照换底色,照片换背景底色,ps证件照换底色,照片换底色,证件照换底色app免费,ps抠图,ps怎么抠图,ps如何抠图,在线抠图,抠图软件。',
+    keyword:
+      '老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照,修复旧照片,照片模糊怎么变清晰,模糊图片秒转高清图,ps怎么把图片变清晰,一键抠图,图片模糊怎么变清晰,免费把模糊照片修高清的软件,怎么把模糊的照片变清晰,模糊的图片怎么变清晰,抠图,证件照换底色,照片换背景底色,ps证件照换底色,照片换底色,证件照换底色app免费,ps抠图,ps怎么抠图,ps如何抠图,在线抠图,抠图软件',
+    description:
+      'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景,主要可以：老照片,照片修复,PisaAI照片上色,PisaAI照片修复,PisaAI照片优化,旧时光,着色,修复划痕,证件照,证件照换背景,遗像照,修复旧照片,照片模糊怎么变清晰,模糊图片秒转高清图,ps怎么把图片变清晰,一键抠图,图片模糊怎么变清晰,免费把模糊照片修高清的软件,怎么把模糊的照片变清晰,模糊的图片怎么变清晰,抠图,证件照换底色,照片换背景底色,ps证件照换底色,照片换底色,证件照换底色app免费,ps抠图,ps怎么抠图,ps如何抠图,在线抠图,抠图软件。',
     loginTxt: '登录',
     userTxt: '用户中心',
     loginTitle: '感谢支持PisaAI ！',
@@ -18,7 +20,7 @@ export default {
     vipBuyTips: '购买成功',
     uploadListTxt: '最近任务',
     registerBtnTxt: '注册',
-    functionTxt: ['价格', 'API'],
+    functionTxt: ['价格', '照片打印'],
     functionPrice: [
       {
         title: '3张 = ￥25',
@@ -56,7 +58,7 @@ export default {
         2012: '图像格式不支持（支持jpg/jpeg/png）',
         2013: '正在准备图片……',
         2014: '图片上传失败，请重试',
-		undefined: '未定义',
+        undefined: '未定义',
       },
       btn: ['人工精修', '下载', '查看结果', '删除', '再次处理'],
     },
@@ -73,7 +75,7 @@ export default {
     choiceType: {
       title: '任务配置',
       btn: '立即开始任务',
-	  cancel: '取消',
+      cancel: '取消',
       tips: '请输入RGB色值',
       list: [
         {
@@ -134,7 +136,7 @@ export default {
     电话: '010-5335 5193',
     邮箱: 'wearebug&gmail.com',
     微信: 'wearebug',
-	aboutTxt: '关于我们',
+    aboutTxt: '关于我们',
     aboutInfo:
       '北京但丁科技有限公司成立于2018年，是一家由AI行业资深从业者组成的创业公司，致力于将人工智能和计算机视觉技术应用于图像和视频处理领域。我们向客户提供各种可定制的图像视频处理解决方案。<br/>QQ群：623946846 <br/>销售微信：12145508',
     agreementTxt: '用户协议',
@@ -146,7 +148,8 @@ export default {
     contactTxt: '联系我们',
     contactInfo:
       '北京但丁科技有限公司<br/>公司地址：北京市海淀区西二旗中关村软件园华夏科技大厦329<br/>电话：010-5335 5193<br/>用户QQ群：623946846 <br/>销售微信：12145508',
-	copyrightTxt: '北京但丁科技有限公司 版权所有 京ICP备2021032285号',
+    copyrightTxt: '北京但丁科技有限公司 版权所有 ',
+    copyrightTxt1: '京ICP备2021032285号',
     btnTxt: '上传图片（最大3000px）',
     contrastTips: ['后', '前'],
     contrastType: ['彩色照片优化', '证件照换底色', '黑白照片上色', '图片无损放大', '划痕修复', '强化人像'],
@@ -186,14 +189,29 @@ export default {
       cancel: '删除全部',
       upload: '继续上传（最大3000px）',
     },
+    shareText: '分享领红包',
+    shareTitle: '用户分享协议',
+    shareContent: `
+    请您在使用分享功能前阅读以下协议内容：
+    1）分享操作将会把您选择的照片（含修复前后的）发布到本平台的客户案例展示区，向所有访客公开；
+    2）分享付费后的照片，分享者将会得到10元修复代金券；
+    3）上传者拥有照片版权，授权本平台展示和居间销售照片（如果需要）；
+    4）您分享的照片会被内部用于分析和优化AI算法。
+    使用本功能即视为您已阅读、理解并同意上述协议。`,
+    shareAgree: '我已阅读并同意',
+    shareBtn: '确认',
+    shareSuccess: '分享成功',
+    shareFail: '分享失败',
+    shareCheckTip: '请先确认分享协议',
   },
   english: {
     name: 'PisaAI Enhance Photo-Repair Old Photos_matting photos_cutout photo Software',
-    error800:'The width and height of the picture are up to 3000px',
-    maxImgHint:' To work with large images, visit HiliPhoto Enhance ',
+    error800: 'The width and height of the picture are up to 3000px',
+    uploadBtnTips: 'The uploaded photos will be automatically deleted within 24 hours',
     maxImgYh: 'Large map enhance',
     keyword: 'Old photo enhance, photo repair,  photo coloring, repair scratches, ID photo, ID photo background change, portrait photo',
-    description: 'PisaAI PhotoEnhance is to colorize photos, repair scratches, face refinement, photo sharpening, etc. by AI algorithm. Fix old photos and ID photos before, ID photos for red, white, blue background.',
+    description:
+      'PisaAI PhotoEnhance is to colorize photos, repair scratches, face refinement, photo sharpening, etc. by AI algorithm. Fix old photos and ID photos before, ID photos for red, white, blue background.',
     loginTxt: 'Sign in',
     userTxt: 'User center',
     loginTitle: 'Thanks for choosing PisaAI',
@@ -226,7 +244,7 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: 'monthly package = ￥300',
+        title: 'monthly = ￥300',
         list: ['Expiry:a month', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
@@ -268,7 +286,7 @@ export default {
     choiceType: {
       title: 'Task configuration',
       btn: 'Start task now',
-	  cancel: 'cancel',
+      cancel: 'cancel',
       tips: 'Please enter RGB color value',
       list: [
         {
@@ -331,7 +349,7 @@ export default {
     mail: 'wearebug&gmail.com',
     wechat: 'wearebug',
     aboutTxt: 'About us',
-	aboutInfo:
+    aboutInfo:
       'Founded in 2018, Beijing Dante Technology Co., Ltd. is a startup company composed of senior practitioners in AI. It is committed to applying artificial intelligence and computer vision technologies to the field of video/image processing.We provide customers with a variety of customizable image and video processing solutions.<br/>',
     agreementTxt: 'User agreement',
     agreementInfo:
@@ -342,12 +360,12 @@ export default {
     contactTxt: 'Contact us',
     contactInfo:
       'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>Tel:010-5335 5193<br/>User QQ Group：623946846 <br/>wechat：12145508',
-	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
+    copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
     btnTxt: 'Upload Images(Max 3000px)',
     contrastTips: ['after', 'befor'],
     contrastType: [
       'Enhance color photo',
-	  'Change background color',
+      'Change background color',
       'Colorize black&white photo',
       'Lossless amplification',
       'Repair scratched',
@@ -389,14 +407,28 @@ export default {
       cancel: 'Delete all',
       upload: 'Continue to upload images(Max 3000px)',
     },
+    shareText: 'Share',
+    shareTitle: 'User Sharing Agreement',
+    shareContent: `
+    Please read the following agreement before share:
+    1）Sharing will post the photos you choose to the customer case display area of this platform;
+    2）The uploader owns the copyright of the photo and authorizes PisaAI to display and sell the photo (if needed);
+    3）The photos you share will be used internally to analyze and optimize AI algorithms.
+    Using this function means that you have read, understood and agreed to the above agreement.`,
+    shareAgree: 'I have read and agree',
+    shareBtn: 'Confirm',
+    shareSuccess: 'Sharing is complete',
+    shareFail: 'Sharing error',
+    shareCheckTip: 'Please confirm the sharing agreement first',
   },
   japanese: {
     name: 'PisaAI写真強化-古い写真を修復する_画像マット_切り抜き写真ソフト',
-    error800:'画像の幅と高さは最大800 pxです。',
-    maxImgHint:'大きな画像の処理については、Hili 写真の最適化をご覧ください。',
+    error800: '画像の幅と高さは最大800 pxです。',
+    uploadBtnTips: '写真は24時間以内に自動的に削除されます',
     maxImgYh: '大いに最適化を図る',
     keyword: '古い写真、写真の修復、写真の着色、傷の修復、ID写真、ID写真の背景の変更、ポートレート',
-    description: 'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景。',
+    description:
+      'PisaAI优化是通过AI算法,对照片进行着色,修复划痕,面部精修,照片锐化等。修复以前的老照片和证件照，证件照换红色、白色、蓝色背景。',
     loginTxt: 'ログイン',
     userTxt: '使用者',
     loginTitle: 'PisaAI をご利用いただきありがとうございます',
@@ -462,7 +494,7 @@ export default {
     choiceType: {
       title: 'タスクの設定',
       btn: '直ちに任務を開始する',
-	  cancel: '中止',
+      cancel: '中止',
       tips: 'RGBの色の値を入力',
       list: [
         {
@@ -524,7 +556,7 @@ export default {
     phone: '010-5335 5193',
     mail: 'wearebug&gmail.com',
     wechat: 'wearebug',
-	aboutTxt: '我社',
+    aboutTxt: '我社',
     aboutInfo:
       '2019年に設立されたBeijingDante Technology Co.、Ltd。は、OTTおよびIPTVビデオ業界の上級実務家で構成される新興企業です。 人工知能とコンピュータービジョン技術をビデオ/画像処理の分野に適用することに取り組んでいます。私たちは、カスタマイズ可能なさまざまな画像およびビデオ処理ソリューションをお客様に提供します。<br/>連絡先番号：010-5335 5193<br/>QQグループ：579786037<br/>メール：wearebug＆gmail.com',
     agreementTxt: 'ユーザー規約',
@@ -532,9 +564,8 @@ export default {
     privacyTxt: '個人情報保護方針',
     privacyInfo: '<p class="Standard">英語版を参照してください</p>',
     contactTxt: 'お問い合わせ',
-    contactInfo:
-      'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
-	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
+    contactInfo: 'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
+    copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
     btnTxt: '画像のアップロード（最大3000px）',
     contrastTips: ['後', '前'],
     contrastType: ['カラー写真を強調', '背景色を変更', '黒と白の写真を色付', 'ロスレス増幅', '傷のある修理', '顔を強調する'],
@@ -574,11 +605,24 @@ export default {
       cancel: 'すべて削除',
       upload: '画像のアップロードを続ける（最大3000px）',
     },
+    shareText: 'シェア',
+    shareTitle: 'User Sharing Agreement',
+    shareContent: `
+    Please read the following agreement before share:
+    1）Sharing will post the photos you choose to the customer case display area of this platform;
+    2）The uploader owns the copyright of the photo and authorizes PisaAI to display and sell the photo (if needed);
+    3）The photos you share will be used internally to analyze and optimize AI algorithms.
+    Using this function means that you have read, understood and agreed to the above agreement.`,
+    shareAgree: '読んで同意しました',
+    shareBtn: '確認',
+    shareSuccess: 'Sharing is complete',
+    shareFail: 'Sharing error',
+    shareCheckTip: 'Please confirm the sharing agreement first',
   },
   spanish: {
     name: 'PisaAI Retoque Fotográfico-Repair Old Photos_image matting_cutout photo Software',
-    error800:'Anchura y altura máximas de la imagen 3000px',
-    maxImgHint:'Para procesar imágenes grandes, visite la optimización de imágenes de alto brillo',
+    error800: 'Anchura y altura máximas de la imagen 3000px',
+    uploadBtnTips: 'Las fotos se borrarán automáticamente en 24 horas',
     maxImgYh: 'Optimización de gráficos grandes',
     keyword:
       'Fotos antiguas, reparación de fotos, coloración de fotos, reparación de arañazos, fotos de identificación, fotos de identificación para el fondo, fotos de retrato',
@@ -616,7 +660,7 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: 'Paquete mensual = ￥300',
+        title: 'mensual = ￥300',
         list: ['Expiry:Un mes', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
@@ -654,7 +698,7 @@ export default {
     choiceType: {
       title: 'Configuración de la tarea',
       btn: 'Iniciar la tarea inmediatamente',
-	  cancel: 'cancelar',
+      cancel: 'cancelar',
       tips: 'Introduzca un valor de color RGB',
       list: [
         {
@@ -716,7 +760,7 @@ export default {
     phone: '010-5335 5193',
     mail: 'wearebug&gmail.com',
     wechat: 'wearebug',
-	aboutTxt: 'Sobre nosotros',
+    aboutTxt: 'Sobre nosotros',
     aboutInfo:
       'Fundada en 2019, Beijing Dante Technology Co., Ltd. es una empresa de nueva creación compuesta por profesionales de alto nivel en las industrias de AI. Se compromete a aplicar tecnologías de inteligencia artificial y visión por computadora al campo del procesamiento de video / imágenes.Brindamos a los clientes una variedad de soluciones de procesamiento de imágenes y video personalizables.<br/>Número de contacto: 010-5335 5193 <br/>Grupo QQ: 579786037 <br/>Email: wearebug & gmail.com',
     agreementTxt: 'Acuerdo del Usuario',
@@ -724,14 +768,13 @@ export default {
     privacyTxt: 'política de privacidad',
     privacyInfo: '<p class="Standard">Consulte la versión en inglés.</p>',
     contactTxt: 'Contace us',
-    contactInfo:
-      'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
-	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
+    contactInfo: 'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
+    copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
     btnTxt: 'Cargar imagenes(Max 3000px)',
     contrastTips: ['posterior', 'antes'],
     contrastType: [
       'mejorar la foto en color',
-	  'Cambiar el color de fondo',
+      'Cambiar el color de fondo',
       'colorear fotos en blanco y negro',
       'Amplificación sin pérdidas',
       'Reparación de rayado',
@@ -774,11 +817,24 @@ export default {
       cancel: 'Eliminar todos',
       upload: 'Seguir subiendo（Máximo 3000px）',
     },
+    shareText: 'Share',
+    shareTitle: 'User Sharing Agreement',
+    shareContent: `
+    Please read the following agreement before share:
+    1）Sharing will post the photos you choose to the customer case display area of this platform;
+    2）The uploader owns the copyright of the photo and authorizes PisaAI to display and sell the photo (if needed);
+    3）The photos you share will be used internally to analyze and optimize AI algorithms.
+    Using this function means that you have read, understood and agreed to the above agreement.`,
+    shareAgree: 'I have read and agree',
+    shareBtn: 'Confirm',
+    shareSuccess: 'Sharing is complete',
+    shareFail: 'Sharing error',
+    shareCheckTip: 'Please confirm the sharing agreement first',
   },
   french: {
     name: 'PisaAI Photo Améliorer-Repair Old Photos_image matting_cutout photo Software',
-    error800:`Largeur et hauteur de l'image jusqu'à 3000px`,
-    maxImgHint:`Pour travailler avec de grandes images, visitez Hili PhotoEnhance`,
+    error800: `Largeur et hauteur de l'image jusqu'à 3000px`,
+    uploadBtnTips: `Les photos seront automatiquement supprimées dans les 24 heures`,
     maxImgYh: 'Optimisation des grandes cartes',
     keyword:
       "Photos anciennes, réparation de photo, coloriage de photo, réparation de rayures, photos d'identité, photos d'identité pour le fond, photos de portrait",
@@ -816,7 +872,7 @@ export default {
         list: ['Expiry:one year', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
       {
-        title: 'forfait mensuel = ￥300',
+        title: 'mensuel = ￥300',
         list: ['Expiry:un mois', 'Prioritize:YES', 'Size:3000px', 'Old repair:YES', 'Batch:YES'],
       },
     ],
@@ -854,7 +910,7 @@ export default {
     choiceType: {
       title: 'Configuration des tâches',
       btn: 'Démarrer la tâche maintenant',
-	  cancel: 'annuler',
+      cancel: 'annuler',
       tips: 'Veuillez saisir une valeur de couleur RGB',
       list: [
         {
@@ -916,7 +972,7 @@ export default {
     phone: '010-5335 5193',
     mail: 'wearebug&gmail.com',
     wechat: 'wearebug',
-	aboutTxt: 'à propos de nous',
+    aboutTxt: 'à propos de nous',
     aboutInfo:
       "Fondée en 2019, Beijing Dante Technology Co., Ltd. est une start-up composée de praticiens chevronnés des secteurs de la vidéo OTT et IPTV. Il s'engage à appliquer les technologies de l'intelligence artificielle et de la vision par ordinateur au domaine du traitement de la vidéo/de l'image.Nous fournissons à nos clients une variété de solutions de traitement d'images et de vidéos personnalisables.<br/>Numéro de téléphone : 010-5335 5193<br/>Groupe QQ : 579786037<br/>Courriel : wearebug&gmail.com",
     agreementTxt: "Accord de l'utilisateur",
@@ -924,14 +980,13 @@ export default {
     privacyTxt: 'política de privacidad',
     privacyInfo: '<p class="Standard">Veuillez vous référer à la version anglaise. </p>',
     contactTxt: 'Contace us',
-    contactInfo:
-      'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
-	copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
+    contactInfo: 'Beijing Dante Tech Co.,Ltd <br/>Address：Beijing China<br/>User QQ Group：623946846 <br/>wechat：12145508',
+    copyrightTxt: 'Copyright 2019-2021 Beijing Dante Tech All rights reserved.',
     btnTxt: 'Télécharger une images(Maximum 3000px)',
     contrastTips: ['après', 'avant'],
     contrastType: [
       'améliorer la photo couleur',
-	  'Changer la couleur de fond',
+      'Changer la couleur de fond',
       'coloriser des photos en noir et blanc',
       'Amplification non-destructive',
       'Réparer Rayé',
@@ -974,5 +1029,18 @@ export default {
       cancel: 'Tout supprimer',
       upload: 'Continuer le chargement(Maximum 3000px)',
     },
+    shareText: 'Share',
+    shareTitle: 'User Sharing Agreement',
+    shareContent: `
+    Please read the following agreement before share:
+    1）Sharing will post the photos you choose to the customer case display area of this platform;
+    2）The uploader owns the copyright of the photo and authorizes PisaAI to display and sell the photo (if needed);
+    3）The photos you share will be used internally to analyze and optimize AI algorithms.
+    Using this function means that you have read, understood and agreed to the above agreement.`,
+    shareAgree: 'I have read and agree',
+    shareBtn: 'Confirm',
+    shareSuccess: 'Sharing is complete',
+    shareFail: 'Sharing error',
+    shareCheckTip: 'Please confirm the sharing agreement first',
   },
 }
