@@ -4,7 +4,7 @@
     <div class="hidden-sm-and-down">
       <span v-for="(item, index) in functionTxt" :key="index">
         <v-btn text large @click="onClickMenu(index)">
-          <span>{{ item }}</span>
+          <span style="text-transform: none">{{ item }}</span>
         </v-btn>
       </span>
       <v-menu offset-y nudge-top="-10">
@@ -102,6 +102,9 @@ export default {
         }
         case 1: {
           window.open('https://songzhaopian.com/?channel=hlkj-5czp')
+        }
+        case 2: {
+          window.open('http://chat.pisaai.com', '_self')
         }
       }
     },

@@ -218,6 +218,7 @@ import FAQ from './components/FAQ'
 import { seoTab_arr } from '../../utils/contants'
 import PreviewScale from '@/components/PreviewScale'
 import ShareModal from '@/components/ShareModal'
+import cookies from 'vue-cookies'
 
 const payok = new Array()
 let PROCESS_NUMBER = 30
@@ -521,7 +522,7 @@ export default {
       const bgMap = {
         transparent: -1,
         grey: 1,
-		nrcms: 2,
+        nrcms: 2,
         white: '255,255,255',
         blue: '85,142,213',
         red: '235,51,35',
@@ -890,6 +891,9 @@ export default {
         console.log('wechatLogin', res)
         if (res.data) {
           this.setUserInfo(res.data)
+          //添加cookie存储
+          cookies.set('userInfo' , JSON.stringify(res.data) , -1 , '/' , '.pisaai.com')
+
           this.wechatHead = res.data.headimgurl
           this.isWechatLogin = true
           this.$toast.success('登录成功')

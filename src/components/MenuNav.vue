@@ -61,6 +61,9 @@ export default {
         case 1: {
           window.open('https://songzhaopian.com/?channel=hlkj-5czp')
         }
+        case 2: {
+          window.open('http://chat.pisaai.com', '_self')
+        }
       }
     },
   },

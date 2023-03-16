@@ -20,7 +20,7 @@ export default {
     vipBuyTips: '购买成功',
     uploadListTxt: '最近任务',
     registerBtnTxt: '注册',
-    functionTxt: ['价格', '照片打印'],
+    functionTxt: ['价格', '照片打印', 'ChatGPT'],
     functionPrice: [
       {
         title: '3张 = ￥25',
@@ -229,7 +229,7 @@ export default {
     vipBuyTips: 'Purchase succeeded',
     uploadListTxt: 'Recent task',
     registerBtnTxt: 'Sign up',
-    functionTxt: ['Price', 'API'],
+    functionTxt: ['Price', 'API' ,'ChatBot'],
     functionPrice: [
       {
         title: '3 photos = ￥25',
@@ -441,7 +441,7 @@ export default {
     vipBuyTips: '購入成功',
     uploadListTxt: '最近のタスク',
     registerBtnTxt: '登録',
-    functionTxt: ['価格', 'API', 'value'],
+    functionTxt: ['価格', 'API', 'ChatBot'],
     functionPrice: [
       {
         title: '写真3枚 = ￥25',
@@ -645,7 +645,7 @@ export default {
     vipBuyTips: 'Compra exitosa',
     uploadListTxt: 'Tarea reciente',
     registerBtnTxt: 'Registrate',
-    functionTxt: ['Precio', 'API'],
+    functionTxt: ['Precio', 'API' ,'ChatBot'],
     functionPrice: [
       {
         title: '3 fotos = ￥25',
@@ -857,7 +857,7 @@ export default {
     vipBuyTips: 'Achat réussi',
     uploadListTxt: 'Tâche récente',
     registerBtnTxt: 'Inscrivez-Vous',
-    functionTxt: ['Prix', 'API'],
+    functionTxt: ['Prix', 'API' ,'ChatBot'],
     functionPrice: [
       {
         title: '3 photos = ￥25',

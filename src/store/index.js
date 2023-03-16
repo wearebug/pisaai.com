@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+import cookies from 'vue-cookies'
 
 Vue.use(Vuex)
 
@@ -80,6 +81,7 @@ const store = new Vuex.Store({
       commit('removeUserInfo')
       commit('removeSetNumew')
       commit('removeSetExDate')
+      cookies.remove('userInfo','/','.pisaai.com')
     },
   },
 })
