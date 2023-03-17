@@ -358,6 +358,19 @@ export default {
       }
       //this.getPhonrDs()
       this.tongbudian() // 点数
+
+      //跳转chatgpt
+      if (cookies.get('from')=='chat') {
+        cookies.remove('from','/','.pisaai.com')
+        window.open('http://chat.pisaai.com',"_self")
+      }
+    },
+    loginChatGPT() {
+      const from = this.getUrlParam("from")
+      if (from == 'chat') {
+        this.save({ key: 'showLogin', payload: true })
+        cookies.set('from', 'chat' , -1 , '/' , '.pisaai.com')
+      }
     },
     getUrlParam(name = 'code') {
       let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
@@ -1030,6 +1043,7 @@ export default {
   created() {
     _hmt.push(['_trackEvent', 'pisaai', 'www', 'index']) //百度埋点统计
     this.getWechatLoginCode()
+    this.loginChatGPT()
     let seoTab = checkSeoTab()
     seoTab_arr.forEach((i, idx) => {
       if (i === seoTab) this.optionsTab = idx
